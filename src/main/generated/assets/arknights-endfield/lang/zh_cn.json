@@ -1,4 +1,11 @@
 {
+  "block.arknights-endfield.electric_mining_rig": "电驱矿机",
+  "block.arknights-endfield.electric_mining_rig_mk_ii": "二型电驱矿机",
+  "block.arknights-endfield.electric_pylon": "供电桩",
+  "block.arknights-endfield.portable_originium_rig": "便携源石矿机",
   "block.arknights-endfield.protocol_anchor_core": "协议核心",
+  "block.arknights-endfield.refining_unit": "精炼炉",
+  "block.arknights-endfield.relay_tower": "中继器",
+  "block.arknights-endfield.shredding_unit": "粉碎机",
   "itemGroup.arknights_endfield": "明日方舟：终末地"
 }

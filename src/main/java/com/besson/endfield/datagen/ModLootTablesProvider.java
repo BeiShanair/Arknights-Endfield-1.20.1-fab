@@ -12,5 +12,12 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         addDrop(ModBlocks.PROTOCOL_ANCHOR_CORE);
+        addDrop(ModBlocks.RELAY_TOWER);
+        addDrop(ModBlocks.ELECTRIC_PYLON);
+        addDrop(ModBlocks.ELECTRIC_MINING_RIG);
+        addDrop(ModBlocks.ELECTRIC_MINING_RIG_MK_II);
+        addDrop(ModBlocks.PORTABLE_ORIGINIUM_RIG);
+        addDrop(ModBlocks.REFINING_UNIT);
+        addDrop(ModBlocks.SHREDDING_UNIT);
     }
 }

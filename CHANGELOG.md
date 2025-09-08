@@ -1,8 +1,15 @@
 # 更新日志 / Changelog
 
+## 2025-09-08
+- 配置`中继器`、`供电桩`、`电驱矿机`、`便携源石矿机`、`二型电驱矿机`、`精炼炉`、`粉碎机`高模
+- Configured high-poly model for `Relay Tower`, `Electric Pylon`, `Electric Mining Rig`, `Portable Originium Rig`, `Electric Mining Rig Mk II`, `Refining Unit`, `Shredding Unit`
+- 修正`协议核心`的模型和动画
+- Fixed model and animation of `Protocol Anchor Core`
+
 ## 2025-09-06
 - 配置`协议核心`的高模
 - Configured high-poly model for `Protocol Anchor Core`
+
 ## 2025-08-27
 - 测试`供电桩`供能输出，连接`中继站`或`协议核心`，远程输电
 - 测试最简单的一个`用电终端`，由`供电桩`供能，消耗上游`协议核心`的电力

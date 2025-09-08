@@ -14,6 +14,13 @@ public class ModModelsProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTOCOL_ANCHOR_CORE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.RELAY_TOWER);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ELECTRIC_PYLON);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ELECTRIC_MINING_RIG);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.ELECTRIC_MINING_RIG_MK_II);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PORTABLE_ORIGINIUM_RIG);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.REFINING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SHREDDING_UNIT);
     }
 
     @Override

@@ -48,9 +48,4 @@ public class ProtocolAnchorCoreBlock extends BlockWithEntity {
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new ProtocolAnchorCoreBlockEntity(pos, state);
     }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
-    }
 }

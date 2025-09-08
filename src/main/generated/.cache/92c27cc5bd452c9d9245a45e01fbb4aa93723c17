@@ -1,2 +1,9 @@
-// 1.20.1	2025-09-06T22:07:23.5387565	Arknights Endfield/Block Loot Tables
+// 1.20.1	2025-09-08T22:20:03.4791806	Arknights Endfield/Block Loot Tables
+b4df720f5cc05b3ba20af663fc1a64382a4855f4 data\arknights-endfield\loot_tables\blocks\portable_originium_rig.json
+acb1cbf218fb17afb864d5e3037ab1aafa024c85 data\arknights-endfield\loot_tables\blocks\refining_unit.json
+923cbe69b5ef871e15d5a8d3b8b010cbf6e80eea data\arknights-endfield\loot_tables\blocks\electric_pylon.json
 bc5732a66be57a5fc4f922ffc05ad7b75dd2b5c6 data\arknights-endfield\loot_tables\blocks\protocol_anchor_core.json
+05a457d353d990ca1040cdbea297833f3b8978fb data\arknights-endfield\loot_tables\blocks\electric_mining_rig.json
+8f7b5949442ed15626b3e428d0cdfae134c9406e data\arknights-endfield\loot_tables\blocks\electric_mining_rig_mk_ii.json
+0d00ed6151a0b2e977c9edb394ad4fcd9bae0e21 data\arknights-endfield\loot_tables\blocks\shredding_unit.json
+2cfa7642368623a370dc2f562516cedee73feb71 data\arknights-endfield\loot_tables\blocks\relay_tower.json

@@ -18,6 +18,13 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModBlocks.PROTOCOL_ANCHOR_CORE))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM);
+                        entries.add(ModItems.RELAY_TOWER_ITEM);
+                        entries.add(ModItems.ELECTRIC_PYLON_ITEM);
+                        entries.add(ModItems.ELECTRIC_MINING_RIG_ITEM);
+                        entries.add(ModItems.ELECTRIC_MINING_RIG_MK_II_ITEM);
+                        entries.add(ModItems.PORTABLE_ORIGINIUM_RIG_ITEM);
+                        entries.add(ModItems.REFINING_UNIT_ITEM);
+                        entries.add(ModItems.SHREDDING_UNIT_ITEM);
                     }).build());
 
     public static void registerItemGroup(){
