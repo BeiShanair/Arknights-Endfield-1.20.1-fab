@@ -12,29 +12,60 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block PROTOCOL_ANCHOR_CORE = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "protocol_anchor_core"),
+    public static final Block PROTOCOL_ANCHOR_CORE = registerBlocksWithoutItem("protocol_anchor_core",
             new ProtocolAnchorCoreBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block RELAY_TOWER = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "relay_tower"),
+    public static final Block RELAY_TOWER = registerBlocksWithoutItem("relay_tower",
             new RelayTowerBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block ELECTRIC_PYLON = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "electric_pylon"),
+    public static final Block ELECTRIC_PYLON = registerBlocksWithoutItem("electric_pylon",
             new ElectricPylonBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block ELECTRIC_MINING_RIG = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "electric_mining_rig"),
+    public static final Block ELECTRIC_MINING_RIG = registerBlocksWithoutItem("electric_mining_rig",
             new ElectricMiningRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block ELECTRIC_MINING_RIG_MK_II = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "electric_mining_rig_mk_ii"),
+    public static final Block ELECTRIC_MINING_RIG_MK_II = registerBlocksWithoutItem("electric_mining_rig_mk_ii",
             new ElectricMiningRigMkIIBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block PORTABLE_ORIGINIUM_RIG = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "portable_originium_rig"),
+    public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block REFINING_UNIT = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit"),
+    public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-    public static final Block SHREDDING_UNIT = Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit"),
+    public static final Block SHREDDING_UNIT = registerBlocksWithoutItem("shredding_unit",
             new ShreddingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
+            new FillingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block FITTING_UNIT = registerBlocksWithoutItem("fitting_unit",
+            new FittingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block GEARING_UNIT = registerBlocksWithoutItem("gearing_unit",
+            new GearingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block GRINDING_UNIT = registerBlocksWithoutItem("grinding_unit",
+            new GrindingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
+            new MouldingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block PACKAGING_UNIT = registerBlocksWithoutItem("packaging_unit",
+            new PackagingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
+            new PlantingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block SEED_PICKING_UNIT = registerBlocksWithoutItem("seed_picking_unit",
+            new SeedPickingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
+            new ThermalBankBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
+    private static Block registerBlocksWithoutItem(String name, Block block) {
+        return Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, name), block);
+    }
 
     private static Block registerBlocks(String name, Block block) {
         registerBlockItems(name, block);

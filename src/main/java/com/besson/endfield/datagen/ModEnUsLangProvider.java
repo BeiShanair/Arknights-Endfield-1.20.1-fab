@@ -20,6 +20,15 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PORTABLE_ORIGINIUM_RIG_ITEM, "Portable Originium Rig");
         translationBuilder.add(ModItems.REFINING_UNIT_ITEM, "Refining Unit");
         translationBuilder.add(ModItems.SHREDDING_UNIT_ITEM, "Shredding Unit");
+        translationBuilder.add(ModItems.FILLING_UNIT_ITEM, "Filling Unit");
+        translationBuilder.add(ModItems.FITTING_UNIT_ITEM, "Fitting Unit");
+        translationBuilder.add(ModItems.GEARING_UNIT_ITEM, "Gearing Unit");
+        translationBuilder.add(ModItems.GRINDING_UNIT_ITEM, "Grinding Unit");
+        translationBuilder.add(ModItems.MOULDING_UNIT_ITEM, "Moulding Unit");
+        translationBuilder.add(ModItems.PACKAGING_UNIT_ITEM, "Packaging Unit");
+        translationBuilder.add(ModItems.PLANTING_UNIT_ITEM, "Planting Unit");
+        translationBuilder.add(ModItems.SEED_PICKING_UNIT_ITEM, "Seed-Picking Unit");
+        translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "Thermal Unit");
 
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
     }

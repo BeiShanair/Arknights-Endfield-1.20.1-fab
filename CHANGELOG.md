@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-09-10
+- 配置`灌装机`、`配件机`、`装备原件机`、`研磨机`、`塑形机`、`封装机`、`种植机`、`采种机`、`热能池`高模
+- Configured high-poly model for `Filling Unit`, `Fitting Unit`, `Gearing Unit`, `Grinding Unit`, `Moulding Unit`, `Packaging Unit`, `Planting Unit`, `Seed-Picking Unit`, `Thermal Bank`
+
 ## 2025-09-08
 - 配置`中继器`、`供电桩`、`电驱矿机`、`便携源石矿机`、`二型电驱矿机`、`精炼炉`、`粉碎机`高模
 - Configured high-poly model for `Relay Tower`, `Electric Pylon`, `Electric Mining Rig`, `Portable Originium Rig`, `Electric Mining Rig Mk II`, `Refining Unit`, `Shredding Unit`

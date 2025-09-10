@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights-endfield:block/filling_unit",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights-endfield:block/filling_unit"
+    },
+    "facing=south": {
+      "model": "arknights-endfield:block/filling_unit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights-endfield:block/filling_unit",
+      "y": 270
+    }
+  }
+}

@@ -1,6 +1,6 @@
 package com.besson.endfield.item.custom;
 
-import com.besson.endfield.renderer.ElectricMiningRigItemRenderer;
+import com.besson.endfield.renderer.item.ElectricMiningRigItemRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.item.BlockItem;

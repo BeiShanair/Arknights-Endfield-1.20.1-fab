@@ -25,6 +25,15 @@ public class ModItemGroups {
                         entries.add(ModItems.PORTABLE_ORIGINIUM_RIG_ITEM);
                         entries.add(ModItems.REFINING_UNIT_ITEM);
                         entries.add(ModItems.SHREDDING_UNIT_ITEM);
+                        entries.add(ModItems.FILLING_UNIT_ITEM);
+                        entries.add(ModItems.FITTING_UNIT_ITEM);
+                        entries.add(ModItems.GEARING_UNIT_ITEM);
+                        entries.add(ModItems.GRINDING_UNIT_ITEM);
+                        entries.add(ModItems.MOULDING_UNIT_ITEM);
+                        entries.add(ModItems.PACKAGING_UNIT_ITEM);
+                        entries.add(ModItems.PLANTING_UNIT_ITEM);
+                        entries.add(ModItems.SEED_PICKING_UNIT_ITEM);
+                        entries.add(ModItems.THERMAL_BANK_ITEM);
                     }).build());
 
     public static void registerItemGroup(){

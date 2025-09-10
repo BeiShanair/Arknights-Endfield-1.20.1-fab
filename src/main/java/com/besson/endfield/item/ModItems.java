@@ -35,6 +35,33 @@ public class ModItems {
     public static final Item SHREDDING_UNIT_ITEM = registerItems("shredding_unit",
             new ShreddingUnitItem(ModBlocks.SHREDDING_UNIT, new Item.Settings()));
 
+    public static final Item FILLING_UNIT_ITEM = registerItems("filling_unit",
+            new FillingUnitItem(ModBlocks.FILLING_UNIT, new Item.Settings()));
+
+    public static final Item FITTING_UNIT_ITEM = registerItems("fitting_unit",
+            new FittingUnitItem(ModBlocks.FITTING_UNIT, new Item.Settings()));
+
+    public static final Item GEARING_UNIT_ITEM = registerItems("gearing_unit",
+            new GearingUnitItem(ModBlocks.GEARING_UNIT, new Item.Settings()));
+
+    public static final Item GRINDING_UNIT_ITEM = registerItems("grinding_unit",
+            new GrindingUnitItem(ModBlocks.GRINDING_UNIT, new Item.Settings()));
+
+    public static final Item MOULDING_UNIT_ITEM = registerItems("moulding_unit",
+            new MouldingUnitItem(ModBlocks.MOULDING_UNIT, new Item.Settings()));
+
+    public static final Item PACKAGING_UNIT_ITEM = registerItems("packaging_unit",
+            new PackagingUnitItem(ModBlocks.PACKAGING_UNIT, new Item.Settings()));
+
+    public static final Item PLANTING_UNIT_ITEM = registerItems("planting_unit",
+            new PlantingUnitItem(ModBlocks.PLANTING_UNIT, new Item.Settings()));
+
+    public static final Item SEED_PICKING_UNIT_ITEM = registerItems("seed_picking_unit",
+            new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings()));
+
+    public static final Item THERMAL_BANK_ITEM = registerItems("thermal_bank",
+            new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings()));
+
     private static Item registerItems(String name, Item item) {
         if (item instanceof BlockItem) {
             ((BlockItem)item).appendBlocks(Item.BLOCK_ITEMS, item);

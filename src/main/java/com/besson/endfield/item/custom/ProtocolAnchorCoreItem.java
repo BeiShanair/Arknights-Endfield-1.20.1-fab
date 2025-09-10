@@ -1,6 +1,6 @@
 package com.besson.endfield.item.custom;
 
-import com.besson.endfield.renderer.ProtocolAnchorCoreItemRenderer;
+import com.besson.endfield.renderer.item.ProtocolAnchorCoreItemRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
 import net.minecraft.item.BlockItem;

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights-endfield:block/thermal_bank",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights-endfield:block/thermal_bank"
+    },
+    "facing=south": {
+      "model": "arknights-endfield:block/thermal_bank",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights-endfield:block/thermal_bank",
+      "y": 270
+    }
+  }
+}

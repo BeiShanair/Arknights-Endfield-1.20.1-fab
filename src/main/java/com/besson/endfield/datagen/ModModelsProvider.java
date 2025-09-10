@@ -21,6 +21,15 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PORTABLE_ORIGINIUM_RIG);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.REFINING_UNIT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SHREDDING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FILLING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FITTING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GEARING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GRINDING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.MOULDING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PACKAGING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PLANTING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK);
     }
 
     @Override
