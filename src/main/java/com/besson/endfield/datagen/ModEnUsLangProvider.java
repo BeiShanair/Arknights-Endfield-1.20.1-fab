@@ -30,6 +30,19 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.SEED_PICKING_UNIT_ITEM, "Seed-Picking Unit");
         translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "Thermal Unit");
 
+        translationBuilder.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, "Amethyst Mineral Vein");
+        translationBuilder.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK, "Coal Mineral Vein");
+        translationBuilder.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, "Copper Mineral Vein");
+        translationBuilder.add(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK, "Diamond Mineral Vein");
+        translationBuilder.add(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK, "Emerald Mineral Vein");
+        translationBuilder.add(ModBlocks.GOLD_MINERAL_VEIN_BLOCK, "Gold Mineral Vein");
+        translationBuilder.add(ModBlocks.IRON_MINERAL_VEIN_BLOCK, "Iron Mineral Vein");
+        translationBuilder.add(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK, "Lapis Mineral Vein");
+        translationBuilder.add(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, "Originium Mineral Vein");
+        translationBuilder.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, "Redstone Mineral Vein");
+
+        translationBuilder.add("blockEntity.portable_originium_rig", "Portable Originium Rig");
+
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
     }
 }

@@ -63,6 +63,27 @@ public class ModBlocks {
     public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
             new ThermalBankBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
+    public static final Block AMETHYST_MINERAL_VEIN_BLOCK = registerBlocks("amethyst_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block COAL_MINERAL_VEIN_BLOCK = registerBlocks("coal_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block COPPER_MINERAL_VEIN_BLOCK = registerBlocks("copper_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block DIAMOND_MINERAL_VEIN_BLOCK = registerBlocks("diamond_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block GOLD_MINERAL_VEIN_BLOCK = registerBlocks("gold_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block IRON_MINERAL_VEIN_BLOCK = registerBlocks("iron_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block LAPIS_MINERAL_VEIN_BLOCK = registerBlocks("lapis_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block REDSTONE_MINERAL_VEIN_BLOCK = registerBlocks("redstone_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block EMERALD_MINERAL_VEIN_BLOCK = registerBlocks("emerald_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block ORIGINIUM_MINERAL_VEIN_BLOCK = registerBlocks("originium_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+
     private static Block registerBlocksWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, name), block);
     }

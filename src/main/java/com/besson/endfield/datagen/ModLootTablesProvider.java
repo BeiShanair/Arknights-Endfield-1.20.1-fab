@@ -28,5 +28,16 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PLANTING_UNIT);
         addDrop(ModBlocks.SEED_PICKING_UNIT);
         addDrop(ModBlocks.THERMAL_BANK);
+
+        addDrop(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.GOLD_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
     }
 }

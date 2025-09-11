@@ -30,6 +30,17 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PLANTING_UNIT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK);
+
+        blockStateModelGenerator.registerSimpleState(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.GOLD_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
     }
 
     @Override

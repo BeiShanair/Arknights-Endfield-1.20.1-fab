@@ -1,5 +1,11 @@
 # 更新日志 / Changelog
 
+## 2025-09-11
+- 为各个矿石添加对应的矿脉方块，供采矿机采集
+- Added ore vein blocks for each ore type, to be collected by mining rigs
+- 实装`便携源石矿机`实现逻辑，并配置相应的配方
+- Implemented logic for `Portable Originium Rig` and configured corresponding recipes
+
 ## 2025-09-10
 - 配置`灌装机`、`配件机`、`装备原件机`、`研磨机`、`塑形机`、`封装机`、`种植机`、`采种机`、`热能池`高模
 - Configured high-poly model for `Filling Unit`, `Fitting Unit`, `Gearing Unit`, `Grinding Unit`, `Moulding Unit`, `Packaging Unit`, `Planting Unit`, `Seed-Picking Unit`, `Thermal Bank`

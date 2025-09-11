@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:portable_originium_rig",
+  "input": {
+    "item": "arknights-endfield:amethyst_mineral_vein_block"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:amethyst_shard"
+  }
+}

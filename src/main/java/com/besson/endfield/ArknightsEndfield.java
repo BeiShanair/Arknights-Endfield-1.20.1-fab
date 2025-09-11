@@ -4,6 +4,8 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
+import com.besson.endfield.recipe.ModRecipes;
+import com.besson.endfield.screen.ModScreens;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -23,6 +25,8 @@ public class ArknightsEndfield implements ModInitializer {
 		ModItemGroups.registerItemGroup();
 
 		ModBlockEntities.registerModBlockEntities();
+		ModScreens.register();
+		ModRecipes.registerModRecipes();
 
 		GeckoLib.initialize();
 

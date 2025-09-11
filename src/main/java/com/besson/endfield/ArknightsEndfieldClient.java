@@ -2,7 +2,10 @@ package com.besson.endfield;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.renderer.block.*;
+import com.besson.endfield.screen.ModScreens;
+import com.besson.endfield.screen.custom.PortableOriginiumRigScreen;
 import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public class ArknightsEndfieldClient implements ClientModInitializer {
@@ -14,7 +17,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_PYLON, ElectricPylonRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_MINING_RIG, ElectricMiningRigRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_MINING_RIG_MK_II, ElectricMiningRigMkIIRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, PortableOriginiumRigRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, PortableOriginiumRigEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.REFINING_UNIT, RefiningUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SHREDDING_UNIT, ShreddingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.FILLING_UNIT, FillingUnitRenderer::new);
@@ -26,5 +29,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.PLANTING_UNIT, PlantingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SEED_PICKING_UNIT, SeedPickingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.THERMAL_BANK, ThermalBankRenderer::new);
+
+        HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
     }
 }

@@ -30,6 +30,19 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.SEED_PICKING_UNIT_ITEM, "采种机");
         translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "热能池");
 
+        translationBuilder.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, "紫水晶矿脉");
+        translationBuilder.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK, "煤矿脉");
+        translationBuilder.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, "铜矿脉");
+        translationBuilder.add(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK, "钻石矿脉");
+        translationBuilder.add(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK, "绿宝石矿脉");
+        translationBuilder.add(ModBlocks.GOLD_MINERAL_VEIN_BLOCK, "金矿脉");
+        translationBuilder.add(ModBlocks.IRON_MINERAL_VEIN_BLOCK, "铁矿脉");
+        translationBuilder.add(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK, "青金石矿脉");
+        translationBuilder.add(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, "源石矿脉");
+        translationBuilder.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, "红石矿脉");
+
+        translationBuilder.add("blockEntity.portable_originium_rig", "便携源石矿机");
+
         translationBuilder.add("itemGroup.arknights_endfield", "明日方舟：终末地" );
     }
 }

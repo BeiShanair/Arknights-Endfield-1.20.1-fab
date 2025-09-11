@@ -17,6 +17,17 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemGroup.arknights_endfield"))
                     .icon(() -> new ItemStack(ModBlocks.PROTOCOL_ANCHOR_CORE))
                     .entries((displayContext, entries) -> {
+                        entries.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.GOLD_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
+                        entries.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
+
                         entries.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM);
                         entries.add(ModItems.RELAY_TOWER_ITEM);
                         entries.add(ModItems.ELECTRIC_PYLON_ITEM);
