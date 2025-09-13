@@ -2,6 +2,7 @@ package com.besson.endfield.screen;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.screen.custom.PortableOriginiumRigScreenHandler;
+import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,6 +14,9 @@ public class ModScreens {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "portable_originium_rig_screen"),
                     new ExtendedScreenHandlerType<>(PortableOriginiumRigScreenHandler::new));
 
+    public static final ScreenHandlerType<ProtocolAnchorCoreScreenHandler> PROTOCOL_ANCHOR_CORE_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "protocol_anchor_core_screen"),
+                    new ExtendedScreenHandlerType<>(ProtocolAnchorCoreScreenHandler::new));
     public static void register() {
 
     }

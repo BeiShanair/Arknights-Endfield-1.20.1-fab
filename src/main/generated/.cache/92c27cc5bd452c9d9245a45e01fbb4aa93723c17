@@ -1,7 +1,7 @@
-// 1.20.1	2025-09-11T15:36:14.9567169	Arknights Endfield/Block Loot Tables
+// 1.20.1	2025-09-13T14:35:47.8849449	Arknights Endfield/Block Loot Tables
 bbe5888a8d614a989d24746b4b4f24f094b7765f data\arknights-endfield\loot_tables\blocks\gold_mineral_vein_block.json
-acb1cbf218fb17afb864d5e3037ab1aafa024c85 data\arknights-endfield\loot_tables\blocks\refining_unit.json
 c3aa9bdbb7301490a06ac2f6e626fe5c34d7e385 data\arknights-endfield\loot_tables\blocks\planting_unit.json
+acb1cbf218fb17afb864d5e3037ab1aafa024c85 data\arknights-endfield\loot_tables\blocks\refining_unit.json
 dd14d7ac66edabf77c617bf3148d36060490cad9 data\arknights-endfield\loot_tables\blocks\copper_mineral_vein_block.json
 4255d909f6e9157a811df3965a59fa6a8265cbc8 data\arknights-endfield\loot_tables\blocks\thermal_bank.json
 b4df720f5cc05b3ba20af663fc1a64382a4855f4 data\arknights-endfield\loot_tables\blocks\portable_originium_rig.json

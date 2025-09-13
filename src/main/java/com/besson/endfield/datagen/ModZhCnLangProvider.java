@@ -42,6 +42,12 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, "红石矿脉");
 
         translationBuilder.add("blockEntity.portable_originium_rig", "便携源石矿机");
+        translationBuilder.add("blockEntity.protocol_anchor_core", "协议核心");
+
+        translationBuilder.add("screen.protocol_core.buffer", "电力缓冲区: %s / %s");
+        translationBuilder.add("screen.protocol_core.base_power", "基础发电量: %s");
+        translationBuilder.add("screen.protocol_core.extra_power", "额外发电量: %s");
+        translationBuilder.add("screen.protocol_core.load", "接入节点数: %s");
 
         translationBuilder.add("itemGroup.arknights_endfield", "明日方舟：终末地" );
     }

@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-09-13
+- 为`协议核心`配置GUI、各个电网参数
+- Configured GUI and various power grid parameters for `Protocol Anchor Core`
+
 ## 2025-09-11
 - 为各个矿石添加对应的矿脉方块，供采矿机采集
 - Added ore vein blocks for each ore type, to be collected by mining rigs

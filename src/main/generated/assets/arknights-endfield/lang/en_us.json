@@ -27,5 +27,10 @@
   "block.arknights-endfield.shredding_unit": "Shredding Unit",
   "block.arknights-endfield.thermal_bank": "Thermal Unit",
   "blockEntity.portable_originium_rig": "Portable Originium Rig",
-  "itemGroup.arknights_endfield": "Arknights Endfield"
+  "blockEntity.protocol_anchor_core": "Protocol Anchor Core",
+  "itemGroup.arknights_endfield": "Arknights Endfield",
+  "screen.protocol_core.base_power": "Base Power: %s",
+  "screen.protocol_core.buffer": "Buffer: %s / %s",
+  "screen.protocol_core.extra_power": "Extra Power: %s",
+  "screen.protocol_core.load": "Load Node Num: %s"
 }

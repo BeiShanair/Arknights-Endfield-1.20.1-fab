@@ -42,6 +42,12 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, "Redstone Mineral Vein");
 
         translationBuilder.add("blockEntity.portable_originium_rig", "Portable Originium Rig");
+        translationBuilder.add("blockEntity.protocol_anchor_core", "Protocol Anchor Core");
+
+        translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
+        translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");
+        translationBuilder.add("screen.protocol_core.extra_power", "Extra Power: %s");
+        translationBuilder.add("screen.protocol_core.load", "Load Node Num: %s");
 
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
     }
