@@ -28,6 +28,8 @@
   "block.arknights-endfield.thermal_bank": "Thermal Unit",
   "blockEntity.portable_originium_rig": "Portable Originium Rig",
   "blockEntity.protocol_anchor_core": "Protocol Anchor Core",
+  "blockEntity.refining_unit": "Refining Unit",
+  "blockEntity.thermal_bank": "Thermal Bank",
   "itemGroup.arknights_endfield": "Arknights Endfield",
   "screen.protocol_core.base_power": "Base Power: %s",
   "screen.protocol_core.buffer": "Buffer: %s / %s",

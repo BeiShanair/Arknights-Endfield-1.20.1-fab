@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:refining_unit",
+  "input": {
+    "item": "minecraft:gold_ore"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:gold_ingot"
+  }
+}

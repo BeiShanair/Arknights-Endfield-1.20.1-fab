@@ -1,4 +1,7 @@
 # 更新日志 / Changelog
+## 2025-09-14
+- 配置`中继器`、`供电桩`、`精炼炉`、`热能池`运行逻辑
+- Configured operation logic for `Relay Tower`, `Electric Pylon`, `Refining Unit`, `Thermal Bank`
 
 ## 2025-09-13
 - 为`协议核心`配置GUI、各个电网参数

@@ -79,8 +79,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
             for (BlockPos pos : BlockPos.iterate(blockPos.add(-30, 0, -30), blockPos.add(30, 0, 30))) {
                 BlockEntity be = world.getBlockEntity(pos);
                 if (be instanceof ThermalBankBlockEntity blockEntity) {
-                    // sum += blockEntity.getPowerOutput();
-                    sum += 150;
+                    sum += blockEntity.getPowerOutput();
                     loadNode += 1;
                 }
             }

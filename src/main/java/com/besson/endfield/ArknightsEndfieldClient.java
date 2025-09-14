@@ -5,6 +5,8 @@ import com.besson.endfield.renderer.block.*;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.PortableOriginiumRigScreen;
 import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreen;
+import com.besson.endfield.screen.custom.RefiningUnitScreen;
+import com.besson.endfield.screen.custom.ThermalBankScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -14,8 +16,8 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
     public void onInitializeClient() {
 
         BlockEntityRendererFactories.register(ModBlockEntities.PROTOCOL_ANCHOR_CORE, ProtocolAnchorCoreRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.RELAY_TOWER, RelayTowerRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_PYLON, ElectricPylonRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.RELAY_TOWER, RelayTowerEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_PYLON, ElectricPylonEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_MINING_RIG, ElectricMiningRigRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_MINING_RIG_MK_II, ElectricMiningRigMkIIRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, PortableOriginiumRigEntityRenderer::new);
@@ -33,5 +35,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
 
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
+        HandledScreens.register(ModScreens.THERMAL_BANK_SCREEN, ThermalBankScreen::new);
+        HandledScreens.register(ModScreens.REFINING_UNIT_SCREEN, RefiningUnitScreen::new);
     }
 }

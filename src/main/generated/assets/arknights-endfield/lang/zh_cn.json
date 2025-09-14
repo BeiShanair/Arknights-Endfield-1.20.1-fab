@@ -28,6 +28,8 @@
   "block.arknights-endfield.thermal_bank": "热能池",
   "blockEntity.portable_originium_rig": "便携源石矿机",
   "blockEntity.protocol_anchor_core": "协议核心",
+  "blockEntity.refining_unit": "精炼炉",
+  "blockEntity.thermal_bank": "热能池",
   "itemGroup.arknights_endfield": "明日方舟：终末地",
   "screen.protocol_core.base_power": "基础发电量: %s",
   "screen.protocol_core.buffer": "电力缓冲区: %s / %s",

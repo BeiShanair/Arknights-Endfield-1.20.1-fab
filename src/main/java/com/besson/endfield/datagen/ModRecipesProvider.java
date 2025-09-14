@@ -3,6 +3,7 @@ package com.besson.endfield.datagen;
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.recipe.builder.PortableOriginiumRigRecipeBuilder;
+import com.besson.endfield.recipe.builder.RefiningUnitRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -38,5 +39,18 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/originium_mineral_vein"));
         PortableOriginiumRigRecipeBuilder.create(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, Items.REDSTONE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/redstone_mineral_vein"));
+
+        RefiningUnitRecipeBuilder.create(Items.RAW_COPPER, Items.COPPER_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_copper"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_IRON, Items.IRON_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_iron"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_GOLD, Items.GOLD_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_gold"));
+        RefiningUnitRecipeBuilder.create(Items.COPPER_ORE, Items.COPPER_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/copper_ore"));
+        RefiningUnitRecipeBuilder.create(Items.IRON_ORE, Items.IRON_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/iron_ore"));
+        RefiningUnitRecipeBuilder.create(Items.GOLD_ORE, Items.GOLD_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/gold_ore"));
     }
 }

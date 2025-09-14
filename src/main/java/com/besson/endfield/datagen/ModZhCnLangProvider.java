@@ -43,6 +43,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("blockEntity.portable_originium_rig", "便携源石矿机");
         translationBuilder.add("blockEntity.protocol_anchor_core", "协议核心");
+        translationBuilder.add("blockEntity.thermal_bank", "热能池");
+        translationBuilder.add("blockEntity.refining_unit", "精炼炉");
 
         translationBuilder.add("screen.protocol_core.buffer", "电力缓冲区: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "基础发电量: %s");

@@ -1,10 +1,16 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -13,11 +19,109 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEntity {
+    private BlockPos connectedNode;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ElectricPylonBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ELECTRIC_PYLON, pos, state);
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, ElectricPylonBlockEntity entity) {
+        if (world.isClient()) return;
+
+        if (entity.connectedNode == null || world.getBlockEntity(entity.connectedNode) == null) {
+            BlockPos closest = null;
+            double closestDist = Double.MAX_VALUE;
+
+            for (BlockPos p: BlockPos.iterate(pos.add(-30, 0, -30), pos.add(30, 0, 30))) {
+                if (p.equals(pos)) continue;
+
+                BlockEntity candidate = world.getBlockEntity(p);
+
+                if (candidate instanceof ProtocolAnchorCoreBlockEntity || candidate instanceof RelayTowerBlockEntity) {
+                    double d = pos.getSquaredDistance(p);
+                    if (d < closestDist) {
+                        closest = p.toImmutable();
+                        closestDist = d;
+                    }
+                }
+            }
+            entity.connectedNode = closest;
+            markDirty(world, pos, state);
+            world.updateListeners(pos, state, state, 3);
+        }
+
+        if (entity.connectedNode != null) {
+            ProtocolAnchorCoreBlockEntity core = entity.findCore(world);
+            if (core != null && core.canSupplyPower()) {
+                entity.supplyPower(core);
+            }
+        }
+    }
+
+    private ProtocolAnchorCoreBlockEntity findCore(World world) {
+        if (connectedNode == null) return null;
+        BlockEntity be = world.getBlockEntity(connectedNode);
+        if (be instanceof ProtocolAnchorCoreBlockEntity core) {
+            return core;
+        } else if (be instanceof RelayTowerBlockEntity relay) {
+            return relay.getConnectedCore(world);
+        }
+        return null;
+    }
+
+    private void supplyPower(ProtocolAnchorCoreBlockEntity core) {
+        if (world == null) return;
+        if (core.getStoredPower() < 20) return;
+
+        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
+            BlockEntity be = null;
+            if (world != null) {
+                be = world.getBlockEntity(target);
+            }
+            if (be instanceof ElectrifiableDevice device) {
+                if (device.needsPower()) {
+                    device.receiveElectricCharge(20);
+                    core.consumePower(20);
+                }
+            }
+        }
+    }
+
+    public BlockPos getConnectedNode() {
+        return connectedNode;
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        if (connectedNode != null) {
+            nbt.putInt("connectedX", connectedNode.getX());
+            nbt.putInt("connectedY", connectedNode.getY());
+            nbt.putInt("connectedZ", connectedNode.getZ());
+        }
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        if (nbt.contains("connectedX") && nbt.contains("connectedY") && nbt.contains("connectedZ")) {
+            int x = nbt.getInt("connectedX");
+            int y = nbt.getInt("connectedY");
+            int z = nbt.getInt("connectedZ");
+            connectedNode = new BlockPos(x, y, z);
+        }
+    }
+
+    @Override
+    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return this.createNbt();
     }
 
     @Override
