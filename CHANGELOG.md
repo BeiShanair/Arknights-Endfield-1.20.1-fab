@@ -1,4 +1,9 @@
 # 更新日志 / Changelog
+
+## 2025-09-15
+- 配置`装备原件机`处理逻辑，实现多输入单输出功能
+- Configured processing logic for `Gearing Unit`, implementing multi-input single-output functionality
+
 ## 2025-09-14
 - 配置`中继器`、`供电桩`、`精炼炉`、`热能池`运行逻辑
 - Configured operation logic for `Relay Tower`, `Electric Pylon`, `Refining Unit`, `Thermal Bank`

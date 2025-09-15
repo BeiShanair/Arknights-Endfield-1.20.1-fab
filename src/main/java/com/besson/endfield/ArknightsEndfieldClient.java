@@ -3,10 +3,7 @@ package com.besson.endfield;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.renderer.block.*;
 import com.besson.endfield.screen.ModScreens;
-import com.besson.endfield.screen.custom.PortableOriginiumRigScreen;
-import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreen;
-import com.besson.endfield.screen.custom.RefiningUnitScreen;
-import com.besson.endfield.screen.custom.ThermalBankScreen;
+import com.besson.endfield.screen.custom.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -37,5 +34,6 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
         HandledScreens.register(ModScreens.THERMAL_BANK_SCREEN, ThermalBankScreen::new);
         HandledScreens.register(ModScreens.REFINING_UNIT_SCREEN, RefiningUnitScreen::new);
+        HandledScreens.register(ModScreens.GEARING_UNIT_SCREEN, GearingUnitScreen::new);
     }
 }

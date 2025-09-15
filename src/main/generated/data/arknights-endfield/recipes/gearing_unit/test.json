@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:gearing_unit",
+  "input": [
+    {
+      "item": "minecraft:coal_block",
+      "count": 5
+    },
+    {
+      "item": "minecraft:obsidian",
+      "count": 10
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "minecraft:diamond"
+  }
+}

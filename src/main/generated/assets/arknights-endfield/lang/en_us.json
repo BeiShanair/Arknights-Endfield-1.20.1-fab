@@ -26,6 +26,7 @@
   "block.arknights-endfield.seed_picking_unit": "Seed-Picking Unit",
   "block.arknights-endfield.shredding_unit": "Shredding Unit",
   "block.arknights-endfield.thermal_bank": "Thermal Unit",
+  "blockEntity.gearing_unit": "Gearing Unit",
   "blockEntity.portable_originium_rig": "Portable Originium Rig",
   "blockEntity.protocol_anchor_core": "Protocol Anchor Core",
   "blockEntity.refining_unit": "Refining Unit",

@@ -26,6 +26,7 @@
   "block.arknights-endfield.seed_picking_unit": "采种机",
   "block.arknights-endfield.shredding_unit": "粉碎机",
   "block.arknights-endfield.thermal_bank": "热能池",
+  "blockEntity.gearing_unit": "装备原件机",
   "blockEntity.portable_originium_rig": "便携源石矿机",
   "blockEntity.protocol_anchor_core": "协议核心",
   "blockEntity.refining_unit": "精炼炉",

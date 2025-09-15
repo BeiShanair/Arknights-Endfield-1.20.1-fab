@@ -45,6 +45,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.protocol_anchor_core", "Protocol Anchor Core");
         translationBuilder.add("blockEntity.thermal_bank", "Thermal Bank");
         translationBuilder.add("blockEntity.refining_unit", "Refining Unit");
+        translationBuilder.add("blockEntity.gearing_unit", "Gearing Unit");
 
         translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");

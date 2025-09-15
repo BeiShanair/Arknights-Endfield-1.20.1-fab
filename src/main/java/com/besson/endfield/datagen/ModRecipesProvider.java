@@ -2,14 +2,17 @@ package com.besson.endfield.datagen;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
+import com.besson.endfield.recipe.builder.GearingUnitRecipeBuilder;
 import com.besson.endfield.recipe.builder.PortableOriginiumRigRecipeBuilder;
 import com.besson.endfield.recipe.builder.RefiningUnitRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipesProvider extends FabricRecipeProvider {
@@ -52,5 +55,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/iron_ore"));
         RefiningUnitRecipeBuilder.create(Items.GOLD_ORE, Items.GOLD_INGOT)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/gold_ore"));
+
+        List<ItemConvertible> TEST = List.of(Items.COAL_BLOCK, Items.OBSIDIAN);
+        GearingUnitRecipeBuilder.create(TEST, Items.DIAMOND)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/test"));
     }
 }

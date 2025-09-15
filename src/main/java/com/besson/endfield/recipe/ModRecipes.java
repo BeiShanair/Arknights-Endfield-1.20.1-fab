@@ -1,6 +1,7 @@
 package com.besson.endfield.recipe;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.recipe.custom.GearingUnitRecipe;
 import com.besson.endfield.recipe.custom.PortableOriginiumRigRecipe;
 import com.besson.endfield.recipe.custom.RefiningUnitRecipe;
 import net.minecraft.registry.Registries;
@@ -18,5 +19,10 @@ public class ModRecipes {
                 RefiningUnitRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, RefiningUnitRecipe.Type.ID),
                 RefiningUnitRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, GearingUnitRecipe.Serializer.ID),
+                GearingUnitRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, GearingUnitRecipe.Type.ID),
+                GearingUnitRecipe.Type.INSTANCE);
     }
 }
