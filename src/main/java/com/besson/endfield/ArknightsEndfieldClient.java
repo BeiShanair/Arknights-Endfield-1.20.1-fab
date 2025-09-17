@@ -1,6 +1,7 @@
 package com.besson.endfield;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.blockentity.custom.ElectricMiningRigMkIIBlockEntity;
 import com.besson.endfield.renderer.block.*;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;
@@ -35,5 +36,12 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.THERMAL_BANK_SCREEN, ThermalBankScreen::new);
         HandledScreens.register(ModScreens.REFINING_UNIT_SCREEN, RefiningUnitScreen::new);
         HandledScreens.register(ModScreens.GEARING_UNIT_SCREEN, GearingUnitScreen::new);
+        HandledScreens.register(ModScreens.ELECTRIC_MINING_RIG_SCREEN, ElectricMiningRigScreen::new);
+        HandledScreens.register(ModScreens.ELECTRIC_MINING_RIG_MK_II_SCREEN, ElectricMiningRigMkIIScreen::new);
+        HandledScreens.register(ModScreens.SHREDDING_UNIT_SCREEN, ShreddingUnitScreen::new);
+        HandledScreens.register(ModScreens.FITTING_UNIT_SCREEN, FittingUnitScreen::new);
+        HandledScreens.register(ModScreens.MOULDING_UNIT_SCREEN, MouldingUnitScreen::new);
+        HandledScreens.register(ModScreens.PLANTING_UNIT_SCREEN, PlantingUnitScreen::new);
+        HandledScreens.register(ModScreens.SEED_PICKING_UNIT_SCREEN, SeedPickingUnitScreen::new);
     }
 }

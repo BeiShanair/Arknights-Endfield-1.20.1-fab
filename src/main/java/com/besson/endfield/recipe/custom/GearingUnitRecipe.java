@@ -47,7 +47,6 @@ public class GearingUnitRecipe implements Recipe<SimpleInventory> {
             }
             if (!matched) return false;
         }
-        System.out.println("Matched");
         return true;
     }
 

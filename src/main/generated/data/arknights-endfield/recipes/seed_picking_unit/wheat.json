@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:wheat"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:wheat_seeds"
+  }
+}

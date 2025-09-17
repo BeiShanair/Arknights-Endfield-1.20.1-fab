@@ -14,7 +14,6 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -122,6 +121,8 @@ public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEnti
         super.readNbt(nbt);
         Inventories.readNbt(nbt, inventory);
         this.progress = nbt.getInt("progress");
+        this.storePower = nbt.getInt("storePower");
+        this.isWorking = nbt.getBoolean("isWorking");
     }
 
     @Override
@@ -129,38 +130,39 @@ public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEnti
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("progress", progress);
+        nbt.putInt("storePower", storePower);
+        nbt.putBoolean("isWorking", isWorking);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, RefiningUnitBlockEntity be) {
         if (world.isClient()) return;
 
-        if (be.needsPower() && be.isWorking) {
-            be.isWorking = false;
-            be.markDirty();
-        } else if (!be.needsPower() && !be.isWorking) {
-            be.isWorking = true;
-            be.markDirty();
-        }
+        if (be.isOutputSlotAvailable()) {
+            boolean hasRecipe = be.hasCorrectRecipe(world);
 
-        if (be.isOutputSlotAvailable() && be.isWorking) {
-            if (be.hasCorrectRecipe(world) && be.storePower >= POWER_PRE_TICK) {
+            if (be.needsPower() || !hasRecipe) {
+                be.isWorking = false;
+            } else if (!be.needsPower() && !be.isWorking) {
+                be.isWorking = true;
+            }
+            be.markDirty();
+            world.updateListeners(pos, state, state, 3);
+
+            if (hasRecipe && be.storePower >= POWER_PRE_TICK) {
                 be.storePower -= POWER_PRE_TICK;
                 be.increaseProgress();
-                be.markDirty();
 
                 if (be.hasCraftingFinished()) {
                     be.craftItem(world);
                     be.resetProgress();
-                    be.markDirty();
                 }
             } else {
                 be.resetProgress();
-                be.markDirty();
             }
         } else {
             be.resetProgress();
-            be.markDirty();
         }
+        be.markDirty();
     }
 
     private void resetProgress() {
@@ -222,6 +224,9 @@ public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEnti
     @Override
     public void receiveElectricCharge(int amount) {
         this.storePower += amount;
+        if (this.storePower > 100) {
+            this.storePower = 100;
+        }
     }
 
     @Override

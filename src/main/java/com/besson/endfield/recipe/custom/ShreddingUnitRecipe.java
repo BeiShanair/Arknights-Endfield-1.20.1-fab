@@ -10,12 +10,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 
-public class PortableOriginiumRigRecipe implements Recipe<SimpleInventory> {
+public class ShreddingUnitRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final Ingredient input;
     private final ItemStack output;
 
-    public PortableOriginiumRigRecipe(Identifier id, Ingredient input, ItemStack output) {
+    public ShreddingUnitRecipe(Identifier id, Ingredient input, ItemStack output) {
         this.id = id;
         this.input = input;
         this.output = output;
@@ -57,32 +57,32 @@ public class PortableOriginiumRigRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
-    public static class Type implements RecipeType<PortableOriginiumRigRecipe>{
+    public static class Type implements RecipeType<ShreddingUnitRecipe> {
         public static final Type INSTANCE = new Type();
-        public static final String ID = "portable_originium_rig";
+        public static final String ID = "shredding_unit";
     }
 
-    public static class Serializer implements RecipeSerializer<PortableOriginiumRigRecipe> {
+    public static class Serializer implements RecipeSerializer<ShreddingUnitRecipe> {
 
         public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "portable_originium_rig";
+        public static final String ID = "shredding_unit";
 
         @Override
-        public PortableOriginiumRigRecipe read(Identifier id, JsonObject json) {
+        public ShreddingUnitRecipe read(Identifier id, JsonObject json) {
             Ingredient input = Ingredient.fromJson(json.get("input"));
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            return new PortableOriginiumRigRecipe(id, input, output);
+            return new ShreddingUnitRecipe(id, input, output);
         }
 
         @Override
-        public PortableOriginiumRigRecipe read(Identifier id, PacketByteBuf buf) {
+        public ShreddingUnitRecipe read(Identifier id, PacketByteBuf buf) {
             Ingredient input = Ingredient.fromPacket(buf);
             ItemStack output = buf.readItemStack();
-            return new PortableOriginiumRigRecipe(id, input, output);
+            return new ShreddingUnitRecipe(id, input, output);
         }
 
         @Override
-        public void write(PacketByteBuf buf, PortableOriginiumRigRecipe recipe) {
+        public void write(PacketByteBuf buf, ShreddingUnitRecipe recipe) {
             recipe.input.write(buf);
             buf.writeItemStack(recipe.output);
         }

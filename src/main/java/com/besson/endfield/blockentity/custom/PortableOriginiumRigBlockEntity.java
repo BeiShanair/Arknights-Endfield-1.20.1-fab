@@ -2,12 +2,11 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.recipe.custom.PortableOriginiumRigRecipe;
+import com.besson.endfield.recipe.custom.OreRigRecipe;
 import com.besson.endfield.screen.custom.PortableOriginiumRigScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -28,7 +27,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animation.AnimationController;
@@ -172,7 +170,7 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
 
     private void craftItem(World world) {
 
-        Optional<PortableOriginiumRigRecipe> match = getMatchRecipe(world);
+        Optional<OreRigRecipe> match = getMatchRecipe(world);
 
         if (match.isPresent()) {
             ItemStack result = match.get().getOutput(world.getRegistryManager());
@@ -182,15 +180,15 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
 
     }
 
-    private Optional<PortableOriginiumRigRecipe> getMatchRecipe(World world) {
+    private Optional<OreRigRecipe> getMatchRecipe(World world) {
         SimpleInventory inv = new SimpleInventory(1);
         BlockState belowState = world.getBlockState(this.pos.down());
         ItemStack belowStack = belowState.getBlock().asItem().getDefaultStack();
         inv.setStack(0, belowStack);
 
         return world.getRecipeManager()
-                .getFirstMatch(PortableOriginiumRigRecipe.Type.INSTANCE, inv, world)
-                .map(recipe -> (PortableOriginiumRigRecipe) recipe);
+                .getFirstMatch(OreRigRecipe.Type.INSTANCE, inv, world)
+                .map(recipe -> (OreRigRecipe) recipe);
     }
 
     private boolean hasCraftFinished () {
@@ -203,7 +201,7 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
 
     private boolean hasCorrectRecipe(World world) {
 
-        Optional<PortableOriginiumRigRecipe> match = getMatchRecipe(world);
+        Optional<OreRigRecipe> match = getMatchRecipe(world);
 
         if (match.isPresent()) {
             ItemStack result = match.get().getOutput(world.getRegistryManager());

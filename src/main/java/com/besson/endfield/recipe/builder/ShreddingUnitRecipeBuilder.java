@@ -1,7 +1,7 @@
 package com.besson.endfield.recipe.builder;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.recipe.custom.PortableOriginiumRigRecipe;
+import com.besson.endfield.recipe.custom.ShreddingUnitRecipe;
 import com.google.gson.JsonObject;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.item.ItemConvertible;
@@ -12,30 +12,30 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
-public class PortableOriginiumRigRecipeBuilder {
+public class ShreddingUnitRecipeBuilder {
     private static ItemConvertible input;
     private static ItemConvertible output;
     private final int outputCount;
 
-    private PortableOriginiumRigRecipeBuilder(ItemConvertible input, ItemConvertible output, int outputCount) {
+    private ShreddingUnitRecipeBuilder(ItemConvertible input, ItemConvertible output, int outputCount) {
         this.input = input;
         this.output = output;
         this.outputCount = outputCount;
     }
 
-    public static PortableOriginiumRigRecipeBuilder create(ItemConvertible input, ItemConvertible output) {
-        return new PortableOriginiumRigRecipeBuilder(input, output, 1);
+    public static ShreddingUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output) {
+        return new ShreddingUnitRecipeBuilder(input, output, 1);
     }
 
-    public PortableOriginiumRigRecipeBuilder outputCount(int count) {
-        return new PortableOriginiumRigRecipeBuilder(input, output, count);
+    public ShreddingUnitRecipeBuilder outputCount(int outputCount) {
+        return new ShreddingUnitRecipeBuilder(input, output, outputCount);
     }
 
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {
         exporter.accept(new RecipeJsonProvider() {
             @Override
             public void serialize(JsonObject json) {
-                json.addProperty("type", ArknightsEndfield.MOD_ID + ":portable_originium_rig");
+                json.addProperty("type", ArknightsEndfield.MOD_ID + ":shredding_unit");
                 JsonObject inputJson = new JsonObject();
                 inputJson.addProperty("item", Registries.ITEM.getId(input.asItem()).toString());
                 json.add("input", inputJson);
@@ -53,7 +53,7 @@ public class PortableOriginiumRigRecipeBuilder {
 
             @Override
             public RecipeSerializer<?> getSerializer() {
-                return PortableOriginiumRigRecipe.Serializer.INSTANCE;
+                return ShreddingUnitRecipe.Serializer.INSTANCE;
             }
 
             @Override

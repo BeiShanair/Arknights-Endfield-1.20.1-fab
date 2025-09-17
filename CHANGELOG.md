@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## 2025-09-17
+- 配置`电驱矿机`、`二型电驱矿机`处理逻辑
+- Configured processing logic for `Electric Mining Rig` and `Electric Mining Rig Mk II`
+- 配置`粉碎机`、`配件机`、`塑形机`、`种植机`、`采种机`处理逻辑
+- Configured processing logic for `Shredding Unit`, `Fitting Unit`, `Moulding Unit`, `Planting Unit`, `Seed-Picking Unit`
+
+## 2025-09-16
+- 修改`装备原件机`的配方编解码器，支持传入输入物品数量
+- Modified the recipe codec of `Gearing Unit` to support input item quantity
+
 ## 2025-09-15
 - 配置`装备原件机`处理逻辑，实现多输入单输出功能
 - Configured processing logic for `Gearing Unit`, implementing multi-input single-output functionality

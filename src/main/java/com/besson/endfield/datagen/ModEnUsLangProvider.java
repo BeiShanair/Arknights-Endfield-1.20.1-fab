@@ -46,6 +46,13 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.thermal_bank", "Thermal Bank");
         translationBuilder.add("blockEntity.refining_unit", "Refining Unit");
         translationBuilder.add("blockEntity.gearing_unit", "Gearing Unit");
+        translationBuilder.add("blockEntity.electric_mining_rig", "Electric Mining Rig");
+        translationBuilder.add("blockEntity.electric_mining_rig_mk_ii", "Electric Mining Rig Mk II");
+        translationBuilder.add("blockEntity.shredding_unit", "Shredding Unit");
+        translationBuilder.add("blockEntity.fitting_unit", "Fitting Unit");
+        translationBuilder.add("blockEntity.moulding_unit", "Moulding Unit");
+        translationBuilder.add("blockEntity.planting_unit", "Planting Unit");
+        translationBuilder.add("blockEntity.seed_picking_unit", "Seed-Picking Unit");
 
         translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");

@@ -46,6 +46,13 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.thermal_bank", "热能池");
         translationBuilder.add("blockEntity.refining_unit", "精炼炉");
         translationBuilder.add("blockEntity.gearing_unit", "装备原件机");
+        translationBuilder.add("blockEntity.electric_mining_rig", "电驱矿机");
+        translationBuilder.add("blockEntity.electric_mining_rig_mk_ii", "二型电驱矿机");
+        translationBuilder.add("blockEntity.shredding_unit", "粉碎机");
+        translationBuilder.add("blockEntity.fitting_unit", "配件机");
+        translationBuilder.add("blockEntity.moulding_unit", "塑形机");
+        translationBuilder.add("blockEntity.planting_unit", "种植机");
+        translationBuilder.add("blockEntity.seed_picking_unit", "采种机");
 
         translationBuilder.add("screen.protocol_core.buffer", "电力缓冲区: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "基础发电量: %s");

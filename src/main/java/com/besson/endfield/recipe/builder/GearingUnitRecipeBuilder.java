@@ -1,6 +1,7 @@
 package com.besson.endfield.recipe.builder;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.recipe.ItemCountInput;
 import com.besson.endfield.recipe.custom.GearingUnitRecipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -15,17 +16,17 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class GearingUnitRecipeBuilder {
-    private final List<ItemConvertible> inputs;
+    private final List<ItemCountInput> inputs;
     private final ItemConvertible output;
     private final int outputCount;
 
-    private GearingUnitRecipeBuilder(List<ItemConvertible> inputs, ItemConvertible output, int outputCount) {
+    private GearingUnitRecipeBuilder(List<ItemCountInput>  inputs, ItemConvertible output, int outputCount) {
         this.inputs = inputs;
         this.output = output;
         this.outputCount = outputCount;
     }
 
-    public static GearingUnitRecipeBuilder create(List<ItemConvertible> inputs, ItemConvertible output) {
+    public static GearingUnitRecipeBuilder create(List<ItemCountInput>  inputs, ItemConvertible output) {
         return new GearingUnitRecipeBuilder(inputs, output, 1);
     }
 
@@ -39,9 +40,10 @@ public class GearingUnitRecipeBuilder {
             public void serialize(JsonObject json) {
                 json.addProperty("type", ArknightsEndfield.MOD_ID + ":gearing_unit");
                 JsonArray inputsArray = new JsonArray();
-                for (ItemConvertible input : inputs) {
+                for (ItemCountInput input : inputs) {
                     JsonObject inputJson = new JsonObject();
-                    inputJson.addProperty("item", Registries.ITEM.getId(input.asItem()).toString());
+                    inputJson.addProperty("item", Registries.ITEM.getId(input.getItemConvertible().asItem()).toString());
+                    inputJson.addProperty("count", input.getCount());
                     inputsArray.add(inputJson);
                 }
                 json.add("input", inputsArray);

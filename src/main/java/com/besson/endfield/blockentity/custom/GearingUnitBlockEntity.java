@@ -1,5 +1,6 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.InputEntry;
@@ -36,7 +37,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
-public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
+public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     public static final int INPUT_SLOT1 = 0;
     public static final int INPUT_SLOT2 = 1;
@@ -45,6 +46,10 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 200;
+
+    private int storePower = 0;
+    private static final int POWER_PRE_TICK = 10;
+    private boolean isWorking = false;
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -120,6 +125,8 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
         super.readNbt(nbt);
         Inventories.readNbt(nbt, this.inventory);
         this.progress = nbt.getInt("progress");
+        this.isWorking = nbt.getBoolean("isWorking");
+        this.storePower = nbt.getInt("storePower");
     }
 
     @Override
@@ -127,12 +134,24 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, this.inventory);
         nbt.putInt("progress", this.progress);
+        nbt.putBoolean("isWorking", this.isWorking);
+        nbt.putInt("storePower", this.storePower);
     }
     public static void tick(World world, BlockPos pos, BlockState state, GearingUnitBlockEntity entity) {
         if (world.isClient()) return;
 
         if (entity.isOutputSlotAvailable()) {
-            if (entity.hasCorrectRecipe(world)) {
+            boolean hasRecipe = entity.hasCorrectRecipe(world);
+            if (entity.needsPower() || !hasRecipe) {
+                entity.isWorking = false;
+            } else if (!entity.needsPower() && !entity.isWorking) {
+                entity.isWorking = true;
+            }
+            entity.markDirty();
+            world.updateListeners(pos, state, state, 3);
+
+            if (hasRecipe && entity.storePower >= POWER_PRE_TICK) {
+                entity.storePower -= POWER_PRE_TICK;
                 entity.incrementProgress();
                 entity.markDirty();
 
@@ -170,10 +189,7 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
             ItemStack result = match.get().getOutput(world.getRegistryManager());
             this.setStack(OUTPUT_SLOT,
                     new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-//            for (int i = 0; i< match.get().getInput().size(); i++) {
-//                InputEntry entry = match.get().getInput().get(i);
-//                removeStack(i, entry.getCount());
-//            }
+
             DefaultedList<InputEntry> recipeInputs = match.get().getInput();
             boolean[] used = new boolean[this.size() - 1]; // 不包括输出槽
             for (InputEntry entry : recipeInputs) {
@@ -234,5 +250,23 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
 
     private boolean isOutputSlotAvailable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+    @Override
+    public void receiveElectricCharge(int amount) {
+        this.storePower += amount;
+        if (this.storePower > 100) {
+            this.storePower = 100;
+        }
+    }
+
+    @Override
+    public boolean needsPower() {
+        return this.storePower < POWER_PRE_TICK;
+    }
+
+    @Override
+    public int getRequiredPower() {
+        return POWER_PRE_TICK;
     }
 }

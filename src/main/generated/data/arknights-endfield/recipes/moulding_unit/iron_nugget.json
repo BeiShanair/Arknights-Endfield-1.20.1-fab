@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:iron_nugget"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:iron_ingot"
+  }
+}

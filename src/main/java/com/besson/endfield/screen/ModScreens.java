@@ -29,6 +29,34 @@ public class ModScreens {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit_screen"),
                     new ExtendedScreenHandlerType<>(GearingUnitScreenHandler::new));
 
+    public static final ScreenHandlerType<ElectricMiningRigScreenHandler> ELECTRIC_MINING_RIG_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "electric_mining_rig_screen"),
+                    new ExtendedScreenHandlerType<>(ElectricMiningRigScreenHandler::new));
+
+    public static final ScreenHandlerType<ElectricMiningRigMkIIScreenHandler> ELECTRIC_MINING_RIG_MK_II_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "electric_mining_rig_mk_ii"),
+                    new ExtendedScreenHandlerType<>(ElectricMiningRigMkIIScreenHandler::new));
+
+    public static final ScreenHandlerType<ShreddingUnitScreenHandler> SHREDDING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit_screen"),
+                    new ExtendedScreenHandlerType<>(ShreddingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<FittingUnitScreenHandler> FITTING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit_screen"),
+                    new ExtendedScreenHandlerType<>(FittingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<MouldingUnitScreenHandler> MOULDING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit_screen"),
+                    new ExtendedScreenHandlerType<>(MouldingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<PlantingUnitScreenHandler> PLANTING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit_screen"),
+                    new ExtendedScreenHandlerType<>(PlantingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<SeedPickingUnitScreenHandler> SEED_PICKING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit_screen"),
+                    new ExtendedScreenHandlerType<>(SeedPickingUnitScreenHandler::new));
+
     public static void register() {
 
     }

@@ -82,8 +82,9 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             }
             if (be instanceof ElectrifiableDevice device) {
                 if (device.needsPower()) {
-                    device.receiveElectricCharge(20);
-                    core.consumePower(20);
+                    int required = device.getRequiredPower();
+                    device.receiveElectricCharge(required * 2);
+                    core.consumePower(required);
                 }
             }
         }
