@@ -47,5 +47,15 @@ public class ModRecipes {
                 SeedPickingUnitRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, SeedPickingUnitRecipe.Type.ID),
                 SeedPickingUnitRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, FillingUnitRecipe.Serializer.ID),
+                FillingUnitRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, FillingUnitRecipe.Type.ID),
+                FillingUnitRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, GrindingUnitRecipe.Serializer.ID),
+                GrindingUnitRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, GrindingUnitRecipe.Type.ID),
+                GrindingUnitRecipe.Type.INSTANCE);
     }
 }

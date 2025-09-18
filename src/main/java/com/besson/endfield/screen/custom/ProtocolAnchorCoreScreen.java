@@ -11,6 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
+// TODO: 美化GUI界面，实现类似原作游戏的GUI，环形，动态效果等
 public class ProtocolAnchorCoreScreen extends HandledScreen<ProtocolAnchorCoreScreenHandler> {
     private static final Identifier TEXTURE = new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/protocol_anchor_core.png");
 

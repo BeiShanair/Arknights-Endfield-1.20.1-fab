@@ -1,6 +1,7 @@
 package com.besson.endfield.recipe.builder;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.recipe.ItemCountInput;
 import com.besson.endfield.recipe.custom.RefiningUnitRecipe;
 import com.google.gson.JsonObject;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -13,18 +14,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 public class RefiningUnitRecipeBuilder {
-    private static ItemConvertible input;
+    private static ItemCountInput input;
     private static ItemConvertible output;
     private final int outputCount;
 
-    private RefiningUnitRecipeBuilder(ItemConvertible input, ItemConvertible output, int outputCount) {
+    private RefiningUnitRecipeBuilder(ItemCountInput input, ItemConvertible output, int outputCount) {
         this.input = input;
         this.output = output;
         this.outputCount = outputCount;
     }
 
-    public static RefiningUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output) {
+    public static RefiningUnitRecipeBuilder create(ItemCountInput input, ItemConvertible output) {
         return new RefiningUnitRecipeBuilder(input, output, 1);
+    }
+
+    public static RefiningUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output) {
+        return new RefiningUnitRecipeBuilder(new ItemCountInput(input, 1), output, 1);
     }
 
     public RefiningUnitRecipeBuilder outputCount(int outputCount) {
@@ -37,7 +42,8 @@ public class RefiningUnitRecipeBuilder {
             public void serialize(JsonObject json) {
                 json.addProperty("type", ArknightsEndfield.MOD_ID + ":refining_unit");
                 JsonObject inputJson = new JsonObject();
-                inputJson.addProperty("item", Registries.ITEM.getId(input.asItem()).toString());
+                inputJson.addProperty("item", Registries.ITEM.getId(input.getItemConvertible().asItem()).toString());
+                inputJson.addProperty("count", input.getCount());
                 json.add("input", inputJson);
 
                 JsonObject outputJson = new JsonObject();

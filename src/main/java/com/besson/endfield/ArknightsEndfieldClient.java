@@ -43,5 +43,8 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.MOULDING_UNIT_SCREEN, MouldingUnitScreen::new);
         HandledScreens.register(ModScreens.PLANTING_UNIT_SCREEN, PlantingUnitScreen::new);
         HandledScreens.register(ModScreens.SEED_PICKING_UNIT_SCREEN, SeedPickingUnitScreen::new);
+        HandledScreens.register(ModScreens.FILLING_UNIT_SCREEN, FillingUnitScreen::new);
+        HandledScreens.register(ModScreens.GRINDING_UNIT_SCREEN, GrindingUnitScreen::new);
+        HandledScreens.register(ModScreens.PACKAGING_UNIT_SCREEN, PackagingUnitScreen::new);
     }
 }

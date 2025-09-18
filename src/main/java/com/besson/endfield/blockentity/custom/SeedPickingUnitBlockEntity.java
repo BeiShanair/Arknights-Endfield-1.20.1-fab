@@ -3,7 +3,6 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.recipe.custom.RefiningUnitRecipe;
 import com.besson.endfield.recipe.custom.SeedPickingUnitRecipe;
 import com.besson.endfield.screen.custom.SeedPickingUnitScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -37,6 +36,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
+// TODO: 机械动力适配
 public class SeedPickingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ImplementedInventory, ExtendedScreenHandlerFactory, ElectrifiableDevice {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 

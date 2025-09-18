@@ -1,5 +1,5 @@
 {
-  "type": "arknights-endfield:shredding_unit",
+  "type": "arknights-endfield:fitting_unit",
   "input": {
     "item": "minecraft:iron_ingot"
   },

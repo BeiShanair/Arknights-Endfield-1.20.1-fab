@@ -1,5 +1,5 @@
 {
-  "type": "arknights-endfield:shredding_unit",
+  "type": "arknights-endfield:seed_picking_unit",
   "input": {
     "item": "minecraft:wheat"
   },

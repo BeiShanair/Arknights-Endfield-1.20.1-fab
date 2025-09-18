@@ -3,6 +3,7 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.recipe.InputEntry;
 import com.besson.endfield.recipe.custom.RefiningUnitRecipe;
 import com.besson.endfield.screen.custom.RefiningUnitScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -34,6 +35,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
+// TODO: 机械动力适配
 public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     public static final int INPUT_SLOT = 0;
@@ -177,9 +179,13 @@ public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEnti
             ItemStack result = match.get().getOutput(world.getRegistryManager());
             this.setStack(OUTPUT_SLOT,
                     new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-            this.removeStack(INPUT_SLOT, 1);
-        }
+            InputEntry recipeInput = match.get().getInput();
 
+            ItemStack stack = this.getStack(0);
+            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
+                removeStack(0, recipeInput.getCount());
+            }
+        }
     }
 
     private Optional<RefiningUnitRecipe> getMatchRecipe(World world) {
@@ -203,6 +209,14 @@ public class RefiningUnitBlockEntity extends BlockEntity implements GeoBlockEnti
         Optional<RefiningUnitRecipe> match = getMatchRecipe(world);
 
         if (match.isPresent()) {
+            InputEntry recipeInput = match.get().getInput();
+            boolean matched = false;
+            ItemStack stack = this.getStack(0);
+            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
+                matched = true;
+            }
+            if (!matched) return false;
+
             ItemStack result = match.get().getOutput(world.getRegistryManager());
             return canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
         }

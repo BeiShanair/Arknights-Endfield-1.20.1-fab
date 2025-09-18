@@ -35,7 +35,7 @@ public class FittingUnitRecipeBuilder {
         exporter.accept(new RecipeJsonProvider() {
             @Override
             public void serialize(JsonObject json) {
-                json.addProperty("type", ArknightsEndfield.MOD_ID + ":shredding_unit");
+                json.addProperty("type", ArknightsEndfield.MOD_ID + ":fitting_unit");
                 JsonObject inputJson = new JsonObject();
                 inputJson.addProperty("item", Registries.ITEM.getId(input.asItem()).toString());
                 json.add("input", inputJson);

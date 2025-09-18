@@ -57,6 +57,17 @@ public class ModScreens {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit_screen"),
                     new ExtendedScreenHandlerType<>(SeedPickingUnitScreenHandler::new));
 
+    public static final ScreenHandlerType<FillingUnitScreenHandler> FILLING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit_screen"),
+                    new ExtendedScreenHandlerType<>(FillingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<GrindingUnitScreenHandler> GRINDING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit_screen"),
+                    new ExtendedScreenHandlerType<>(GrindingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<PackagingUnitScreenHandler> PACKAGING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit_screen"),
+                    new ExtendedScreenHandlerType<>(PackagingUnitScreenHandler::new));
     public static void register() {
 
     }

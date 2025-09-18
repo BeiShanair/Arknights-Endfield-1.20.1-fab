@@ -4,13 +4,10 @@ import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.custom.MouldingUnitRecipe;
-import com.besson.endfield.recipe.custom.RefiningUnitRecipe;
 import com.besson.endfield.screen.custom.MouldingUnitScreenHandler;
-import com.besson.endfield.screen.custom.SeedPickingUnitScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -39,6 +36,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
+// TODO: 机械动力适配
 public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 

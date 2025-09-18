@@ -36,6 +36,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
+// TODO: 机械动力适配
 public class ShreddingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ImplementedInventory, ExtendedScreenHandlerFactory, ElectrifiableDevice {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 

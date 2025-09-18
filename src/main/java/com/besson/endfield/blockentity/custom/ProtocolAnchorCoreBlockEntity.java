@@ -27,11 +27,12 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+// TODO: 全局电网管理器
 public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private int buffer = 0;
-    private final int baseMaxBuffer = 150;
+    private final int baseMaxBuffer = 100000;
     private final int basePower = 150;
     private int extraPower = 0;
     private int loadNode = 0;

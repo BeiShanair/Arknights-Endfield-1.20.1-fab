@@ -1,6 +1,7 @@
 {
   "type": "arknights-endfield:refining_unit",
   "input": {
+    "count": 1,
     "item": "minecraft:iron_ore"
   },
   "output": {

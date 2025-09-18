@@ -1,5 +1,7 @@
 package com.besson.endfield.recipe.custom;
 
+import com.besson.endfield.recipe.InputEntry;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -12,10 +14,10 @@ import net.minecraft.world.World;
 
 public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
-    private final Ingredient input;
+    private final InputEntry input;
     private final ItemStack output;
 
-    public RefiningUnitRecipe(Identifier id, Ingredient input, ItemStack output) {
+    public RefiningUnitRecipe(Identifier id, InputEntry input, ItemStack output) {
         this.id = id;
         this.input = input;
         this.output = output;
@@ -24,7 +26,12 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
         if (world.isClient()) return false;
-        return input.test(inventory.getStack(0));
+        ItemStack inputs = inventory.getStack(0);
+        return input.getIngredient().test(inputs);
+    }
+
+    public InputEntry getInput() {
+        return input;
     }
 
     @Override
@@ -69,21 +76,35 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public RefiningUnitRecipe read(Identifier id, JsonObject json) {
-            Ingredient input = Ingredient.fromJson(json.get("input"));
+            JsonObject ingredients = JsonHelper.getObject(json, "input");
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            return new RefiningUnitRecipe(id, input, output);
+            InputEntry inputs;
+
+            Ingredient ingredient = Ingredient.fromJson(ingredients);
+            int count = ingredients.has("count") ? ingredients.get("count").getAsInt() : 1;
+            inputs = new InputEntry(ingredient, count);
+
+            return new RefiningUnitRecipe(id, inputs, output);
         }
 
         @Override
         public RefiningUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            Ingredient input = Ingredient.fromPacket(buf);
+            InputEntry inputs;
             ItemStack output = buf.readItemStack();
-            return new RefiningUnitRecipe(id, input, output);
+
+            Ingredient ingredient = Ingredient.fromPacket(buf);
+            int count = buf.readInt();
+            inputs = new InputEntry(ingredient, count);
+
+            return new RefiningUnitRecipe(id, inputs, output);
         }
 
         @Override
         public void write(PacketByteBuf buf, RefiningUnitRecipe recipe) {
-            recipe.input.write(buf);
+            buf.writeInt(recipe.getIngredients().size());
+            InputEntry entry = recipe.input;
+            entry.getIngredient().write(buf);
+            buf.writeInt(entry.getCount());
             buf.writeItemStack(recipe.output);
         }
     }

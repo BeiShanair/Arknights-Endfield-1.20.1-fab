@@ -53,6 +53,9 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.moulding_unit", "Moulding Unit");
         translationBuilder.add("blockEntity.planting_unit", "Planting Unit");
         translationBuilder.add("blockEntity.seed_picking_unit", "Seed-Picking Unit");
+        translationBuilder.add("blockEntity.filling_unit", "Filling Unit");
+        translationBuilder.add("blockEntity.grinding_unit", "Grinding Unit");
+        translationBuilder.add("blockEntity.packaging_unit", "Packaging Unit");
 
         translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");

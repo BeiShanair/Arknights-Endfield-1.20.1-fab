@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-09-18
+- 配置`研磨机`、`封装机`、`灌装机`处理逻辑
+- Configured processing logic for `Grinding Unit`, `Packaging Unit`, `Filling Unit`
+
 ## 2025-09-17
 - 配置`电驱矿机`、`二型电驱矿机`处理逻辑
 - Configured processing logic for `Electric Mining Rig` and `Electric Mining Rig Mk II`
