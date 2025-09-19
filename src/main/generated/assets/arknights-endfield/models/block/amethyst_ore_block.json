@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "arknights-endfield:block/amethyst_ore_block"
+  }
+}

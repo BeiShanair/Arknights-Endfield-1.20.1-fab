@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-09-19
+- 添加一堆物品
+- Added a bunch of items
+
 ## 2025-09-18
 - 配置`研磨机`、`封装机`、`灌装机`处理逻辑
 - Configured processing logic for `Grinding Unit`, `Packaging Unit`, `Filling Unit`

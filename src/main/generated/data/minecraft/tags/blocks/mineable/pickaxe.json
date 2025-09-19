@@ -10,6 +10,16 @@
     "arknights-endfield:iron_mineral_vein_block",
     "arknights-endfield:lapis_mineral_vein_block",
     "arknights-endfield:originium_mineral_vein_block",
-    "arknights-endfield:redstone_mineral_vein_block"
+    "arknights-endfield:redstone_mineral_vein_block",
+    "arknights-endfield:amethyst_ore_block",
+    "arknights-endfield:cuprium_mineral_vein_block",
+    "arknights-endfield:cuprium_ore_block",
+    "arknights-endfield:deepslate_amethyst_ore",
+    "arknights-endfield:deepslate_ferrium_ore",
+    "arknights-endfield:deepslate_cuprium_ore",
+    "arknights-endfield:deepslate_originium_ore",
+    "arknights-endfield:ferrium_mineral_vein_block",
+    "arknights-endfield:ferrium_ore_block",
+    "arknights-endfield:originium_ore_block"
   ]
 }

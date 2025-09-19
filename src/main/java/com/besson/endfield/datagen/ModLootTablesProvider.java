@@ -39,5 +39,15 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.AMETHYST_ORE_BLOCK);
+        addDrop(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.CUPRIUM_ORE_BLOCK);
+        addDrop(ModBlocks.DEEPSLATE_AMETHYST_ORE);
+        addDrop(ModBlocks.DEEPSLATE_CUPRIUM_ORE);
+        addDrop(ModBlocks.DEEPSLATE_FERRIUM_ORE);
+        addDrop(ModBlocks.DEEPSLATE_ORIGINIUM_ORE);
+        addDrop(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
+        addDrop(ModBlocks.FERRIUM_ORE_BLOCK);
+        addDrop(ModBlocks.ORIGINIUM_ORE_BLOCK);
     }
 }

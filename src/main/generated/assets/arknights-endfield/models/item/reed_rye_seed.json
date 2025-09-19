@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arknights-endfield:item/reed_rye_seed"
+  }
+}

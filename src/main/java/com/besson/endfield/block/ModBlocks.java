@@ -11,55 +11,38 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-
     public static final Block PROTOCOL_ANCHOR_CORE = registerBlocksWithoutItem("protocol_anchor_core",
             new ProtocolAnchorCoreBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block RELAY_TOWER = registerBlocksWithoutItem("relay_tower",
             new RelayTowerBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block ELECTRIC_PYLON = registerBlocksWithoutItem("electric_pylon",
             new ElectricPylonBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block ELECTRIC_MINING_RIG = registerBlocksWithoutItem("electric_mining_rig",
             new ElectricMiningRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block ELECTRIC_MINING_RIG_MK_II = registerBlocksWithoutItem("electric_mining_rig_mk_ii",
             new ElectricMiningRigMkIIBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block SHREDDING_UNIT = registerBlocksWithoutItem("shredding_unit",
             new ShreddingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
             new FillingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block FITTING_UNIT = registerBlocksWithoutItem("fitting_unit",
             new FittingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block GEARING_UNIT = registerBlocksWithoutItem("gearing_unit",
             new GearingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block GRINDING_UNIT = registerBlocksWithoutItem("grinding_unit",
             new GrindingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
             new MouldingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block PACKAGING_UNIT = registerBlocksWithoutItem("packaging_unit",
             new PackagingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
             new PlantingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block SEED_PICKING_UNIT = registerBlocksWithoutItem("seed_picking_unit",
             new SeedPickingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
     public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
             new ThermalBankBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
@@ -82,6 +65,26 @@ public class ModBlocks {
     public static final Block EMERALD_MINERAL_VEIN_BLOCK = registerBlocks("emerald_mineral_vein_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block ORIGINIUM_MINERAL_VEIN_BLOCK = registerBlocks("originium_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block AMETHYST_ORE_BLOCK = registerBlocks("amethyst_ore_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block CUPRIUM_MINERAL_VEIN_BLOCK = registerBlocks("cuprium_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block CUPRIUM_ORE_BLOCK = registerBlocks("cuprium_ore_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block DEEPSLATE_AMETHYST_ORE = registerBlocks("deepslate_amethyst_ore",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block DEEPSLATE_CUPRIUM_ORE = registerBlocks("deepslate_cuprium_ore",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block DEEPSLATE_FERRIUM_ORE = registerBlocks("deepslate_ferrium_ore",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block DEEPSLATE_ORIGINIUM_ORE = registerBlocks("deepslate_originium_ore",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block FERRIUM_MINERAL_VEIN_BLOCK = registerBlocks("ferrium_mineral_vein_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block FERRIUM_ORE_BLOCK = registerBlocks("ferrium_ore_block",
+            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+    public static final Block ORIGINIUM_ORE_BLOCK = registerBlocks("originium_ore_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
 
     private static Block registerBlocksWithoutItem(String name, Block block) {
