@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-09-20 -> 2025-09-27
+- 更新一些物品贴图，方块贴图
+- Updated some item textures, block textures
+
 ## 2025-09-19
 - 添加一堆物品
 - Added a bunch of items

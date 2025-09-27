@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "arknights-endfield:item/citromix_s"
+    "layer0": "arknights-endfield:item/citromix_ss"
   }
 }

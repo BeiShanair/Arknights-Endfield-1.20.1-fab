@@ -93,7 +93,7 @@ public class ModItems {
     public static final Item CITROMIX = registerItems("citromix",new Item(new Item.Settings()));
     public static final Item CITROMIX_L = registerItems("citromix_l",new Item(new Item.Settings()));
     public static final Item CITROMIX_RF = registerItems("citromix_rf",new Item(new Item.Settings()));
-    public static final Item CITROMIX_S = registerItems("citromix_s",new Item(new Item.Settings()));
+    public static final Item CITROMIX_S = registerItems("citromix_ss",new Item(new Item.Settings()));
     public static final Item COARSE_FLATBREAD = registerItems("coarse_flatbread",new Item(new Item.Settings()));
     public static final Item CORRECTIVE_REMEDY = registerItems("corrective_remedy",new Item(new Item.Settings()));
     public static final Item CRYSTON_BOTTLE = registerItems("cryston_bottle",new Item(new Item.Settings()));

@@ -1,4 +1,4 @@
-// 1.20.1	2025-09-19T18:45:55.8596289	Arknights Endfield/Recipes
+// 1.20.1	2025-09-27T12:56:58.0756308	Arknights Endfield/Recipes
 11a26be490e54aca33b590e9f244b864abc07f1d data\arknights-endfield\recipes\rig\originium_mineral_vein.json
 f1433e2ef7274909c0c765e9c0d7667c2fbf45e9 data\arknights-endfield\recipes\seed_picking_unit\wheat.json
 14a8675353dddcb2fd36f251ae9aa8bc453bc986 data\arknights-endfield\recipes\rig\iron_mineral_vein.json
@@ -10,8 +10,8 @@ f13b7efe9a8b7573e7092b33f6b260eaa20766d9 data\arknights-endfield\recipes\plantin
 6cc666a357dec20eb101c676156102cb6502791a data\arknights-endfield\recipes\rig\copper_mineral_vein.json
 5110e016d638e56ddc5b5f27a92ed32bba16fb5a data\arknights-endfield\recipes\rig\lapis_mineral_vein.json
 37400f3848e3d7fd0c5eb0cbc78861708dcf0510 data\arknights-endfield\recipes\refining_unit\raw_iron.json
-414489ff604e5ad6b74f59be4b76faf9d1e8f0b0 data\arknights-endfield\recipes\rig\redstone_mineral_vein.json
 dd7e4f6804e1d584427e6d15f4554e87a0ee4aa0 data\arknights-endfield\recipes\rig\emerald_mineral_vein.json
+414489ff604e5ad6b74f59be4b76faf9d1e8f0b0 data\arknights-endfield\recipes\rig\redstone_mineral_vein.json
 fe716678971b7bb95e50f35beef2efec6909f3b2 data\arknights-endfield\recipes\moulding_unit\iron_nugget.json
 caaebbb2ee0dd7aac1757803130f720af4765172 data\arknights-endfield\recipes\refining_unit\copper_ore.json
 ad3456cf741159cc2d9232ed3efe41f7ae19f28b data\arknights-endfield\recipes\shredding_unit\iron_ore.json
