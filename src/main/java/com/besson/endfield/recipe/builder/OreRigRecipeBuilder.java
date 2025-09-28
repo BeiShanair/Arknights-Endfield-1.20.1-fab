@@ -27,8 +27,8 @@ public class OreRigRecipeBuilder {
         return new OreRigRecipeBuilder(input, output, 1);
     }
 
-    public OreRigRecipeBuilder outputCount(int count) {
-        return new OreRigRecipeBuilder(input, output, count);
+    public static OreRigRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
+        return new OreRigRecipeBuilder(input, output, outputCount);
     }
 
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {

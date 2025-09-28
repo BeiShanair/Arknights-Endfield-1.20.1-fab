@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights-endfield:jincao"
+  },
+  "output": {
+    "count": 2,
+    "item": "arknights-endfield:jincao_powder"
+  }
+}

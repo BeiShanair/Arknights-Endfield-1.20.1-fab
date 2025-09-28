@@ -30,8 +30,8 @@ public class GearingUnitRecipeBuilder {
         return new GearingUnitRecipeBuilder(inputs, output, 1);
     }
 
-    public GearingUnitRecipeBuilder outputCount(int count) {
-        return new GearingUnitRecipeBuilder(inputs, output, count);
+    public static GearingUnitRecipeBuilder create(List<ItemCountInput>  inputs, ItemConvertible output, int outputCount) {
+        return new GearingUnitRecipeBuilder(inputs, output, outputCount);
     }
 
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {

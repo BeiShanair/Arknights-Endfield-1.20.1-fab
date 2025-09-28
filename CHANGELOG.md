@@ -1,5 +1,11 @@
 # 更新日志 / Changelog
 
+## 2025-09-28
+- 适配`机械动力`
+- Adapted to `Create`
+- 现在玩家第一次进入一个新存档将获得一个`协议核心`
+- Now players will receive a `Protocol Anchor Core` when they enter a new save for the first time
+
 ## 2025-09-20 -> 2025-09-27
 - 更新一些物品贴图，方块贴图
 - Updated some item textures, block textures

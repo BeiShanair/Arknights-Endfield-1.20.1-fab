@@ -164,6 +164,7 @@ public class ModItemGroups {
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);
                         entries.add(ModItems.ORIGOCRUST);
+                        entries.add(ModItems.ORIGOCRUST9);
                         entries.add(ModItems.ORIGOCRUST_POWDER);
                         entries.add(ModItems.PACKED_ORIGOCRUST);
                         entries.add(ModItems.PERPLEXING_MEDICATION);

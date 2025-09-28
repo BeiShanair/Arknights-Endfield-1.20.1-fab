@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights-endfield:sandleaf"
+  },
+  "output": {
+    "count": 3,
+    "item": "arknights-endfield:sandleaf_seed"
+  }
+}

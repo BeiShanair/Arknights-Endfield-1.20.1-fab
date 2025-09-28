@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:planting_unit",
+  "input": {
+    "item": "arknights-endfield:aketine_seed"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:aketine"
+  }
+}

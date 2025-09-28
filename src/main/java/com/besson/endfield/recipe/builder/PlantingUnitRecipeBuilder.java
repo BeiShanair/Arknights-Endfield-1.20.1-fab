@@ -27,7 +27,7 @@ public class PlantingUnitRecipeBuilder {
         return new PlantingUnitRecipeBuilder(input, output, 1);
     }
 
-    public PlantingUnitRecipeBuilder outputCount(int outputCount) {
+    public static PlantingUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
         return new PlantingUnitRecipeBuilder(input, output, outputCount);
     }
 

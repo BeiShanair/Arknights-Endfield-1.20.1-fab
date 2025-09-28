@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights-endfield:redjade_ginseng"
+  },
+  "output": {
+    "count": 2,
+    "item": "arknights-endfield:redjade_ginseng_seed"
+  }
+}

@@ -1,5 +1,6 @@
 package com.besson.endfield.recipe.custom;
 
+import com.besson.endfield.recipe.InputEntry;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -12,10 +13,10 @@ import net.minecraft.world.World;
 
 public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
-    private final Ingredient input;
+    private final InputEntry input;
     private final ItemStack output;
 
-    public MouldingUnitRecipe(Identifier id, Ingredient input, ItemStack output) {
+    public MouldingUnitRecipe(Identifier id, InputEntry input, ItemStack output) {
         this.id = id;
         this.input = input;
         this.output = output;
@@ -24,7 +25,12 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
         if (world.isClient()) return false;
-        return input.test(inventory.getStack(0));
+        ItemStack inputs = inventory.getStack(0);
+        return input.getIngredient().test(inputs);
+    }
+
+    public InputEntry getInput() {
+        return input;
     }
 
     @Override
@@ -69,21 +75,33 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public MouldingUnitRecipe read(Identifier id, JsonObject json) {
-            Ingredient input = Ingredient.fromJson(json.get("input"));
+            JsonObject ingredients = JsonHelper.getObject(json, "input");
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            return new MouldingUnitRecipe(id, input, output);
+            InputEntry inputs;
+
+            Ingredient ingredient = Ingredient.fromJson(ingredients);
+            int count = ingredients.has("count") ? JsonHelper.getInt(ingredients, "count") : 1;
+            inputs = new InputEntry(ingredient, count);
+
+            return new MouldingUnitRecipe(id, inputs, output);
         }
 
         @Override
         public MouldingUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            Ingredient input = Ingredient.fromPacket(buf);
+            InputEntry inputs;
+            Ingredient ingredient = Ingredient.fromPacket(buf);
+            int count = buf.readInt();
+            inputs = new InputEntry(ingredient, count);
             ItemStack output = buf.readItemStack();
-            return new MouldingUnitRecipe(id, input, output);
+            return new MouldingUnitRecipe(id, inputs, output);
         }
 
         @Override
         public void write(PacketByteBuf buf, MouldingUnitRecipe recipe) {
-            recipe.input.write(buf);
+            buf.writeInt(recipe.getIngredients().size());
+            InputEntry entry = recipe.getInput();
+            entry.getIngredient().write(buf);
+            buf.writeInt(entry.getCount());
             buf.writeItemStack(recipe.output);
         }
     }

@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:fitting_unit",
+  "input": {
+    "item": "arknights-endfield:cuprium"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:cuprium_part"
+  }
+}

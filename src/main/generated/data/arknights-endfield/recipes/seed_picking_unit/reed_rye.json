@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights-endfield:reed_rye"
+  },
+  "output": {
+    "count": 2,
+    "item": "arknights-endfield:reed_rye_seed"
+  }
+}

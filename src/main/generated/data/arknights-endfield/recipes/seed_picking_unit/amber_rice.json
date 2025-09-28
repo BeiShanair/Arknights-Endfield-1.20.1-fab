@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights-endfield:amber_rice"
+  },
+  "output": {
+    "count": 2,
+    "item": "arknights-endfield:amber_rice_seed"
+  }
+}

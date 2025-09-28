@@ -23,28 +23,52 @@ public class ModBlocks {
             new ElectricMiningRigMkIIBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
     public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block REFINING_UNIT_SIDE = registerBlocks("refining_unit_side",
+            new RefiningUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block SHREDDING_UNIT = registerBlocksWithoutItem("shredding_unit",
             new ShreddingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block SHREDDING_UNIT_SIDE = registerBlocks("shredding_unit_side",
+            new ShreddingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
             new FillingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block FITTING_UNIT = registerBlocksWithoutItem("fitting_unit",
             new FittingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block FITTING_UNIT_SIDE = registerBlocks("fitting_unit_side",
+            new FittingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block GEARING_UNIT = registerBlocksWithoutItem("gearing_unit",
             new GearingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
     public static final Block GRINDING_UNIT = registerBlocksWithoutItem("grinding_unit",
             new GrindingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
             new MouldingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block MOULDING_UNIT_SIDE = registerBlocksWithoutItem("moulding_unit_side",
+            new MouldingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block PACKAGING_UNIT = registerBlocksWithoutItem("packaging_unit",
             new PackagingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
             new PlantingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block PLANTING_UNIT_SIDE = registerBlocks("planting_unit_side",
+            new PlantingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block SEED_PICKING_UNIT = registerBlocksWithoutItem("seed_picking_unit",
             new SeedPickingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block SEED_PICKING_UNIT_SIDE = registerBlocks("seed_picking_unit_side",
+            new SeedPickingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
             new ThermalBankBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block THERMAL_BANK_SIDE = registerBlocks("thermal_bank_side",
+            new ThermalBankSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
     public static final Block AMETHYST_MINERAL_VEIN_BLOCK = registerBlocks("amethyst_mineral_vein_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));

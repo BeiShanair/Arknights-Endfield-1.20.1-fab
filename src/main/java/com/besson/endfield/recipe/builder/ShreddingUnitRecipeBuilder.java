@@ -27,7 +27,7 @@ public class ShreddingUnitRecipeBuilder {
         return new ShreddingUnitRecipeBuilder(input, output, 1);
     }
 
-    public ShreddingUnitRecipeBuilder outputCount(int outputCount) {
+    public static ShreddingUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
         return new ShreddingUnitRecipeBuilder(input, output, outputCount);
     }
 

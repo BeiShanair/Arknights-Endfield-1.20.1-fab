@@ -159,6 +159,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ORIGINIUM_ORE, "源矿");
         translationBuilder.add(ModItems.ORIGINIUM_POWDER, "源石粉末");
         translationBuilder.add(ModItems.ORIGOCRUST, "晶体外壳");
+        translationBuilder.add(ModItems.ORIGOCRUST9, "晶体外壳(9)");
         translationBuilder.add(ModItems.ORIGOCRUST_POWDER, "晶体外壳粉末");
         translationBuilder.add(ModItems.PACKED_ORIGOCRUST, "密制晶体");
         translationBuilder.add(ModItems.PERPLEXING_MEDICATION, "意乱药剂");

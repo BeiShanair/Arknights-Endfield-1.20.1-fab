@@ -27,7 +27,7 @@ public class SeedPickingUnitRecipeBuilder {
         return new SeedPickingUnitRecipeBuilder(input, output, 1);
     }
 
-    public SeedPickingUnitRecipeBuilder outputCount(int outputCount) {
+    public static SeedPickingUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
         return new SeedPickingUnitRecipeBuilder(input, output, outputCount);
     }
 

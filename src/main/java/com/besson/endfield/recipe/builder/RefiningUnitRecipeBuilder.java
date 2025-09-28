@@ -32,10 +32,6 @@ public class RefiningUnitRecipeBuilder {
         return new RefiningUnitRecipeBuilder(new ItemCountInput(input, 1), output, 1);
     }
 
-    public RefiningUnitRecipeBuilder outputCount(int outputCount) {
-        return new RefiningUnitRecipeBuilder(input, output, outputCount);
-    }
-
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {
         exporter.accept(new RecipeJsonProvider() {
             @Override

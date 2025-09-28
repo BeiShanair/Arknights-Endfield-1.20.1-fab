@@ -6,6 +6,7 @@ import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
 import com.besson.endfield.recipe.ModRecipes;
 import com.besson.endfield.screen.ModScreens;
+import com.besson.endfield.utils.JoinHandler;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -29,6 +30,7 @@ public class ArknightsEndfield implements ModInitializer {
 		ModRecipes.registerModRecipes();
 
 		GeckoLib.initialize();
+		JoinHandler.register();
 
 		LOGGER.info("Hello Fabric world!");
 	}

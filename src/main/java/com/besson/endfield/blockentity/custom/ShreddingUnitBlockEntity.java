@@ -1,6 +1,7 @@
 package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.ElectrifiableDevice;
+import com.besson.endfield.block.custom.ShreddingUnitBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.custom.ShreddingUnitRecipe;
@@ -11,6 +12,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +27,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -36,13 +39,15 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
-// TODO: 机械动力适配
-public class ShreddingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ImplementedInventory, ExtendedScreenHandlerFactory, ElectrifiableDevice {
+public class ShreddingUnitBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ImplementedInventory, ExtendedScreenHandlerFactory, ElectrifiableDevice {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
+
+    private static final int[] INPUT_SLOTS = new int[]{INPUT_SLOT};
+    private static final int[] OUTPUT_SLOTS = new int[]{OUTPUT_SLOT};
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -241,5 +246,36 @@ public class ShreddingUnitBlockEntity extends BlockEntity implements GeoBlockEnt
 
     private boolean isOutputSlotAvailable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        BlockState state = world != null && pos != null ? world.getBlockState(pos) : null;
+        if (state != null && state.contains(ShreddingUnitBlock.FACING)) {
+            Direction facing = state.get(ShreddingUnitBlock.FACING);
+            if (side == facing) {
+                return INPUT_SLOTS;
+            } else if (side == facing.getOpposite()) {
+                return OUTPUT_SLOTS;
+            }
+        }
+        return new int[0];
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        if (slot == INPUT_SLOT) {
+            ItemStack original = this.getStack(INPUT_SLOT);
+            this.setStack(INPUT_SLOT, stack);
+            Optional<ShreddingUnitRecipe> match = getMatchRecipe(world);
+            this.setStack(INPUT_SLOT, original);
+            return match.isPresent();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return slot == OUTPUT_SLOT;
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "arknights-endfield:moulding_unit",
+  "input": {
+    "count": 2,
+    "item": "arknights-endfield:steel"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:steel_bottle"
+  }
+}

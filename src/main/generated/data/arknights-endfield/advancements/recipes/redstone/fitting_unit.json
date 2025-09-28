@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_origocrust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights-endfield:origocrust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_origocrust9": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights-endfield:origocrust9"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arknights-endfield:fitting_unit"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_origocrust",
+      "has_origocrust9",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arknights-endfield:fitting_unit"
+    ]
+  },
+  "sends_telemetry_event": false
+}

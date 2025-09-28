@@ -1,0 +1,11 @@
+{
+  "type": "arknights-endfield:refining_unit",
+  "input": {
+    "count": 1,
+    "item": "arknights-endfield:ground_citrome_powder"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:dense_carbon_powder"
+  }
+}

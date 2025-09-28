@@ -1,5 +1,6 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.block.custom.ThermalBankBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.screen.custom.ThermalBankScreenHandler;
@@ -11,6 +12,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -23,6 +25,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -30,14 +33,16 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-// TODO: 机械动力适配
-public class ThermalBankBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
+public class ThermalBankBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     private int burnTime;
     private int fuelTime;
     protected final PropertyDelegate propertyDelegate;
+
+    public static final int INPUT_SLOT = 0;
+    public static final int[] INPUT_SLOTS = {0};
 
     public ThermalBankBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.THERMAL_BANK, pos, state);
@@ -86,13 +91,15 @@ public class ThermalBankBlockEntity extends BlockEntity implements GeoBlockEntit
             entity.burnTime--;
         }
 
-        if (entity.burnTime == 0 && !entity.getStack(0).isEmpty()) {
-            int fuelTime = (FuelRegistry.INSTANCE.get(entity.inv.get(0).getItem())) / 2;
-            if (fuelTime > 0) {
+        if (entity.burnTime == 0 && !entity.getStack(INPUT_SLOT).isEmpty()) {
+            Integer fuelValue = FuelRegistry.INSTANCE.get(entity.inv.get(INPUT_SLOT).getItem());
+
+            if (fuelValue != null && fuelValue > 0) {
+                int fuelTime = fuelValue / 2;
                 entity.fuelTime = fuelTime;
                 entity.burnTime = fuelTime;
 
-                entity.inv.get(0).decrement(1);
+                entity.inv.get(INPUT_SLOT).decrement(1);
                 entity.markDirty();
             }
         }
@@ -150,5 +157,28 @@ public class ThermalBankBlockEntity extends BlockEntity implements GeoBlockEntit
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
         return new ThermalBankScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        BlockState state = world != null && pos != null ? world.getBlockState(pos) : null;
+        if (state != null && state.contains(ThermalBankBlock.FACING)) {
+            Direction facing = state.get(ThermalBankBlock.FACING);
+            if (side == facing) {
+                return INPUT_SLOTS;
+            }
+        }
+        return new int[0];
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        return slot == INPUT_SLOT && FuelRegistry.INSTANCE.get(stack.getItem()) != null
+                && FuelRegistry.INSTANCE.get(stack.getItem()) > 0;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return false;
     }
 }

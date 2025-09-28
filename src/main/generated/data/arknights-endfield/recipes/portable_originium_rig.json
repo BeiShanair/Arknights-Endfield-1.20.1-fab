@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "arknights-endfield:origocrust"
+    },
+    {
+      "item": "arknights-endfield:origocrust"
+    },
+    {
+      "item": "arknights-endfield:origocrust"
+    },
+    {
+      "item": "arknights-endfield:origocrust"
+    },
+    {
+      "item": "arknights-endfield:origocrust"
+    }
+  ],
+  "result": {
+    "item": "arknights-endfield:portable_originium_rig"
+  }
+}

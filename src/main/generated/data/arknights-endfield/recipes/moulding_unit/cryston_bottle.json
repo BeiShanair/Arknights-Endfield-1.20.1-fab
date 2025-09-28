@@ -1,0 +1,11 @@
+{
+  "type": "arknights-endfield:moulding_unit",
+  "input": {
+    "count": 2,
+    "item": "arknights-endfield:cryston_fiber"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:cryston_bottle"
+  }
+}

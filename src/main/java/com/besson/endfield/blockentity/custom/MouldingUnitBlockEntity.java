@@ -1,8 +1,10 @@
 package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.ElectrifiableDevice;
+import com.besson.endfield.block.custom.MouldingUnitBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.recipe.InputEntry;
 import com.besson.endfield.recipe.custom.MouldingUnitRecipe;
 import com.besson.endfield.screen.custom.MouldingUnitScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -11,6 +13,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,6 +28,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -36,8 +40,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
-// TODO: 机械动力适配
-public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
+public class MouldingUnitBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     protected final PropertyDelegate propertyDelegate;
@@ -47,6 +50,9 @@ public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEnti
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     public static final int INPUT_SLOT = 0;
     public static final int OUTPUT_SLOT = 1;
+
+    public static final int[] INPUT_SLOTS = {0};
+    public static final int[] OUTPUT_SLOTS = {1};
 
     private int storedPower = 0;
     private static final int POWER_PRE_TICK = 10;
@@ -199,7 +205,11 @@ public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEnti
             ItemStack result = match.get().getOutput(world.getRegistryManager());
             this.setStack(OUTPUT_SLOT,
                     new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-            this.removeStack(INPUT_SLOT, 1);
+            InputEntry recipeInput = match.get().getInput();
+            ItemStack stack = this.getStack(INPUT_SLOT);
+            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
+                removeStack(INPUT_SLOT, recipeInput.getCount());
+            }
         }
 
     }
@@ -225,6 +235,14 @@ public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEnti
         Optional<MouldingUnitRecipe> match = getMatchRecipe(world);
 
         if (match.isPresent()) {
+            InputEntry recipeInput = match.get().getInput();
+            boolean matched = false;
+            ItemStack stack = this.getStack(INPUT_SLOT);
+            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
+                matched = true;
+            }
+            if (!matched) return false;
+
             ItemStack result = match.get().getOutput(world.getRegistryManager());
             return canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
         }
@@ -241,5 +259,36 @@ public class MouldingUnitBlockEntity extends BlockEntity implements GeoBlockEnti
 
     private boolean isOutputSlotAvailable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        BlockState state = world != null ? world.getBlockState(pos) : null;
+        if (state != null && state.contains(MouldingUnitBlock.FACING)) {
+            Direction facing = state.get(MouldingUnitBlock.FACING);
+            if (side == facing) {
+                return INPUT_SLOTS;
+            } else if (side == facing.getOpposite()) {
+                return OUTPUT_SLOTS;
+            }
+        }
+        return new int[0];
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        if (slot == INPUT_SLOT) {
+            ItemStack original = getStack(slot);
+            setStack(INPUT_SLOT, stack);
+            Optional<MouldingUnitRecipe> match = getMatchRecipe(world);
+            setStack(INPUT_SLOT, original);
+            return match.isPresent();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return slot == OUTPUT_SLOT;
     }
 }

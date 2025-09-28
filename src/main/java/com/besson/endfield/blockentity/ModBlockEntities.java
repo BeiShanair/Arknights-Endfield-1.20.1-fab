@@ -34,15 +34,21 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<RefiningUnitBlockEntity> REFINING_UNIT = create("refining_unit",
             BlockEntityType.Builder.create(RefiningUnitBlockEntity::new, ModBlocks.REFINING_UNIT));
+    public static final BlockEntityType<RefiningUnitSideBlockEntity> REFINING_UNIT_SIDE = create("refining_unit_side",
+            BlockEntityType.Builder.create(RefiningUnitSideBlockEntity::new, ModBlocks.REFINING_UNIT_SIDE));
 
     public static final BlockEntityType<ShreddingUnitBlockEntity> SHREDDING_UNIT = create("shredding_unit",
             BlockEntityType.Builder.create(ShreddingUnitBlockEntity::new, ModBlocks.SHREDDING_UNIT));
+    public static final BlockEntityType<ShreddingUnitSideBlockEntity> SHREDDING_UNIT_SIDE = create("shredding_unit_side",
+            BlockEntityType.Builder.create(ShreddingUnitSideBlockEntity::new, ModBlocks.SHREDDING_UNIT_SIDE));
 
     public static final BlockEntityType<FillingUnitBlockEntity> FILLING_UNIT = create("filling_unit",
             BlockEntityType.Builder.create(FillingUnitBlockEntity::new, ModBlocks.FILLING_UNIT));
 
     public static final BlockEntityType<FittingUnitBlockEntity> FITTING_UNIT = create("fitting_unit",
             BlockEntityType.Builder.create(FittingUnitBlockEntity::new, ModBlocks.FITTING_UNIT));
+    public static final BlockEntityType<FittingUnitSideBlockEntity> FITTING_UNIT_SIDE = create("fitting_unit_side",
+            BlockEntityType.Builder.create(FittingUnitSideBlockEntity::new, ModBlocks.FITTING_UNIT_SIDE));
 
     public static final BlockEntityType<GearingUnitBlockEntity> GEARING_UNIT = create("gearing_unit",
             BlockEntityType.Builder.create(GearingUnitBlockEntity::new, ModBlocks.GEARING_UNIT));
@@ -52,18 +58,26 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<MouldingUnitBlockEntity> MOULDING_UNIT = create("moulding_unit",
             BlockEntityType.Builder.create(MouldingUnitBlockEntity::new, ModBlocks.MOULDING_UNIT));
+    public static final BlockEntityType<MouldingUnitSideBlockEntity> MOULDING_UNIT_SIDE = create("moulding_unit_side",
+            BlockEntityType.Builder.create(MouldingUnitSideBlockEntity::new, ModBlocks.MOULDING_UNIT_SIDE));
 
     public static final BlockEntityType<PackagingUnitBlockEntity> PACKAGING_UNIT = create("packaging_unit",
             BlockEntityType.Builder.create(PackagingUnitBlockEntity::new, ModBlocks.PACKAGING_UNIT));
 
     public static final BlockEntityType<PlantingUnitBlockEntity> PLANTING_UNIT = create("planting_unit",
             BlockEntityType.Builder.create(PlantingUnitBlockEntity::new, ModBlocks.PLANTING_UNIT));
+    public static final BlockEntityType<PlantingUnitSideBlockEntity> PLANTING_UNIT_SIDE = create("planting_unit_side",
+            BlockEntityType.Builder.create(PlantingUnitSideBlockEntity::new, ModBlocks.PLANTING_UNIT_SIDE));
 
     public static final BlockEntityType<SeedPickingUnitBlockEntity> SEED_PICKING_UNIT = create("seed_picking_unit",
             BlockEntityType.Builder.create(SeedPickingUnitBlockEntity::new, ModBlocks.SEED_PICKING_UNIT));
+    public static final BlockEntityType<SeedPickingUnitSideBlockEntity> SEED_PICKING_UNIT_SIDE = create("seed_picking_unit_side",
+            BlockEntityType.Builder.create(SeedPickingUnitSideBlockEntity::new, ModBlocks.SEED_PICKING_UNIT_SIDE));
 
     public static final BlockEntityType<ThermalBankBlockEntity> THERMAL_BANK = create("thermal_bank",
             BlockEntityType.Builder.create(ThermalBankBlockEntity::new, ModBlocks.THERMAL_BANK));
+    public static final BlockEntityType<ThermalBankSideBlockEntity> THERMAL_BANK_SIDE = create("thermal_bank_side",
+            BlockEntityType.Builder.create(ThermalBankSideBlockEntity::new, ModBlocks.THERMAL_BANK_SIDE));
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);

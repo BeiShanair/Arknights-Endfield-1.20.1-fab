@@ -159,6 +159,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ORIGINIUM_ORE, "Originium Ore");
         translationBuilder.add(ModItems.ORIGINIUM_POWDER, "Originium Powder");
         translationBuilder.add(ModItems.ORIGOCRUST, "Origocrust");
+        translationBuilder.add(ModItems.ORIGOCRUST9, "Origocrust(9)");
         translationBuilder.add(ModItems.ORIGOCRUST_POWDER, "Origocrust Powder");
         translationBuilder.add(ModItems.PACKED_ORIGOCRUST, "Packed Origocrust");
         translationBuilder.add(ModItems.PERPLEXING_MEDICATION, "Perplexing Medication");

@@ -27,7 +27,7 @@ public class FittingUnitRecipeBuilder {
         return new FittingUnitRecipeBuilder(input, output, 1);
     }
 
-    public FittingUnitRecipeBuilder outputCount(int outputCount) {
+    public static FittingUnitRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
         return new FittingUnitRecipeBuilder(input, output, outputCount);
     }
 

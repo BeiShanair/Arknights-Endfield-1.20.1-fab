@@ -153,6 +153,7 @@ public class ModItems {
     public static final Item ORIGINIUM_ORE = registerItems("originium_ore",new Item(new Item.Settings()));
     public static final Item ORIGINIUM_POWDER = registerItems("originium_powder",new Item(new Item.Settings()));
     public static final Item ORIGOCRUST = registerItems("origocrust",new Item(new Item.Settings()));
+    public static final Item ORIGOCRUST9 = registerItems("origocrust9",new Item(new Item.Settings()));
     public static final Item ORIGOCRUST_POWDER = registerItems("origocrust_powder",new Item(new Item.Settings()));
     public static final Item PACKED_ORIGOCRUST = registerItems("packed_origocrust",new Item(new Item.Settings()));
     public static final Item PERPLEXING_MEDICATION = registerItems("perplexing_medication",new Item(new Item.Settings()));

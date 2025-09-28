@@ -2,14 +2,14 @@
 	"schemaVersion": 1,
 	"id": "arknights-endfield",
 	"version": "${version}",
-	"name": "Arknights Endfield",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Endfield Industry",
+	"description": "This is a mod that adds the Integrated Industries facilities from the game \"Arknights: Endfield\" into \"Minecraft\".",
 	"authors": [
-		"Me!"
+		"Beishan_Besson"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/arknights-endfield/icon.png",

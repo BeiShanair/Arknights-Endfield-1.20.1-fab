@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "arknights-endfield:originium_ore"
+    },
+    {
+      "item": "arknights-endfield:originium_ore"
+    },
+    {
+      "item": "arknights-endfield:originium_ore"
+    },
+    {
+      "item": "arknights-endfield:originium_ore"
+    },
+    {
+      "item": "arknights-endfield:originium_ore"
+    }
+  ],
+  "result": {
+    "item": "arknights-endfield:refining_unit"
+  }
+}
