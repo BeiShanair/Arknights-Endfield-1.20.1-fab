@@ -1,5 +1,6 @@
 package com.besson.endfield.datagen;
 
+import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -7,6 +8,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.util.Identifier;
 
 public class ModModelsProvider extends FabricModelProvider {
     public ModModelsProvider(FabricDataOutput output) {
@@ -33,18 +36,17 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK);
 
-        blockStateModelGenerator.registerSimpleState(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.GOLD_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
-        blockStateModelGenerator.registerSimpleState(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.REFINING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SHREDDING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FILLING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FITTING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GEARING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GRINDING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.MOULDING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PACKAGING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PLANTING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK_SIDE);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMETHYST_ORE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUPRIUM_ORE_BLOCK);
@@ -54,6 +56,19 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_CUPRIUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ORIGINIUM_ORE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FERRIUM_ORE_BLOCK);
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GOLD_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
     }
 
     @Override

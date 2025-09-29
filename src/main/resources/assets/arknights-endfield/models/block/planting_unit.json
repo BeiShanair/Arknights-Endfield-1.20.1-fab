@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/planting_unit"
+    "particle": "arknights-endfield:block/gray"
   }
 }

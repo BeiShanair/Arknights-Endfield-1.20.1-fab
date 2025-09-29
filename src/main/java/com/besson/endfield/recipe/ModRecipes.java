@@ -57,5 +57,10 @@ public class ModRecipes {
                 GrindingUnitRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, GrindingUnitRecipe.Type.ID),
                 GrindingUnitRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, PackagingUnitRecipe.Serializer.ID),
+                PackagingUnitRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, PackagingUnitRecipe.Type.ID),
+                PackagingUnitRecipe.Type.INSTANCE);
     }
 }

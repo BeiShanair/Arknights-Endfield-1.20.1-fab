@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:packaging_unit",
+  "input": [
+    {
+      "count": 10,
+      "item": "arknights-endfield:ferrium_part"
+    },
+    {
+      "count": 20,
+      "item": "arknights-endfield:originium_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:sc_battery"
+  }
+}

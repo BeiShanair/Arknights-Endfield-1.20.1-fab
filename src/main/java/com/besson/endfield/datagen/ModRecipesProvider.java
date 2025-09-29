@@ -212,10 +212,113 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         SeedPickingUnitRecipeBuilder.create(ModItems.AMBER_RICE, ModItems.AMBER_RICE_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/amber_rice"));
 
-        List<ItemCountInput> TEST = List.of(
-                new ItemCountInput(Items.COAL_BLOCK ,5),
-                new ItemCountInput(Items.OBSIDIAN, 10));
-        GearingUnitRecipeBuilder.create(TEST, Items.DIAMOND)
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/test"));
+        List<ItemCountInput> CANNED_CITROME_C = List.of(
+                new ItemCountInput(ModItems.AMETHYST_BOTTLE, 5),
+                new ItemCountInput(ModItems.CITROME_POWDER, 5));
+        FillingUnitRecipeBuilder.create(CANNED_CITROME_C, ModItems.CANNED_CITROME_C)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/canned_citrome_c"));
+        List<ItemCountInput> CANNED_CITROME_B = List.of(
+                new ItemCountInput(ModItems.FERRIUM_BOTTLE, 10),
+                new ItemCountInput(ModItems.CITROME_POWDER, 10));
+        FillingUnitRecipeBuilder.create(CANNED_CITROME_B, ModItems.CANNED_CITROME_B)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/canned_citrome_b"));
+        List<ItemCountInput> CANNED_CITROME_A = List.of(
+                new ItemCountInput(ModItems.STEEL_BOTTLE, 10),
+                new ItemCountInput(ModItems.GROUND_CITROME_POWDER, 10));
+        FillingUnitRecipeBuilder.create(CANNED_CITROME_A, ModItems.CANNED_CITROME_A)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/canned_citrome_a"));
+        List<ItemCountInput> BUCK_CAPSULE_C = List.of(
+                new ItemCountInput(ModItems.AMETHYST_BOTTLE, 5),
+                new ItemCountInput(ModItems.BUCKFLOWER_POWDER, 5));
+        FillingUnitRecipeBuilder.create(BUCK_CAPSULE_C, ModItems.BUCK_CAPSULE_C)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/buck_capsule_c"));
+        List<ItemCountInput> BUCK_CAPSULE_B = List.of(
+                new ItemCountInput(ModItems.FERRIUM_BOTTLE, 10),
+                new ItemCountInput(ModItems.BUCKFLOWER_POWDER, 10));
+        FillingUnitRecipeBuilder.create(BUCK_CAPSULE_B, ModItems.BUCK_CAPSULE_B)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/buck_capsule_b"));
+        List<ItemCountInput> BUCK_CAPSULE_A = List.of(
+                new ItemCountInput(ModItems.STEEL_BOTTLE, 10),
+                new ItemCountInput(ModItems.GROUND_BUCKFLOWER_POWDER, 10));
+        FillingUnitRecipeBuilder.create(BUCK_CAPSULE_A, ModItems.BUCK_CAPSULE_A)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/buck_capsule_a"));
+
+        List<ItemCountInput> AMETHYST_COMPONENT = List.of(
+                new ItemCountInput(ModItems.ORIGOCRUST, 5),
+                new ItemCountInput(ModItems.AMETHYST_FIBER, 5));
+        GearingUnitRecipeBuilder.create(AMETHYST_COMPONENT, ModItems.AMETHYST_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/amethyst_component"));
+        List<ItemCountInput> FERRIUM_COMPONENT = List.of(
+                new ItemCountInput(ModItems.ORIGOCRUST, 10),
+                new ItemCountInput(ModItems.FERRIUM, 10));
+        GearingUnitRecipeBuilder.create(FERRIUM_COMPONENT, ModItems.FERRIUM_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/ferrium_component"));
+        List<ItemCountInput> CRYSTON_COMPONENT = List.of(
+                new ItemCountInput(ModItems.PACKED_ORIGOCRUST, 10),
+                new ItemCountInput(ModItems.CRYSTON_FIBER, 10));
+        GearingUnitRecipeBuilder.create(CRYSTON_COMPONENT, ModItems.CRYSTON_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/cryston_component"));
+        List<ItemCountInput> CUPRIUM_COMPONENT = List.of(
+                new ItemCountInput(ModItems.PACKED_ORIGOCRUST, 10),
+                new ItemCountInput(ModItems.CUPRIUM, 5));
+        GearingUnitRecipeBuilder.create(CUPRIUM_COMPONENT, ModItems.CUPRIUM_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/cuprium_component"));
+
+        List<ItemCountInput> DENSE_CARBON_POWDER = List.of(
+                new ItemCountInput(ModItems.CARBON_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(DENSE_CARBON_POWDER, ModItems.DENSE_CARBON_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/dense_carbon_powder"));
+        List<ItemCountInput> DENSE_ORIGOCRUST_POWDER = List.of(
+                new ItemCountInput(ModItems.ORIGOCRUST_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(DENSE_ORIGOCRUST_POWDER, ModItems.DENSE_ORIGOCRUST_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/dense_origocrust_powder"));
+        List<ItemCountInput> DENSE_FERRIUM_POWDER = List.of(
+                new ItemCountInput(ModItems.FERRIUM_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(DENSE_FERRIUM_POWDER, ModItems.DENSE_FERRIUM_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/dense_ferrium_powder"));
+        List<ItemCountInput> DENSE_ORIGINIUM_POWDER = List.of(
+                new ItemCountInput(ModItems.ORIGINIUM_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(DENSE_ORIGINIUM_POWDER, ModItems.DENSE_ORIGINIUM_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/dense_originium_powder"));
+        List<ItemCountInput> GROUND_CITROME_POWDER = List.of(
+                new ItemCountInput(ModItems.CITROME_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(GROUND_CITROME_POWDER, ModItems.GROUND_CITROME_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/ground_citrome_powder"));
+        List<ItemCountInput> GROUND_BUCKFLOWER_POWDER = List.of(
+                new ItemCountInput(ModItems.BUCKFLOWER_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(GROUND_BUCKFLOWER_POWDER, ModItems.GROUND_BUCKFLOWER_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/ground_buckflower_powder"));
+        List<ItemCountInput> CRYSTON_POWDER = List.of(
+                new ItemCountInput(ModItems.AMETHYST_POWDER, 2),
+                new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
+        GrindingUnitRecipeBuilder.create(CRYSTON_POWDER, ModItems.CRYSTON_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/cryston_powder"));
+
+        List<ItemCountInput> LC_BATTERY = List.of(
+                new ItemCountInput(ModItems.AMETHYST_PART, 5),
+                new ItemCountInput(ModItems.ORIGINIUM_POWDER, 10));
+        PackagingUnitRecipeBuilder.create(LC_BATTERY, ModItems.LC_BATTERY)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/lc_battery"));
+        List<ItemCountInput> SC_BATTERY = List.of(
+                new ItemCountInput(ModItems.FERRIUM_PART, 10),
+                new ItemCountInput(ModItems.ORIGINIUM_POWDER, 20));
+        PackagingUnitRecipeBuilder.create(SC_BATTERY, ModItems.SC_BATTERY)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/sc_battery"));
+        List<ItemCountInput> HC_BATTERY = List.of(
+                new ItemCountInput(ModItems.STEEL_PART, 10),
+                new ItemCountInput(ModItems.DENSE_ORIGINIUM_POWDER, 20));
+        PackagingUnitRecipeBuilder.create(HC_BATTERY, ModItems.HC_BATTERY)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/hc_battery"));
+        List<ItemCountInput> INDUSTRIAL_EXPLOSIVE = List.of(
+                new ItemCountInput(ModItems.AMETHYST_PART, 5),
+                new ItemCountInput(ModItems.AKETINE_POWDER, 1));
+        PackagingUnitRecipeBuilder.create(INDUSTRIAL_EXPLOSIVE, ModItems.INDUSTRIAL_EXPLOSIVE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/industrial_explosive"));
     }
 }

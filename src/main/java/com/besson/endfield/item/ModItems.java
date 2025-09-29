@@ -3,6 +3,7 @@ package com.besson.endfield.item;
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.custom.*;
+import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -22,28 +23,29 @@ public class ModItems {
             new ElectricMiningRigItem(ModBlocks.ELECTRIC_MINING_RIG_MK_II, new Item.Settings()));
     public static final Item PORTABLE_ORIGINIUM_RIG_ITEM = registerItems("portable_originium_rig",
             new PortableOriginiumRigItem(ModBlocks.PORTABLE_ORIGINIUM_RIG, new Item.Settings()));
-    public static final Item REFINING_UNIT_ITEM = registerItems("refining_unit",
-            new RefiningUnitItem(ModBlocks.REFINING_UNIT, new Item.Settings()));
-    public static final Item SHREDDING_UNIT_ITEM = registerItems("shredding_unit",
-            new ShreddingUnitItem(ModBlocks.SHREDDING_UNIT, new Item.Settings()));
-    public static final Item FILLING_UNIT_ITEM = registerItems("filling_unit",
-            new FillingUnitItem(ModBlocks.FILLING_UNIT, new Item.Settings()));
-    public static final Item FITTING_UNIT_ITEM = registerItems("fitting_unit",
-            new FittingUnitItem(ModBlocks.FITTING_UNIT, new Item.Settings()));
-    public static final Item GEARING_UNIT_ITEM = registerItems("gearing_unit",
-            new GearingUnitItem(ModBlocks.GEARING_UNIT, new Item.Settings()));
-    public static final Item GRINDING_UNIT_ITEM = registerItems("grinding_unit",
-            new GrindingUnitItem(ModBlocks.GRINDING_UNIT, new Item.Settings()));
-    public static final Item MOULDING_UNIT_ITEM = registerItems("moulding_unit",
-            new MouldingUnitItem(ModBlocks.MOULDING_UNIT, new Item.Settings()));
-    public static final Item PACKAGING_UNIT_ITEM = registerItems("packaging_unit",
-            new PackagingUnitItem(ModBlocks.PACKAGING_UNIT, new Item.Settings()));
-    public static final Item PLANTING_UNIT_ITEM = registerItems("planting_unit",
-            new PlantingUnitItem(ModBlocks.PLANTING_UNIT, new Item.Settings()));
-    public static final Item SEED_PICKING_UNIT_ITEM = registerItems("seed_picking_unit",
-            new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings()));
-    public static final Item THERMAL_BANK_ITEM = registerItems("thermal_bank",
-            new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings()));
+
+    public static final Item REFINING_UNIT_ITEM = registerSameBlockItem("refining_unit",
+            new RefiningUnitItem(ModBlocks.REFINING_UNIT, new Item.Settings()), ModBlocks.REFINING_UNIT_SIDE);
+    public static final Item SHREDDING_UNIT_ITEM = registerSameBlockItem("shredding_unit",
+            new ShreddingUnitItem(ModBlocks.SHREDDING_UNIT, new Item.Settings()), ModBlocks.SHREDDING_UNIT_SIDE);
+    public static final Item FILLING_UNIT_ITEM = registerSameBlockItem("filling_unit",
+            new FillingUnitItem(ModBlocks.FILLING_UNIT, new Item.Settings()), ModBlocks.FILLING_UNIT_SIDE);
+    public static final Item FITTING_UNIT_ITEM = registerSameBlockItem("fitting_unit",
+            new FittingUnitItem(ModBlocks.FITTING_UNIT, new Item.Settings()), ModBlocks.FITTING_UNIT_SIDE);
+    public static final Item GEARING_UNIT_ITEM = registerSameBlockItem("gearing_unit",
+            new GearingUnitItem(ModBlocks.GEARING_UNIT, new Item.Settings()), ModBlocks.GEARING_UNIT_SIDE);
+    public static final Item GRINDING_UNIT_ITEM = registerSameBlockItem("grinding_unit",
+            new GrindingUnitItem(ModBlocks.GRINDING_UNIT, new Item.Settings()), ModBlocks.GRINDING_UNIT_SIDE);
+    public static final Item MOULDING_UNIT_ITEM = registerSameBlockItem("moulding_unit",
+            new MouldingUnitItem(ModBlocks.MOULDING_UNIT, new Item.Settings()), ModBlocks.MOULDING_UNIT_SIDE);
+    public static final Item PACKAGING_UNIT_ITEM = registerSameBlockItem("packaging_unit",
+            new PackagingUnitItem(ModBlocks.PACKAGING_UNIT, new Item.Settings()), ModBlocks.PACKAGING_UNIT_SIDE);
+    public static final Item PLANTING_UNIT_ITEM = registerSameBlockItem("planting_unit",
+            new PlantingUnitItem(ModBlocks.PLANTING_UNIT, new Item.Settings()), ModBlocks.PLANTING_UNIT_SIDE);
+    public static final Item SEED_PICKING_UNIT_ITEM = registerSameBlockItem("seed_picking_unit",
+            new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings()), ModBlocks.SEED_PICKING_UNIT_SIDE);
+    public static final Item THERMAL_BANK_ITEM = registerSameBlockItem("thermal_bank",
+            new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings()), ModBlocks.THERMAL_BANK_SIDE);
 
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings()));
@@ -196,6 +198,13 @@ public class ModItems {
     public static final Item YAZHEN_SPRAY_S = registerItems("yazhen_spray_s",new Item(new Item.Settings()));
     public static final Item YAZHEN_SYRINGE_A = registerItems("yazhen_syringe_a",new Item(new Item.Settings()));
     public static final Item YAZHEN_SYRINGE_C = registerItems("yazhen_syringe_c",new Item(new Item.Settings()));
+
+    private static Item registerSameBlockItem(String name, BlockItem blockItem, Block... blocks){
+        for (Block b : blocks) {
+            Item.BLOCK_ITEMS.put(b, blockItem);
+        }
+        return Registry.register(Registries.ITEM, new Identifier(ArknightsEndfield.MOD_ID, name), blockItem);
+    }
 
     private static Item registerItems(String name, Item item) {
         if (item instanceof BlockItem) {

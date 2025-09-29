@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:grinding_unit",
+  "input": [
+    {
+      "count": 2,
+      "item": "arknights-endfield:ferrium_powder"
+    },
+    {
+      "count": 1,
+      "item": "arknights-endfield:sandleaf_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:dense_ferrium_powder"
+  }
+}

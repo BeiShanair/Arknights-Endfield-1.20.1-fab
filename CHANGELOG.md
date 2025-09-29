@@ -1,5 +1,11 @@
 # 更新日志 / Changelog
 
+## 2025-09-29
+- 完成剩余工业设备适配`机械动力`
+- Completed adaptation of remaining industrial equipment to `Create`
+- 配置矿物的世界生成
+- Configured world generation for minerals
+
 ## 2025-09-28
 - 适配`机械动力`
 - Adapted to `Create`

@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/thermal_bank"
+    "particle": "arknights-endfield:block/gray"
   }
 }

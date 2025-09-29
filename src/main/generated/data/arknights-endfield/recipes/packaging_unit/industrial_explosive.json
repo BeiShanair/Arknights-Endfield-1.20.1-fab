@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:packaging_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights-endfield:amethyst_part"
+    },
+    {
+      "count": 1,
+      "item": "arknights-endfield:aketine_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:industrial_explosive"
+  }
+}

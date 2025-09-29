@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:gearing_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights-endfield:origocrust"
+    },
+    {
+      "count": 5,
+      "item": "arknights-endfield:amethyst_fiber"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:amethyst_component"
+  }
+}

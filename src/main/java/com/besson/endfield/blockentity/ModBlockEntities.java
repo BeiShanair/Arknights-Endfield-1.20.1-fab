@@ -44,6 +44,8 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<FillingUnitBlockEntity> FILLING_UNIT = create("filling_unit",
             BlockEntityType.Builder.create(FillingUnitBlockEntity::new, ModBlocks.FILLING_UNIT));
+    public static final BlockEntityType<FillingUnitSideBlockEntity> FILLING_UNIT_SIDE = create("filling_unit_side",
+            BlockEntityType.Builder.create(FillingUnitSideBlockEntity::new, ModBlocks.FILLING_UNIT_SIDE));
 
     public static final BlockEntityType<FittingUnitBlockEntity> FITTING_UNIT = create("fitting_unit",
             BlockEntityType.Builder.create(FittingUnitBlockEntity::new, ModBlocks.FITTING_UNIT));
@@ -52,9 +54,13 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<GearingUnitBlockEntity> GEARING_UNIT = create("gearing_unit",
             BlockEntityType.Builder.create(GearingUnitBlockEntity::new, ModBlocks.GEARING_UNIT));
+    public static final BlockEntityType<GearingUnitSideBlockEntity> GEARING_UNIT_SIDE = create("gearing_unit_side",
+            BlockEntityType.Builder.create(GearingUnitSideBlockEntity::new, ModBlocks.GEARING_UNIT_SIDE));
 
     public static final BlockEntityType<GrindingUnitBlockEntity> GRINDING_UNIT = create("grinding_unit",
             BlockEntityType.Builder.create(GrindingUnitBlockEntity::new, ModBlocks.GRINDING_UNIT));
+    public static final BlockEntityType<GrindingUnitSideBlockEntity> GRINDING_UNIT_SIDE = create("grinding_unit_side",
+            BlockEntityType.Builder.create(GrindingUnitSideBlockEntity::new, ModBlocks.GRINDING_UNIT_SIDE));
 
     public static final BlockEntityType<MouldingUnitBlockEntity> MOULDING_UNIT = create("moulding_unit",
             BlockEntityType.Builder.create(MouldingUnitBlockEntity::new, ModBlocks.MOULDING_UNIT));
@@ -63,6 +69,8 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<PackagingUnitBlockEntity> PACKAGING_UNIT = create("packaging_unit",
             BlockEntityType.Builder.create(PackagingUnitBlockEntity::new, ModBlocks.PACKAGING_UNIT));
+    public static final BlockEntityType<PackagingUnitSideBlockEntity> PACKAGING_UNIT_SIDE = create("packaging_unit_side",
+            BlockEntityType.Builder.create(PackagingUnitSideBlockEntity::new, ModBlocks.PACKAGING_UNIT_SIDE));
 
     public static final BlockEntityType<PlantingUnitBlockEntity> PLANTING_UNIT = create("planting_unit",
             BlockEntityType.Builder.create(PlantingUnitBlockEntity::new, ModBlocks.PLANTING_UNIT));

@@ -119,6 +119,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/protocol_anchor_core"
+    "particle": "arknights-endfield:block/gray"
   }
 }

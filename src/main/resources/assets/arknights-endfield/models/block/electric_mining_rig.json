@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/electric_mining_rig"
+    "particle": "arknights-endfield:block/gray"
   }
 }

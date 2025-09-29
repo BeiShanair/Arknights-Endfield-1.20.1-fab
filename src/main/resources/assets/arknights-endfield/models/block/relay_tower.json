@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/relay_tower"
+    "particle": "arknights-endfield:block/gray"
   }
 }

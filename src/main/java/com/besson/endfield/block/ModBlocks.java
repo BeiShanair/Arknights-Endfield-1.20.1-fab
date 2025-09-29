@@ -36,6 +36,8 @@ public class ModBlocks {
 
     public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
             new FillingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block FILLING_UNIT_SIDE = registerBlocks("filling_unit_side",
+            new FillingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
     public static final Block FITTING_UNIT = registerBlocksWithoutItem("fitting_unit",
             new FittingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
@@ -44,8 +46,13 @@ public class ModBlocks {
 
     public static final Block GEARING_UNIT = registerBlocksWithoutItem("gearing_unit",
             new GearingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block GEARING_UNIT_SIDE = registerBlocks("gearing_unit_side",
+            new GearingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block GRINDING_UNIT = registerBlocksWithoutItem("grinding_unit",
             new GrindingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block GRINDING_UNIT_SIDE = registerBlocks("grinding_unit_side",
+            new GrindingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
     public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
             new MouldingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
@@ -54,7 +61,9 @@ public class ModBlocks {
 
     public static final Block PACKAGING_UNIT = registerBlocksWithoutItem("packaging_unit",
             new PackagingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
-
+    public static final Block PACKAGING_UNIT_SIDE = registerBlocks("packaging_unit_side",
+            new PackagingUnitSideBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    
     public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
             new PlantingUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
     public static final Block PLANTING_UNIT_SIDE = registerBlocks("planting_unit_side",

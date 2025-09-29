@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:gearing_unit",
+  "input": [
+    {
+      "count": 10,
+      "item": "arknights-endfield:packed_origocrust"
+    },
+    {
+      "count": 10,
+      "item": "arknights-endfield:cryston_fiber"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:cryston_component"
+  }
+}

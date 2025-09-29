@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/refining_unit"
+    "particle": "arknights-endfield:block/gray"
   }
 }

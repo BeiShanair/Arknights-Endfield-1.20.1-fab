@@ -1,6 +1,7 @@
 package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.ElectrifiableDevice;
+import com.besson.endfield.block.custom.GearingUnitBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.InputEntry;
@@ -12,6 +13,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,6 +28,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -35,12 +38,14 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
-// TODO: 机械动力适配
-public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
+public class GearingUnitBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, ElectrifiableDevice {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
     public static final int INPUT_SLOT1 = 0;
     public static final int INPUT_SLOT2 = 1;
     public static final int OUTPUT_SLOT = 2;
+
+    public static final int[] INPUT_SLOTS = {0, 1};
+    public static final int[] OUTPUT_SLOTS = {2};
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -267,5 +272,29 @@ public class GearingUnitBlockEntity extends BlockEntity implements GeoBlockEntit
     @Override
     public int getRequiredPower() {
         return POWER_PRE_TICK;
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        BlockState state = world != null ? world.getBlockState(pos) : null;
+        if (state != null && state.contains(GearingUnitBlock.FACING)) {
+            Direction facing = state.get(GearingUnitBlock.FACING);
+            if (side == facing) {
+                return INPUT_SLOTS;
+            } else if (side == facing.getOpposite()) {
+                return OUTPUT_SLOTS;
+            }
+        }
+        return new int[0];
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        return slot == INPUT_SLOT1 || slot == INPUT_SLOT2;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return slot == OUTPUT_SLOT;
     }
 }

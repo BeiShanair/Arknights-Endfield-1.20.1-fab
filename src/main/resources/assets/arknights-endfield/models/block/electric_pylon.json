@@ -107,6 +107,6 @@
     }
   },
   "textures": {
-    "particle": "arknights-endfield:block/electric_pylon"
+    "particle": "arknights-endfield:block/gray"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "type": "arknights-endfield:filling_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights-endfield:amethyst_bottle"
+    },
+    {
+      "count": 5,
+      "item": "arknights-endfield:citrome_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:canned_citrome_c"
+  }
+}
