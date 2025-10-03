@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:crafter",
+  "input": {
+    "arknights-endfield:amethyst_part": 20
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:packaging_unit"
+  }
+}

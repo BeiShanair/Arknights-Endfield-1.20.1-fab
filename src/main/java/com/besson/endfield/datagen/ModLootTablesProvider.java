@@ -1,6 +1,7 @@
 package com.besson.endfield.datagen;
 
 import com.besson.endfield.block.ModBlocks;
+import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 
@@ -39,15 +40,32 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
-        addDrop(ModBlocks.AMETHYST_ORE_BLOCK);
+        addDrop(ModBlocks.AMETHYST_ORE_BLOCK, oreDrops(ModBlocks.AMETHYST_ORE_BLOCK, ModItems.AMETHYST_ORE));
         addDrop(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
-        addDrop(ModBlocks.CUPRIUM_ORE_BLOCK);
-        addDrop(ModBlocks.DEEPSLATE_AMETHYST_ORE);
-        addDrop(ModBlocks.DEEPSLATE_CUPRIUM_ORE);
-        addDrop(ModBlocks.DEEPSLATE_FERRIUM_ORE);
-        addDrop(ModBlocks.DEEPSLATE_ORIGINIUM_ORE);
+        addDrop(ModBlocks.CUPRIUM_ORE_BLOCK, oreDrops(ModBlocks.CUPRIUM_ORE_BLOCK, ModItems.CUPRIUM_ORE));
+        addDrop(ModBlocks.DEEPSLATE_AMETHYST_ORE, oreDrops(ModBlocks.DEEPSLATE_AMETHYST_ORE, ModItems.AMETHYST_ORE));
+        addDrop(ModBlocks.DEEPSLATE_CUPRIUM_ORE, oreDrops(ModBlocks.DEEPSLATE_CUPRIUM_ORE, ModItems.CUPRIUM_ORE));
+        addDrop(ModBlocks.DEEPSLATE_FERRIUM_ORE, oreDrops(ModBlocks.DEEPSLATE_FERRIUM_ORE, ModItems.FERRIUM_ORE));
+        addDrop(ModBlocks.DEEPSLATE_ORIGINIUM_ORE, oreDrops(ModBlocks.DEEPSLATE_ORIGINIUM_ORE, ModItems.ORIGINIUM_ORE));
         addDrop(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
-        addDrop(ModBlocks.FERRIUM_ORE_BLOCK);
-        addDrop(ModBlocks.ORIGINIUM_ORE_BLOCK);
+        addDrop(ModBlocks.FERRIUM_ORE_BLOCK, oreDrops(ModBlocks.FERRIUM_ORE_BLOCK, ModItems.FERRIUM_ORE));
+        addDrop(ModBlocks.ORIGINIUM_ORE_BLOCK, oreDrops(ModBlocks.ORIGINIUM_ORE_BLOCK, ModItems.ORIGINIUM_ORE));
+
+        addDrop(ModBlocks.AKETINE_BLOCK);
+        addDrop(ModBlocks.AMBER_RICE_BLOCK);
+        addDrop(ModBlocks.BUCKFLOWER_BLOCK);
+        addDrop(ModBlocks.CITROME_BLOCK);
+        addDrop(ModBlocks.FIREBUCKLE_BLOCK);
+        addDrop(ModBlocks.FLUFFED_JINCAO_BLOCK);
+        addDrop(ModBlocks.JINCAO_BLOCK);
+        addDrop(ModBlocks.REDJADE_GINSENG_BLOCK);
+        addDrop(ModBlocks.REED_RYE_BLOCK);
+        addDrop(ModBlocks.SANDLEAF_BLOCK);
+        addDrop(ModBlocks.TARTPEPPER_BLOCK);
+        addDrop(ModBlocks.THORNY_YAZHEN_BLOCK);
+        addDrop(ModBlocks.UMBRALINE_BLOCK);
+        addDrop(ModBlocks.YAZHEN_BLOCK);
+
+        addDrop(ModBlocks.CRAFTER);
     }
 }

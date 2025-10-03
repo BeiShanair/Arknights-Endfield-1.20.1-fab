@@ -20,7 +20,7 @@ public class SeedPickingUnitSideBlockEntity extends BlockEntity implements Sided
     private BlockPos parentPos;
 
     public SeedPickingUnitSideBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PLANTING_UNIT_SIDE, pos, state);
+        super(ModBlockEntities.SEED_PICKING_UNIT_SIDE, pos, state);
     }
 
     public @Nullable SeedPickingUnitBlockEntity getParentBlock() {

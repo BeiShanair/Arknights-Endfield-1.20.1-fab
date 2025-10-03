@@ -1,4 +1,9 @@
 # 更新日志 / Changelog
+## 2025-10-03
+- 增加各种植物的世界生成
+- Added world generation for various plants
+- 增加`制造台`方块实体，用于合成工业设备
+- Added `Crafter` block entity for crafting industrial equipment
 
 ## 2025-09-29
 - 完成剩余工业设备适配`机械动力`

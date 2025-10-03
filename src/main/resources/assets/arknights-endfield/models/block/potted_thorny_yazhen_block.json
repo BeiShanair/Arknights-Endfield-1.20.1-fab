@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "arknights-endfield:block/thorny_yazhen_block"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "arknights-endfield:block/buckflower_block"
+  }
+}

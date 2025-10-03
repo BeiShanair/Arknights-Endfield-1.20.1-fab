@@ -45,19 +45,23 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.CUPRIUM_ORE_BLOCK, "赤铜矿");
         translationBuilder.add(ModBlocks.DEEPSLATE_AMETHYST_ORE, "深板岩紫水晶矿");
         translationBuilder.add(ModBlocks.DEEPSLATE_CUPRIUM_ORE, "深板岩赤铜矿");
-        translationBuilder.add(ModBlocks.DEEPSLATE_FERRIUM_ORE, "深板岩铁矿");
+        translationBuilder.add(ModBlocks.DEEPSLATE_FERRIUM_ORE, "深板岩蓝铁矿");
         translationBuilder.add(ModBlocks.DEEPSLATE_ORIGINIUM_ORE, "深板岩源石矿");
         translationBuilder.add(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK, "蓝铁矿脉");
         translationBuilder.add(ModBlocks.FERRIUM_ORE_BLOCK, "蓝铁矿");
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "源石矿");
 
+        translationBuilder.add(ModBlocks.CRAFTER, "制造台");
+
         translationBuilder.add(ModItems.AGGAGRIT, "异香石");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "异香石块");
         translationBuilder.add(ModItems.AGGAGRIT_CLUSTER, "异香石簇");
         translationBuilder.add(ModItems.AKETINE, "酮化灌木");
+        translationBuilder.add("item.arknights-endfield.aketine", "酮化灌木");
         translationBuilder.add(ModItems.AKETINE_POWDER, "酮化灌木粉末");
         translationBuilder.add(ModItems.AKETINE_SEED, "酮化树种");
         translationBuilder.add(ModItems.AMBER_RICE, "Amber Rice");
+        translationBuilder.add("item.arknights-endfield.amber_rice", "Amber Rice");
         translationBuilder.add(ModItems.AMBER_RICE_SEED, "Amber Rice Seed");
         translationBuilder.add(ModItems.AMETHYST_BOTTLE, "紫晶质瓶");
         translationBuilder.add(ModItems.AMETHYST_COMPONENT, "紫晶装备原件");
@@ -72,6 +76,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BIZARRO_CHILI, "Bizarro Chili");
         translationBuilder.add(ModItems.BLANCHED_REMEDY, "苍白秘剂");
         translationBuilder.add(ModItems.BUCKFLOWER, "荞花");
+        translationBuilder.add("item.arknights-endfield.buckflower", "荞花");
         translationBuilder.add(ModItems.BUCKFLOWER_POWDER, "荞花粉末");
         translationBuilder.add(ModItems.BUCKFLOWER_SEED, "荞花种子");
         translationBuilder.add(ModItems.BUCKPILL_L, "大瓶荞复锭剂");
@@ -91,6 +96,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CHITIN_BIT, "虫壳碎屑");
         translationBuilder.add(ModItems.CITROBUCKY_MIX, "荞柑混剂");
         translationBuilder.add(ModItems.CITROME, "柑实");
+        translationBuilder.add("item.arknights-endfield.citrome", "柑实");
         translationBuilder.add(ModItems.CITROME_JAM, "柑橘风味果酱");
         translationBuilder.add(ModItems.CITROME_JELLY, "柑实风味果冻");
         translationBuilder.add(ModItems.CITROME_POWDER, "柑实粉末");
@@ -126,10 +132,12 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.FILLET, "兽肉");
         translationBuilder.add(ModItems.FILLET_CONFIT, "油封赤盐焗兽排");
         translationBuilder.add(ModItems.FIREBUCKLE, "映火荞花");
+        translationBuilder.add("item.arknights-endfield.firebuckle", "映火荞花");
         translationBuilder.add(ModItems.FIREBUCKLE_POWDER, "荞愈粉末");
         translationBuilder.add(ModItems.FIRESTOVE_RICE, "Firestove Rice");
         translationBuilder.add(ModItems.FIRETACK, "Firetack");
         translationBuilder.add(ModItems.FLUFFED_JINCAO, "蓬茸锦草");
+        translationBuilder.add("item.arknights-endfield.fluffed_jincao", "蓬茸锦草");
         translationBuilder.add(ModItems.FLUFFED_JINCAO_POWDER, "蓬茸锦草粉末");
         translationBuilder.add(ModItems.FORTIFYING_INFUSION, "正本补元汤剂");
         translationBuilder.add(ModItems.GARDEN_FRIED_RICE, "Garden Fried Rice");
@@ -145,6 +153,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.HOT_CRUNCHY_RIBS, "重辣烤脆骨");
         translationBuilder.add(ModItems.INDUSTRIAL_EXPLOSIVE, "工业爆炸物");
         translationBuilder.add(ModItems.JINCAO, "锦草");
+        translationBuilder.add("item.arknights-endfield.jincao", "锦草");
         translationBuilder.add(ModItems.JINCAO_DRINK, "锦草软饮");
         translationBuilder.add(ModItems.JINCAO_INFUSION, "Jincao Infusion");
         translationBuilder.add(ModItems.JINCAO_POWDER, "锦草粉末");
@@ -159,16 +168,18 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ORIGINIUM_ORE, "源矿");
         translationBuilder.add(ModItems.ORIGINIUM_POWDER, "源石粉末");
         translationBuilder.add(ModItems.ORIGOCRUST, "晶体外壳");
-        translationBuilder.add(ModItems.ORIGOCRUST9, "晶体外壳(9)");
         translationBuilder.add(ModItems.ORIGOCRUST_POWDER, "晶体外壳粉末");
         translationBuilder.add(ModItems.PACKED_ORIGOCRUST, "密制晶体");
         translationBuilder.add(ModItems.PERPLEXING_MEDICATION, "意乱药剂");
         translationBuilder.add(ModItems.PRESERVE_STEW, "干菜羹");
         translationBuilder.add(ModItems.REDJADE_GINSENG, "琼叶参");
+        translationBuilder.add("item.arknights-endfield.redjade_ginseng", "琼叶参");
         translationBuilder.add(ModItems.REDJADE_GINSENG_SEED, "琼叶参种子");
         translationBuilder.add(ModItems.REED_RYE, "灰芦麦");
+        translationBuilder.add("item.arknights-endfield.reed_rye", "灰芦麦");
         translationBuilder.add(ModItems.REED_RYE_SEED, "灰芦麦种子");
         translationBuilder.add(ModItems.SANDLEAF, "砂叶");
+        translationBuilder.add("item.arknights-endfield.sandleaf", "砂叶");
         translationBuilder.add(ModItems.SANDLEAF_POWDER, "砂叶粉末");
         translationBuilder.add(ModItems.SANDLEAF_SEED, "砂叶种子");
         translationBuilder.add(ModItems.SAVORY_FILLET, "异香兽排");
@@ -186,16 +197,20 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.STEEL_JAR, "钢质罐");
         translationBuilder.add(ModItems.STEEL_PART, "钢质零件");
         translationBuilder.add(ModItems.TARTPEPPER, "苦叶椒");
+        translationBuilder.add("item.arknights-endfield.tartpepper", "苦叶椒");
         translationBuilder.add(ModItems.TARTPEPPER_PICKLE, "苦叶椒腌菜");
         translationBuilder.add(ModItems.TARTPEPPER_SALAD, "苦叶沙拉");
         translationBuilder.add(ModItems.TARTPEPPER_SEED, "苦叶椒种子");
         translationBuilder.add(ModItems.THORNY_YAZHEN, "荆刺芽针");
+        translationBuilder.add("item.arknights-endfield.thorny_yazhen", "荆刺芽针");
         translationBuilder.add(ModItems.THORNY_YAZHEN_POWDER, "荆刺芽针粉末");
         translationBuilder.add(ModItems.UMBRALINE, "Umbraline");
+        translationBuilder.add("item.arknights-endfield.umbraline", "Umbraline");
         translationBuilder.add(ModItems.VALLEY_GRAYBREAD, "Valley Graybread");
         translationBuilder.add(ModItems.WOOD, "原木");
         translationBuilder.add(ModItems.WULING_FRIED_RICE, "Wuling Fried Rice");
         translationBuilder.add(ModItems.YAZHEN, "芽针");
+        translationBuilder.add("item.arknights-endfield.yazhen", "芽针");
         translationBuilder.add(ModItems.YAZHEN_POWDER, "芽针粉末");
         translationBuilder.add(ModItems.YAZHEN_SEED, "芽针种子");
         translationBuilder.add(ModItems.YAZHEN_SPRAY_L, "Yazhen Spray L");
@@ -218,6 +233,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.filling_unit", "灌装机");
         translationBuilder.add("blockEntity.grinding_unit", "研磨机");
         translationBuilder.add("blockEntity.packaging_unit", "封装机");
+        translationBuilder.add("blockEntity.crafter", "制造台");
 
         translationBuilder.add("screen.protocol_core.buffer", "电力缓冲区: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "基础发电量: %s");

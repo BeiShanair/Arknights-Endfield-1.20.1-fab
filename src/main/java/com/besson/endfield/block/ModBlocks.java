@@ -4,6 +4,9 @@ import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.custom.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.FlowerBlock;
+import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -119,6 +122,66 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block ORIGINIUM_ORE_BLOCK = registerBlocks("originium_ore_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+
+    public static final Block AKETINE_BLOCK = registerBlocksWithoutItem("aketine_block",
+            new FlowerBlock(StatusEffects.JUMP_BOOST, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_AKETINE_BLOCK = registerBlocksWithoutItem("potted_aketine_block",
+            new FlowerPotBlock(ModBlocks.AKETINE_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block AMBER_RICE_BLOCK = registerBlocksWithoutItem("amber_rice_block",
+            new FlowerBlock(StatusEffects.SPEED, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_AMBER_RICE_BLOCK = registerBlocksWithoutItem("potted_amber_rice_block",
+            new FlowerPotBlock(ModBlocks.AMBER_RICE_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block BUCKFLOWER_BLOCK = registerBlocksWithoutItem("buckflower_block",
+            new FlowerBlock(StatusEffects.REGENERATION, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_BUCKFLOWER_BLOCK = registerBlocksWithoutItem("potted_buckflower_block",
+            new FlowerPotBlock(ModBlocks.BUCKFLOWER_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block CITROME_BLOCK = registerBlocksWithoutItem("citrome_block",
+            new FlowerBlock(StatusEffects.SATURATION, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_CITROME_BLOCK = registerBlocksWithoutItem("potted_citrome_block",
+            new FlowerPotBlock(ModBlocks.CITROME_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FIREBUCKLE_BLOCK = registerBlocksWithoutItem("firebuckle_block",
+            new FlowerBlock(StatusEffects.FIRE_RESISTANCE, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_FIREBUCKLE_BLOCK = registerBlocksWithoutItem("potted_firebuckle_block",
+            new FlowerPotBlock(ModBlocks.FIREBUCKLE_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FLUFFED_JINCAO_BLOCK = registerBlocksWithoutItem("fluffed_jincao_block",
+            new FlowerBlock(StatusEffects.SLOWNESS, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_FLUFFED_JINCAO_BLOCK = registerBlocksWithoutItem("potted_fluffed_jincao_block",
+            new FlowerPotBlock(ModBlocks.FLUFFED_JINCAO_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block JINCAO_BLOCK = registerBlocksWithoutItem("jincao_block",
+            new FlowerBlock(StatusEffects.INSTANT_HEALTH, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_JINCAO_BLOCK = registerBlocksWithoutItem("potted_jincao_block",
+            new FlowerPotBlock(ModBlocks.JINCAO_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block REDJADE_GINSENG_BLOCK = registerBlocksWithoutItem("redjade_ginseng_block",
+            new FlowerBlock(StatusEffects.STRENGTH, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_REDJADE_GINSENG_BLOCK = registerBlocksWithoutItem("potted_redjade_ginseng_block",
+            new FlowerPotBlock(ModBlocks.REDJADE_GINSENG_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block REED_RYE_BLOCK = registerBlocksWithoutItem("reed_rye_block",
+            new FlowerBlock(StatusEffects.HASTE, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_REED_RYE_BLOCK = registerBlocksWithoutItem("potted_reed_rye_block",
+            new FlowerPotBlock(ModBlocks.REED_RYE_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SANDLEAF_BLOCK = registerBlocksWithoutItem("sandleaf_block",
+            new FlowerBlock(StatusEffects.WATER_BREATHING, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_SANDLEAF_BLOCK = registerBlocksWithoutItem("potted_sandleaf_block",
+            new FlowerPotBlock(ModBlocks.SANDLEAF_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block TARTPEPPER_BLOCK = registerBlocksWithoutItem("tartpepper_block",
+            new FlowerBlock(StatusEffects.NAUSEA, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_TARTPEPPER_BLOCK = registerBlocksWithoutItem("potted_tartpepper_block",
+            new FlowerPotBlock(ModBlocks.TARTPEPPER_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block THORNY_YAZHEN_BLOCK = registerBlocksWithoutItem("thorny_yazhen_block",
+            new FlowerBlock(StatusEffects.POISON, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_THORNY_YAZHEN_BLOCK = registerBlocksWithoutItem("potted_thorny_yazhen_block",
+            new FlowerPotBlock(ModBlocks.THORNY_YAZHEN_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block UMBRALINE_BLOCK = registerBlocksWithoutItem("umbraline_block",
+            new FlowerBlock(StatusEffects.INVISIBILITY, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_UMBRALINE_BLOCK = registerBlocksWithoutItem("potted_umbraline_block",
+            new FlowerPotBlock(ModBlocks.UMBRALINE_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block YAZHEN_BLOCK = registerBlocksWithoutItem("yazhen_block",
+            new FlowerBlock(StatusEffects.REGENERATION, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
+    public static final Block POTTED_YAZHEN_BLOCK = registerBlocksWithoutItem("potted_yazhen_block",
+            new FlowerPotBlock(ModBlocks.YAZHEN_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+
+    public static final Block CRAFTER = registerBlocks("crafter",
+            new CrafterBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
 
     private static Block registerBlocksWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, name), block);

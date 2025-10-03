@@ -1,0 +1,11 @@
+{
+  "type": "arknights-endfield:crafter",
+  "input": {
+    "arknights-endfield:ferrium_part": 10,
+    "arknights-endfield:portable_originium_rig": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:electric_mining_rig_mk_ii"
+  }
+}

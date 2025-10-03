@@ -87,6 +87,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<ThermalBankSideBlockEntity> THERMAL_BANK_SIDE = create("thermal_bank_side",
             BlockEntityType.Builder.create(ThermalBankSideBlockEntity::new, ModBlocks.THERMAL_BANK_SIDE));
 
+    public static final BlockEntityType<CrafterBlockEntity> CRAFTER = create("crafter",
+            BlockEntityType.Builder.create(CrafterBlockEntity::new, ModBlocks.CRAFTER));
+
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(ArknightsEndfield.MOD_ID, id), builder.build(type));

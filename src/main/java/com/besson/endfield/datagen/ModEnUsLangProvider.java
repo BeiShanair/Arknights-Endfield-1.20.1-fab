@@ -51,13 +51,17 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.FERRIUM_ORE_BLOCK, "Ferrium Ore");
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "Originium Ore");
 
+        translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
+
         translationBuilder.add(ModItems.AGGAGRIT, "Aggagrit");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "Aggagrit Block");
         translationBuilder.add(ModItems.AGGAGRIT_CLUSTER, "Aggagrit Cluster");
         translationBuilder.add(ModItems.AKETINE, "Aketine");
+        translationBuilder.add("item.arknights-endfield.aketine", "Aketine");
         translationBuilder.add(ModItems.AKETINE_POWDER, "Aketine Powder");
         translationBuilder.add(ModItems.AKETINE_SEED, "Aketine Seed");
         translationBuilder.add(ModItems.AMBER_RICE, "Amber Rice");
+        translationBuilder.add("item.arknights-endfield.amber_rice", "Amber Rice");
         translationBuilder.add(ModItems.AMBER_RICE_SEED, "Amber Rice Seed");
         translationBuilder.add(ModItems.AMETHYST_BOTTLE, "Amethyst Bottle");
         translationBuilder.add(ModItems.AMETHYST_COMPONENT, "Amethyst Component");
@@ -72,6 +76,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BIZARRO_CHILI, "Bizarro Chili");
         translationBuilder.add(ModItems.BLANCHED_REMEDY, "Blanched Remedy");
         translationBuilder.add(ModItems.BUCKFLOWER, "Buckflower");
+        translationBuilder.add("item.arknights-endfield.buckflower", "Buckflower");
         translationBuilder.add(ModItems.BUCKFLOWER_POWDER, "Buckflower Powder");
         translationBuilder.add(ModItems.BUCKFLOWER_SEED, "Buckflower Seed");
         translationBuilder.add(ModItems.BUCKPILL_L, "Buckpill L");
@@ -91,6 +96,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CHITIN_BIT, "Chitin Bit");
         translationBuilder.add(ModItems.CITROBUCKY_MIX, "Citrobucky Mix");
         translationBuilder.add(ModItems.CITROME, "Citrome");
+        translationBuilder.add("item.arknights-endfield.citrome", "Citrome");
         translationBuilder.add(ModItems.CITROME_JAM, "Citrome Jam");
         translationBuilder.add(ModItems.CITROME_JELLY, "Citrome Jelly");
         translationBuilder.add(ModItems.CITROME_POWDER, "Citrome Powder");
@@ -126,10 +132,12 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.FILLET, "Fillet");
         translationBuilder.add(ModItems.FILLET_CONFIT, "Fillet Confit");
         translationBuilder.add(ModItems.FIREBUCKLE, "Firebuckle");
+        translationBuilder.add("item.arknights-endfield.firebuckle", "Firebuckle");
         translationBuilder.add(ModItems.FIREBUCKLE_POWDER, "Firebuckle Powder");
         translationBuilder.add(ModItems.FIRESTOVE_RICE, "Firestove Rice");
         translationBuilder.add(ModItems.FIRETACK, "Firetack");
         translationBuilder.add(ModItems.FLUFFED_JINCAO, "Fluffed Jincao");
+        translationBuilder.add("item.arknights-endfield.fluffed_jincao", "Fluffed Jincao");
         translationBuilder.add(ModItems.FLUFFED_JINCAO_POWDER, "Fluffed Jincao Powder");
         translationBuilder.add(ModItems.FORTIFYING_INFUSION, "Fortifying Infusion");
         translationBuilder.add(ModItems.GARDEN_FRIED_RICE, "Garden Fried Rice");
@@ -145,6 +153,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.HOT_CRUNCHY_RIBS, "Hot Crunchy Ribs");
         translationBuilder.add(ModItems.INDUSTRIAL_EXPLOSIVE, "Industrial Explosive");
         translationBuilder.add(ModItems.JINCAO, "Jincao");
+        translationBuilder.add("item.arknights-endfield.jincao", "Jincao");
         translationBuilder.add(ModItems.JINCAO_DRINK, "Jincao Drink");
         translationBuilder.add(ModItems.JINCAO_INFUSION, "Jincao Infusion");
         translationBuilder.add(ModItems.JINCAO_POWDER, "Jincao Powder");
@@ -159,16 +168,18 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.ORIGINIUM_ORE, "Originium Ore");
         translationBuilder.add(ModItems.ORIGINIUM_POWDER, "Originium Powder");
         translationBuilder.add(ModItems.ORIGOCRUST, "Origocrust");
-        translationBuilder.add(ModItems.ORIGOCRUST9, "Origocrust(9)");
         translationBuilder.add(ModItems.ORIGOCRUST_POWDER, "Origocrust Powder");
         translationBuilder.add(ModItems.PACKED_ORIGOCRUST, "Packed Origocrust");
         translationBuilder.add(ModItems.PERPLEXING_MEDICATION, "Perplexing Medication");
         translationBuilder.add(ModItems.PRESERVE_STEW, "Preserve Stew");
         translationBuilder.add(ModItems.REDJADE_GINSENG, "Redjade Ginseng");
+        translationBuilder.add("item.arknights-endfield.redjade_ginseng", "Redjade Ginseng");
         translationBuilder.add(ModItems.REDJADE_GINSENG_SEED, "Redjade Ginseng Seed");
         translationBuilder.add(ModItems.REED_RYE, "Reed Rye");
+        translationBuilder.add("item.arknights-endfield.reed_rye", "Reed Rye");
         translationBuilder.add(ModItems.REED_RYE_SEED, "Reed Rye Seed");
         translationBuilder.add(ModItems.SANDLEAF, "Sandleaf");
+        translationBuilder.add("item.arknights-endfield.sandleaf", "Sandleaf");
         translationBuilder.add(ModItems.SANDLEAF_POWDER, "Sandleaf Powder");
         translationBuilder.add(ModItems.SANDLEAF_SEED, "Sandleaf Seed");
         translationBuilder.add(ModItems.SAVORY_FILLET, "Savory Fillet");
@@ -186,16 +197,20 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.STEEL_JAR, "Steel Jar");
         translationBuilder.add(ModItems.STEEL_PART, "Steel Part");
         translationBuilder.add(ModItems.TARTPEPPER, "Tartpepper");
+        translationBuilder.add("item.arknights-endfield.tartpepper", "Tartpepper");
         translationBuilder.add(ModItems.TARTPEPPER_PICKLE, "Tartpepper Pickle");
         translationBuilder.add(ModItems.TARTPEPPER_SALAD, "Tartpepper Salad");
         translationBuilder.add(ModItems.TARTPEPPER_SEED, "Tartpepper Seed");
         translationBuilder.add(ModItems.THORNY_YAZHEN, "Thorny Yazhen");
+        translationBuilder.add("item.arknights-endfield.thorny_yazhen", "Thorny Yazhen");
         translationBuilder.add(ModItems.THORNY_YAZHEN_POWDER, "Thorny Yazhen Powder");
         translationBuilder.add(ModItems.UMBRALINE, "Umbraline");
+        translationBuilder.add("item.arknights-endfield.umbraline", "Umbraline");
         translationBuilder.add(ModItems.VALLEY_GRAYBREAD, "Valley Graybread");
         translationBuilder.add(ModItems.WOOD, "Wood");
         translationBuilder.add(ModItems.WULING_FRIED_RICE, "Wuling Fried Rice");
         translationBuilder.add(ModItems.YAZHEN, "Yazhen");
+        translationBuilder.add("item.arknights-endfield.yazhen", "Yazhen");
         translationBuilder.add(ModItems.YAZHEN_POWDER, "Yazhen Powder");
         translationBuilder.add(ModItems.YAZHEN_SEED, "Yazhen Seed");
         translationBuilder.add(ModItems.YAZHEN_SPRAY_L, "Yazhen Spray L");
@@ -218,6 +233,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.filling_unit", "Filling Unit");
         translationBuilder.add("blockEntity.grinding_unit", "Grinding Unit");
         translationBuilder.add("blockEntity.packaging_unit", "Packaging Unit");
+        translationBuilder.add("blockEntity.crafter", "Crafter");
 
         translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
         translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");

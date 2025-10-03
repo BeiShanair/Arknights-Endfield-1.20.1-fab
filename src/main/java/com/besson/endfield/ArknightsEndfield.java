@@ -4,6 +4,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
+import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.recipe.ModRecipes;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.utils.JoinHandler;
@@ -34,6 +35,8 @@ public class ArknightsEndfield implements ModInitializer {
 
 		GeckoLib.initialize();
 		JoinHandler.register();
+
+		ModNetWorking.register();
 
 		LOGGER.info("Hello Fabric world!");
 	}

@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:crafter",
+  "input": {
+    "arknights-endfield:originium_ore": 5
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:refining_unit"
+  }
+}

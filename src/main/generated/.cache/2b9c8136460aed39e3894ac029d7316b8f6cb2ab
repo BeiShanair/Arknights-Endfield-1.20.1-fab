@@ -1,7 +1,7 @@
-// 1.20.1	2025-09-29T18:09:42.2492184	Endfield Industry/Model Definitions
+// 1.20.1	2025-10-03T21:10:39.5216067	Endfield Industry/Model Definitions
 343625bf0c239b413a37956e83370249a1372898 assets\arknights-endfield\blockstates\filling_unit_side.json
-7e80286ba9fd09936b6377ed7eec748193371576 assets\arknights-endfield\models\item\citrome_pudding.json
 892f722e59860e68e1df6c0e2a1e4bbd96efa74f assets\arknights-endfield\models\item\cuprium_part.json
+7e80286ba9fd09936b6377ed7eec748193371576 assets\arknights-endfield\models\item\citrome_pudding.json
 c99d58c0312f3bb98b00b96a88c07be402e83275 assets\arknights-endfield\models\item\firetack.json
 92f03368d8b593502ca41abc8c4f9924985e6ce1 assets\arknights-endfield\models\item\iron_mineral_vein_block.json
 35a36888087f4e1f1b9c4fc0918fe900e21dc199 assets\arknights-endfield\models\item\seed_picking_unit.json
@@ -69,6 +69,7 @@ b43d993d85b17c64bfcfb4acd7d2a3a95c958091 assets\arknights-endfield\models\item\b
 e964a00fefdbac2dd39c7d14aeb0980ce25dede6 assets\arknights-endfield\models\item\ferrium_bottle.json
 e71adf2c73e539028ee50b3257e0a0e82235d662 assets\arknights-endfield\blockstates\deepslate_amethyst_ore.json
 3388e814a7950cabd040ec99bb260f08e7a3490e assets\arknights-endfield\blockstates\moulding_unit_side.json
+609a6f231fab68a07485eb296bc9e94d7bfb13ce assets\arknights-endfield\models\block\crafter.json
 ec29702f974b2a385cee379289776402b8cfb65d assets\arknights-endfield\models\item\soaked_woodchip.json
 00d0f70535a8de8b636029eb91b79dbfbd09fef4 assets\arknights-endfield\blockstates\copper_mineral_vein_block.json
 53e797fca7a85eb576209cea869789faa0b74fa0 assets\arknights-endfield\models\item\originium_powder.json
@@ -93,7 +94,6 @@ f0a133650ab0718eef49dc40f5e0f91dace26052 assets\arknights-endfield\blockstates\d
 02dda33fdc0670f9d2d5f404e75408fd2d085c76 assets\arknights-endfield\models\item\dense_carbon_powder.json
 e21ecf784ddc71bfe2e335d4656491720246c999 assets\arknights-endfield\models\item\planting_unit.json
 1cc79ed0a403781920dc0babf0c0e393961175bb assets\arknights-endfield\models\block\emerald_mineral_vein_block.json
-ccea5ac7ab3c52a8fd5e55b7732427d5b4167e54 assets\arknights-endfield\models\item\origocrust9.json
 e44d8904cff3b74394209dd368bf0e942ec2a944 assets\arknights-endfield\models\item\reed_rye_seed.json
 8f6adeb77299242b2cd6df4e7a540388f7b7ee0a assets\arknights-endfield\models\item\cuprium_powder.json
 dc6377815b5a48a25d1aa705b3ebf0c3aacf9900 assets\arknights-endfield\blockstates\originium_mineral_vein_block.json
@@ -114,6 +114,7 @@ c4acb1338eb3769811e91b8aa427e33b3271e4fd assets\arknights-endfield\models\item\c
 92fa8836744122e813e09d4d172bc6d658abf65c assets\arknights-endfield\models\item\canned_citrome_b.json
 5f3b7bceda4c88d2dfebfe54d6e55791d9e5f14b assets\arknights-endfield\models\item\buck_capsule_a.json
 5f2cf60d7775249ac724c048a40cece6bfe115ad assets\arknights-endfield\models\item\scorchbug.json
+609c57d08b09f25d94e1e297bbd45110e580831e assets\arknights-endfield\models\item\crafter.json
 faae75439444309a85f1c9793234c042a08e71bd assets\arknights-endfield\blockstates\refining_unit.json
 191bf372b26306fa4a798d85aa9b917ccf779ab7 assets\arknights-endfield\blockstates\refining_unit_side.json
 9be0b61d07b7cc5cb568c9436967b75b7f6a1de9 assets\arknights-endfield\models\item\dense_originium_powder.json
@@ -180,6 +181,7 @@ f6ebf023dd74fabb23f02cda464680be4d548d4e assets\arknights-endfield\blockstates\r
 afbb76c0c74fb9a1a8f1e0627e8640c1c8b08eae assets\arknights-endfield\models\item\cuprium_mineral_vein_block.json
 06a67efe3ea844e354973b16342d199c6aeb00d9 assets\arknights-endfield\models\item\ferrium_powder.json
 e3f5f72a6b6524030d855b3f461799e6894af4ab assets\arknights-endfield\models\item\redjade_ginseng.json
+92905d7baa8204ac1d445625c57f56d33adf2ae2 assets\arknights-endfield\blockstates\crafter.json
 9cc049599f4e70698abd83e5c7a9a3ae7789f0af assets\arknights-endfield\models\item\carbon_powder.json
 862b74618e1b5fde5b3856d656a916712cbfc372 assets\arknights-endfield\blockstates\gold_mineral_vein_block.json
 0cae0fe80603121f108aeeb88c746abab427269a assets\arknights-endfield\models\item\arts_vial.json
@@ -212,8 +214,8 @@ d0902a6318af53e153af1785cb63a6fd16d8ecd4 assets\arknights-endfield\models\item\p
 21683c432db4c2b0237f0552ce14e61ab606cbfc assets\arknights-endfield\models\item\thorny_yazhen.json
 c8101bd57b238d24bae6f9bb5d66b5414d5a1ed4 assets\arknights-endfield\models\item\diamond_mineral_vein_block.json
 6731fe88b7e1a3c0b2291b4029bd9fc8ee668787 assets\arknights-endfield\models\item\gold_mineral_vein_block.json
-50720b517a157629699c75924ae6d80229976cd5 assets\arknights-endfield\models\item\buckpill_rf.json
 d64221f35871d7c10101de6e572e8913edaf10af assets\arknights-endfield\models\item\hollow_bonechip.json
+50720b517a157629699c75924ae6d80229976cd5 assets\arknights-endfield\models\item\buckpill_rf.json
 2d4c1871250941e58b39449c20a09598c2ef956b assets\arknights-endfield\models\item\yazhen.json
 f4431ab3eb7676cb3fdb312da0cdf0e0416fd8d6 assets\arknights-endfield\models\item\fluffed_jincao.json
 557600fd3719ab14876c767b95beec7081abe639 assets\arknights-endfield\models\item\protocol_anchor_core.json

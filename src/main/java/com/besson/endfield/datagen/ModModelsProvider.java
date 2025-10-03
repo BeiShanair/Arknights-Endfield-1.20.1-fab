@@ -69,6 +69,8 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRAFTER);
     }
 
     @Override
@@ -181,7 +183,6 @@ public class ModModelsProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ORIGINIUM_ORE, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORIGINIUM_POWDER, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORIGOCRUST, Models.GENERATED);
-        itemModelGenerator.register(ModItems.ORIGOCRUST9, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORIGOCRUST_POWDER, Models.GENERATED);
         itemModelGenerator.register(ModItems.PACKED_ORIGOCRUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.PERPLEXING_MEDICATION, Models.GENERATED);

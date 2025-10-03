@@ -20,7 +20,7 @@ public class ModItems {
     public static final Item ELECTRIC_MINING_RIG_ITEM = registerItems("electric_mining_rig",
             new ElectricMiningRigItem(ModBlocks.ELECTRIC_MINING_RIG, new Item.Settings()));
     public static final Item ELECTRIC_MINING_RIG_MK_II_ITEM = registerItems("electric_mining_rig_mk_ii",
-            new ElectricMiningRigItem(ModBlocks.ELECTRIC_MINING_RIG_MK_II, new Item.Settings()));
+            new ElectricMiningRigMkIIItem(ModBlocks.ELECTRIC_MINING_RIG_MK_II, new Item.Settings()));
     public static final Item PORTABLE_ORIGINIUM_RIG_ITEM = registerItems("portable_originium_rig",
             new PortableOriginiumRigItem(ModBlocks.PORTABLE_ORIGINIUM_RIG, new Item.Settings()));
 
@@ -50,10 +50,10 @@ public class ModItems {
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_CLUSTER = registerItems("aggagrit_cluster",new Item(new Item.Settings()));
-    public static final Item AKETINE = registerItems("aketine",new Item(new Item.Settings()));
+    public static final Item AKETINE = registerItems("aketine",new BlockItem(ModBlocks.AKETINE_BLOCK, new Item.Settings()));
     public static final Item AKETINE_POWDER = registerItems("aketine_powder",new Item(new Item.Settings()));
     public static final Item AKETINE_SEED = registerItems("aketine_seed",new Item(new Item.Settings()));
-    public static final Item AMBER_RICE = registerItems("amber_rice",new Item(new Item.Settings()));
+    public static final Item AMBER_RICE = registerItems("amber_rice",new BlockItem(ModBlocks.AMBER_RICE_BLOCK, new Item.Settings()));
     public static final Item AMBER_RICE_SEED = registerItems("amber_rice_seed",new Item(new Item.Settings()));
     public static final Item AMETHYST_BOTTLE = registerItems("amethyst_bottle",new Item(new Item.Settings()));
     public static final Item AMETHYST_COMPONENT = registerItems("amethyst_component",new Item(new Item.Settings()));
@@ -67,7 +67,7 @@ public class ModItems {
     public static final Item BIZARROTACK = registerItems("bizarrotack",new Item(new Item.Settings()));
     public static final Item BIZARRO_CHILI = registerItems("bizarro_chili",new Item(new Item.Settings()));
     public static final Item BLANCHED_REMEDY = registerItems("blanched_remedy",new Item(new Item.Settings()));
-    public static final Item BUCKFLOWER = registerItems("buckflower",new Item(new Item.Settings()));
+    public static final Item BUCKFLOWER = registerItems("buckflower",new BlockItem(ModBlocks.BUCKFLOWER_BLOCK, new Item.Settings()));
     public static final Item BUCKFLOWER_POWDER = registerItems("buckflower_powder",new Item(new Item.Settings()));
     public static final Item BUCKFLOWER_SEED = registerItems("buckflower_seed",new Item(new Item.Settings()));
     public static final Item BUCKPILL_L = registerItems("buckpill_l",new Item(new Item.Settings()));
@@ -86,7 +86,7 @@ public class ModItems {
     public static final Item CARTILAGE_TACK = registerItems("cartilage_tack",new Item(new Item.Settings()));
     public static final Item CHITIN_BIT = registerItems("chitin_bit",new Item(new Item.Settings()));
     public static final Item CITROBUCKY_MIX = registerItems("citrobucky_mix",new Item(new Item.Settings()));
-    public static final Item CITROME = registerItems("citrome",new Item(new Item.Settings()));
+    public static final Item CITROME = registerItems("citrome",new BlockItem(ModBlocks.CITROME_BLOCK, new Item.Settings()));
     public static final Item CITROME_JAM = registerItems("citrome_jam",new Item(new Item.Settings()));
     public static final Item CITROME_JELLY = registerItems("citrome_jelly",new Item(new Item.Settings()));
     public static final Item CITROME_POWDER = registerItems("citrome_powder",new Item(new Item.Settings()));
@@ -121,11 +121,11 @@ public class ModItems {
     public static final Item FERRIUM_POWDER = registerItems("ferrium_powder",new Item(new Item.Settings()));
     public static final Item FILLET = registerItems("fillet",new Item(new Item.Settings()));
     public static final Item FILLET_CONFIT = registerItems("fillet_confit",new Item(new Item.Settings()));
-    public static final Item FIREBUCKLE = registerItems("firebuckle",new Item(new Item.Settings()));
+    public static final Item FIREBUCKLE = registerItems("firebuckle",new BlockItem(ModBlocks.FIREBUCKLE_BLOCK, new Item.Settings()));
     public static final Item FIREBUCKLE_POWDER = registerItems("firebuckle_powder",new Item(new Item.Settings()));
     public static final Item FIRESTOVE_RICE = registerItems("firestove_rice",new Item(new Item.Settings()));
     public static final Item FIRETACK = registerItems("firetack",new Item(new Item.Settings()));
-    public static final Item FLUFFED_JINCAO = registerItems("fluffed_jincao",new Item(new Item.Settings()));
+    public static final Item FLUFFED_JINCAO = registerItems("fluffed_jincao",new BlockItem(ModBlocks.FLUFFED_JINCAO_BLOCK, new Item.Settings()));
     public static final Item FLUFFED_JINCAO_POWDER = registerItems("fluffed_jincao_powder",new Item(new Item.Settings()));
     public static final Item FORTIFYING_INFUSION = registerItems("fortifying_infusion",new Item(new Item.Settings()));
     public static final Item GARDEN_FRIED_RICE = registerItems("garden_fried_rice",new Item(new Item.Settings()));
@@ -140,7 +140,7 @@ public class ModItems {
     public static final Item HOLLOW_BONECHIP = registerItems("hollow_bonechip",new Item(new Item.Settings()));
     public static final Item HOT_CRUNCHY_RIBS = registerItems("hot_crunchy_ribs",new Item(new Item.Settings()));
     public static final Item INDUSTRIAL_EXPLOSIVE = registerItems("industrial_explosive",new Item(new Item.Settings()));
-    public static final Item JINCAO = registerItems("jincao",new Item(new Item.Settings()));
+    public static final Item JINCAO = registerItems("jincao",new BlockItem(ModBlocks.JINCAO_BLOCK, new Item.Settings()));
     public static final Item JINCAO_DRINK = registerItems("jincao_drink",new Item(new Item.Settings()));
     public static final Item JINCAO_INFUSION = registerItems("jincao_infusion",new Item(new Item.Settings()));
     public static final Item JINCAO_POWDER = registerItems("jincao_powder",new Item(new Item.Settings()));
@@ -155,16 +155,15 @@ public class ModItems {
     public static final Item ORIGINIUM_ORE = registerItems("originium_ore",new Item(new Item.Settings()));
     public static final Item ORIGINIUM_POWDER = registerItems("originium_powder",new Item(new Item.Settings()));
     public static final Item ORIGOCRUST = registerItems("origocrust",new Item(new Item.Settings()));
-    public static final Item ORIGOCRUST9 = registerItems("origocrust9",new Item(new Item.Settings()));
     public static final Item ORIGOCRUST_POWDER = registerItems("origocrust_powder",new Item(new Item.Settings()));
     public static final Item PACKED_ORIGOCRUST = registerItems("packed_origocrust",new Item(new Item.Settings()));
     public static final Item PERPLEXING_MEDICATION = registerItems("perplexing_medication",new Item(new Item.Settings()));
     public static final Item PRESERVE_STEW = registerItems("preserve_stew",new Item(new Item.Settings()));
-    public static final Item REDJADE_GINSENG = registerItems("redjade_ginseng",new Item(new Item.Settings()));
+    public static final Item REDJADE_GINSENG = registerItems("redjade_ginseng",new BlockItem(ModBlocks.REDJADE_GINSENG_BLOCK, new Item.Settings()));
     public static final Item REDJADE_GINSENG_SEED = registerItems("redjade_ginseng_seed",new Item(new Item.Settings()));
-    public static final Item REED_RYE = registerItems("reed_rye",new Item(new Item.Settings()));
+    public static final Item REED_RYE = registerItems("reed_rye",new BlockItem(ModBlocks.REED_RYE_BLOCK, new Item.Settings()));
     public static final Item REED_RYE_SEED = registerItems("reed_rye_seed",new Item(new Item.Settings()));
-    public static final Item SANDLEAF = registerItems("sandleaf",new Item(new Item.Settings()));
+    public static final Item SANDLEAF = registerItems("sandleaf",new BlockItem(ModBlocks.SANDLEAF_BLOCK, new Item.Settings()));
     public static final Item SANDLEAF_POWDER = registerItems("sandleaf_powder",new Item(new Item.Settings()));
     public static final Item SANDLEAF_SEED = registerItems("sandleaf_seed",new Item(new Item.Settings()));
     public static final Item SAVORY_FILLET = registerItems("savory_fillet",new Item(new Item.Settings()));
@@ -181,17 +180,17 @@ public class ModItems {
     public static final Item STEEL_BOTTLE = registerItems("steel_bottle",new Item(new Item.Settings()));
     public static final Item STEEL_JAR = registerItems("steel_jar",new Item(new Item.Settings()));
     public static final Item STEEL_PART = registerItems("steel_part",new Item(new Item.Settings()));
-    public static final Item TARTPEPPER = registerItems("tartpepper",new Item(new Item.Settings()));
+    public static final Item TARTPEPPER = registerItems("tartpepper",new BlockItem(ModBlocks.TARTPEPPER_BLOCK, new Item.Settings()));
     public static final Item TARTPEPPER_PICKLE = registerItems("tartpepper_pickle",new Item(new Item.Settings()));
     public static final Item TARTPEPPER_SALAD = registerItems("tartpepper_salad",new Item(new Item.Settings()));
     public static final Item TARTPEPPER_SEED = registerItems("tartpepper_seed",new Item(new Item.Settings()));
-    public static final Item THORNY_YAZHEN = registerItems("thorny_yazhen",new Item(new Item.Settings()));
+    public static final Item THORNY_YAZHEN = registerItems("thorny_yazhen",new BlockItem(ModBlocks.THORNY_YAZHEN_BLOCK, new Item.Settings()));
     public static final Item THORNY_YAZHEN_POWDER = registerItems("thorny_yazhen_powder",new Item(new Item.Settings()));
-    public static final Item UMBRALINE = registerItems("umbraline",new Item(new Item.Settings()));
+    public static final Item UMBRALINE = registerItems("umbraline",new BlockItem(ModBlocks.UMBRALINE_BLOCK, new Item.Settings()));
     public static final Item VALLEY_GRAYBREAD = registerItems("valley_graybread",new Item(new Item.Settings()));
     public static final Item WOOD = registerItems("wood",new Item(new Item.Settings()));
     public static final Item WULING_FRIED_RICE = registerItems("wuling_fried_rice",new Item(new Item.Settings()));
-    public static final Item YAZHEN = registerItems("yazhen",new Item(new Item.Settings()));
+    public static final Item YAZHEN = registerItems("yazhen",new BlockItem(ModBlocks.YAZHEN_BLOCK, new Item.Settings()));
     public static final Item YAZHEN_POWDER = registerItems("yazhen_powder",new Item(new Item.Settings()));
     public static final Item YAZHEN_SEED = registerItems("yazhen_seed",new Item(new Item.Settings()));
     public static final Item YAZHEN_SPRAY_L = registerItems("yazhen_spray_l",new Item(new Item.Settings()));

@@ -1,0 +1,10 @@
+{
+  "type": "arknights-endfield:crafter",
+  "input": {
+    "arknights-endfield:origocrust": 20
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights-endfield:relay_tower"
+  }
+}

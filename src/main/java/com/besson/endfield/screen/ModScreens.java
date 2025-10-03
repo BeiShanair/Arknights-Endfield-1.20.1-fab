@@ -68,6 +68,11 @@ public class ModScreens {
     public static final ScreenHandlerType<PackagingUnitScreenHandler> PACKAGING_UNIT_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit_screen"),
                     new ExtendedScreenHandlerType<>(PackagingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<CrafterScreenHandler> CRAFTER_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "crafter_screen"),
+                    new ExtendedScreenHandlerType<>(CrafterScreenHandler::new));
+
     public static void register() {
 
     }

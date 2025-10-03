@@ -26,48 +26,15 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> consumer) {
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModItems.PORTABLE_ORIGINIUM_RIG_ITEM)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST)
-                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "portable_originium_rig"));
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModItems.REFINING_UNIT_ITEM)
-                .input(ModItems.ORIGINIUM_ORE)
-                .input(ModItems.ORIGINIUM_ORE)
-                .input(ModItems.ORIGINIUM_ORE)
-                .input(ModItems.ORIGINIUM_ORE)
-                .input(ModItems.ORIGINIUM_ORE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.CRAFTER)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .input('#', ModItems.ORIGINIUM_ORE)
                 .criterion("has_originium_ore", conditionsFromItem(ModItems.ORIGINIUM_ORE))
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit"));
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ORIGOCRUST9)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .input('#', ModItems.ORIGOCRUST)
-                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "origocrust9"));
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModItems.FITTING_UNIT_ITEM)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST9)
-                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
-                .criterion("has_origocrust9", conditionsFromItem(ModItems.ORIGOCRUST9))
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit"));
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModItems.MOULDING_UNIT_ITEM)
-                .input(ModItems.ORIGOCRUST)
-                .input(ModItems.ORIGOCRUST9)
-                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
-                .criterion("has_origocrust9", conditionsFromItem(ModItems.ORIGOCRUST9))
-                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit"));
-
-        OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, Items.AMETHYST_SHARD)
+        OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
         OreRigRecipeBuilder.create(ModBlocks.COAL_MINERAL_VEIN_BLOCK, Items.COAL)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/coal_mineral_vein"));
@@ -83,10 +50,14 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/iron_mineral_vein"));
         OreRigRecipeBuilder.create(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK, Items.LAPIS_LAZULI)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/lapis_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, Items.IRON_INGOT)
+        OreRigRecipeBuilder.create(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, ModItems.ORIGINIUM_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/originium_mineral_vein"));
         OreRigRecipeBuilder.create(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, Items.REDSTONE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/redstone_mineral_vein"));
+        OreRigRecipeBuilder.create(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK, ModItems.FERRIUM_ORE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/ferrium_mineral_vein"));
+        OreRigRecipeBuilder.create(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK, ModItems.CUPRIUM_ORE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/cuprium_mineral_vein"));
 
         RefiningUnitRecipeBuilder.create(ModItems.DENSE_CARBON_POWDER, ModItems.STABILIZED_CARBON)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/dense_carbon_powder"));
@@ -320,5 +291,54 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 new ItemCountInput(ModItems.AKETINE_POWDER, 1));
         PackagingUnitRecipeBuilder.create(INDUSTRIAL_EXPLOSIVE, ModItems.INDUSTRIAL_EXPLOSIVE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/industrial_explosive"));
+
+        CrafterRecipeBuilder.create(ModBlocks.PORTABLE_ORIGINIUM_RIG)
+                .input(ModItems.ORIGOCRUST, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/portable_originium_rig"));
+        CrafterRecipeBuilder.create(ModBlocks.ELECTRIC_MINING_RIG)
+                .input(ModItems.ORIGOCRUST, 5)
+                .input(ModBlocks.PORTABLE_ORIGINIUM_RIG, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/electric_mining_rig"));
+        CrafterRecipeBuilder.create(ModBlocks.ELECTRIC_MINING_RIG_MK_II)
+                .input(ModItems.FERRIUM_PART, 10)
+                .input(ModBlocks.PORTABLE_ORIGINIUM_RIG, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/electric_mining_rig_mk_ii"));
+        CrafterRecipeBuilder.create(ModBlocks.REFINING_UNIT)
+                .input(ModItems.ORIGINIUM_ORE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/refining_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.SHREDDING_UNIT)
+                .input(ModItems.ORIGOCRUST, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/shredding_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.FITTING_UNIT)
+                .input(ModItems.ORIGOCRUST, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/fitting_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.MOULDING_UNIT)
+                .input(ModItems.ORIGOCRUST, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/moulding_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.PLANTING_UNIT)
+                .input(ModItems.CARBON, 10)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/planting_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.SEED_PICKING_UNIT)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/seed_picking_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.GEARING_UNIT)
+                .input(ModItems.ORIGOCRUST, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/gearing_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.FILLING_UNIT)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/filling_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.PACKAGING_UNIT)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/packaging_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.GRINDING_UNIT)
+                .input(ModItems.FERRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/grinding_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.ELECTRIC_PYLON)
+                .input(ModItems.ORIGOCRUST, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/electric_pylon"));
+        CrafterRecipeBuilder.create(ModBlocks.RELAY_TOWER)
+                .input(ModItems.ORIGOCRUST, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/relay_tower"));
     }
 }
