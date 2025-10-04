@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-03T21:10:39.5296076	Endfield Industry/Block Loot Tables
+// 1.20.1	2025-10-04T14:40:36.2489275	Endfield Industry/Block Loot Tables
 c3aa9bdbb7301490a06ac2f6e626fe5c34d7e385 data\arknights-endfield\loot_tables\blocks\planting_unit.json
 add7730060d3846b38c4f1aaae39906194e8a45d data\arknights-endfield\loot_tables\blocks\aketine_block.json
 ed989b17e2ff1b39810768a23b7c935fdfad5d69 data\arknights-endfield\loot_tables\blocks\sandleaf_block.json
@@ -48,6 +48,6 @@ bc5732a66be57a5fc4f922ffc05ad7b75dd2b5c6 data\arknights-endfield\loot_tables\blo
 8f7b5949442ed15626b3e428d0cdfae134c9406e data\arknights-endfield\loot_tables\blocks\electric_mining_rig_mk_ii.json
 2cfa7642368623a370dc2f562516cedee73feb71 data\arknights-endfield\loot_tables\blocks\relay_tower.json
 2c1e7238299ab491fee0355ca59f02ef1792d0ed data\arknights-endfield\loot_tables\blocks\grinding_unit.json
-e06023a7f1fe2bd49f42bcd75cc5d2aebadb8afd data\arknights-endfield\loot_tables\blocks\lapis_mineral_vein_block.json
 ab70e4c5d5bdf881fec0b1ed7203a01be33b98b9 data\arknights-endfield\loot_tables\blocks\cuprium_ore_block.json
+e06023a7f1fe2bd49f42bcd75cc5d2aebadb8afd data\arknights-endfield\loot_tables\blocks\lapis_mineral_vein_block.json
 db69b3764638b434fa2e6955aa97b1c2efbc66a7 data\arknights-endfield\loot_tables\blocks\cuprium_mineral_vein_block.json

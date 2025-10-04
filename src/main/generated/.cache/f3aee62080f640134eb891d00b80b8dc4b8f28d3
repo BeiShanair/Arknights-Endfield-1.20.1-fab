@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-03T21:10:39.5296076	Endfield Industry/Recipes
+// 1.20.1	2025-10-04T14:40:36.2504338	Endfield Industry/Recipes
 74f4e347550be0f62ef08dc221a38f1f0e4b5632 data\arknights-endfield\recipes\seed_picking_unit\sandleaf.json
 c7ce748ae1d5559a53c02fbd221860626461ba08 data\arknights-endfield\recipes\refining_unit\sandleaf_powder.json
 49f579c31e9bc6b61b379c2a4d236fdd9cbc35e4 data\arknights-endfield\recipes\gearing_unit\cryston_component.json
@@ -29,8 +29,8 @@ cb91b90cb0c7533ffd27f743f2f4d957addd83b4 data\arknights-endfield\recipes\refinin
 e4ab3f43c12788ea6d99e25eda2e6ab2638c4015 data\arknights-endfield\recipes\rig\ferrium_mineral_vein.json
 bdc48d287b1c048f75b07b7cad63ec2d8fd2f8bc data\arknights-endfield\recipes\refining_unit\buckflower_powder.json
 d0b5c34d28a5d5dac0e8bb2c0f903db49881864d data\arknights-endfield\recipes\crafter\portable_originium_rig.json
-7074f599e6b3ef77b88a56bd742ac5d462d5bb1f data\arknights-endfield\recipes\refining_unit\wood.json
 0e48931bc816279a2931e7e83c970adde480d889 data\arknights-endfield\recipes\rig\cuprium_mineral_vein.json
+7074f599e6b3ef77b88a56bd742ac5d462d5bb1f data\arknights-endfield\recipes\refining_unit\wood.json
 5f9dbdc49a9dbb2b5345538f89a43badb4e673b1 data\arknights-endfield\recipes\gearing_unit\ferrium_component.json
 907c6d2c85a60d2da9b14d1cff110f91186a872b data\arknights-endfield\recipes\refining_unit\dense_ferrium_powder.json
 d24b9b809eb8300d837d2fa52281c040c8b00868 data\arknights-endfield\recipes\seed_picking_unit\redjade_ginseng.json
@@ -59,8 +59,8 @@ aee14b25aa109618c3369c3c68636dbb797e1739 data\arknights-endfield\recipes\fitting
 c9a99d689f8a9c5d657d7e5b547f5b1f908b49f3 data\arknights-endfield\recipes\crafter\electric_mining_rig_mk_ii.json
 8258f254bc439497c7a6b25ac3546b11b93c814f data\arknights-endfield\recipes\fitting_unit\amethyst_fiber.json
 0ffb50df0b969d8ec98aa8ef244afd4b3b2962e9 data\arknights-endfield\recipes\refining_unit\ground_buckflower_powder.json
-a218ad1b4e6d01394560101376ffd3c30521618a data\arknights-endfield\recipes\refining_unit\yazhen_powder.json
 3797696c08a06964af879695b1d9c50d52219620 data\arknights-endfield\recipes\refining_unit\cryston_powder.json
+a218ad1b4e6d01394560101376ffd3c30521618a data\arknights-endfield\recipes\refining_unit\yazhen_powder.json
 a5bab9111fef3666b221a9c62169488505fff6ce data\arknights-endfield\recipes\rig\gold_mineral_vein.json
 5cb6849fc9674a273dbeb7132f1e886dc8f5fb15 data\arknights-endfield\recipes\rig\originium_mineral_vein.json
 f11e44dbc6ed86661693f9563077f1431d10fc59 data\arknights-endfield\recipes\shredding_unit\amethyst_fiber.json

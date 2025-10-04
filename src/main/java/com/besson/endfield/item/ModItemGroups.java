@@ -174,62 +174,52 @@ public class ModItemGroups {
                         entries.add(ModItems.LC_BATTERY);
                         entries.add(ModItems.SC_BATTERY);
                         entries.add(ModItems.HC_BATTERY);
+                        entries.add(ModItems.INDUSTRIAL_EXPLOSIVE);
 
                         entries.add(ModItems.ARTS_TUBE);
                         entries.add(ModItems.ARTS_VIAL);
+                        entries.add(ModItems.KUNST_TUBE);
+                        entries.add(ModItems.KUNST_VIAL);
+                        entries.add(ModItems.PERPLEXING_MEDICATION);
+
                         entries.add(ModItems.ASHPIN_REMEDY);
+                        entries.add(ModItems.BLANCHED_REMEDY);
                         entries.add(ModItems.BIZARROTACK);
                         entries.add(ModItems.BIZARRO_CHILI);
-                        entries.add(ModItems.BLANCHED_REMEDY);
-
                         entries.add(ModItems.BUGTACK);
-
-                        entries.add(ModItems.CARTILAGE_BIT);
                         entries.add(ModItems.CARTILAGE_TACK);
-                        entries.add(ModItems.CHITIN_BIT);
 
                         entries.add(ModItems.COARSE_FLATBREAD);
                         entries.add(ModItems.CORRECTIVE_REMEDY);
 
                         entries.add(ModItems.FILLET);
                         entries.add(ModItems.FILLET_CONFIT);
-
                         entries.add(ModItems.FIRESTOVE_RICE);
                         entries.add(ModItems.FIRETACK);
-
                         entries.add(ModItems.FORTIFYING_INFUSION);
                         entries.add(ModItems.GARDEN_FRIED_RICE);
                         entries.add(ModItems.GARDEN_STIR_FRY);
                         entries.add(ModItems.GINSENG_MEAT_STEW);
-                        entries.add(ModItems.GLOWBUG);
                         entries.add(ModItems.GRASS_CHAFF);
-
+                        entries.add(ModItems.CHITIN_BIT);
+                        entries.add(ModItems.CARTILAGE_BIT);
                         entries.add(ModItems.HOLLOW_BONE);
                         entries.add(ModItems.HOLLOW_BONECHIP);
                         entries.add(ModItems.HOT_CRUNCHY_RIBS);
-                        entries.add(ModItems.INDUSTRIAL_EXPLOSIVE);
-
-                        entries.add(ModItems.KUNST_TUBE);
-                        entries.add(ModItems.KUNST_VIAL);
 
                         entries.add(ModItems.MEAT_STIR_FRY);
                         entries.add(ModItems.MOSSFIELD_PIE);
-
-                        entries.add(ModItems.PERPLEXING_MEDICATION);
                         entries.add(ModItems.PRESERVE_STEW);
-
                         entries.add(ModItems.SAVORY_FILLET);
                         entries.add(ModItems.SAVORY_TANGBAO);
                         entries.add(ModItems.SAVORY_TANGMIAN);
                         entries.add(ModItems.SCORCHBUG);
-
+                        entries.add(ModItems.GLOWBUG);
                         entries.add(ModItems.SENSORY_REMEDY);
                         entries.add(ModItems.SMOKED_RICEBALL);
-
                         entries.add(ModItems.WOOD);
                         entries.add(ModItems.SOAKED_WOOD);
                         entries.add(ModItems.SOAKED_WOODCHIP);
-
                         entries.add(ModItems.VALLEY_GRAYBREAD);
                         entries.add(ModItems.WULING_FRIED_RICE);
                     }).build());

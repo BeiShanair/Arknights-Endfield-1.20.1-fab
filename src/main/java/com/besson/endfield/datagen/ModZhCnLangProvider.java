@@ -205,7 +205,7 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.arknights-endfield.thorny_yazhen", "荆刺芽针");
         translationBuilder.add(ModItems.THORNY_YAZHEN_POWDER, "荆刺芽针粉末");
         translationBuilder.add(ModItems.UMBRALINE, "Umbraline");
-        translationBuilder.add("item.arknights-endfield.umbraline", "Umbraline");
+        translationBuilder.add("item.arknights-endfield.umbraline", "黯银柑实");
         translationBuilder.add(ModItems.VALLEY_GRAYBREAD, "Valley Graybread");
         translationBuilder.add(ModItems.WOOD, "原木");
         translationBuilder.add(ModItems.WULING_FRIED_RICE, "Wuling Fried Rice");

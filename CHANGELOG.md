@@ -1,4 +1,8 @@
 # 更新日志 / Changelog
+## 2025-10-04
+- 修改一些物品的排序
+- Modified the sorting of some items
+
 ## 2025-10-03
 - 增加各种植物的世界生成
 - Added world generation for various plants
