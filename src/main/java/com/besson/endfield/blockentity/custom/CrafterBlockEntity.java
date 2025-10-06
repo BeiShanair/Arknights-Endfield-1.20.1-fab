@@ -2,7 +2,6 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.recipe.custom.CrafterRecipe;
 import com.besson.endfield.screen.custom.CrafterScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -10,7 +9,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -22,10 +20,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 public class CrafterBlockEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory {
     private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(4, ItemStack.EMPTY);

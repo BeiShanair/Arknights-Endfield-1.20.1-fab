@@ -57,6 +57,10 @@ public class SeedPickingUnitRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
+    public Ingredient getInput() {
+        return input;
+    }
+
     public static class Type implements RecipeType<SeedPickingUnitRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "seed_picking_unit";

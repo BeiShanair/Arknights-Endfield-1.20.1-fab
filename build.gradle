@@ -24,6 +24,7 @@ repositories {
 			includeGroup("com.eliotlash.mclib")
 		}
 	}
+	maven { url "https://maven.shedaniel.me" }
 }
 
 fabricApi {
@@ -43,6 +44,9 @@ dependencies {
 
 	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
 	implementation("com.eliotlash.mclib:mclib:20")
+
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.1.785"
+	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.1.785"
 	
 }
 

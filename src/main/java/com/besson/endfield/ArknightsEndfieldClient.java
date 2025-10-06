@@ -2,7 +2,6 @@ package com.besson.endfield;
 
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.ElectricMiningRigMkIIBlockEntity;
 import com.besson.endfield.renderer.block.*;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;

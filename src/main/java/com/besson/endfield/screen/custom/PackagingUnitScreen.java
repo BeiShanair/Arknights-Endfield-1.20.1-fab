@@ -31,7 +31,7 @@ public class PackagingUnitScreen extends HandledScreen<PackagingUnitScreenHandle
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if (handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 85, y +30, 176, 0, 8, handler.getScaledProgress());
+            context.drawTexture(TEXTURE, x + 85, y +30, 176, 0, handler.getScaledProgress(), 8);
         }
     }
 

@@ -3,7 +3,6 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
@@ -35,7 +34,7 @@ public class RelayTowerBlockEntity extends BlockEntity implements GeoBlockEntity
             BlockPos closest = null;
             double closestDist = Double.MAX_VALUE;
 
-            for (BlockPos p: BlockPos.iterate(pos.add(-30, 0, -30), pos.add(30, 0, 30))) {
+            for (BlockPos p: BlockPos.iterate(pos.add(-30, -10, -30), pos.add(30, 10, 30))) {
                 if (p.equals(pos)) continue;
 
                 BlockEntity candidate = world.getBlockEntity(p);

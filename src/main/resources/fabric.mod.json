@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"com.besson.endfield.ArknightsEndfieldClient"
+		],
+		"rei_client": [
+			"com.besson.endfield.compat.ModREIClientPlugins"
 		]
 	},
 	"mixins": [

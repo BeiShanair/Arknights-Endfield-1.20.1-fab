@@ -27,6 +27,10 @@ public class OreRigRecipe implements Recipe<SimpleInventory> {
         return input.test(inventory.getStack(0));
     }
 
+    public Ingredient getInput() {
+        return input;
+    }
+
     @Override
     public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
         return output.copy();

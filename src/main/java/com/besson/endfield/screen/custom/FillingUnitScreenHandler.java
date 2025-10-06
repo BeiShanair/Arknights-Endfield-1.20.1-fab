@@ -31,9 +31,9 @@ public class FillingUnitScreenHandler extends ScreenHandler {
         this.propertyDelegate = propertyDelegate;
         this.entity = (FillingUnitBlockEntity) blockEntity;
 
-        this.addSlot(new Slot(inventory, 0, 62, 11));
-        this.addSlot(new Slot(inventory, 1, 98, 11));
-        this.addSlot(new Slot(inventory, 2, 80, 59));
+        this.addSlot(new Slot(inventory, 0, 47, 22));
+        this.addSlot(new Slot(inventory, 1, 47, 49));
+        this.addSlot(new Slot(inventory, 2, 113, 35));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

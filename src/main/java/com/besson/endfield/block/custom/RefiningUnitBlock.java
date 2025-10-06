@@ -5,7 +5,6 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.RefiningUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.RefiningUnitSideBlockEntity;
-import com.besson.endfield.blockentity.custom.ShreddingUnitSideBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

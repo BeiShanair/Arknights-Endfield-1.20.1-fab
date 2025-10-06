@@ -1,7 +1,6 @@
 package com.besson.endfield.recipe.custom;
 
 import com.besson.endfield.recipe.InputEntry;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;

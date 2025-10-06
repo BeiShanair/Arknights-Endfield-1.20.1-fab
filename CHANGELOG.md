@@ -1,4 +1,9 @@
 # 更新日志 / Changelog
+
+## 2025-10-06
+- `REI`适配，支持配方查询
+- REI adaptation, supporting recipe lookup
+
 ## 2025-10-04
 - 修改一些物品的排序
 - Modified the sorting of some items

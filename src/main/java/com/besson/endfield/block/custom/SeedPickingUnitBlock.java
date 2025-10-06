@@ -3,8 +3,6 @@ package com.besson.endfield.block.custom;
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.PlantingUnitSideBlockEntity;
-import com.besson.endfield.blockentity.custom.RefiningUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.SeedPickingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.SeedPickingUnitSideBlockEntity;
 import net.minecraft.block.BlockState;

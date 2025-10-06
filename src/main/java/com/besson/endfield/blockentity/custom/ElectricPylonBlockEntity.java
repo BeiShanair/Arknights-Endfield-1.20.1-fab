@@ -34,7 +34,7 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             BlockPos closest = null;
             double closestDist = Double.MAX_VALUE;
 
-            for (BlockPos p: BlockPos.iterate(pos.add(-30, 0, -30), pos.add(30, 0, 30))) {
+            for (BlockPos p: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
                 if (p.equals(pos)) continue;
 
                 BlockEntity candidate = world.getBlockEntity(p);

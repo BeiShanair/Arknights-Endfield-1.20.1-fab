@@ -3,7 +3,6 @@ package com.besson.endfield.utils;
 import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class JoinHandler {

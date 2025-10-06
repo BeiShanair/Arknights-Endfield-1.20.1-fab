@@ -3,7 +3,6 @@ package com.besson.endfield.block.custom;
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.RelayTowerBlockEntity;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

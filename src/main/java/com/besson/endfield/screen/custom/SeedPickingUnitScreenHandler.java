@@ -1,6 +1,5 @@
 package com.besson.endfield.screen.custom;
 
-import com.besson.endfield.blockentity.custom.PlantingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.SeedPickingUnitBlockEntity;
 import com.besson.endfield.screen.ModScreens;
 import net.minecraft.block.entity.BlockEntity;

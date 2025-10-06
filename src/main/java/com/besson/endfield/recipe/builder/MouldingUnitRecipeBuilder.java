@@ -2,7 +2,6 @@ package com.besson.endfield.recipe.builder;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.recipe.ItemCountInput;
-import com.besson.endfield.recipe.custom.FittingUnitRecipe;
 import com.besson.endfield.recipe.custom.MouldingUnitRecipe;
 import com.google.gson.JsonObject;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
