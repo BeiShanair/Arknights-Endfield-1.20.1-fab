@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:gearing_unit",
+  "input": [
+    {
+      "count": 10,
+      "item": "arknights_endfield:origocrust"
+    },
+    {
+      "count": 10,
+      "item": "arknights_endfield:ferrium"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:ferrium_component"
+  }
+}

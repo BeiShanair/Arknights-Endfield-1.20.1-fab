@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "arknights-endfield:block/umbraline_block"
-  }
-}

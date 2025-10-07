@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "arknights_endfield:block/copper_mineral_vein_block"
+  }
+}

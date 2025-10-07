@@ -11,13 +11,14 @@ import com.besson.endfield.utils.JoinHandler;
 import com.besson.endfield.world.generation.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.bernie.geckolib.GeckoLib;
 
 public class ArknightsEndfield implements ModInitializer {
 
-	public static final String MOD_ID = "arknights-endfield";
+	public static final String MOD_ID = "arknights_endfield";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
@@ -38,6 +39,7 @@ public class ArknightsEndfield implements ModInitializer {
 
 		ModNetWorking.register();
 
+		FuelRegistry.INSTANCE.add(ModItems.ORIGINIUM_ORE, 1600);
 		LOGGER.info("Hello Fabric world!");
 	}
 }

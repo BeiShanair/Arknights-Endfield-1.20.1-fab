@@ -8,6 +8,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class ModBlockEntityWithFacing extends BlockWithEntity {
@@ -16,7 +17,7 @@ public abstract class ModBlockEntityWithFacing extends BlockWithEntity {
 
     public ModBlockEntityWithFacing(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, net.minecraft.util.math.Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override

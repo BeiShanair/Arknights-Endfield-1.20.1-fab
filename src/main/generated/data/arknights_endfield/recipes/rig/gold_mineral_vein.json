@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:ore_rig",
+  "input": {
+    "item": "arknights_endfield:gold_mineral_vein_block"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:raw_gold"
+  }
+}

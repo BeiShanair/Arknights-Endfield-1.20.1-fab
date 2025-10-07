@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_part": 20,
+    "arknights_endfield:carbon": 10
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:planting_unit"
+  }
+}

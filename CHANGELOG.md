@@ -1,5 +1,11 @@
 # 更新日志 / Changelog
 
+## 2025-10-07
+- `Forge`版本开始移植
+- The `Forge` version begins to be ported
+- 修改命名空间，以减少移植工作量
+- Modified the namespace to reduce the amount of porting work
+
 ## 2025-10-06
 - `REI`适配，支持配方查询
 - REI adaptation, supporting recipe lookup

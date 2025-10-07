@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "arknights-endfield:block/amethyst_mineral_vein_block"
-  }
-}

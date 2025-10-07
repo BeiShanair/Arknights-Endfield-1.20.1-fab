@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "arknights_endfield:block/deepslate_ferrium_ore"
+  }
+}

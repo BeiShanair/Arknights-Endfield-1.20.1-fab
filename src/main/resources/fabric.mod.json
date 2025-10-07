@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "arknights-endfield",
+	"id": "arknights_endfield",
 	"version": "${version}",
 	"name": "Endfield Industry",
 	"description": "This is a mod that adds the Integrated Industries facilities from the game \"Arknights: Endfield\" into \"Minecraft\".",
@@ -12,7 +12,7 @@
 		"sources": "https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/arknights-endfield/icon.png",
+	"icon": "assets/arknights_endfield/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -29,7 +29,7 @@
 		]
 	},
 	"mixins": [
-		"arknights-endfield.mixins.json"
+		"arknights_endfield.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",

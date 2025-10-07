@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:shredding_unit",
+  "input": {
+    "item": "arknights_endfield:originium_ore"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:originium_powder"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:grinding_unit",
+  "input": [
+    {
+      "count": 2,
+      "item": "arknights_endfield:originium_powder"
+    },
+    {
+      "count": 1,
+      "item": "arknights_endfield:sandleaf_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:dense_originium_powder"
+  }
+}

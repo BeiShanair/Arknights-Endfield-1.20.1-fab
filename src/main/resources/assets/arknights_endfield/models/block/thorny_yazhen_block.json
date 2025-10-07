@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "arknights_endfield:block/thorny_yazhen_block"
+  }
+}

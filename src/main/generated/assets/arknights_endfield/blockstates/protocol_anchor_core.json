@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights_endfield:block/protocol_anchor_core",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights_endfield:block/protocol_anchor_core"
+    },
+    "facing=south": {
+      "model": "arknights_endfield:block/protocol_anchor_core",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights_endfield:block/protocol_anchor_core",
+      "y": 270
+    }
+  }
+}

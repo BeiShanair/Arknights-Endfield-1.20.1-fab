@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:filling_unit",
+  "input": [
+    {
+      "count": 10,
+      "item": "arknights_endfield:steel_bottle"
+    },
+    {
+      "count": 10,
+      "item": "arknights_endfield:ground_buckflower_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:buck_capsule_a"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "arknights-endfield:originium_ore_block",
-    "arknights-endfield:deepslate_originium_ore"
+    "arknights_endfield:originium_ore_block",
+    "arknights_endfield:deepslate_originium_ore"
   ]
 }

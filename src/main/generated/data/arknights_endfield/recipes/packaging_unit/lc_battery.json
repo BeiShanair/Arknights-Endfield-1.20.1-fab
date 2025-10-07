@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:packaging_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights_endfield:amethyst_part"
+    },
+    {
+      "count": 10,
+      "item": "arknights_endfield:originium_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:lc_battery"
+  }
+}

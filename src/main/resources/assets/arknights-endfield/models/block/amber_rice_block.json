@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "arknights-endfield:block/amber_rice_block"
-  }
-}

@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:ferrium_part": 20
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:grinding_unit"
+  }
+}

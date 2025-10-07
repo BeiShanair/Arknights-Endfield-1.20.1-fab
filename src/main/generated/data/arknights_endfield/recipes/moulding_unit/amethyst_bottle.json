@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:moulding_unit",
+  "input": {
+    "count": 2,
+    "item": "arknights_endfield:amethyst_fiber"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:amethyst_bottle"
+  }
+}

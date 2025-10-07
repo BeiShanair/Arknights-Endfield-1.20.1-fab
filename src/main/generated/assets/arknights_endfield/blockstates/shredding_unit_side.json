@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights_endfield:block/shredding_unit_side",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights_endfield:block/shredding_unit_side"
+    },
+    "facing=south": {
+      "model": "arknights_endfield:block/shredding_unit_side",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights_endfield:block/shredding_unit_side",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:origocrust": 10
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:moulding_unit"
+  }
+}

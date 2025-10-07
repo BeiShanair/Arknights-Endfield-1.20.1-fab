@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:ore_rig",
+  "input": {
+    "item": "arknights_endfield:coal_mineral_vein_block"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:coal"
+  }
+}

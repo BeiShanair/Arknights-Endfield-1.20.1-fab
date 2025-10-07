@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:seed_picking_unit",
+  "input": {
+    "item": "arknights_endfield:yazhen"
+  },
+  "output": {
+    "count": 2,
+    "item": "arknights_endfield:yazhen_seed"
+  }
+}

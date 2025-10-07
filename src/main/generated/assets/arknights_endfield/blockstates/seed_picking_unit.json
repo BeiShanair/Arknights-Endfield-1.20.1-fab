@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights_endfield:block/seed_picking_unit",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights_endfield:block/seed_picking_unit"
+    },
+    "facing=south": {
+      "model": "arknights_endfield:block/seed_picking_unit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights_endfield:block/seed_picking_unit",
+      "y": 270
+    }
+  }
+}

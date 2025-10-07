@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "arknights-endfield:block/deepslate_amethyst_ore"
-  }
-}

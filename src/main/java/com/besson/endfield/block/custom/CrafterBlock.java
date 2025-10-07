@@ -27,7 +27,7 @@ public class CrafterBlock extends BlockWithEntity {
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (!world.isClient()) {
+        if (!world.isClient() && state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof CrafterBlockEntity) {
                 ItemScatterer.spawn(world, pos, (CrafterBlockEntity) blockEntity);

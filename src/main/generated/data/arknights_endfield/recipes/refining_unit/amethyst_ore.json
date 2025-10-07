@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:refining_unit",
+  "input": {
+    "count": 1,
+    "item": "arknights_endfield:amethyst_ore"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:amethyst_fiber"
+  }
+}
