@@ -55,6 +55,8 @@ public class CrafterRecipe implements Recipe<Inventory> {
                 if (stack.getItem().equals(entry.getKey().asItem())) {
                     int removed = Math.min(stack.getCount(), need);
                     stack.decrement(removed);
+                    need -= removed;
+                    if (need <= 0) break;
                 }
             }
         }

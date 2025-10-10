@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-10-10
+- 修正`制造台`合成时扣除物品数量异常的问题
+- Fixed the issue of abnormal item quantity deduction when crafting with `Crafter`
+
 ## 2025-10-07
 - `Forge`版本开始移植
 - The `Forge` version begins to be ported

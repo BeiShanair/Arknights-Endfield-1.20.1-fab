@@ -1,6 +1,7 @@
 package com.besson.endfield.utils;
 
 import com.besson.endfield.recipe.custom.CrafterRecipe;
+import com.besson.endfield.screen.custom.CrafterScreenHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -31,9 +32,14 @@ public class CrafterResultSlot extends Slot {
     public void onTakeItem(PlayerEntity player, ItemStack stack) {
         World world = player.getWorld();
         if (!world.isClient()) {
-            Optional<CrafterRecipe> match = world.getRecipeManager()
-                    .getFirstMatch(CrafterRecipe.Type.INSTANCE, inputInventory, world);
-            match.ifPresent(crafterRecipe -> crafterRecipe.craft(inputInventory, world.getRegistryManager()));
+            if (handler instanceof CrafterScreenHandler crafterScreenHandler) {
+                var recipes = crafterScreenHandler.getCurrentRecipes();
+                int index = crafterScreenHandler.getSelectedRecipeIndex();
+                if (!recipes.isEmpty() && index < recipes.size()) {
+                    CrafterRecipe recipe = recipes.get(index);
+                    recipe.craft(inputInventory, world.getRegistryManager());
+                }
+            }
         }
         handler.onContentChanged(inputInventory);
         super.onTakeItem(player, stack);

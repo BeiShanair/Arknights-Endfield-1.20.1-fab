@@ -150,4 +150,11 @@ public class CrafterScreenHandler extends ScreenHandler {
         }
     }
 
+    public List<CrafterRecipe> getCurrentRecipes() {
+        return currentRecipes;
+    }
+
+    public int getSelectedRecipeIndex() {
+        return selectedRecipeIndex;
+    }
 }
