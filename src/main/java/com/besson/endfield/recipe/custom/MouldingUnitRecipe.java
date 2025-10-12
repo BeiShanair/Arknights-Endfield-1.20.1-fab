@@ -9,6 +9,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
@@ -54,6 +55,13 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     }
 
     @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ingredients = DefaultedList.of();
+        ingredients.add(input.getIngredient());
+        return ingredients;
+    }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
@@ -88,17 +96,15 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public MouldingUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            InputEntry inputs;
             Ingredient ingredient = Ingredient.fromPacket(buf);
             int count = buf.readInt();
-            inputs = new InputEntry(ingredient, count);
+            InputEntry inputs = new InputEntry(ingredient, count);
             ItemStack output = buf.readItemStack();
             return new MouldingUnitRecipe(id, inputs, output);
         }
 
         @Override
         public void write(PacketByteBuf buf, MouldingUnitRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
             InputEntry entry = recipe.getInput();
             entry.getIngredient().write(buf);
             buf.writeInt(entry.getCount());

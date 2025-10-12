@@ -9,6 +9,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
@@ -54,6 +55,13 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     }
 
     @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ingredients = DefaultedList.of();
+        ingredients.add(input.getIngredient());
+        return ingredients;
+    }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
@@ -80,7 +88,7 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
             InputEntry inputs;
 
             Ingredient ingredient = Ingredient.fromJson(ingredients);
-            int count = ingredients.has("count") ? ingredients.get("count").getAsInt() : 1;
+            int count = ingredients.has("count") ? JsonHelper.getInt(ingredients, "count") : 1;
             inputs = new InputEntry(ingredient, count);
 
             return new RefiningUnitRecipe(id, inputs, output);
@@ -88,20 +96,16 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public RefiningUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            InputEntry inputs;
-            ItemStack output = buf.readItemStack();
-
             Ingredient ingredient = Ingredient.fromPacket(buf);
             int count = buf.readInt();
-            inputs = new InputEntry(ingredient, count);
-
+            InputEntry inputs = new InputEntry(ingredient, count);
+            ItemStack output = buf.readItemStack();
             return new RefiningUnitRecipe(id, inputs, output);
         }
 
         @Override
         public void write(PacketByteBuf buf, RefiningUnitRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
-            InputEntry entry = recipe.input;
+            InputEntry entry = recipe.getInput();
             entry.getIngredient().write(buf);
             buf.writeInt(entry.getCount());
             buf.writeItemStack(recipe.output);

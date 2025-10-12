@@ -83,6 +83,15 @@ public class FillingUnitRecipe implements Recipe<SimpleInventory> {
         return input;
     }
 
+    @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ingredients = DefaultedList.of();
+        for (InputEntry entry : input) {
+            ingredients.add(entry.getIngredient());
+        }
+        return ingredients;
+    }
+
     public static class Type implements RecipeType<FillingUnitRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "filling_unit";
@@ -110,13 +119,13 @@ public class FillingUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public FillingUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            ItemStack output = buf.readItemStack();
             DefaultedList<InputEntry> inputs = DefaultedList.ofSize(buf.readInt(), InputEntry.EMPTY);
             for (int i = 0; i < inputs.size(); i++) {
                 Ingredient ingredient = Ingredient.fromPacket(buf);
                 int count = buf.readInt();
                 inputs.set(i, new InputEntry(ingredient, count));
             }
+            ItemStack output = buf.readItemStack();
             return new FillingUnitRecipe(id, inputs, output);
         }
 

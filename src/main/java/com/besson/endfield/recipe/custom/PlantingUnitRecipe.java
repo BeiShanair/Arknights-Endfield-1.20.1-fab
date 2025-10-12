@@ -8,6 +8,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class PlantingUnitRecipe implements Recipe<SimpleInventory> {
@@ -45,6 +46,13 @@ public class PlantingUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public Identifier getId() {
         return id;
+    }
+
+    @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ingredients = DefaultedList.of();
+        ingredients.add(input);
+        return ingredients;
     }
 
     @Override

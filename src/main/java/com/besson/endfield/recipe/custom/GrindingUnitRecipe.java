@@ -70,6 +70,15 @@ public class GrindingUnitRecipe implements Recipe<SimpleInventory> {
     }
 
     @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> ingredients = DefaultedList.of();
+        for (InputEntry entry : input) {
+            ingredients.add(entry.getIngredient());
+        }
+        return ingredients;
+    }
+
+    @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
@@ -110,13 +119,13 @@ public class GrindingUnitRecipe implements Recipe<SimpleInventory> {
 
         @Override
         public GrindingUnitRecipe read(Identifier id, PacketByteBuf buf) {
-            ItemStack output = buf.readItemStack();
             DefaultedList<InputEntry> inputs = DefaultedList.ofSize(buf.readInt(), InputEntry.EMPTY);
             for (int i = 0; i < inputs.size(); i++) {
                 Ingredient ingredient = Ingredient.fromPacket(buf);
                 int count = buf.readInt();
                 inputs.set(i, new InputEntry(ingredient, count));
             }
+            ItemStack output = buf.readItemStack();
             return new GrindingUnitRecipe(id, inputs, output);
         }
 

@@ -1,5 +1,9 @@
 # 更新日志 / Changelog
 
+## 2025-10-12
+- 修正各类配方的序列化器，以保证多人游戏正常运行
+- Fixed serializers for various recipes to ensure proper operation in multiplayer games
+
 ## 2025-10-10
 - 修正`制造台`合成时扣除物品数量异常的问题
 - Fixed the issue of abnormal item quantity deduction when crafting with `Crafter`
