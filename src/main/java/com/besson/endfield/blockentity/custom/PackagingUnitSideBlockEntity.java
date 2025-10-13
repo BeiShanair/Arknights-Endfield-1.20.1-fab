@@ -6,6 +6,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -39,6 +43,32 @@ public class PackagingUnitSideBlockEntity extends BlockEntity implements SidedIn
             return parent.getItems();
         }
         return DefaultedList.ofSize(0, ItemStack.EMPTY);
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        if (parentPos != null) {
+            nbt.putLong("parentPos", parentPos.asLong());
+        }
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        if (nbt.contains("parentPos")) {
+            this.parentPos = BlockPos.fromLong(nbt.getLong("parentPos"));
+        }
+    }
+
+    @Override
+    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return this.createNbt();
     }
 
     @Override

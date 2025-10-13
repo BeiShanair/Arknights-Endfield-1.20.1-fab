@@ -1,4 +1,7 @@
 # 更新日志 / Changelog
+## 2025-10-13
+- 调整各个工业设备的生产时间
+- Adjusted production times for various industrial devices
 
 ## 2025-10-12
 - 修正各类配方的序列化器，以保证多人游戏正常运行

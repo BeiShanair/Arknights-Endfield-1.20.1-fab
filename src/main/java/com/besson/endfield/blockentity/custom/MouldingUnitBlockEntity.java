@@ -45,7 +45,7 @@ public class MouldingUnitBlockEntity extends BlockEntity implements SidedInvento
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
-    private int maxProgress = 80;
+    private int maxProgress = 40;
 
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     public static final int INPUT_SLOT = 0;
