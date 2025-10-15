@@ -11,6 +11,7 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -69,6 +70,8 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     public void setWorld(World world) {
         super.setWorld(world);
         if (!registeredToManager && world instanceof ServerWorld serverWorld) {
+            ChunkPos chunkPos = new ChunkPos(this.getPos());
+            serverWorld.setChunkForced(chunkPos.x, chunkPos.z, true);
             PowerNetworkManager.get(serverWorld).registerConsumer(this.getPos(), () -> {
                 try {
                     return this.getSurroundingDemand();
@@ -89,7 +92,7 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     private void distributeToSurroundings(Integer amount) {
         if (world == null || amount <= 0) return;
         List<ElectrifiableDevice> devices = new ArrayList<>();
-        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
+        for (BlockPos target: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
             BlockEntity be = world.getBlockEntity(target);
             if (be instanceof ElectrifiableDevice device) {
                 if (device.needsPower()) {
@@ -111,7 +114,7 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     private Integer getSurroundingDemand() {
         if (world == null) return 0;
         int totalDemand = 0;
-        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
+        for (BlockPos target: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
             BlockEntity be = world.getBlockEntity(target);
             if (be instanceof ElectrifiableDevice device) {
                 if (device.needsPower()) {
@@ -125,6 +128,8 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     @Override
     public void markRemoved() {
         if (world instanceof  ServerWorld serverWorld) {
+            ChunkPos chunkPos = new ChunkPos(this.getPos());
+            serverWorld.setChunkForced(chunkPos.x, chunkPos.z, false);
             PowerNetworkManager.get(serverWorld).unregisterConsumer(this.getPos());
         }
         super.markRemoved();
