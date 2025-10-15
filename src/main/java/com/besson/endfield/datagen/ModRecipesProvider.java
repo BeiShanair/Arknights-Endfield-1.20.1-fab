@@ -9,7 +9,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
 
@@ -21,6 +23,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         super(output);
     }
 
+    private static final List<ItemConvertible> ORIGOCRUST = List.of(ModItems.ORIGINIUM_ORE);
+
     @Override
     public void generate(Consumer<RecipeJsonProvider> consumer) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.CRAFTER)
@@ -30,6 +34,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('#', ModItems.ORIGINIUM_ORE)
                 .criterion("has_originium_ore", conditionsFromItem(ModItems.ORIGINIUM_ORE))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter"));
+
+        offerSmelting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 200, "origocrust");
+        offerBlasting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 100, "origocrust");
 
         OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
@@ -337,5 +344,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.RELAY_TOWER)
                 .input(ModItems.ORIGOCRUST, 20)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/relay_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.THERMAL_BANK)
+                .input(ModItems.ORIGOCRUST, 10)
+                .input(ModItems.AMETHYST_PART, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/thermal_bank"));
     }
 }

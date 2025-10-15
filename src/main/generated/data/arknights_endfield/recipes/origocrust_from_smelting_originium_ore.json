@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "origocrust",
+  "ingredient": {
+    "item": "arknights_endfield:originium_ore"
+  },
+  "result": "arknights_endfield:origocrust"
+}

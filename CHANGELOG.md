@@ -1,4 +1,10 @@
 # 更新日志 / Changelog
+## 2025-10-15
+- 临时追加`晶体外壳`的熔炉和高炉配方，以保证游戏正常推进
+- Temporarily added furnace and blast furnace recipes for `Origocrust` to ensure normal game progression
+- 追加`热能池`配方
+- Added recipe for `Thermal Bank`
+
 ## 2025-10-13
 - 调整各个工业设备的生产时间
 - Adjusted production times for various industrial devices
