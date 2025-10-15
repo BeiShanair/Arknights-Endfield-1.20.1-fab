@@ -218,8 +218,8 @@
   "item.arknights_endfield.yazhen_syringe_a": "Yazhen Syringe A",
   "item.arknights_endfield.yazhen_syringe_c": "Yazhen Syringe C",
   "itemGroup.arknights_endfield": "Arknights Endfield",
-  "screen.protocol_core.base_power": "Base Power: %s",
-  "screen.protocol_core.buffer": "Buffer: %s / %s",
-  "screen.protocol_core.extra_power": "Extra Power: %s",
+  "screen.protocol_core.buffer": "Battery Stored: %s / %s",
+  "screen.protocol_core.consumer": "Demand: %s",
+  "screen.protocol_core.generated": "Generated: %s",
   "screen.protocol_core.load": "Load Node Num: %s"
 }

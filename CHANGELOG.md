@@ -1,4 +1,8 @@
 # 更新日志 / Changelog
+## 2025-10-16
+- 添加`全局电网管理系统`，统一调配全世界范围内的电力
+- Added `Global Power Grid Management System` to centrally manage power distribution worldwide
+
 ## 2025-10-15
 - 临时追加`晶体外壳`的熔炉和高炉配方，以保证游戏正常推进
 - Temporarily added furnace and blast furnace recipes for `Origocrust` to ensure normal game progression

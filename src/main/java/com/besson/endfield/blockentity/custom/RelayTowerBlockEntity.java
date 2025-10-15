@@ -34,7 +34,7 @@ public class RelayTowerBlockEntity extends BlockEntity implements GeoBlockEntity
             BlockPos closest = null;
             double closestDist = Double.MAX_VALUE;
 
-            for (BlockPos p: BlockPos.iterate(pos.add(-30, -10, -30), pos.add(30, 10, 30))) {
+            for (BlockPos p: BlockPos.iterate(pos.add(-30, -30, -30), pos.add(30, 30, 30))) {
                 if (p.equals(pos)) continue;
 
                 BlockEntity candidate = world.getBlockEntity(p);

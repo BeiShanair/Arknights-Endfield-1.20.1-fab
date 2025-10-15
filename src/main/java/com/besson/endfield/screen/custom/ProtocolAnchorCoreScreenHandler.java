@@ -20,6 +20,7 @@ public class ProtocolAnchorCoreScreenHandler extends ScreenHandler {
     public double supplyRatio;
     public int totalGenerated;
     public int totalDemand;
+    public int storedEnergy;
 
     public ProtocolAnchorCoreScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, playerInventory.player.getWorld().getBlockEntity(packetByteBuf.readBlockPos()),
@@ -27,6 +28,7 @@ public class ProtocolAnchorCoreScreenHandler extends ScreenHandler {
         this.supplyRatio = packetByteBuf.readDouble();
         this.totalGenerated = packetByteBuf.readInt();
         this.totalDemand = packetByteBuf.readInt();
+        this.storedEnergy = packetByteBuf.readInt();
     }
     public ProtocolAnchorCoreScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate propertyDelegate) {
         super(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, syncId);
@@ -51,11 +53,4 @@ public class ProtocolAnchorCoreScreenHandler extends ScreenHandler {
     public BlockPos getPos() {
         return pos;
     }
-
-//    public ProtocolAnchorCoreStatus getStatus() {
-//        return new ProtocolAnchorCoreStatus(propertyDelegate.get(0),
-//                propertyDelegate.get(1),
-//                propertyDelegate.get(2),
-//                propertyDelegate.get(3));
-//    }
 }

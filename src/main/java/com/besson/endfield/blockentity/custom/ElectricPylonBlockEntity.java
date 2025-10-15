@@ -40,7 +40,7 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             BlockPos closest = null;
             double closestDist = Double.MAX_VALUE;
 
-            for (BlockPos p: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
+            for (BlockPos p: BlockPos.iterate(pos.add(-30, -30, -30), pos.add(30, 30, 30))) {
                 if (p.equals(pos)) continue;
 
                 BlockEntity candidate = world.getBlockEntity(p);
@@ -57,21 +57,12 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             markDirty(world, pos, state);
             world.updateListeners(pos, state, state, 3);
         }
-
-//        if (entity.connectedNode != null) {
-//            ProtocolAnchorCoreBlockEntity core = entity.findCore(world);
-//            if (core != null && core.canSupplyPower()) {
-//                entity.supplyPower(core);
-//            }
-//        }
     }
 
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
         if (!registeredToManager && world instanceof ServerWorld serverWorld) {
-            ChunkPos chunkPos = new ChunkPos(this.getPos());
-            serverWorld.setChunkForced(chunkPos.x, chunkPos.z, true);
             PowerNetworkManager.get(serverWorld).registerConsumer(this.getPos(), () -> {
                 try {
                     return this.getSurroundingDemand();
@@ -128,8 +119,6 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     @Override
     public void markRemoved() {
         if (world instanceof  ServerWorld serverWorld) {
-            ChunkPos chunkPos = new ChunkPos(this.getPos());
-            serverWorld.setChunkForced(chunkPos.x, chunkPos.z, false);
             PowerNetworkManager.get(serverWorld).unregisterConsumer(this.getPos());
         }
         super.markRemoved();

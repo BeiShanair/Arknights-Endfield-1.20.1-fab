@@ -28,40 +28,8 @@ public class ProtocolAnchorCoreScreen extends HandledScreen<ProtocolAnchorCoreSc
         super.render(context, mouseX, mouseY, delta);
     }
 
-//    private void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-//        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-//        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-//        RenderSystem.setShaderTexture(0, TEXTURE);
-//        int x = (this.width - this.backgroundWidth) / 2;
-//        int y = (this.height - this.backgroundHeight) / 2;
-//
-//        context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
-//
-//        // 进度条
-//        int barWidth = 120;
-//        int barHeight = 12;
-////        int filled = (int) ((double) status.buffer() / status.maxBuffer() * barWidth);
-////
-////        context.fill(x + 25, y + 120, x + 25 + barWidth, y + 120  + barHeight, 0xFF555555); // 背景
-////        context.fill(x + 25, y + 120, x + 25 + filled, y + 120 + barHeight, 0xFF2E7D32);   // 电量
-////        context.drawBorder(x + 25, y + 120, barWidth, barHeight, 0xFF000000); // 边框
-//
-//        // 数值文字（核心缓冲）
-//        context.drawText(this.textRenderer,
-//                Text.translatable("screen.protocol_core.buffer", handler.totalGenerated, 100000),
-//                x + 8, y + 20, 0x404040, false);
-//        context.drawText(this.textRenderer,
-//                Text.translatable("screen.protocol_core.base_power", handler.totalDemand),
-//                x + 8, y + 30, 0xFFFFFF,false);
-//        context.drawText(this.textRenderer,
-//                Text.translatable("screen.protocol_core.extra_power", handler.supplyRatio),
-//                x + 8, y + 40, 0xFF8000,false);
-//    }
-
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
-//        drawBackground(context, delta, mouseX, mouseY);
-
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
         RenderSystem.setShaderTexture(0, TEXTURE);
@@ -71,13 +39,13 @@ public class ProtocolAnchorCoreScreen extends HandledScreen<ProtocolAnchorCoreSc
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         context.drawText(this.textRenderer,
-                Text.translatable("screen.protocol_core.buffer", handler.totalGenerated, 100000),
+                Text.translatable("screen.protocol_core.buffer", handler.storedEnergy, 100000),
                 x + 8, y + 20, 0x404040, false);
         context.drawText(this.textRenderer,
-                Text.translatable("screen.protocol_core.base_power", handler.totalDemand),
+                Text.translatable("screen.protocol_core.generated", handler.totalGenerated),
                 x + 8, y + 30, 0xFFFFFF,false);
         context.drawText(this.textRenderer,
-                Text.translatable("screen.protocol_core.extra_power", handler.supplyRatio),
+                Text.translatable("screen.protocol_core.consumer", handler.totalDemand),
                 x + 8, y + 40, 0xFF8000,false);
     }
 

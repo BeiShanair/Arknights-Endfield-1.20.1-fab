@@ -78,7 +78,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
         int sum = 0;
         BlockPos blockPos = this.getPos();
         if (world != null) {
-            for (BlockPos pos : BlockPos.iterate(blockPos.add(-30, -10, -30), blockPos.add(30, 10, 30))) {
+            for (BlockPos pos : BlockPos.iterate(blockPos.add(-30, -30, -30), blockPos.add(30, 30, 30))) {
                 BlockEntity be = world.getBlockEntity(pos);
                 if (be instanceof ThermalBankBlockEntity blockEntity) {
                     sum += blockEntity.getPowerOutput();
@@ -147,6 +147,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
         packetByteBuf.writeDouble(manager.getLastSupplyRatio());
         packetByteBuf.writeInt(manager.getLastTotalGenerated());
         packetByteBuf.writeInt(manager.getLastTotalDemand());
+        packetByteBuf.writeInt(manager.getCurrentStoredEnergy());
     }
 
     @Override

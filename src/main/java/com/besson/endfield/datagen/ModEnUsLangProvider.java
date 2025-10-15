@@ -235,9 +235,9 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.packaging_unit", "Packaging Unit");
         translationBuilder.add("blockEntity.crafter", "Crafter");
 
-        translationBuilder.add("screen.protocol_core.buffer", "Buffer: %s / %s");
-        translationBuilder.add("screen.protocol_core.base_power", "Base Power: %s");
-        translationBuilder.add("screen.protocol_core.extra_power", "Extra Power: %s");
+        translationBuilder.add("screen.protocol_core.buffer", "Battery Stored: %s / %s");
+        translationBuilder.add("screen.protocol_core.generated", "Generated: %s");
+        translationBuilder.add("screen.protocol_core.consumer", "Demand: %s");
         translationBuilder.add("screen.protocol_core.load", "Load Node Num: %s");
 
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");

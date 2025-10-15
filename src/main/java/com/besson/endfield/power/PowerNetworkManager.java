@@ -3,6 +3,7 @@ package com.besson.endfield.power;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.PersistentStateManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,15 +15,21 @@ public class PowerNetworkManager {
     private static final Map<ServerWorld, PowerNetworkManager> INSTANCE = new WeakHashMap<>();
 
     private final ServerWorld world;
+    private PowerState state;
     private final Map<BlockPos, GeneratorInfo> generators = new HashMap<>();
     private final Map<BlockPos, ConsumerInfo> consumers = new HashMap<>();
 
     private int lastTotalGenerated = 0;
     private int lastTotalDemand = 0;
     private double lastSupplyRatio = 0.0;
+    private final int maxBatteryCapacity = 100000;
+    private int currentStoredEnergy;
 
     public PowerNetworkManager(ServerWorld world) {
         this.world = world;
+        PersistentStateManager manager = world.getPersistentStateManager();
+        this.state = manager.getOrCreate(PowerState::fromNbt, PowerState::new, "power_network_state");
+        this.currentStoredEnergy = state.storedEnergy;
     }
 
     public static PowerNetworkManager get(ServerWorld world) {
@@ -65,8 +72,7 @@ public class PowerNetworkManager {
                 int v = Math.max(0, g.generatedSupplier.get());
                 totalGenerated += v;
             } catch (Throwable t) {
-                // 容错：若某个方块实体在卸载或抛异常，解绑它
-                // (但不要在循环中直接修改 map，收集后移除)
+                // 容错
             }
         }
 
@@ -82,30 +88,36 @@ public class PowerNetworkManager {
 
         lastTotalGenerated = totalGenerated;
         lastTotalDemand = totalDemand;
-        if (totalDemand <= 0 || totalGenerated <= 0) {
-            lastSupplyRatio = totalDemand == 0 ? 1.0 : 0.0; // 无负载视为充足
-            // 即便没有电力，仍需回调消费者 receive(0) 以保持状态一致（可选）
-            for (ConsumerInfo c : consumers.values()) {
-                try { c.receivePower.accept(0); } catch (Throwable ignored) {}
-            }
-            return;
+
+        int availableEnergy = totalGenerated;
+
+        if (totalGenerated >= totalDemand) {
+            int surplus = totalGenerated - totalDemand;
+            int charge = Math.min(surplus, maxBatteryCapacity - currentStoredEnergy);
+            currentStoredEnergy += charge;
+            availableEnergy -= charge;
+        } else {
+            int deficit = totalDemand - totalGenerated;
+            int discharge = Math.min(deficit, currentStoredEnergy);
+            currentStoredEnergy -= discharge;
+            availableEnergy += discharge;
         }
 
-        // 分配策略：按比例（consumer.demand / totalDemand）分配 available energy
-        double supplyRatio = Math.min(1.0, (double) totalGenerated / (double) totalDemand);
+        double supplyRatio = Math.min(1.0, (double) availableEnergy / (double) totalDemand);
         lastSupplyRatio = supplyRatio;
 
-        // 为每个 consumer 计算 supply 并回调
         for (ConsumerInfo c : consumers.values()) {
             try {
                 int demand = Math.max(0, c.demandSupplier.get());
                 int supply = (int) Math.floor(demand * supplyRatio);
-                // 可能在末位造成小量未分配的电力 —— 可实现“剩余分配”优化，先忽略
                 c.receivePower.accept(supply);
             } catch (Throwable t) {
                 // 容错
             }
         }
+
+        state.storedEnergy = currentStoredEnergy;
+        state.markDirty();
     }
 
     public int getLastTotalGenerated() {
@@ -118,6 +130,14 @@ public class PowerNetworkManager {
 
     public double getLastSupplyRatio() {
         return lastSupplyRatio;
+    }
+
+    public int getCurrentStoredEnergy() {
+        return currentStoredEnergy;
+    }
+
+    public int getMaxBatteryCapacity() {
+        return maxBatteryCapacity;
     }
 
     public static class GeneratorInfo {
