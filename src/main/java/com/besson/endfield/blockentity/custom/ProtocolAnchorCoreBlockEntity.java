@@ -1,6 +1,7 @@
 package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.power.PowerNetworkManager;
 import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreenHandler;
 import com.besson.endfield.utils.ProtocolAnchorCoreStatus;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -16,6 +17,7 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -31,11 +33,12 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private int buffer = 0;
+    public int buffer = 0;
     private final int baseMaxBuffer = 100000;
     private final int basePower = 150;
     private int extraPower = 0;
-    private int loadNode = 0;
+
+    private boolean registeredToManager = false;
 
     protected final PropertyDelegate propertyDelegate;
 
@@ -49,7 +52,6 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
                     case 1 -> ProtocolAnchorCoreBlockEntity.this.getMaxBuffer();
                     case 2 -> ProtocolAnchorCoreBlockEntity.this.basePower;
                     case 3 -> ProtocolAnchorCoreBlockEntity.this.getExtraPower();
-                    case 4 -> ProtocolAnchorCoreBlockEntity.this.loadNode;
                     default -> 0;
                 };
             }
@@ -61,7 +63,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
 
             @Override
             public int size() {
-                return 5;
+                return 4;
             }
         };
     }
@@ -74,18 +76,15 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
 
     private int getNearbyThermalBankPower() {
         int sum = 0;
-        int loadNode = 0;
         BlockPos blockPos = this.getPos();
         if (world != null) {
             for (BlockPos pos : BlockPos.iterate(blockPos.add(-30, -10, -30), blockPos.add(30, 10, 30))) {
                 BlockEntity be = world.getBlockEntity(pos);
                 if (be instanceof ThermalBankBlockEntity blockEntity) {
                     sum += blockEntity.getPowerOutput();
-                    loadNode += 1;
                 }
             }
         }
-        this.loadNode = loadNode;
         return sum;
     }
 
@@ -103,8 +102,33 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     }
 
     public ProtocolAnchorCoreStatus getStatus() {
-        return new ProtocolAnchorCoreStatus(buffer, getMaxBuffer(), basePower, getExtraPower(), loadNode);
+        return new ProtocolAnchorCoreStatus(buffer, getMaxBuffer(), basePower, getExtraPower());
     }
+
+    @Override
+    public void setWorld(World world) {
+        super.setWorld(world);
+        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
+            PowerNetworkManager manager = PowerNetworkManager.get(serverWorld);
+            manager.registerGenerator(this.getPos(), () -> {
+                try {
+                    return this.getTotalPower();
+                } catch (Throwable t) {
+                    return 0;
+                }
+            });
+            registeredToManager = true;
+        }
+    }
+
+    @Override
+    public void markRemoved() {
+        if (world instanceof ServerWorld serverWorld) {
+            PowerNetworkManager.get(serverWorld).unregisterGenerator(this.getPos());
+        }
+        super.markRemoved();
+    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller", 0,
@@ -119,6 +143,10 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     @Override
     public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf packetByteBuf) {
         packetByteBuf.writeBlockPos(this.pos);
+        PowerNetworkManager manager = PowerNetworkManager.get((ServerWorld) serverPlayerEntity.getWorld());
+        packetByteBuf.writeDouble(manager.getLastSupplyRatio());
+        packetByteBuf.writeInt(manager.getLastTotalGenerated());
+        packetByteBuf.writeInt(manager.getLastTotalDemand());
     }
 
     @Override

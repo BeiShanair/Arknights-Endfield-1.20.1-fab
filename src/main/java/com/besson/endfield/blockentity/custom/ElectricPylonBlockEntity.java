@@ -2,12 +2,14 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.power.PowerNetworkManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -18,9 +20,12 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEntity {
     private BlockPos connectedNode;
-
+    private boolean registeredToManager = false;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ElectricPylonBlockEntity(BlockPos pos, BlockState state) {
@@ -52,12 +57,77 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             world.updateListeners(pos, state, state, 3);
         }
 
-        if (entity.connectedNode != null) {
-            ProtocolAnchorCoreBlockEntity core = entity.findCore(world);
-            if (core != null && core.canSupplyPower()) {
-                entity.supplyPower(core);
+//        if (entity.connectedNode != null) {
+//            ProtocolAnchorCoreBlockEntity core = entity.findCore(world);
+//            if (core != null && core.canSupplyPower()) {
+//                entity.supplyPower(core);
+//            }
+//        }
+    }
+
+    @Override
+    public void setWorld(World world) {
+        super.setWorld(world);
+        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
+            PowerNetworkManager.get(serverWorld).registerConsumer(this.getPos(), () -> {
+                try {
+                    return this.getSurroundingDemand();
+                } catch (Throwable t) {
+                    return 0;
+                }
+            }, (amount) -> {
+                try {
+                    this.distributeToSurroundings(amount);
+                } catch (Throwable ignored) {
+
+                }
+            });
+            registeredToManager = true;
+        }
+    }
+
+    private void distributeToSurroundings(Integer amount) {
+        if (world == null || amount <= 0) return;
+        List<ElectrifiableDevice> devices = new ArrayList<>();
+        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
+            BlockEntity be = world.getBlockEntity(target);
+            if (be instanceof ElectrifiableDevice device) {
+                if (device.needsPower()) {
+                    devices.add(device);
+                }
             }
         }
+        if (devices.isEmpty()) return;
+        int perDevice = amount / devices.size();
+        for (ElectrifiableDevice device: devices) {
+            int required = device.getRequiredPower();
+            int toGive = Math.min(perDevice, required);
+            device.receiveElectricCharge(toGive);
+            amount -= toGive;
+            if (amount <= 0) break;
+        }
+    }
+
+    private Integer getSurroundingDemand() {
+        if (world == null) return 0;
+        int totalDemand = 0;
+        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
+            BlockEntity be = world.getBlockEntity(target);
+            if (be instanceof ElectrifiableDevice device) {
+                if (device.needsPower()) {
+                    totalDemand += device.getRequiredPower();
+                }
+            }
+        }
+        return totalDemand;
+    }
+
+    @Override
+    public void markRemoved() {
+        if (world instanceof  ServerWorld serverWorld) {
+            PowerNetworkManager.get(serverWorld).unregisterConsumer(this.getPos());
+        }
+        super.markRemoved();
     }
 
     private ProtocolAnchorCoreBlockEntity findCore(World world) {

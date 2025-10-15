@@ -3,6 +3,7 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.block.custom.ThermalBankBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.power.PowerNetworkManager;
 import com.besson.endfield.screen.custom.ThermalBankScreenHandler;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -21,6 +22,7 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -35,6 +37,8 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class ThermalBankBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(1, ItemStack.EMPTY);
+
+    private boolean registeredToManager = false;
 
     private int burnTime;
     private int fuelTime;
@@ -73,6 +77,30 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
 
+    }
+
+    @Override
+    public void setWorld(World world) {
+        super.setWorld(world);
+        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
+            PowerNetworkManager manager = PowerNetworkManager.get(serverWorld);
+            manager.registerGenerator(this.getPos(), () -> {
+                try {
+                    return this.getPowerOutput();
+                } catch (Throwable t) {
+                    return 0;
+                }
+            });
+            registeredToManager = true;
+        }
+    }
+
+    @Override
+    public void markRemoved() {
+        if (world instanceof ServerWorld serverWorld) {
+            PowerNetworkManager.get(serverWorld).unregisterGenerator(this.getPos());
+        }
+        super.markRemoved();
     }
 
     @Override
