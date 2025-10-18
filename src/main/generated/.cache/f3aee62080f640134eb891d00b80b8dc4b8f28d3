@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-15T12:41:21.0409564	Endfield Industry/Recipes
+// 1.20.1	2025-10-18T11:36:19.7279379	Endfield Industry/Recipes
 483ce86ed9b4accdb477859525d27aab3572f48c data\arknights_endfield\recipes\shredding_unit\ferrium.json
 3cf07ecbf533ed66a9d8d44bc33690d82a2345c1 data\arknights_endfield\recipes\refining_unit\dense_originium_powder.json
 96cc24d43d46468bf22e46472fd30cc5c4201807 data\arknights_endfield\recipes\filling_unit\canned_citrome_b.json
@@ -59,8 +59,8 @@ a2fc52e4add3703e339cb152309ee103121035f1 data\arknights_endfield\recipes\shreddi
 6163c3a3d938874b7842fda951196fe0bd390ea1 data\arknights_endfield\recipes\crafter\portable_originium_rig.json
 43dca2dcbf95a405b8fedffdee0140723736cc67 data\arknights_endfield\recipes\fitting_unit\ferrium.json
 d3ab39cdf69206ed3d5cc3dbf76953395074ba72 data\arknights_endfield\recipes\grinding_unit\ground_buckflower_powder.json
-a84be2fa2e2422bc36abe7c5afa16b9a9caa333f data\arknights_endfield\recipes\seed_picking_unit\aketine.json
 f0f2c87d0bbde02ed2c0903d1adfa9f74fad4d64 data\arknights_endfield\recipes\refining_unit\ground_citrome_powder.json
+a84be2fa2e2422bc36abe7c5afa16b9a9caa333f data\arknights_endfield\recipes\seed_picking_unit\aketine.json
 98cf0f5379fe2981c740818d118997f64d11f6e8 data\arknights_endfield\recipes\shredding_unit\originium_ore.json
 a9a01b97109d3c96a60d93e418fc5e9764e3f4e4 data\arknights_endfield\recipes\crafter\electric_mining_rig.json
 387d20724be100342f6ab937acdc3badb41428e9 data\arknights_endfield\recipes\crafter\electric_pylon.json

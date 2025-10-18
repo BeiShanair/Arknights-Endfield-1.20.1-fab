@@ -157,4 +157,12 @@ public class CrafterScreenHandler extends ScreenHandler {
     public int getSelectedRecipeIndex() {
         return selectedRecipeIndex;
     }
+
+    @Override
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
+        if (!player.getWorld().isClient()) {
+            this.dropInventory(player, this.inventory);
+        }
+    }
 }

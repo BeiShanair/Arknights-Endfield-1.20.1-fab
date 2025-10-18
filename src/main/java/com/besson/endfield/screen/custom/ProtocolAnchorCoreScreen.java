@@ -39,14 +39,20 @@ public class ProtocolAnchorCoreScreen extends HandledScreen<ProtocolAnchorCoreSc
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         context.drawText(this.textRenderer,
-                Text.translatable("screen.protocol_core.buffer", handler.storedEnergy, 100000),
-                x + 8, y + 20, 0x404040, false);
+                Text.translatable("screen.protocol_core.buffer"),
+                x + 70, y + 55, 0x404040, false);
+        context.drawText(this.textRenderer,
+                Text.translatable("screen.protocol_core.storedEnergy", handler.storedEnergy),
+                x + 65, y + 70, 0x404040, false);
+        context.drawText(this.textRenderer,
+                Text.translatable("screen.protocol_core.max", 100000),
+                x + 70, y + 85, 0x404040, false);
         context.drawText(this.textRenderer,
                 Text.translatable("screen.protocol_core.generated", handler.totalGenerated),
-                x + 8, y + 30, 0xFFFFFF,false);
+                x + 20, y + 134, 0xFFFFFF,false);
         context.drawText(this.textRenderer,
                 Text.translatable("screen.protocol_core.consumer", handler.totalDemand),
-                x + 8, y + 40, 0xFF8000,false);
+                x + 102, y + 18, 0xFF8000,false);
     }
 
     @Override

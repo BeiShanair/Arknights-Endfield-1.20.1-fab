@@ -235,10 +235,11 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.packaging_unit", "封装机");
         translationBuilder.add("blockEntity.crafter", "制造台");
 
-        translationBuilder.add("screen.protocol_core.buffer", "电池储能: %s / %s");
-        translationBuilder.add("screen.protocol_core.generated", "发电功率: %s");
-        translationBuilder.add("screen.protocol_core.consumer", "用电功率: %s");
-        translationBuilder.add("screen.protocol_core.load", "接入节点数: %s");
+        translationBuilder.add("screen.protocol_core.buffer", "电池储能:");
+        translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
+        translationBuilder.add("screen.protocol_core.max", "%s");
+        translationBuilder.add("screen.protocol_core.generated", "发电功率 %s");
+        translationBuilder.add("screen.protocol_core.consumer", "%s 用电功率");
 
         translationBuilder.add("itemGroup.arknights_endfield", "明日方舟：终末地" );
     }

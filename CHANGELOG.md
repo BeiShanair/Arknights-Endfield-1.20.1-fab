@@ -1,4 +1,12 @@
 # 更新日志 / Changelog
+## 2025-10-18
+- 更新`协议核心`GUI界面
+- Updated `Protocol Anchor Core` GUI interface
+
+## 2025-10-17
+- `制造台`现在关闭GUI时，会自动返回输入槽中未使用的物品
+- When closing the GUI of `Crafter`, unused items in the input slots will be automatically returned
+
 ## 2025-10-16
 - 添加`全局电网管理系统`，统一调配全世界范围内的电力
 - Added `Global Power Grid Management System` to centrally manage power distribution worldwide

@@ -218,8 +218,9 @@
   "item.arknights_endfield.yazhen_syringe_a": "优质芽针针剂",
   "item.arknights_endfield.yazhen_syringe_c": "芽针针剂",
   "itemGroup.arknights_endfield": "明日方舟：终末地",
-  "screen.protocol_core.buffer": "电池储能: %s / %s",
-  "screen.protocol_core.consumer": "用电功率: %s",
-  "screen.protocol_core.generated": "发电功率: %s",
-  "screen.protocol_core.load": "接入节点数: %s"
+  "screen.protocol_core.buffer": "电池储能:",
+  "screen.protocol_core.consumer": "%s 用电功率",
+  "screen.protocol_core.generated": "发电功率 %s",
+  "screen.protocol_core.max": "%s",
+  "screen.protocol_core.storedEnergy": " %s /"
 }
