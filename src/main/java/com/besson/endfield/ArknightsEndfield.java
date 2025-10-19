@@ -2,6 +2,7 @@ package com.besson.endfield;
 
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.entity.ModItemEntity;
 import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
 import com.besson.endfield.network.ModNetWorking;
@@ -39,6 +40,7 @@ public class ArknightsEndfield implements ModInitializer {
 		JoinHandler.register();
 
 		ModNetWorking.register();
+		ModItemEntity.register();
 
 		FuelRegistry.INSTANCE.add(ModItems.ORIGINIUM_ORE, 1600);
 		LOGGER.info("Hello Fabric world!");

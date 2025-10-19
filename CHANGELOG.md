@@ -1,4 +1,10 @@
 # 更新日志 / Changelog
+## 2025-10-19
+- 更新食物
+- Updated food items
+- `工业爆炸物`可以投掷，落地爆炸
+- `Industrial Explosives` can be thrown and will explode upon landing
+
 ## 2025-10-18
 - 更新`协议核心`GUI界面
 - Updated `Protocol Anchor Core` GUI interface

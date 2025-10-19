@@ -348,5 +348,222 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input(ModItems.ORIGOCRUST, 10)
                 .input(ModItems.AMETHYST_PART, 10)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/thermal_bank"));
+
+        CrafterRecipeBuilder.create(ModItems.SAVORY_TANGBAO)
+                .input(ModItems.AGGAGRIT_CLUSTER, 2)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .input(ModItems.STEEL_PART, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/savory_tangbao"));
+        CrafterRecipeBuilder.create(ModItems.CITROME_PUDDING)
+                .input(ModItems.AGGAGRIT_CLUSTER, 2)
+                .input(ModItems.CITROME_POWDER, 8)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citrome_pudding"));
+        CrafterRecipeBuilder.create(ModItems.VALLEY_GRAYBREAD)
+                .input(ModItems.AGGAGRIT_BLOCK, 2)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/valley_graybread"));
+        CrafterRecipeBuilder.create(ModItems.CITROME_JELLY)
+                .input(ModItems.AGGAGRIT_BLOCK, 2)
+                .input(ModItems.CITROME_POWDER, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citrome_jelly"));
+        CrafterRecipeBuilder.create(ModItems.SAVORY_TANGMIAN)
+                .input(ModItems.AGGAGRIT, 2)
+                .input(ModItems.REDJADE_GINSENG, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/savory_tangmian"));
+        CrafterRecipeBuilder.create(ModItems.CITROME_JAM)
+                .input(ModItems.AGGAGRIT, 1)
+                .input(ModItems.CITROME_POWDER, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citrome_jam"));
+        CrafterRecipeBuilder.create(ModItems.SAVORY_FILLET)
+                .input(ModItems.FILLET, 2)
+                .input(ModItems.AGGAGRIT, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/savory_fillet"));
+        CrafterRecipeBuilder.create(ModItems.FILLET_CONFIT)
+                .input(ModItems.FILLET, 4)
+                .input(ModItems.SCORCHBUG, 2)
+                .input(ModItems.AGGAGRIT, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/fillet_confit"));
+        CrafterRecipeBuilder.create(ModItems.BUCKPILL_S)
+                .input(ModItems.FIREBUCKLE_POWDER, 5)
+                .input(ModItems.AMETHYST_BOTTLE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buckpill_s"));
+        CrafterRecipeBuilder.create(ModItems.BUCKPILL_L)
+                .input(ModItems.FIREBUCKLE_POWDER, 10)
+                .input(ModItems.FERRIUM_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buckpill_l"));
+        CrafterRecipeBuilder.create(ModItems.BUCKPILL_RF)
+                .input(ModItems.FIREBUCKLE_POWDER, 10)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buckpill_rf"));
+        CrafterRecipeBuilder.create(ModItems.CITROMIX_S)
+                .input(ModItems.CITROMIX, 5)
+                .input(ModItems.AMETHYST_BOTTLE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citromix_s"));
+        CrafterRecipeBuilder.create(ModItems.CITROMIX_L)
+                .input(ModItems.CITROMIX, 10)
+                .input(ModItems.FERRIUM_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citromix_l"));
+        CrafterRecipeBuilder.create(ModItems.CITROMIX_RF)
+                .input(ModItems.CITROMIX, 10)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citromix_rf"));
+        CrafterRecipeBuilder.create(ModItems.CANNED_CITROME_C)
+                .input(ModItems.CITROME_POWDER, 5)
+                .input(ModItems.AMETHYST_BOTTLE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/canned_citrome_c"));
+        CrafterRecipeBuilder.create(ModItems.CANNED_CITROME_B)
+                .input(ModItems.CITROME_POWDER, 10)
+                .input(ModItems.FERRIUM_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/canned_citrome_b"));
+        CrafterRecipeBuilder.create(ModItems.CANNED_CITROME_A)
+                .input(ModItems.GROUND_CITROME_POWDER, 10)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/canned_citrome_a"));
+        CrafterRecipeBuilder.create(ModItems.JINCAO_TISANE)
+                .input(ModItems.FLUFFED_JINCAO_POWDER, 5)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/jincao_tisane"));
+        CrafterRecipeBuilder.create(ModItems.JINCAO_INFUSION)
+                .input(ModItems.FLUFFED_JINCAO_POWDER, 5)
+                .input(ModItems.CUPRIUM_JAR, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/jincao_infusion"));
+        CrafterRecipeBuilder.create(ModItems.YAZHEN_SPRAY_S)
+                .input(ModItems.THORNY_YAZHEN_POWDER, 5)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/yazhen_spray_s"));
+        CrafterRecipeBuilder.create(ModItems.YAZHEN_SPRAY_L)
+                .input(ModItems.THORNY_YAZHEN_POWDER, 5)
+                .input(ModItems.CUPRIUM_JAR, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/yazhen_spray_l"));
+        CrafterRecipeBuilder.create(ModItems.ARTS_VIAL)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .input(ModItems.GLOWBUG, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/arts_vial"));
+        CrafterRecipeBuilder.create(ModItems.ARTS_TUBE)
+                .input(ModItems.FERRIUM_BOTTLE, 1)
+                .input(ModItems.GLOWBUG, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/arts_tube"));
+        CrafterRecipeBuilder.create(ModItems.KUNST_VIAL)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .input(ModItems.SCORCHBUG, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/kunst_vial"));
+        CrafterRecipeBuilder.create(ModItems.KUNST_TUBE)
+                .input(ModItems.FERRIUM_BOTTLE, 1)
+                .input(ModItems.SCORCHBUG, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/kunst_tube"));
+        CrafterRecipeBuilder.create(ModItems.PERPLEXING_MEDICATION)
+                .input(ModItems.BUCKFLOWER_POWDER, 8)
+                .input(ModItems.CITROMIX, 8)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/perplexing_medication"));
+        CrafterRecipeBuilder.create(ModItems.BIZARRO_CHILI)
+                .input(ModItems.CITROME_POWDER, 8)
+                .input(ModItems.FILLET, 8)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/bizarro_chili"));
+        CrafterRecipeBuilder.create(ModItems.CITROBUCKY_MIX)
+                .input(ModItems.FIREBUCKLE_POWDER, 8)
+                .input(ModItems.CITROMIX, 8)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/citrobucky_mix"));
+        CrafterRecipeBuilder.create(ModItems.BUCK_CAPSULE_C)
+                .input(ModItems.BUCKFLOWER_POWDER, 5)
+                .input(ModItems.AMETHYST_BOTTLE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buck_capsule_c"));
+        CrafterRecipeBuilder.create(ModItems.BUCK_CAPSULE_B)
+                .input(ModItems.BUCKFLOWER_POWDER, 10)
+                .input(ModItems.FERRIUM_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buck_capsule_b"));
+        CrafterRecipeBuilder.create(ModItems.BUCK_CAPSULE_A)
+                .input(ModItems.GROUND_BUCKFLOWER_POWDER, 10)
+                .input(ModItems.STEEL_BOTTLE, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/buck_capsule_a"));
+        CrafterRecipeBuilder.create(ModItems.MOSSFIELD_PIE)
+                .input(ModItems.REED_RYE, 8)
+                .input(ModItems.FILLET, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/mossfield_pie"));
+        CrafterRecipeBuilder.create(ModItems.COARSE_FLATBREAD)
+                .input(ModItems.REED_RYE, 4)
+                .input(ModItems.BUCKFLOWER_POWDER, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/coarse_flatbread"));
+        CrafterRecipeBuilder.create(ModItems.MEAT_STIR_FRY)
+                .input(ModItems.TARTPEPPER, 8)
+                .input(ModItems.FILLET, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/meat_stir_fry"));
+        CrafterRecipeBuilder.create(ModItems.TARTPEPPER_SALAD)
+                .input(ModItems.TARTPEPPER, 4)
+                .input(ModItems.CITROME_POWDER, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/tartpepper_salad"));
+        CrafterRecipeBuilder.create(ModItems.GINSENG_MEAT_STEW)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .input(ModItems.FILLET, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/ginseng_meat_stew"));
+        CrafterRecipeBuilder.create(ModItems.FORTIFYING_INFUSION)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .input(ModItems.JINCAO_POWDER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/fortifying_infusion"));
+        CrafterRecipeBuilder.create(ModItems.WULING_FRIED_RICE)
+                .input(ModItems.AMBER_RICE, 8)
+                .input(ModItems.FILLET, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/wuling_fried_rice"));
+        CrafterRecipeBuilder.create(ModItems.GARDEN_FRIED_RICE)
+                .input(ModItems.AMBER_RICE, 8)
+                .input(ModItems.YAZHEN_POWDER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/garden_fried_rice"));
+        CrafterRecipeBuilder.create(ModItems.HOT_CRUNCHY_RIBS)
+                .input(ModItems.CARTILAGE_BIT, 2)
+                .input(ModItems.TARTPEPPER, 8)
+                .input(ModItems.STEEL_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/hot_crunchy_ribs"));
+        CrafterRecipeBuilder.create(ModItems.CARTILAGE_TACK)
+                .input(ModItems.CARTILAGE_BIT, 2)
+                .input(ModItems.BUCKFLOWER_POWDER, 8)
+                .input(ModItems.AMETHYST_BOTTLE, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/cartilage_tack"));
+        CrafterRecipeBuilder.create(ModItems.FIRETACK)
+                .input(ModItems.CHITIN_BIT, 2)
+                .input(ModItems.TARTPEPPER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/firetack"));
+        CrafterRecipeBuilder.create(ModItems.BUGTACK)
+                .input(ModItems.CHITIN_BIT, 2)
+                .input(ModItems.BUCKFLOWER_POWDER, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/bugtack"));
+        CrafterRecipeBuilder.create(ModItems.TARTPEPPER_PICKLE)
+                .input(ModItems.GRASS_CHAFF, 2)
+                .input(ModItems.TARTPEPPER, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/tartpepper_pickle"));
+        CrafterRecipeBuilder.create(ModItems.BIZARROTACK)
+                .input(ModItems.GRASS_CHAFF, 1)
+                .input(ModItems.BUCKFLOWER_POWDER, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/bizarrotack"));
+        CrafterRecipeBuilder.create(ModItems.CORRECTIVE_REMEDY)
+                .input(ModItems.HOLLOW_BONE, 2)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/corrective_remedy"));
+        CrafterRecipeBuilder.create(ModItems.BLANCHED_REMEDY)
+                .input(ModItems.HOLLOW_BONE, 2)
+                .input(ModItems.YAZHEN_POWDER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/blanched_remedy"));
+        CrafterRecipeBuilder.create(ModItems.SENSORY_REMEDY)
+                .input(ModItems.HOLLOW_BONECHIP, 2)
+                .input(ModItems.REDJADE_GINSENG, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/sensory_remedy"));
+        CrafterRecipeBuilder.create(ModItems.ASHPIN_REMEDY)
+                .input(ModItems.HOLLOW_BONECHIP, 2)
+                .input(ModItems.YAZHEN_POWDER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/ashpin_remedy"));
+        CrafterRecipeBuilder.create(ModItems.SMOKED_RICEBALL)
+                .input(ModItems.SOAKED_WOOD, 2)
+                .input(ModItems.AMBER_RICE, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/smoked_riceball"));
+        CrafterRecipeBuilder.create(ModItems.GARDEN_STIR_FRY)
+                .input(ModItems.SOAKED_WOOD, 2)
+                .input(ModItems.JINCAO_POWDER, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/garden_stir_fry"));
+        CrafterRecipeBuilder.create(ModItems.FIRESTOVE_RICE)
+                .input(ModItems.SOAKED_WOODCHIP, 2)
+                .input(ModItems.AMBER_RICE, 8)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/firestove_rice"));
     }
 }

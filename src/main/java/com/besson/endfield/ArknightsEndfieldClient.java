@@ -2,24 +2,30 @@ package com.besson.endfield;
 
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.entity.ModItemEntity;
 import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.renderer.block.*;
+import com.besson.endfield.renderer.item.IndustrialExplosiveEntityRenderer;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class ArknightsEndfieldClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        EntityRendererRegistry.register(ModItemEntity.INDUSTRIAL_EXPLOSIVE, FlyingItemEntityRenderer::new);
+
         BlockEntityRendererFactories.register(ModBlockEntities.PROTOCOL_ANCHOR_CORE, ProtocolAnchorCoreRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.RELAY_TOWER, RelayTowerEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.ELECTRIC_PYLON, ElectricPylonEntityRenderer::new);
