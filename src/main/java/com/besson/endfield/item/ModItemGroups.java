@@ -41,6 +41,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.CRAFTER);
                         entries.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM);
+                        entries.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
                         entries.add(ModItems.RELAY_TOWER_ITEM);
                         entries.add(ModItems.ELECTRIC_PYLON_ITEM);
                         entries.add(ModItems.ELECTRIC_MINING_RIG_ITEM);
@@ -57,6 +58,8 @@ public class ModItemGroups {
                         entries.add(ModItems.PLANTING_UNIT_ITEM);
                         entries.add(ModItems.SEED_PICKING_UNIT_ITEM);
                         entries.add(ModItems.THERMAL_BANK_ITEM);
+//                        entries.add(ModItems.FLUID_PUMP_ITEM);
+//                        entries.add(ModBlocks.PIPE_BLOCK);
 
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);

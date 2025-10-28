@@ -1,4 +1,5 @@
-// 1.20.1	2025-10-18T11:36:19.726937	Endfield Industry/Block Loot Tables
+// 1.20.1	2025-10-28T15:46:45.9776471	Endfield Industry/Block Loot Tables
+cad87c1dea3b6110f3987c5d5145ceaed22e5605 data\arknights_endfield\loot_tables\blocks\fluid_pump.json
 a0a1b7c020bca31bdb9f13490300bd748b6545b9 data\arknights_endfield\loot_tables\blocks\deepslate_amethyst_ore.json
 56734712f7b34d2c11eacff693230f3151a651e1 data\arknights_endfield\loot_tables\blocks\sandleaf_block.json
 8183e4fd27b60f944806a4ab4490e6ea679d01c5 data\arknights_endfield\loot_tables\blocks\portable_originium_rig.json
@@ -21,6 +22,7 @@ d509be850c033f59902bdf0a16ebccb3e1bfa9e9 data\arknights_endfield\loot_tables\blo
 207ae5093fdce6027daa0fdfe24c9790f2493ab8 data\arknights_endfield\loot_tables\blocks\reed_rye_block.json
 740e6098ef5df849547e41ba9c68078ff77b7779 data\arknights_endfield\loot_tables\blocks\emerald_mineral_vein_block.json
 758f6bb73fa34e491551bc5d15a73747ba6bdbd3 data\arknights_endfield\loot_tables\blocks\redstone_mineral_vein_block.json
+4ab4c4f2452161f98e69e7b43074e62ff7f4183e data\arknights_endfield\loot_tables\blocks\protocol_anchor_core_port.json
 1104d08258922de8b6fc7ee786394397e13f06d3 data\arknights_endfield\loot_tables\blocks\cuprium_mineral_vein_block.json
 87174039696514516e47a3e2817fff7d70b19da8 data\arknights_endfield\loot_tables\blocks\amber_rice_block.json
 a318589c600404f61cbf2e3d903cd151c5788994 data\arknights_endfield\loot_tables\blocks\shredding_unit.json

@@ -73,6 +73,9 @@ public class ModScreens {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "crafter_screen"),
                     new ExtendedScreenHandlerType<>(CrafterScreenHandler::new));
 
+    public static final ScreenHandlerType<FluidPumpScreenHandler> FLUID_PUMP_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fluid_pump_screen"),
+                    new ExtendedScreenHandlerType<>(FluidPumpScreenHandler::new));
     public static void register() {
 
     }

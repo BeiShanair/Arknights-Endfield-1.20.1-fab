@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:jincao_powder": 8,
+    "arknights_endfield:soaked_wood": 2
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:garden_stir_fry"
+  }
+}

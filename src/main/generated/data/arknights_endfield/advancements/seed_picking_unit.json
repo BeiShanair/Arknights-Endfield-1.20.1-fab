@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:planting_unit",
+  "criteria": {
+    "got_seed_picking_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:seed_picking_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.seed_picking_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:seed_picking_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.seed_picking_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_seed_picking_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

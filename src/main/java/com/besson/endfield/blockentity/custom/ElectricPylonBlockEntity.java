@@ -124,36 +124,6 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
         super.markRemoved();
     }
 
-    private ProtocolAnchorCoreBlockEntity findCore(World world) {
-        if (connectedNode == null) return null;
-        BlockEntity be = world.getBlockEntity(connectedNode);
-        if (be instanceof ProtocolAnchorCoreBlockEntity core) {
-            return core;
-        } else if (be instanceof RelayTowerBlockEntity relay) {
-            return relay.getConnectedCore(world);
-        }
-        return null;
-    }
-
-    private void supplyPower(ProtocolAnchorCoreBlockEntity core) {
-        if (world == null) return;
-        if (core.getStoredPower() < 20) return;
-
-        for (BlockPos target: BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
-            BlockEntity be = null;
-            if (world != null) {
-                be = world.getBlockEntity(target);
-            }
-            if (be instanceof ElectrifiableDevice device) {
-                if (device.needsPower()) {
-                    int required = device.getRequiredPower();
-                    device.receiveElectricCharge(required * 2);
-                    core.consumePower(required);
-                }
-            }
-        }
-    }
-
     public BlockPos getConnectedNode() {
         return connectedNode;
     }

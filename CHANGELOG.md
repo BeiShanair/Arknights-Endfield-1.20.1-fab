@@ -1,4 +1,26 @@
 # 更新日志 / Changelog
+## 2025-10-28
+- 优化`协议核心`tick方法，提高游戏性能
+- Optimized the tick method of `Protocol Anchor Core` to improve game performance
+- 添加`协议核心端口`，用于输入物品
+- Added `Protocol Anchor Core Port` for item input
+
+## 2025-10-27
+- 为`协议核心`添加中央仓库，用于存储物品
+- Added a central warehouse to `Protocol Anchor Core` for item storage
+
+## 2025-10-25 -> 2025-10-26
+- 添加`成就`
+- Added `Achievements`
+
+## 2025-10-24
+- 修复`制造台`刷物品的特性（bug）
+- Fixed the item duplication bug in `Crafter`
+
+## 2025-10-21 -> ?? (ing)
+- 研究流体管道
+- Researched fluid piping
+
 ## 2025-10-19
 - 更新食物
 - Updated food items

@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:hollow_bonechip": 2,
+    "arknights_endfield:yazhen_powder": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:ashpin_remedy"
+  }
+}

@@ -2,6 +2,7 @@ package com.besson.endfield.block;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.custom.*;
+import com.besson.endfield.blockentity.ModBlockEntities;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -16,6 +17,10 @@ import net.minecraft.util.Identifier;
 public class ModBlocks {
     public static final Block PROTOCOL_ANCHOR_CORE = registerBlocksWithoutItem("protocol_anchor_core",
             new ProtocolAnchorCoreBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block PROTOCOL_ANCHOR_CORE_PORT = registerBlocks("protocol_anchor_core_port",
+            new ProtocolAnchorCorePortBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block PROTOCOL_ANCHOR_CORE_SIDE = registerBlocks("protocol_anchor_core_side",
+            new ProtocolAnchorCoreSideBlock(AbstractBlock.Settings.create().strength(1f, 1f).nonOpaque()));
     public static final Block RELAY_TOWER = registerBlocksWithoutItem("relay_tower",
             new RelayTowerBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
     public static final Block ELECTRIC_PYLON = registerBlocksWithoutItem("electric_pylon",
@@ -182,6 +187,12 @@ public class ModBlocks {
 
     public static final Block CRAFTER = registerBlocks("crafter",
             new CrafterBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
+
+    public static final Block FLUID_PUMP = registerBlocksWithoutItem("fluid_pump",
+            new FluidPumpBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
+
+    public static final Block PIPE_BLOCK = registerBlocks("pipe_block",
+            new PipeBlock(AbstractBlock.Settings.create().strength(1f).nonOpaque()));
 
     private static Block registerBlocksWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, name), block);

@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:grass_chaff": 2,
+    "arknights_endfield:tartpepper": 4
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:tartpepper_pickle"
+  }
+}

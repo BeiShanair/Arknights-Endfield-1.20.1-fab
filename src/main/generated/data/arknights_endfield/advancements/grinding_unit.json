@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:packaging_unit",
+  "criteria": {
+    "got_grinding_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:grinding_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.grinding_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:grinding_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.grinding_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_grinding_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -33,10 +33,7 @@ public class PowerNetworkManager {
     }
 
     public static PowerNetworkManager get(ServerWorld world) {
-        return INSTANCE.computeIfAbsent(world, w -> {
-            PowerNetworkManager manager = new PowerNetworkManager(w);
-            return manager;
-        });
+        return INSTANCE.computeIfAbsent(world, PowerNetworkManager::new);
     }
 
     public static void registerGlobalTick() {

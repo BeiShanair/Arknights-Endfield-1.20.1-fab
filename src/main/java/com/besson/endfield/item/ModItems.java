@@ -47,6 +47,8 @@ public class ModItems {
             new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.SEED_PICKING_UNIT_SIDE);
     public static final Item THERMAL_BANK_ITEM = registerSameBlockItem("thermal_bank",
             new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings().rarity(Rarity.UNCOMMON)), ModBlocks.THERMAL_BANK_SIDE);
+    public static final Item FLUID_PUMP_ITEM = registerItems("fluid_pump",
+            new FluidPumpItem(ModBlocks.FLUID_PUMP, new Item.Settings().rarity(Rarity.RARE)));
 
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));

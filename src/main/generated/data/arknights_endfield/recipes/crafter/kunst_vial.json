@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_bottle": 1,
+    "arknights_endfield:scorchbug": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:kunst_vial"
+  }
+}

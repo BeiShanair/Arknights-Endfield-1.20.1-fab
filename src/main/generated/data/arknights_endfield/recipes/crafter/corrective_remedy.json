@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:hollow_bone": 2,
+    "arknights_endfield:redjade_ginseng": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:corrective_remedy"
+  }
+}

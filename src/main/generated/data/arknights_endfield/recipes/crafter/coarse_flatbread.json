@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:buckflower_powder": 4,
+    "arknights_endfield:reed_rye": 4
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:coarse_flatbread"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:aggagrit": 1,
+    "arknights_endfield:fillet": 2
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:savory_fillet"
+  }
+}

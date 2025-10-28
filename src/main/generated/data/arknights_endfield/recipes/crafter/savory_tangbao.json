@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:aggagrit_cluster": 2,
+    "arknights_endfield:redjade_ginseng": 8,
+    "arknights_endfield:steel_part": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:savory_tangbao"
+  }
+}

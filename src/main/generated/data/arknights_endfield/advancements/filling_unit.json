@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:gearing_unit",
+  "criteria": {
+    "got_filling_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:filling_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.filling_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:filling_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.filling_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_filling_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

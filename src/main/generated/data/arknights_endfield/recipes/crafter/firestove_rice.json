@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amber_rice": 8,
+    "arknights_endfield:soaked_woodchip": 2
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:firestove_rice"
+  }
+}

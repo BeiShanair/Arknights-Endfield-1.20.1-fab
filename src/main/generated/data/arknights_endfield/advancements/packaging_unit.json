@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:filling_unit",
+  "criteria": {
+    "got_packaging_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:packaging_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.packaging_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:packaging_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.packaging_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_packaging_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

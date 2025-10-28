@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:aggagrit": 1,
+    "arknights_endfield:citrome_powder": 2
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:citrome_jam"
+  }
+}

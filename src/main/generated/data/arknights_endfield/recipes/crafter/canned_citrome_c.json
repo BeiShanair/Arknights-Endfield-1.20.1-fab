@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_bottle": 5,
+    "arknights_endfield:citrome_powder": 5
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:canned_citrome_c"
+  }
+}

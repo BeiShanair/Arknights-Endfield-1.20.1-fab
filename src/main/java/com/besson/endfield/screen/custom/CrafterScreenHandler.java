@@ -91,9 +91,6 @@ public class CrafterScreenHandler extends ScreenHandler {
 
             if (invSlot == 3) {
                 while (true) {
-                    slot.onTakeItem(player, originalStack);
-                    this.updateResult();
-
                     if (!slot.hasStack() || !this.canInsertIntoSlot(originalStack, this.slots.get(3))) {
                         break;
                     }
@@ -102,11 +99,20 @@ public class CrafterScreenHandler extends ScreenHandler {
                     if (!this.insertItem(crafted, 4, 40, true)) {
                         break;
                     }
+                    slot.onTakeItem(player, originalStack);
                 }
-            } else {
+            } else if (invSlot >= 4 && invSlot < 40) {
                 if (!this.insertItem(originalStack, 0, 3, false)) {
                     return ItemStack.EMPTY;
                 }
+            } else if (!this.insertItem(originalStack, 4, 40, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (originalStack.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
+            } else {
+                slot.markDirty();
             }
         }
         return newStack;

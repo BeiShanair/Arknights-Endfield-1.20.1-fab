@@ -565,5 +565,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input(ModItems.SOAKED_WOODCHIP, 2)
                 .input(ModItems.AMBER_RICE, 8)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/firestove_rice"));
+        CrafterRecipeBuilder.create(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT)
+                .input(ModItems.ORIGOCRUST, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/protocol_anchor_core_port"));
     }
 }

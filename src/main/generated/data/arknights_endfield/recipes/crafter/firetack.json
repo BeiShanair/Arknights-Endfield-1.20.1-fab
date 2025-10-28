@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:chitin_bit": 2,
+    "arknights_endfield:tartpepper": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:firetack"
+  }
+}

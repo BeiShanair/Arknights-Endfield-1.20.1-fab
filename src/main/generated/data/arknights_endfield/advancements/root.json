@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "got_protocol_anchor_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:protocol_anchor_core"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": {
+      "translate": "advancement.endfield.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:protocol_anchor_core"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_protocol_anchor_core"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

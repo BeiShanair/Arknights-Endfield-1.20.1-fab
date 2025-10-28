@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_bottle": 1,
+    "arknights_endfield:buckflower_powder": 8,
+    "arknights_endfield:cartilage_bit": 2
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:cartilage_tack"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "parent": "arknights_endfield:electric_mining_rig_mk_ii",
+  "criteria": {
+    "all_mineral_vein_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:amethyst_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:originium_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:ferrium_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:cuprium_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:coal_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:iron_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:gold_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:diamond_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:emerald_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:lapis_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:redstone_mineral_vein_block"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:copper_mineral_vein_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.all_mineral_vein_block.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:originium_mineral_vein_block"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.all_mineral_vein_block.title"
+    }
+  },
+  "requirements": [
+    [
+      "all_mineral_vein_block"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

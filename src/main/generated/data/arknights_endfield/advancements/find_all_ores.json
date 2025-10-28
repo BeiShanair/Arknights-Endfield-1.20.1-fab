@@ -1,0 +1,53 @@
+{
+  "parent": "arknights_endfield:amethyst_ore",
+  "criteria": {
+    "find_all_ores": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:amethyst_ore"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:cuprium_ore"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:ferrium_ore"
+            ]
+          },
+          {
+            "items": [
+              "arknights_endfield:originium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.find_all_ores.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:cuprium_ore"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.find_all_ores.title"
+    }
+  },
+  "requirements": [
+    [
+      "find_all_ores"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

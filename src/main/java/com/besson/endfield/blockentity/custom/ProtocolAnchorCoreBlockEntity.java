@@ -1,25 +1,30 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.power.PowerNetworkManager;
 import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreenHandler;
-import com.besson.endfield.utils.ProtocolAnchorCoreStatus;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -29,49 +34,33 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-// TODO: 全局电网管理器
-public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory {
+public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(54, ItemStack.EMPTY);
 
     public int buffer = 0;
-    private final int baseMaxBuffer = 100000;
-    private final int basePower = 150;
-    private int extraPower = 0;
-
+    private int cachedNearbyPower = 0;
     private boolean registeredToManager = false;
-
-    protected final PropertyDelegate propertyDelegate;
 
     public ProtocolAnchorCoreBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PROTOCOL_ANCHOR_CORE, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
-            @Override
-            public int get(int index) {
-                return switch (index){
-                    case 0 -> ProtocolAnchorCoreBlockEntity.this.buffer;
-                    case 1 -> ProtocolAnchorCoreBlockEntity.this.getMaxBuffer();
-                    case 2 -> ProtocolAnchorCoreBlockEntity.this.basePower;
-                    case 3 -> ProtocolAnchorCoreBlockEntity.this.getExtraPower();
-                    default -> 0;
-                };
-            }
+    }
 
-            @Override
-            public void set(int index, int value) {
-
-            }
-
-            @Override
-            public int size() {
-                return 4;
-            }
-        };
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return this.inv;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ProtocolAnchorCoreBlockEntity entity) {
         if (world.isClient()) return;
-        entity.buffer = Math.min(entity.buffer + entity.getTotalPower(), entity.getMaxBuffer());
-        entity.markDirty();
+
+        int totalPower = entity.getTotalPower();
+        int newBuffer = Math.min(entity.buffer + totalPower, entity.getMaxBuffer());
+
+        if (newBuffer != entity.buffer) {
+            entity.buffer = newBuffer;
+            entity.markDirty();
+        }
     }
 
     private int getNearbyThermalBankPower() {
@@ -89,20 +78,22 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     }
 
     public int getMaxBuffer() {
+        int baseMaxBuffer = 100000;
         return baseMaxBuffer + getNearbyThermalBankPower();
     }
 
+    public void refreshNearbyPower() {
+        this.cachedNearbyPower = getNearbyThermalBankPower();
+        markDirty();
+    }
+
     private int getExtraPower() {
-        this.extraPower = getNearbyThermalBankPower();
-        return extraPower;
+        return cachedNearbyPower;
     }
 
     public int getTotalPower() {
-        return basePower + getExtraPower();
-    }
-
-    public ProtocolAnchorCoreStatus getStatus() {
-        return new ProtocolAnchorCoreStatus(buffer, getMaxBuffer(), basePower, getExtraPower());
+        int basePower = 150;
+        return basePower + cachedNearbyPower;
     }
 
     @Override
@@ -157,19 +148,21 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
 
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new ProtocolAnchorCoreScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new ProtocolAnchorCoreScreenHandler(syncId, playerInventory, this);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         this.buffer = nbt.getInt("buffer");
+        Inventories.readNbt(nbt, this.inv);
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putInt("buffer", this.buffer);
+        Inventories.writeNbt(nbt, this.inv);
     }
 
     @Override
@@ -182,16 +175,24 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
-    public int getStoredPower() {
-        return (int) this.buffer;
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        int[] slots = new int[inv.size()];
+        for (int i = 0; i < inv.size(); i++) {
+            slots[i] = i;
+        }
+        return slots;
     }
 
-    public boolean canSupplyPower() {
-        return this.buffer >= 100;
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        Direction facing = this.getCachedState().get(Properties.FACING);
+        return dir == facing;
     }
 
-    public void consumePower(int i) {
-        this.buffer = Math.max(0, this.buffer - i);
-        markDirty();
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        Direction facing = this.getCachedState().get(Properties.FACING);
+        return dir != facing;
     }
 }

@@ -16,6 +16,8 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<ProtocolAnchorCoreBlockEntity> PROTOCOL_ANCHOR_CORE = create("protocol_anchor_core",
             BlockEntityType.Builder.create(ProtocolAnchorCoreBlockEntity::new, ModBlocks.PROTOCOL_ANCHOR_CORE));
+    public static final BlockEntityType<ProtocolAnchorCorePortBlockEntity> PROTOCOL_ANCHOR_CORE_PORT = create("protocol_anchor_core_port",
+            BlockEntityType.Builder.create(ProtocolAnchorCorePortBlockEntity::new, ModBlocks.PROTOCOL_ANCHOR_CORE_PORT));
 
     public static final BlockEntityType<RelayTowerBlockEntity> RELAY_TOWER = create("relay_tower",
             BlockEntityType.Builder.create(RelayTowerBlockEntity::new, ModBlocks.RELAY_TOWER));
@@ -89,6 +91,11 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<CrafterBlockEntity> CRAFTER = create("crafter",
             BlockEntityType.Builder.create(CrafterBlockEntity::new, ModBlocks.CRAFTER));
+
+    public static final BlockEntityType<FluidPumpBlockEntity> FLUID_PUMP = create("fluid_pump",
+            BlockEntityType.Builder.create(FluidPumpBlockEntity::new, ModBlocks.FLUID_PUMP));
+    public static final BlockEntityType<PipeBlockEntity> PIPE = create("pipe",
+            BlockEntityType.Builder.create(PipeBlockEntity::new, ModBlocks.PIPE_BLOCK));
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);

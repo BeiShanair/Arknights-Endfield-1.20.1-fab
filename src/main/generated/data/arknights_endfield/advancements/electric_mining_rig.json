@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:originium_rig",
+  "criteria": {
+    "got_electric_mining_rig": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:electric_mining_rig"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.electric_mining_rig.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:electric_mining_rig"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.electric_mining_rig.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_electric_mining_rig"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

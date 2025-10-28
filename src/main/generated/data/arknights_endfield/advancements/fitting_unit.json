@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:shredding_unit",
+  "criteria": {
+    "got_fitting_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:fitting_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.fitting_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:fitting_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.fitting_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_fitting_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

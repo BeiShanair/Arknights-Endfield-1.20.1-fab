@@ -43,6 +43,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.PLANTING_UNIT, PlantingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SEED_PICKING_UNIT, SeedPickingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.THERMAL_BANK, ThermalBankRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.FLUID_PUMP, FluidPumpBlockRenderer::new);
 
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
@@ -60,6 +61,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.GRINDING_UNIT_SCREEN, GrindingUnitScreen::new);
         HandledScreens.register(ModScreens.PACKAGING_UNIT_SCREEN, PackagingUnitScreen::new);
         HandledScreens.register(ModScreens.CRAFTER_SCREEN, CrafterScreen::new);
+        HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_AKETINE_BLOCK, RenderLayer.getCutout());
@@ -89,5 +91,6 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_UMBRALINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YAZHEN_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_YAZHEN_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIPE_BLOCK, RenderLayer.getCutout());
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:fluffed_jincao_powder": 5,
+    "arknights_endfield:steel_bottle": 10
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:jincao_tisane"
+  }
+}

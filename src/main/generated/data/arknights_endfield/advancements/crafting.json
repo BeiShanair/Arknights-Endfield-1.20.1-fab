@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:root",
+  "criteria": {
+    "got_crafter": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:crafter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.crafting.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:crafter"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.crafting.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_crafter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

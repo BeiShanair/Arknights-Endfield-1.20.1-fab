@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:fillet": 4,
+    "arknights_endfield:reed_rye": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:mossfield_pie"
+  }
+}

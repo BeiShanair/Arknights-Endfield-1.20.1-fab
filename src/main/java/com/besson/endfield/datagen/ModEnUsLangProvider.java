@@ -52,6 +52,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "Originium Ore");
 
         translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Anchor Core Port");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Anchor Core Side");
 
         translationBuilder.add(ModItems.AGGAGRIT, "Aggagrit");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "Aggagrit Block");
@@ -234,14 +236,59 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.grinding_unit", "Grinding Unit");
         translationBuilder.add("blockEntity.packaging_unit", "Packaging Unit");
         translationBuilder.add("blockEntity.crafter", "Crafter");
+        translationBuilder.add("blockEntity.fluid_pump", "Fluid Pump");
 
         translationBuilder.add("screen.protocol_core.buffer", "Stored:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
         translationBuilder.add("screen.protocol_core.max", "%s");
         translationBuilder.add("screen.protocol_core.generated", "Gen. %s");
         translationBuilder.add("screen.protocol_core.consumer", "%s Con.");
-        translationBuilder.add("screen.protocol_core.load", "Load Node Num: %s");
+        translationBuilder.add("tooltip.water_pump.fluid", "Water: %s / %s mB");
+        translationBuilder.add("tooltip.water_pump.empty", "Empty");
 
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
+
+        translationBuilder.add("advancement.endfield.root.title", "Arknights Endfield");
+        translationBuilder.add("advancement.endfield.root.description", "Welcome to Arknights Endfield!");
+        translationBuilder.add("advancement.endfield.originium_ore.title", "Originium Ore");
+        translationBuilder.add("advancement.endfield.originium_ore.description", "The foundation of Endfield Industry.You can find them underground.");
+        translationBuilder.add("advancement.endfield.amethyst_ore.title", "Amethyst Ore");
+        translationBuilder.add("advancement.endfield.amethyst_ore.description", "Higher-grade ores.Use it to craft better items.");
+        translationBuilder.add("advancement.endfield.find_all_ores.title", "Ore Explorer");
+        translationBuilder.add("advancement.endfield.find_all_ores.description", "Find all four types of ores in the world: Amethyst, Cuprium, Ferrium, and Originium.");
+        translationBuilder.add("advancement.endfield.originium_rig.title", "Portable Originium Rig");
+        translationBuilder.add("advancement.endfield.originium_rig.description", "Use it to mine Mineral Vein Blocks!");
+        translationBuilder.add("advancement.endfield.electric_mining_rig.title", "Electric Mining Rig");
+        translationBuilder.add("advancement.endfield.electric_mining_rig.description", "Use it to mine Mineral Vein Blocks!");
+        translationBuilder.add("advancement.endfield.electric_mining_rig_mk_ii.title", "Electric Mining Rig Mk II");
+        translationBuilder.add("advancement.endfield.electric_mining_rig_mk_ii.description", "An upgraded version of Electric Mining Rig with higher efficiency.");
+        translationBuilder.add("advancement.endfield.all_mineral_vein_block.title", "Mineral Vein Block Collector");
+        translationBuilder.add("advancement.endfield.all_mineral_vein_block.description", "Mine all types of Mineral Vein Blocks in the world, including Endfield's and Minecraft's.");
+        translationBuilder.add("advancement.endfield.relay_tower.title", "Relay Tower");
+        translationBuilder.add("advancement.endfield.relay_tower.description", "Set up a Relay Tower to transmit power over long distances.");
+        translationBuilder.add("advancement.endfield.electric_pylon.title", "Electric Pylon");
+        translationBuilder.add("advancement.endfield.electric_pylon.description", "Use Electric Pylons to distribute power within your network.");
+        translationBuilder.add("advancement.endfield.crafting.title", "Advanced Crafting");
+        translationBuilder.add("advancement.endfield.crafting.description", "Use the Crafter to create advanced materials and components essential for Endfield technology.");
+        translationBuilder.add("advancement.endfield.refining_unit.title", "Refining Unit");
+        translationBuilder.add("advancement.endfield.refining_unit.description", "Refine raw materials.");
+        translationBuilder.add("advancement.endfield.shredding_unit.title", "Shredding Unit");
+        translationBuilder.add("advancement.endfield.shredding_unit.description", "Shred items.");
+        translationBuilder.add("advancement.endfield.fitting_unit.title", "Fitting Unit");
+        translationBuilder.add("advancement.endfield.fitting_unit.description", "Process components.");
+        translationBuilder.add("advancement.endfield.moulding_unit.title", "Moulding Unit");
+        translationBuilder.add("advancement.endfield.moulding_unit.description", "Mould items.");
+        translationBuilder.add("advancement.endfield.planting_unit.title", "Planting Unit");
+        translationBuilder.add("advancement.endfield.planting_unit.description", "Plant seeds.");
+        translationBuilder.add("advancement.endfield.seed_picking_unit.title", "Seed-Picking Unit");
+        translationBuilder.add("advancement.endfield.seed_picking_unit.description", "Harvest seeds.");
+        translationBuilder.add("advancement.endfield.gearing_unit.title", "Gearing Unit");
+        translationBuilder.add("advancement.endfield.gearing_unit.description", "Assemble gears.");
+        translationBuilder.add("advancement.endfield.filling_unit.title", "Filling Unit");
+        translationBuilder.add("advancement.endfield.filling_unit.description", "Fill containers.");
+        translationBuilder.add("advancement.endfield.grinding_unit.title", "Grinding Unit");
+        translationBuilder.add("advancement.endfield.grinding_unit.description", "Grind materials.");
+        translationBuilder.add("advancement.endfield.packaging_unit.title", "Packaging Unit");
+        translationBuilder.add("advancement.endfield.packaging_unit.description", "Package products.");
     }
 }

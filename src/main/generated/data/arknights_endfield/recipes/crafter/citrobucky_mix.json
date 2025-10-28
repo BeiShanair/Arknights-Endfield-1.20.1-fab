@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_bottle": 1,
+    "arknights_endfield:citromix": 8,
+    "arknights_endfield:firebuckle_powder": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:citrobucky_mix"
+  }
+}

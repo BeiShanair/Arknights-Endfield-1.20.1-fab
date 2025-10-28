@@ -6,9 +6,9 @@
 				"identifier": "geometry.protocol_anchor_core",
 				"texture_width": 1024,
 				"texture_height": 1024,
-				"visible_bounds_width": 10,
-				"visible_bounds_height": 28.5,
-				"visible_bounds_offset": [0, 13.75, 0]
+				"visible_bounds_width": 11,
+				"visible_bounds_height": 29,
+				"visible_bounds_offset": [0, 13.5, 0]
 			},
 			"bones": [
 				{
@@ -16,8 +16,8 @@
 					"pivot": [0, 0, 0],
 					"cubes": [
 						{
-							"origin": [-72, 0, -72],
-							"size": [144, 16, 144],
+							"origin": [-72.1, 0, -72.1],
+							"size": [144.2, 16.1, 144.2],
 							"uv": {
 								"north": {"uv": [204, 0], "uv_size": [144, 16]},
 								"east": {"uv": [204, 16], "uv_size": [144, 16]},

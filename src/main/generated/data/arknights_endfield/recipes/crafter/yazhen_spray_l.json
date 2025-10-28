@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:cuprium_jar": 10,
+    "arknights_endfield:thorny_yazhen_powder": 5
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:yazhen_spray_l"
+  }
+}

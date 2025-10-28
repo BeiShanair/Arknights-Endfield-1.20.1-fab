@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:originium_ore",
+  "criteria": {
+    "got_originium_rig": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:portable_originium_rig"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.originium_rig.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:portable_originium_rig"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.originium_rig.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_originium_rig"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

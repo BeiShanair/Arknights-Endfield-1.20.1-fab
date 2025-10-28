@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:fitting_unit",
+  "criteria": {
+    "got_moulding_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:moulding_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.moulding_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:moulding_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.moulding_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_moulding_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

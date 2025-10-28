@@ -44,6 +44,8 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PLANTING_UNIT_SIDE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT_SIDE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK_SIDE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_PUMP);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMETHYST_ORE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUPRIUM_ORE_BLOCK);

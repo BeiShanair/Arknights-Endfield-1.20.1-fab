@@ -1,10 +1,10 @@
 package com.besson.endfield.block.custom;
 
 import com.besson.endfield.block.ModBlockEntityWithFacing;
+import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -57,7 +58,7 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
                 if (checkState.isOf(this)) {
                     continue;
                 }
-                world.setBlockState(p, Blocks.BARRIER.getDefaultState());
+                world.setBlockState(p, ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE.getDefaultState());
             }
         }
     }
@@ -65,9 +66,15 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof ProtocolAnchorCoreBlockEntity entity) {
+                ItemScatterer.spawn(world, pos, entity);
+                world.updateComparators(pos, this);
+            }
+
             for (BlockPos p: BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
                 BlockState checkState = world.getBlockState(p);
-                if (checkState.isOf(Blocks.BARRIER)) {
+                if (checkState.isOf(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE)) {
                     world.breakBlock(p, false);
                 }
             }

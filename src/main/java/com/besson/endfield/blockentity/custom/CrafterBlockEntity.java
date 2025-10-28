@@ -53,13 +53,11 @@ public class CrafterBlockEntity extends BlockEntity implements ImplementedInvent
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, this.inv);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        Inventories.readNbt(nbt, this.inv);
     }
 
     @Override

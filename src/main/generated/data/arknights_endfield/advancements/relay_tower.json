@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:root",
+  "criteria": {
+    "got_relay_tower": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:relay_tower"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.relay_tower.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:relay_tower"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.relay_tower.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_relay_tower"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

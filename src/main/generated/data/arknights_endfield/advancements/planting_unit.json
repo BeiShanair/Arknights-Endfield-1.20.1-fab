@@ -1,0 +1,38 @@
+{
+  "parent": "arknights_endfield:moulding_unit",
+  "criteria": {
+    "got_planting_unit": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:planting_unit"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.endfield.planting_unit.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arknights_endfield:planting_unit"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.endfield.planting_unit.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_planting_unit"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

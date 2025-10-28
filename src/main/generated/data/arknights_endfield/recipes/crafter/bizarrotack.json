@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:buckflower_powder": 2,
+    "arknights_endfield:grass_chaff": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:bizarrotack"
+  }
+}

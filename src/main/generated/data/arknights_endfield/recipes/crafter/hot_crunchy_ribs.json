@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:cartilage_bit": 2,
+    "arknights_endfield:steel_bottle": 1,
+    "arknights_endfield:tartpepper": 8
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:hot_crunchy_ribs"
+  }
+}

@@ -52,6 +52,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "源石矿");
 
         translationBuilder.add(ModBlocks.CRAFTER, "制造台");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "协议核心端口");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "协议核心侧面");
 
         translationBuilder.add(ModItems.AGGAGRIT, "异香石");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "异香石块");
@@ -234,13 +236,59 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.grinding_unit", "研磨机");
         translationBuilder.add("blockEntity.packaging_unit", "封装机");
         translationBuilder.add("blockEntity.crafter", "制造台");
+        translationBuilder.add("blockEntity.fluid_pump", "抽水泵");
 
         translationBuilder.add("screen.protocol_core.buffer", "电池储能:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
         translationBuilder.add("screen.protocol_core.max", "%s");
         translationBuilder.add("screen.protocol_core.generated", "发电功率 %s");
         translationBuilder.add("screen.protocol_core.consumer", "%s 用电功率");
+        translationBuilder.add("tooltip.water_pump.fluid", "水量: %s / %s mB");
+        translationBuilder.add("tooltip.water_pump.empty", "空");
 
         translationBuilder.add("itemGroup.arknights_endfield", "明日方舟：终末地" );
+
+        translationBuilder.add("advancement.endfield.root.title", "明日方舟：终末地");
+        translationBuilder.add("advancement.endfield.root.description", "欢迎来到明日‘方’舟：终末地！");
+        translationBuilder.add("advancement.endfield.originium_ore.title", "源石矿");
+        translationBuilder.add("advancement.endfield.originium_ore.description", "终末地工业的基础！你可以在地下发现它们");
+        translationBuilder.add("advancement.endfield.amethyst_ore.title", "紫晶矿");
+        translationBuilder.add("advancement.endfield.amethyst_ore.description", "更高级的矿石。用它来制作更好的装备吧！");
+        translationBuilder.add("advancement.endfield.find_all_ores.title", "矿石收集者");
+        translationBuilder.add("advancement.endfield.find_all_ores.description", "收集所有四种终末地矿石：源石矿、赤铜矿、蓝铁矿和紫晶矿");
+        translationBuilder.add("advancement.endfield.originium_rig.title", "便携源石矿机");
+        translationBuilder.add("advancement.endfield.originium_rig.description", "使用便携源石矿机来开采矿脉方块吧！");
+        translationBuilder.add("advancement.endfield.electric_mining_rig.title", "电驱矿机");
+        translationBuilder.add("advancement.endfield.electric_mining_rig.description", "使用电驱矿机来开采矿脉方块吧！");
+        translationBuilder.add("advancement.endfield.electric_mining_rig_mk_ii.title", "二型电驱矿机");
+        translationBuilder.add("advancement.endfield.electric_mining_rig_mk_ii.description", "使用二型电驱矿机来更高效地开采矿脉方块吧！");
+        translationBuilder.add("advancement.endfield.all_mineral_vein_block.title", "矿脉收集者");
+        translationBuilder.add("advancement.endfield.all_mineral_vein_block.description", "收集所有矿脉方块，包括终末地和原有矿石的矿脉方块");
+        translationBuilder.add("advancement.endfield.relay_tower.title", "中继器");
+        translationBuilder.add("advancement.endfield.relay_tower.description", "使用中继器来扩展你的电力网络");
+        translationBuilder.add("advancement.endfield.electric_pylon.title", "供电桩");
+        translationBuilder.add("advancement.endfield.electric_pylon.description", "使用供电桩来为你的机器供电");
+        translationBuilder.add("advancement.endfield.crafting.title", "制造台");
+        translationBuilder.add("advancement.endfield.crafting.description", "使用制造台来制作终末地的工业设备");
+        translationBuilder.add("advancement.endfield.refining_unit.title", "精炼炉");
+        translationBuilder.add("advancement.endfield.refining_unit.description", "熔炼材料");
+        translationBuilder.add("advancement.endfield.shredding_unit.title", "粉碎机");
+        translationBuilder.add("advancement.endfield.shredding_unit.description", "粉碎物品");
+        translationBuilder.add("advancement.endfield.fitting_unit.title", "配件机");
+        translationBuilder.add("advancement.endfield.fitting_unit.description", "制造零件");
+        translationBuilder.add("advancement.endfield.moulding_unit.title", "塑形机");
+        translationBuilder.add("advancement.endfield.moulding_unit.description", "塑形瓶子");
+        translationBuilder.add("advancement.endfield.planting_unit.title", "种植机");
+        translationBuilder.add("advancement.endfield.planting_unit.description", "种植作物");
+        translationBuilder.add("advancement.endfield.seed_picking_unit.title", "采种机");
+        translationBuilder.add("advancement.endfield.seed_picking_unit.description", "采集种子");
+        translationBuilder.add("advancement.endfield.gearing_unit.title", "装备原件机");
+        translationBuilder.add("advancement.endfield.gearing_unit.description", "制造装备原件");
+        translationBuilder.add("advancement.endfield.filling_unit.title", "灌装机");
+        translationBuilder.add("advancement.endfield.filling_unit.description", "灌装容器");
+        translationBuilder.add("advancement.endfield.grinding_unit.title", "研磨机");
+        translationBuilder.add("advancement.endfield.grinding_unit.description", "制造更高级的粉末");
+        translationBuilder.add("advancement.endfield.packaging_unit.title", "封装机");
+        translationBuilder.add("advancement.endfield.packaging_unit.description", "封装物品");
     }
 }

@@ -3,6 +3,7 @@ package com.besson.endfield.block.custom;
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.ThermalBankBlockEntity;
 import com.besson.endfield.blockentity.custom.ThermalBankSideBlockEntity;
 import net.minecraft.block.BlockState;
@@ -76,6 +77,7 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
                 }
             }
 
+            notifyNearbyAnchors(world, pos);
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
@@ -102,6 +104,19 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
                 if (entity instanceof ThermalBankSideBlockEntity entity1) {
                     entity1.setParentPos(pos);
                 }
+            }
+            notifyNearbyAnchors(world, pos);
+        }
+    }
+
+    private void notifyNearbyAnchors(World world, BlockPos pos) {
+        if (world.isClient()) return;
+
+        int radius = 30; // 与 ProtocolAnchorCoreBlockEntity 扫描范围一致
+        for (BlockPos check : BlockPos.iterate(pos.add(-radius, -radius, -radius), pos.add(radius, radius, radius))) {
+            BlockEntity be = world.getBlockEntity(check);
+            if (be instanceof ProtocolAnchorCoreBlockEntity core) {
+                core.refreshNearbyPower();
             }
         }
     }

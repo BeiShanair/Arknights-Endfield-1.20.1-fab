@@ -2,6 +2,10 @@
 *Arknights: Endfield - Minecraft Fan Mod*
 *(非官方明日方舟：终末地 二创模组)*
 
+**注意：模组的部分代码使用`生成式人工智能(AI)`编写，此篇文章的英文翻译也由AI翻译**
+
+**Note: Some code of this mod is written using AI, and the English translation of this article is also translated by AI**
+
 ## 简介 / Introduction
 本模组为个人开发的 **非商业同人作品**，灵感来源于《明日方舟：终末地》。  
 旨在以 Minecraft 的形式探索终末地的工业与生态设计理念。

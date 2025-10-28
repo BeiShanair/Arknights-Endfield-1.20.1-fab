@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:buckflower_powder": 10,
+    "arknights_endfield:ferrium_bottle": 10
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:buck_capsule_b"
+  }
+}
