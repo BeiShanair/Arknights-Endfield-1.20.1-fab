@@ -92,13 +92,15 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
             }
         }
         if (devices.isEmpty()) return;
-        int perDevice = amount / devices.size();
-        for (ElectrifiableDevice device: devices) {
+
+        devices.sort((a, b) -> Integer.compare(b.getRequiredPower(), a.getRequiredPower()));
+
+        for (ElectrifiableDevice device : devices) {
+            if (amount <= 0) break;
             int required = device.getRequiredPower();
-            int toGive = Math.min(perDevice, required);
+            int toGive = Math.min(required, amount);
             device.receiveElectricCharge(toGive);
             amount -= toGive;
-            if (amount <= 0) break;
         }
     }
 

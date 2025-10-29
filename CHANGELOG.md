@@ -1,4 +1,8 @@
 # 更新日志 / Changelog
+## 2025-10-29
+- 调整`供电桩`供电逻辑
+- Adjusted the power supply logic of `Electric Pylon`
+
 ## 2025-10-28
 - 优化`协议核心`tick方法，提高游戏性能
 - Optimized the tick method of `Protocol Anchor Core` to improve game performance
