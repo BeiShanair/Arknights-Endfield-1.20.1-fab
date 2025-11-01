@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "arknights_endfield:hollow_bonechip"
+    },
+    {
+      "item": "arknights_endfield:hollow_bonechip"
+    },
+    {
+      "item": "arknights_endfield:hollow_bonechip"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "arknights_endfield:cartilage_bit"
+  }
+}

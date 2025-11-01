@@ -32,6 +32,9 @@ public class ModBlocks {
     public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
+//    public static final Block BIG_STORAGE = registerBlocks("big_storage",
+//            new BigStorageBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+
     public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
     public static final Block REFINING_UNIT_SIDE = registerBlocks("refining_unit_side",

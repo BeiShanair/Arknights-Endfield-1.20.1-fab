@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "arknights_endfield:glowbug"
+    },
+    {
+      "item": "arknights_endfield:glowbug"
+    },
+    {
+      "item": "arknights_endfield:glowbug"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "arknights_endfield:chitin_bit"
+  }
+}

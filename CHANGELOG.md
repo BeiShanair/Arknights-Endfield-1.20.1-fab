@@ -1,4 +1,10 @@
 # 更新日志 / Changelog
+## 2025-11-01
+- 优化`协议核心端口`，可以实现物品筛选
+- Optimized `Protocol Anchor Core Port` to support item filtering
+- 添加了一些配方
+- Added some recipes
+
 ## 2025-10-29
 - 调整`供电桩`供电逻辑
 - Adjusted the power supply logic of `Electric Pylon`

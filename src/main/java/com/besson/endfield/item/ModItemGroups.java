@@ -60,6 +60,7 @@ public class ModItemGroups {
                         entries.add(ModItems.THERMAL_BANK_ITEM);
 //                        entries.add(ModItems.FLUID_PUMP_ITEM);
 //                        entries.add(ModBlocks.PIPE_BLOCK);
+//                        entries.add(ModBlocks.BIG_STORAGE);
 
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);

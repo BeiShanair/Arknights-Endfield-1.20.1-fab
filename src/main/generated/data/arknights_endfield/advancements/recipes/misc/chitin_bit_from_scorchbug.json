@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_scorchbug": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:scorchbug"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arknights_endfield:chitin_bit_from_scorchbug"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_scorchbug",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arknights_endfield:chitin_bit_from_scorchbug"
+    ]
+  },
+  "sends_telemetry_event": false
+}

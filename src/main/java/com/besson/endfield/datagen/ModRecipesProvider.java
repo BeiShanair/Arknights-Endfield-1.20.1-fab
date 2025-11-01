@@ -9,10 +9,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -37,6 +39,58 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
         offerSmelting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 200, "origocrust");
         offerBlasting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 100, "origocrust");
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WOOD, 3)
+                .input(ItemTags.LOGS)
+                .criterion("has_logs", conditionsFromTag(ItemTags.LOGS))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "wood_from_logs"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SOAKED_WOOD, 5)
+                .input(ModItems.WOOD)
+                .input(Items.WATER_BUCKET)
+                .criterion("has_wood", conditionsFromItem(ModItems.WOOD))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "soaked_wood"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SOAKED_WOODCHIP, 9)
+                .input(ModItems.WOOD)
+                .input(Items.WATER_BUCKET)
+                .criterion("has_woodchip", conditionsFromItem(ModItems.WOOD))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "soaked_woodchip"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GRASS_CHAFF, 3)
+                .input(Items.WHEAT_SEEDS)
+                .input(Items.WHEAT_SEEDS)
+                .input(Items.WHEAT_SEEDS)
+                .criterion("has_wheat_seeds", conditionsFromItem(Items.WHEAT_SEEDS))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grass_chaff"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHITIN_BIT, 3)
+                .input(ModItems.GLOWBUG)
+                .input(ModItems.GLOWBUG)
+                .input(ModItems.GLOWBUG)
+                .criterion("has_glowbug", conditionsFromItem(ModItems.GLOWBUG))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "chitin_bit"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHITIN_BIT, 3)
+                .input(ModItems.SCORCHBUG)
+                .criterion("has_scorchbug", conditionsFromItem(ModItems.SCORCHBUG))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "chitin_bit_from_scorchbug"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HOLLOW_BONE, 3)
+                .input(Items.BONE)
+                .input(Items.BONE)
+                .input(Items.BONE)
+                .criterion("has_bone", conditionsFromItem(Items.BONE))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "hollow_bone"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HOLLOW_BONECHIP, 6)
+                .input(Items.BONE)
+                .input(Items.BONE)
+                .criterion("has_bone", conditionsFromItem(Items.BONE))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "hollow_bonechip"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CARTILAGE_BIT, 3)
+                .input(ModItems.HOLLOW_BONE)
+                .criterion("has_hollow_bone", conditionsFromItem(ModItems.HOLLOW_BONE))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "cartilage_bit"));
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CARTILAGE_BIT, 3)
+                .input(ModItems.HOLLOW_BONECHIP)
+                .input(ModItems.HOLLOW_BONECHIP)
+                .input(ModItems.HOLLOW_BONECHIP)
+                .criterion("has_hollow_bonechip", conditionsFromItem(ModItems.HOLLOW_BONECHIP))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "cartilage_bit_from_bonechip"));
 
         OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
@@ -165,6 +219,18 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/citrome"));
         PlantingUnitRecipeBuilder.create(ModItems.SANDLEAF_SEED, ModItems.SANDLEAF)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/sandleaf"));
+        PlantingUnitRecipeBuilder.create(ModItems.AMBER_RICE_SEED, ModItems.AMBER_RICE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/amber_rice"));
+        PlantingUnitRecipeBuilder.create(ModItems.REDJADE_GINSENG_SEED, ModItems.REDJADE_GINSENG)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/redjade_ginseng"));
+        PlantingUnitRecipeBuilder.create(ModItems.REED_RYE_SEED, ModItems.REED_RYE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/reed_rye"));
+        PlantingUnitRecipeBuilder.create(ModItems.TARTPEPPER_SEED, ModItems.TARTPEPPER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/tartpepper"));
+        PlantingUnitRecipeBuilder.create(ModItems.JINCAO_SEED, ModItems.JINCAO)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/jincao"));
+        PlantingUnitRecipeBuilder.create(ModItems.YAZHEN_SEED, ModItems.YAZHEN)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/yazhen"));
 
         SeedPickingUnitRecipeBuilder.create(ModItems.AKETINE, ModItems.AKETINE_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/aketine"));

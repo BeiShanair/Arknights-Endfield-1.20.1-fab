@@ -4,12 +4,16 @@ import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCorePortBlockEntity;
+import com.mojang.datafixers.kinds.IdF;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -30,14 +34,30 @@ public class ProtocolAnchorCorePortBlock extends ModBlockEntityWithFacing {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient()) {
-            BlockEntity entity = world.getBlockEntity(pos);
-            if (entity instanceof ProtocolAnchorCorePortBlockEntity entity1) {
-                ProtocolAnchorCoreBlockEntity parent = entity1.getParentBlock();
-                if (parent != null) {
-                    player.openHandledScreen(parent);
-                    return ActionResult.SUCCESS;
-                }
+        if (world.isClient()) return ActionResult.CONSUME;
+
+        BlockEntity entity = world.getBlockEntity(pos);
+        if (!(entity instanceof ProtocolAnchorCorePortBlockEntity port)) return ActionResult.CONSUME;
+
+        ItemStack heldItem = player.getStackInHand(hand);
+        if (heldItem.isEmpty() && !player.isSneaking()) {
+            ProtocolAnchorCoreBlockEntity parent = port.getParentBlock();
+            if (parent != null) {
+                player.openHandledScreen(parent);
+                return ActionResult.SUCCESS;
+            }
+            return ActionResult.CONSUME;
+        }
+
+        if (heldItem.isEmpty() && player.isSneaking()) {
+            port.clearFilter();
+            if (player instanceof ServerPlayerEntity) {
+                ((ServerPlayerEntity) player).sendMessage(Text.literal("Cleared filter"), false);
+            }
+        } else {
+            port.setFilter(heldItem);
+            if (player instanceof ServerPlayerEntity) {
+                ((ServerPlayerEntity) player).sendMessage(Text.literal("Set filter to: " + heldItem.getName().getString()), false);
             }
         }
         return ActionResult.CONSUME;

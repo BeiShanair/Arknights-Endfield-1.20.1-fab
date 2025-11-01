@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arknights_endfield:soaked_woodchip"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_woodchip": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:wood"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_woodchip",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arknights_endfield:soaked_woodchip"
+    ]
+  },
+  "sends_telemetry_event": false
+}

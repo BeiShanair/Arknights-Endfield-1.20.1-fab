@@ -22,6 +22,9 @@ public class ModBlockEntities {
     public static final BlockEntityType<RelayTowerBlockEntity> RELAY_TOWER = create("relay_tower",
             BlockEntityType.Builder.create(RelayTowerBlockEntity::new, ModBlocks.RELAY_TOWER));
 
+//    public static final BlockEntityType<BigStorageBlockEntity> BIG_STORAGE = create("big_storage",
+//            BlockEntityType.Builder.create(BigStorageBlockEntity::new, ModBlocks.BIG_STORAGE));
+
     public static final BlockEntityType<ElectricPylonBlockEntity> ELECTRIC_PYLON = create("electric_pylon",
             BlockEntityType.Builder.create(ElectricPylonBlockEntity::new, ModBlocks.ELECTRIC_PYLON));
 

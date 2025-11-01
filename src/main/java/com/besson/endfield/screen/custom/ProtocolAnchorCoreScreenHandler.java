@@ -1,7 +1,6 @@
 package com.besson.endfield.screen.custom;
 
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
-import com.besson.endfield.screen.LargeStackSlot;
 import com.besson.endfield.screen.ModScreens;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;

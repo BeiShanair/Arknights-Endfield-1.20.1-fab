@@ -1,5 +1,6 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.block.custom.ProtocolAnchorCoreBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.power.PowerNetworkManager;
@@ -186,13 +187,13 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
-        Direction facing = this.getCachedState().get(Properties.FACING);
+        Direction facing = this.getCachedState().get(ProtocolAnchorCoreBlock.FACING);
         return dir == facing;
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction dir) {
-        Direction facing = this.getCachedState().get(Properties.FACING);
+        Direction facing = this.getCachedState().get(ProtocolAnchorCoreBlock.FACING);
         return dir != facing;
     }
 }

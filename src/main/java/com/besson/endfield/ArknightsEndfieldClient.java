@@ -62,6 +62,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.PACKAGING_UNIT_SCREEN, PackagingUnitScreen::new);
         HandledScreens.register(ModScreens.CRAFTER_SCREEN, CrafterScreen::new);
         HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
+//        HandledScreens.register(ModScreens.BIG_STORAGE_SCREEN, BigStorageScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_AKETINE_BLOCK, RenderLayer.getCutout());
