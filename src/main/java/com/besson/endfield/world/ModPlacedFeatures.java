@@ -141,35 +141,35 @@ public class ModPlacedFeatures {
 
         PlacedFeatures.register(featureRegisterable, COAL_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.COAL_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, COPPER_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.COPPER_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, DIAMOND_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.DIAMOND_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, EMERALD_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.EMERALD_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, GOLD_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.GOLD_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, IRON_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.IRON_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, LAPIS_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.LAPIS_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, REDSTONE_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.REDSTONE_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, AMETHYST_ORE_UPPER_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.AMETHYST_ORE_BLOCK_KEY),
@@ -188,7 +188,7 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(
                 featureRegisterable, AMETHYST_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.AMETHYST_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, ORIGINIUM_ORE_UPPER_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.ORIGINIUM_ORE_BLOCK_KEY),
@@ -207,7 +207,7 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(
                 featureRegisterable, ORIGINIUM_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.ORIGINIUM_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, FERRIUM_ORE_UPPER_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.FERRIUM_ORE_BLOCK_KEY),
@@ -226,7 +226,7 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(
                 featureRegisterable, FERRIUM_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.FERRIUM_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
         PlacedFeatures.register(featureRegisterable, CUPRIUM_ORE_UPPER_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.CUPRIUM_ORE_BLOCK_KEY),
@@ -245,7 +245,7 @@ public class ModPlacedFeatures {
         PlacedFeatures.register(
                 featureRegisterable, CUPRIUM_MINERAL_VEIN_PLACED_KEY,
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.CUPRIUM_MINERAL_VEIN_BLOCK_KEY),
-                modifiersWithCount(10,
+                modifiersWithCount(6,
                         HeightRangePlacementModifier.uniform(YOffset.fixed(-64), YOffset.fixed(0))));
     }
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {

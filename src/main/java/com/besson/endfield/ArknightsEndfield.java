@@ -11,6 +11,7 @@ import com.besson.endfield.power.PowerNetworkManager;
 import com.besson.endfield.recipe.ModRecipes;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.utils.JoinHandler;
+import com.besson.endfield.utils.ModLootTableModifier;
 import com.besson.endfield.world.generation.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
@@ -43,6 +44,7 @@ public class ArknightsEndfield implements ModInitializer {
 
 		ModNetWorking.register();
 		ModItemEntity.register();
+		ModLootTableModifier.modifierLootTables();
 
 		FuelRegistry.INSTANCE.add(ModItems.ORIGINIUM_ORE, 1600);
 		LOGGER.info("Hello Fabric world!");

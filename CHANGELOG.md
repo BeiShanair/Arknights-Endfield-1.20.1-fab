@@ -1,4 +1,10 @@
 # 更新日志 / Changelog
+## 2025-11-02
+- 调整了矿物生成的概率
+- Adjusted the probability of mineral generation
+- 牛、绵羊、猪可以掉落`兽肉`，骷髅和凋零骷髅可以掉落`异香石块`等系列方块
+- Cows, sheep, and pigs can drop `Fillet`, while skeletons and wither skeletons can drop `Aggagrit Blocks` and related blocks
+
 ## 2025-11-01
 - 优化`协议核心端口`，可以实现物品筛选
 - Optimized `Protocol Anchor Core Port` to support item filtering

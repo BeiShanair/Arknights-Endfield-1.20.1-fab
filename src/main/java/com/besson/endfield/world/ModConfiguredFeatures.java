@@ -135,27 +135,27 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> coalMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.COAL_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, COAL_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(coalMineralTargets, 2));
+                new OreFeatureConfig(coalMineralTargets, 3));
 
         List<OreFeatureConfig.Target> copperMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.COPPER_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, COPPER_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(copperMineralTargets, 2));
+                new OreFeatureConfig(copperMineralTargets, 3));
 
         List<OreFeatureConfig.Target> diamondMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, DIAMOND_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(diamondMineralTargets, 1));
+                new OreFeatureConfig(diamondMineralTargets, 3));
 
         List<OreFeatureConfig.Target> emeraldMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.EMERALD_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, EMERALD_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(emeraldMineralTargets, 1));
+                new OreFeatureConfig(emeraldMineralTargets, 3));
 
         List<OreFeatureConfig.Target> goldMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.GOLD_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, GOLD_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(goldMineralTargets, 2));
+                new OreFeatureConfig(goldMineralTargets, 3));
 
         List<OreFeatureConfig.Target> ironMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.IRON_MINERAL_VEIN_BLOCK.getDefaultState()));
@@ -165,12 +165,12 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> lapisMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.LAPIS_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, LAPIS_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(lapisMineralTargets, 1));
+                new OreFeatureConfig(lapisMineralTargets, 3));
 
         List<OreFeatureConfig.Target> redstoneMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, REDSTONE_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(redstoneMineralTargets, 2));
+                new OreFeatureConfig(redstoneMineralTargets, 3));
 
         List<OreFeatureConfig.Target> overWorldTargets = List.of(
                 OreFeatureConfig.createTarget(stoneReplace, ModBlocks.AMETHYST_ORE_BLOCK.getDefaultState()),
@@ -178,7 +178,7 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> amethystMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, AMETHYST_ORE_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(overWorldTargets, 9));
+                new OreFeatureConfig(overWorldTargets, 6));
         ConfiguredFeatures.register(featureRegisterable, AMETHYST_ORE_BLOCK_SMALL_KEY, Feature.ORE,
                 new OreFeatureConfig(overWorldTargets, 4));
         ConfiguredFeatures.register(featureRegisterable, AMETHYST_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
@@ -190,7 +190,7 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> originumMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, ORIGINIUM_ORE_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(originumOverWorldTargets, 9));
+                new OreFeatureConfig(originumOverWorldTargets, 6));
         ConfiguredFeatures.register(featureRegisterable, ORIGINIUM_ORE_BLOCK_SMALL_KEY, Feature.ORE,
                 new OreFeatureConfig(originumOverWorldTargets, 4));
         ConfiguredFeatures.register(featureRegisterable, ORIGINIUM_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
@@ -202,7 +202,7 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> ferriumMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, FERRIUM_ORE_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(ferriumOverWorldTargets, 9));
+                new OreFeatureConfig(ferriumOverWorldTargets, 6));
         ConfiguredFeatures.register(featureRegisterable, FERRIUM_ORE_BLOCK_SMALL_KEY, Feature.ORE,
                 new OreFeatureConfig(ferriumOverWorldTargets, 4));
         ConfiguredFeatures.register(featureRegisterable, FERRIUM_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
@@ -214,7 +214,7 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> cupriumMineralTargets = List.of(
                 OreFeatureConfig.createTarget(deepslateReplace, ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK.getDefaultState()));
         ConfiguredFeatures.register(featureRegisterable, CUPRIUM_ORE_BLOCK_KEY, Feature.ORE,
-                new OreFeatureConfig(cupriumOverWorldTargets, 9));
+                new OreFeatureConfig(cupriumOverWorldTargets, 6));
         ConfiguredFeatures.register(featureRegisterable, CUPRIUM_ORE_BLOCK_SMALL_KEY, Feature.ORE,
                 new OreFeatureConfig(cupriumOverWorldTargets, 4));
         ConfiguredFeatures.register(featureRegisterable, CUPRIUM_MINERAL_VEIN_BLOCK_KEY, Feature.ORE,
