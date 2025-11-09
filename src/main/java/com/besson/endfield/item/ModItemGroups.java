@@ -62,6 +62,9 @@ public class ModItemGroups {
 //                        entries.add(ModBlocks.PIPE_BLOCK);
 //                        entries.add(ModBlocks.BIG_STORAGE);
 
+                        entries.add(ModBlocks.SUPPLY_TERMINAL);
+                        entries.add(ModItems.GUN_TOWER_ITEM);
+
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);
                         entries.add(ModItems.ORIGOCRUST);

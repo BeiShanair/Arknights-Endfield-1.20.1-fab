@@ -3,23 +3,16 @@ package com.besson.endfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.entity.ModItemEntity;
-import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.renderer.block.*;
-import com.besson.endfield.renderer.item.IndustrialExplosiveEntityRenderer;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
-import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.util.InputUtil;
-import org.lwjgl.glfw.GLFW;
 
 public class ArknightsEndfieldClient implements ClientModInitializer {
     @Override
@@ -44,6 +37,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.SEED_PICKING_UNIT, SeedPickingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.THERMAL_BANK, ThermalBankRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.FLUID_PUMP, FluidPumpBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.GUN_TOWER, GunTowerBlockRenderer::new);
 
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
@@ -62,6 +56,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.PACKAGING_UNIT_SCREEN, PackagingUnitScreen::new);
         HandledScreens.register(ModScreens.CRAFTER_SCREEN, CrafterScreen::new);
         HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
+        HandledScreens.register(ModScreens.SUPPLY_TERMINAL_SCREEN, SupplyTerminalScreen::new);
 //        HandledScreens.register(ModScreens.BIG_STORAGE_SCREEN, BigStorageScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());

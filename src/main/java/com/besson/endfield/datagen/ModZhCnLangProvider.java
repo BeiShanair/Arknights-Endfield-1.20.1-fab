@@ -237,6 +237,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.packaging_unit", "封装机");
         translationBuilder.add("blockEntity.crafter", "制造台");
         translationBuilder.add("blockEntity.fluid_pump", "抽水泵");
+        translationBuilder.add("blockEntity.supply_terminal", "供货终端");
+        translationBuilder.add("screen.supply_terminal.level", "Level: %s");
 
         translationBuilder.add("screen.protocol_core.buffer", "电池储能:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");

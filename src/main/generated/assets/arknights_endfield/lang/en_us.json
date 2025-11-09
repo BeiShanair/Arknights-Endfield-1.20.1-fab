@@ -111,6 +111,7 @@
   "blockEntity.refining_unit": "Refining Unit",
   "blockEntity.seed_picking_unit": "Seed-Picking Unit",
   "blockEntity.shredding_unit": "Shredding Unit",
+  "blockEntity.supply_terminal": "Supply Terminal",
   "blockEntity.thermal_bank": "Thermal Bank",
   "item.arknights_endfield.aggagrit": "Aggagrit",
   "item.arknights_endfield.aggagrit_block": "Aggagrit Block",
@@ -268,6 +269,7 @@
   "screen.protocol_core.generated": "Gen. %s",
   "screen.protocol_core.max": "%s",
   "screen.protocol_core.storedEnergy": " %s /",
+  "screen.supply_terminal.level": "Level: %s",
   "tooltip.water_pump.empty": "Empty",
   "tooltip.water_pump.fluid": "Water: %s / %s mB"
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-02T12:46:01.478996	Endfield Industry/Block Loot Tables
+// 1.20.1	2025-11-09T20:43:56.4651615	Endfield Industry/Block Loot Tables
 cad87c1dea3b6110f3987c5d5145ceaed22e5605 data\arknights_endfield\loot_tables\blocks\fluid_pump.json
 a0a1b7c020bca31bdb9f13490300bd748b6545b9 data\arknights_endfield\loot_tables\blocks\deepslate_amethyst_ore.json
 56734712f7b34d2c11eacff693230f3151a651e1 data\arknights_endfield\loot_tables\blocks\sandleaf_block.json
@@ -6,7 +6,9 @@ a0a1b7c020bca31bdb9f13490300bd748b6545b9 data\arknights_endfield\loot_tables\blo
 f618248dc2a516ca1dddc8e2204fbcecb32d67c8 data\arknights_endfield\loot_tables\blocks\originium_mineral_vein_block.json
 4a9c400582c0c021777fcaef22da6dd7fdc82a10 data\arknights_endfield\loot_tables\blocks\gold_mineral_vein_block.json
 231d8f63fa04f0d5c00bc9409ccaa5856a8c6a69 data\arknights_endfield\loot_tables\blocks\ferrium_ore_block.json
+83ccf29301ace8930c9ab76ab75bb35dec210094 data\arknights_endfield\loot_tables\blocks\gun_tower.json
 6c2a04384b28875d0f2c917c61cfd809660ba12d data\arknights_endfield\loot_tables\blocks\thermal_bank.json
+4e437e51f32722f3bc57a14e4b7189128973c8c6 data\arknights_endfield\loot_tables\blocks\supply_terminal.json
 c9ab20268f664d0a25539305496fd0d0969d42d4 data\arknights_endfield\loot_tables\blocks\originium_ore_block.json
 b48fe5f660bcf305ca203ad009d33a8f272a9d79 data\arknights_endfield\loot_tables\blocks\citrome_block.json
 110cd6cb4e9c5a61f2c999eb2f4dd8a35b01e04a data\arknights_endfield\loot_tables\blocks\moulding_unit.json

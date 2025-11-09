@@ -25,6 +25,11 @@ public class ModBlockEntities {
 //    public static final BlockEntityType<BigStorageBlockEntity> BIG_STORAGE = create("big_storage",
 //            BlockEntityType.Builder.create(BigStorageBlockEntity::new, ModBlocks.BIG_STORAGE));
 
+    public static final BlockEntityType<SupplyTerminalBlockEntity> SUPPLY_TERMINAL = create("supply_terminal",
+            BlockEntityType.Builder.create(SupplyTerminalBlockEntity::new, ModBlocks.SUPPLY_TERMINAL));
+    public static final BlockEntityType<GunTowerBlockEntity> GUN_TOWER = create("gun_tower",
+            BlockEntityType.Builder.create(GunTowerBlockEntity::new, ModBlocks.GUN_TOWER));
+
     public static final BlockEntityType<ElectricPylonBlockEntity> ELECTRIC_PYLON = create("electric_pylon",
             BlockEntityType.Builder.create(ElectricPylonBlockEntity::new, ModBlocks.ELECTRIC_PYLON));
 

@@ -237,6 +237,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.packaging_unit", "Packaging Unit");
         translationBuilder.add("blockEntity.crafter", "Crafter");
         translationBuilder.add("blockEntity.fluid_pump", "Fluid Pump");
+        translationBuilder.add("blockEntity.supply_terminal", "Supply Terminal");
+        translationBuilder.add("screen.supply_terminal.level", "Level: %s");
 
         translationBuilder.add("screen.protocol_core.buffer", "Stored:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");

@@ -111,6 +111,7 @@
   "blockEntity.refining_unit": "精炼炉",
   "blockEntity.seed_picking_unit": "采种机",
   "blockEntity.shredding_unit": "粉碎机",
+  "blockEntity.supply_terminal": "供货终端",
   "blockEntity.thermal_bank": "热能池",
   "item.arknights_endfield.aggagrit": "异香石",
   "item.arknights_endfield.aggagrit_block": "异香石块",
@@ -268,6 +269,7 @@
   "screen.protocol_core.generated": "发电功率 %s",
   "screen.protocol_core.max": "%s",
   "screen.protocol_core.storedEnergy": " %s /",
+  "screen.supply_terminal.level": "Level: %s",
   "tooltip.water_pump.empty": "空",
   "tooltip.water_pump.fluid": "水量: %s / %s mB"
 }

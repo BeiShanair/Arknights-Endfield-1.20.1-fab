@@ -40,8 +40,9 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         offerSmelting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 200, "origocrust");
         offerBlasting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 100, "origocrust");
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WOOD, 3)
-                .input(ItemTags.LOGS)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WOOD, 3)
+                .pattern("###")
+                .input('#', ItemTags.LOGS)
                 .criterion("has_logs", conditionsFromTag(ItemTags.LOGS))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "wood_from_logs"));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SOAKED_WOOD, 5)
@@ -634,5 +635,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT)
                 .input(ModItems.ORIGOCRUST, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/protocol_anchor_core_port"));
+        CrafterRecipeBuilder.create(ModBlocks.SUPPLY_TERMINAL)
+                .input(ModItems.ORIGOCRUST, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/supply_terminal"));
     }
 }
