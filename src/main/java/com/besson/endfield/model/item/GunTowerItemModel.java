@@ -13,7 +13,7 @@ public class GunTowerItemModel extends GeoModel<GunTowerItem> {
 
     @Override
     public Identifier getTextureResource(GunTowerItem gunTowerItem) {
-        return new Identifier(ArknightsEndfield.MOD_ID, "textures/item/gun_tower.png");
+        return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/gun_tower.png");
     }
 
     @Override

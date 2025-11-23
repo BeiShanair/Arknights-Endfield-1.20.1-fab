@@ -90,7 +90,7 @@ public class ElectricMiningRigMkIIBlockEntity extends BlockEntity implements Sid
             } else if (!entity.needsPower() && !entity.isWorking) {
                 entity.isWorking = true;
             }
-            entity.markDirty();
+
             world.updateListeners(pos, state, state, 3);
 
             if (hasRecipe && entity.storedPower >= POWER_PRE_TICK) {

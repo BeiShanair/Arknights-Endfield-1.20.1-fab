@@ -11,7 +11,6 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -33,32 +32,6 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
         super(ModBlockEntities.ELECTRIC_PYLON, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, ElectricPylonBlockEntity entity) {
-        if (world.isClient()) return;
-
-        if (entity.connectedNode == null || world.getBlockEntity(entity.connectedNode) == null) {
-            BlockPos closest = null;
-            double closestDist = Double.MAX_VALUE;
-
-            for (BlockPos p: BlockPos.iterate(pos.add(-30, -30, -30), pos.add(30, 30, 30))) {
-                if (p.equals(pos)) continue;
-
-                BlockEntity candidate = world.getBlockEntity(p);
-
-                if (candidate instanceof ProtocolAnchorCoreBlockEntity || candidate instanceof RelayTowerBlockEntity) {
-                    double d = pos.getSquaredDistance(p);
-                    if (d < closestDist) {
-                        closest = p.toImmutable();
-                        closestDist = d;
-                    }
-                }
-            }
-            entity.connectedNode = closest;
-            markDirty(world, pos, state);
-            world.updateListeners(pos, state, state, 3);
-        }
-    }
-
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
@@ -77,6 +50,28 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
                 }
             });
             registeredToManager = true;
+        }
+
+        if (connectedNode == null || world.getBlockEntity(connectedNode) == null) {
+            BlockPos closest = null;
+            double closestDist = Double.MAX_VALUE;
+
+            for (BlockPos p: BlockPos.iterate(pos.add(-30, -30, -30), pos.add(30, 30, 30))) {
+                if (p.equals(pos)) continue;
+
+                BlockEntity candidate = world.getBlockEntity(p);
+
+                if (candidate instanceof ProtocolAnchorCoreBlockEntity || candidate instanceof RelayTowerBlockEntity) {
+                    double d = pos.getSquaredDistance(p);
+                    if (d < closestDist) {
+                        closest = p.toImmutable();
+                        closestDist = d;
+                    }
+                }
+            }
+            connectedNode = closest;
+            markDirty(world, pos, this.getCachedState());
+            world.updateListeners(pos, this.getCachedState(), this.getCachedState(), 3);
         }
     }
 

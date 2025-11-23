@@ -44,13 +44,6 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.PROTOCOL_ANCHOR_CORE,
-                (world1, pos, state1, blockEntity) ->
-                    ProtocolAnchorCoreBlockEntity.tick(world1, pos, state1, (ProtocolAnchorCoreBlockEntity) blockEntity));
-    }
-
-    @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient()) {
             for (BlockPos p: BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {

@@ -39,8 +39,6 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(54, ItemStack.EMPTY);
 
-    public int buffer = 0;
-    private int cachedNearbyPower = 0;
     private boolean registeredToManager = false;
 
     public ProtocolAnchorCoreBlockEntity(BlockPos pos, BlockState state) {
@@ -52,51 +50,6 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
         return this.inv;
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, ProtocolAnchorCoreBlockEntity entity) {
-        if (world.isClient()) return;
-
-        int totalPower = entity.getTotalPower();
-        int newBuffer = Math.min(entity.buffer + totalPower, entity.getMaxBuffer());
-
-        if (newBuffer != entity.buffer) {
-            entity.buffer = newBuffer;
-            entity.markDirty();
-        }
-    }
-
-    private int getNearbyThermalBankPower() {
-        int sum = 0;
-        BlockPos blockPos = this.getPos();
-        if (world != null) {
-            for (BlockPos pos : BlockPos.iterate(blockPos.add(-30, -30, -30), blockPos.add(30, 30, 30))) {
-                BlockEntity be = world.getBlockEntity(pos);
-                if (be instanceof ThermalBankBlockEntity blockEntity) {
-                    sum += blockEntity.getPowerOutput();
-                }
-            }
-        }
-        return sum;
-    }
-
-    public int getMaxBuffer() {
-        int baseMaxBuffer = 100000;
-        return baseMaxBuffer + getNearbyThermalBankPower();
-    }
-
-    public void refreshNearbyPower() {
-        this.cachedNearbyPower = getNearbyThermalBankPower();
-        markDirty();
-    }
-
-    private int getExtraPower() {
-        return cachedNearbyPower;
-    }
-
-    public int getTotalPower() {
-        int basePower = 150;
-        return basePower + cachedNearbyPower;
-    }
-
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
@@ -104,7 +57,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
             PowerNetworkManager manager = PowerNetworkManager.get(serverWorld);
             manager.registerGenerator(this.getPos(), () -> {
                 try {
-                    return this.getTotalPower();
+                    return 150;
                 } catch (Throwable t) {
                     return 0;
                 }
@@ -155,14 +108,12 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        this.buffer = nbt.getInt("buffer");
         Inventories.readNbt(nbt, this.inv);
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        nbt.putInt("buffer", this.buffer);
         Inventories.writeNbt(nbt, this.inv);
     }
 
