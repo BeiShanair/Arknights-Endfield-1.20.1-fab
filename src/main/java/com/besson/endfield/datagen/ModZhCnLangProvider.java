@@ -30,6 +30,9 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.SEED_PICKING_UNIT_ITEM, "采种机");
         translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "热能池");
 
+        translationBuilder.add(ModBlocks.BELT, "传送带");
+        translationBuilder.add(ModBlocks.OUTPUT_PORT_BLOCK, "输出端口");
+
         translationBuilder.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, "紫水晶矿脉");
         translationBuilder.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK, "煤矿脉");
         translationBuilder.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, "铜矿脉");

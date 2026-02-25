@@ -51,6 +51,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.FERRIUM_ORE_BLOCK, "Ferrium Ore");
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "Originium Ore");
 
+        translationBuilder.add(ModBlocks.BELT, "Belt");
+        translationBuilder.add(ModBlocks.OUTPUT_PORT_BLOCK, "Output Port");
+        translationBuilder.add(ModBlocks.FLUID_PIPE, "Fluid Pipe");
+
         translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Anchor Core Port");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Anchor Core Side");

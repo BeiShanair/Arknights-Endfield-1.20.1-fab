@@ -92,6 +92,13 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input(ModItems.HOLLOW_BONECHIP)
                 .criterion("has_hollow_bonechip", conditionsFromItem(ModItems.HOLLOW_BONECHIP))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "cartilage_bit_from_bonechip"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.BELT, 9)
+                .pattern("##")
+                .pattern("##")
+                .pattern("##")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "belt_from_origocrust"));
 
         OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
@@ -638,5 +645,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.SUPPLY_TERMINAL)
                 .input(ModItems.ORIGOCRUST, 5)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/supply_terminal"));
+        CrafterRecipeBuilder.create(ModBlocks.OUTPUT_PORT_BLOCK)
+                .input(ModItems.ORIGOCRUST, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/output_port_block"));
     }
 }

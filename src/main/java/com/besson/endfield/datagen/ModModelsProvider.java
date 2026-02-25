@@ -4,9 +4,11 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
+import net.minecraft.block.Block;
+import net.minecraft.block.enums.RailShape;
+import net.minecraft.data.client.*;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
 
 public class ModModelsProvider extends FabricModelProvider {
     public ModModelsProvider(FabricDataOutput output) {
@@ -47,7 +49,14 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_PUMP);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SUPPLY_TERMINAL);
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.GUN_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.GUN_TOWER);
+
+//        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BELT);
+        
+//        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_PIPE);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_EXTRACTOR);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WATER_INJECTOR);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.OUTPUT_PORT_BLOCK);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMETHYST_ORE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUPRIUM_ORE_BLOCK);
@@ -73,7 +82,6 @@ public class ModModelsProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRAFTER);
     }
-
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.AGGAGRIT, Models.GENERATED);

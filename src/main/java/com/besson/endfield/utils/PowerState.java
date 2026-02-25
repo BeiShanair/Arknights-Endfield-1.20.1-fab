@@ -1,4 +1,4 @@
-package com.besson.endfield.power;
+package com.besson.endfield.utils;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.PersistentState;

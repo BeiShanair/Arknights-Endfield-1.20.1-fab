@@ -1,4 +1,96 @@
 # 更新日志 / Changelog
+## 2026-02-23
+- 完善传送带
+- Improved conveyor belts
+
+## 2026-02-21
+- 仿照原版的铁轨，制作了可以直角转弯的传送带
+- Created conveyor belts that can turn at right angles, similar to vanilla rails
+
+## 2026-02-20
+- 修复`便携源石矿机`相关逻辑
+- Fixed logic related to `Portable Originium Rig`
+
+## 2026-02-18
+- 优化各个矿机，提取基类
+- Optimized various mining rigs and extracted base classes
+
+## 2026-02-17
+- 供电桩、中继器现在可以实现断点重连，即当它连接的前一个节点被移除了，那么它会自己重新寻找在连接范围内且最近的节点进行连接
+- Electric Pylons and Relay Towers can now implement breakpoint reconnection. If the previous node they are connected to is removed, they will automatically search for the nearest node within the connection range to connect to.
+
+## 2026-02-16
+- 优化工业设备，现在用电工业设备可以储备`10000 EFU(Endfield Units)`的电力，增加一定的容错，避免电力不足导致的设备停机
+- Optimized industrial equipment. Now, powered industrial equipment can store `10000 EFU (Endfield Units)` of electricity, providing some fault tolerance to prevent equipment shutdown due to insufficient power
+- 工业设备如果电力储备充足且不处于工作状态时，不会再消耗电力
+- When industrial equipment has sufficient power reserves and is not in working state, it will no longer consume electricity
+
+## 2026-02-11
+- 完成各炮台的白模搭建，但尚未加入模组中
+- Completed the white model construction of each gun tower, but has not yet been added to the mod
+
+## 2026-02-08
+- 新增`全局电网节点管理器`，用于处理供电桩、中继器之间的自动连接
+- Added `Global Power Network Node Manager` to handle automatic connections between Electric Pylons and Relay Towers
+
+## 2026-02-07
+- 测试验证炮台，优化转向效果
+- Tested and verified the gun tower, optimized the turning effect
+
+## 2026-02-06
+- `放置预览`试验阶段完成，开始正式编写
+- The `placement preview` testing phase is complete, and formal writing begins
+- 完成各`GUI`的简化，基类提取完成
+- Completed simplification of various `GUIs`, base class extraction completed
+
+## 2026-02-05
+- 开始优化各`GUI`，并提取基类
+- Started optimizing various `GUIs` and extracting base classes
+
+## 2026-02-04
+- 完成`工业设备`方块实体类的优化，基类提取完成
+- Completed optimization of `industrial equipment` block entity classes, base class extraction completed
+
+## 2026-02-03
+- 优化各`GUI`，降低渲染负载
+- Optimized various `GUIs` to reduce rendering load
+
+## 2026-01-12
+- 开始整理重构现有的`工业设备相关类`，提取基类，减少重复代码
+- Started organizing and refactoring existing `industrial equipment-related classes`, extracting base classes to reduce code duplication
+
+## 2026-01-11
+- 尝试使用`Transfer API`来处理各个方块实体中的物品传输逻辑，不再直接使用原版的类
+- Attempted to use `Transfer API` to handle item transfer logic in various block entities, no longer directly using vanilla classes
+
+## 2025-12-24
+- 整合并测试之前的管道
+- Integrated and tested previous pipelines
+
+## 2025-12-16
+- 初步试验管道
+- Initial testing of pipelines
+
+## 2025-12-15
+- 初步试验传送带
+- Initial testing of conveyor belts
+
+## 2025-12-14
+- 继续重构并优化电网，工业设备将直接接入全局电网，由全局电网负责所有电力运算逻辑
+- Continued to refactor and optimize the power grid. Industrial equipment will be directly connected to the global power grid, which is responsible for all power calculation logic.
+
+## 2025-12-12
+- 所有测试版停止更新，发布模组未来开发计划，参见[未来计划](https://beishanair.github.io/BessonNote/2025/10/01/endfield/)
+- All beta versions have stopped updating. The future development plan of the mod is released. See [Future Plans](https://beishanair.github.io/BessonNote/2025/10/01/endfield/)
+
+## 2025-12-10
+- 重构电网，新增一个物品用于模拟电力运输
+- Refactored the power grid and added a new item to simulate power transmission
+
+## 2025-12-08
+- 继续优化供电桩逻辑
+- Further optimized the logic of Electric Pylon
+
 ## 2025-11-19
 - 优化供电桩逻辑，现在供电桩只会在放置时，只进行一次搜索，搜索半径30格范围内的`协议核心`或`中继器`，如果找到，则会把顶端的连接线渲染出来
 - Optimized the logic of Electric Pylon. Now, the Electric Pylon will only perform a one-time search upon placement, searching for `Protocol Anchor Core` or `Relay Tower` within a 30-block radius. If found, it will render the top connection line.
@@ -51,9 +143,9 @@
 - 修复`制造台`刷物品的特性（bug）
 - Fixed the item duplication bug in `Crafter`
 
-## 2025-10-21 -> ?? (ing)
-- 研究流体管道
-- Researched fluid piping
+## 2025-10-21
+- 开始研究流体管道
+- Started researching fluid pipelines
 
 ## 2025-10-19
 - 更新食物

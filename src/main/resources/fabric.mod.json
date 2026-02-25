@@ -8,10 +8,10 @@
 		"Beishan_Besson"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://beishanair.github.io/BessonNote/2025/10/01/endfield/",
 		"sources": "https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab"
 	},
-	"license": "CC0-1.0",
+	"license": "GPL-3.0",
 	"icon": "assets/arknights_endfield/icon.png",
 	"environment": "*",
 	"entrypoints": {

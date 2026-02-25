@@ -3,8 +3,8 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -32,6 +32,9 @@ public class GunTowerBlockEntity extends BlockEntity implements GeoBlockEntity {
     private static final double RANGE = 16.0;
     private static final int FIRE_INTERNAL = 40;
 
+    private static final float MAX_YAW_SPEED = 6.0f;
+    private static final float MAX_PITCH_SPEED = 4.0f;
+    
     private float turretYaw;
     private float turretPitch;
 
@@ -64,7 +67,7 @@ public class GunTowerBlockEntity extends BlockEntity implements GeoBlockEntity {
         }
 
         List<HostileEntity> list = world.getEntitiesByClass(HostileEntity.class,
-                new Box(pos).expand(RANGE), e -> e.isAlive());
+                new Box(pos).expand(RANGE), LivingEntity::isAlive);
         if (!list.isEmpty()) {
             targetUuid = list.get(0).getUuid();
         }
@@ -83,12 +86,37 @@ public class GunTowerBlockEntity extends BlockEntity implements GeoBlockEntity {
         Vec3d targetPos = target.getPos().add(0, target.getHeight() / 2, 0);
         Vec3d direction = targetPos.subtract(towerPos).normalize();
 
-        this.turretYaw = (float) (MathHelper.atan2(direction.x, direction.z) * (180f / Math.PI));
-        this.turretPitch = (float) (Math.asin(direction.y) * (180f / Math.PI));
+        // 计算目标角度（度），对 yaw 加 180° 修正以匹配模型朝向
+        float desiredYaw = (float) (MathHelper.atan2(direction.x, direction.z) * (180f / Math.PI)) + 180f;
+        float desiredPitch = (float) (Math.asin(direction.y) * (180f / Math.PI));
 
-        world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        float prevYaw = this.turretYaw;
+        float prevPitch = this.turretPitch;
+
+        // 以每帧最大角速度逐步接近目标角，处理环绕
+        this.turretYaw = approachAngle(this.turretYaw, desiredYaw, MAX_YAW_SPEED);
+        this.turretPitch = approachAngle(this.turretPitch, desiredPitch, MAX_PITCH_SPEED);
+
+        // 只有在角度实际改变时才发起监听更新（减少网络/性能开销）
+        if (Math.abs(prevYaw - this.turretYaw) > 0.01f || Math.abs(prevPitch - this.turretPitch) > 0.01f) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
     }
 
+    private float approachAngle(float current, float target, float maxDelta) {
+        float delta = wrapDegrees(target - current);
+        if (delta > maxDelta) delta = maxDelta;
+        if (delta < -maxDelta) delta = -maxDelta;
+        return current + delta;
+    }
+
+    private float wrapDegrees(float angle) {
+        angle %= 360.0f;
+        if (angle >= 180.0f) angle -= 360.0f;
+        if (angle < -180.0f) angle += 360.0f;
+        return angle;
+    }
+    
     private void shoot(World world) {
         if (targetUuid == null) return;
         Entity target = ((ServerWorld) world).getEntity(targetUuid);

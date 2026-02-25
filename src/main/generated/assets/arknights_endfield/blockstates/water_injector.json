@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights_endfield:block/water_injector",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights_endfield:block/water_injector"
+    },
+    "facing=south": {
+      "model": "arknights_endfield:block/water_injector",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights_endfield:block/water_injector",
+      "y": 270
+    }
+  }
+}

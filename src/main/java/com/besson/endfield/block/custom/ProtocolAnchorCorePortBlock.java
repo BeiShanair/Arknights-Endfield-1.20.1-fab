@@ -4,7 +4,6 @@ import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.ProtocolAnchorCorePortBlockEntity;
-import com.mojang.datafixers.kinds.IdF;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

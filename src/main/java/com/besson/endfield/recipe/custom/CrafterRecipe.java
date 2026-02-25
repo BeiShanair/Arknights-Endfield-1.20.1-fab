@@ -48,6 +48,10 @@ public class CrafterRecipe implements Recipe<Inventory> {
 
     @Override
     public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
+        return output.copy();
+    }
+
+    public void consumeInputs(Inventory inventory) {
         for (Map.Entry<ItemConvertible, Integer> entry : required.entrySet()) {
             int need = entry.getValue();
             for (int i = 0; i < inventory.size(); i++) {
@@ -60,9 +64,8 @@ public class CrafterRecipe implements Recipe<Inventory> {
                 }
             }
         }
-        return output.copy();
     }
-
+    
     @Override
     public boolean fits(int width, int height) {
         return true;

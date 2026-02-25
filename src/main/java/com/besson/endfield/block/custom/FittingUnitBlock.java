@@ -34,9 +34,7 @@ public class FittingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.FITTING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                    FittingUnitBlockEntity.tick(world1, pos, state1, (FittingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.FITTING_UNIT, FittingUnitBlockEntity::tick);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class FittingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof FittingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (FittingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof FittingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

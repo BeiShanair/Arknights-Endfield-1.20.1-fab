@@ -29,17 +29,15 @@ public class PortableOriginiumRigBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.PORTABLE_ORIGINIUM_RIG,
-                (world1, pos, state1, blockEntity) ->
-                    blockEntity.tick(world1, pos, state1, (PortableOriginiumRigBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.PORTABLE_ORIGINIUM_RIG, PortableOriginiumRigBlockEntity::tick);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof PortableOriginiumRigBlockEntity) {
-                ItemScatterer.spawn(world, pos, (PortableOriginiumRigBlockEntity)blockEntity);
+            if (blockEntity instanceof PortableOriginiumRigBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);

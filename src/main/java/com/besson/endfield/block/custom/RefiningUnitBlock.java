@@ -34,9 +34,7 @@ public class RefiningUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.REFINING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                        RefiningUnitBlockEntity.tick(world1, pos, state1, (RefiningUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.REFINING_UNIT, RefiningUnitBlockEntity::tick);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class RefiningUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof RefiningUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (RefiningUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof RefiningUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

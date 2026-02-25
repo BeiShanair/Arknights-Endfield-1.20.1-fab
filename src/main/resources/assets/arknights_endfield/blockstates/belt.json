@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "belt_shape=ascending_east": {
+      "model": "arknights_endfield:block/belt_raised_ne",
+      "y": 90
+    },
+    "belt_shape=ascending_north": {
+      "model": "arknights_endfield:block/belt_raised_ne"
+    },
+    "belt_shape=ascending_south": {
+      "model": "arknights_endfield:block/belt_raised_sw"
+    },
+    "belt_shape=ascending_west": {
+      "model": "arknights_endfield:block/belt_raised_sw",
+      "y": 90
+    },
+    "belt_shape=east_west": {
+      "model": "arknights_endfield:block/belt",
+      "y": 90
+    },
+    "belt_shape=north_east": {
+      "model": "arknights_endfield:block/belt_corner",
+      "y": 270
+    },
+    "belt_shape=north_south": {
+      "model": "arknights_endfield:block/belt"
+    },
+    "belt_shape=north_west": {
+      "model": "arknights_endfield:block/belt_corner",
+      "y": 180
+    },
+    "belt_shape=south_east": {
+      "model": "arknights_endfield:block/belt_corner"
+    },
+    "belt_shape=south_west": {
+      "model": "arknights_endfield:block/belt_corner",
+      "y": 90
+    }
+  }
+}

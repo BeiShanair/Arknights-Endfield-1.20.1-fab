@@ -26,9 +26,9 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
                         entries.add(ModBlocks.FERRIUM_ORE_BLOCK);
                         entries.add(ModBlocks.DEEPSLATE_FERRIUM_ORE);
-                        entries.add(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
-                        entries.add(ModBlocks.CUPRIUM_ORE_BLOCK);
-                        entries.add(ModBlocks.DEEPSLATE_CUPRIUM_ORE);
+//                        entries.add(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK);
+//                        entries.add(ModBlocks.CUPRIUM_ORE_BLOCK);
+//                        entries.add(ModBlocks.DEEPSLATE_CUPRIUM_ORE);
 
                         entries.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK);
                         entries.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK);
@@ -38,6 +38,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.IRON_MINERAL_VEIN_BLOCK);
                         entries.add(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK);
                         entries.add(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK);
+
+//                        entries.add(ModItems.CONTROL_ITEM);
 
                         entries.add(ModBlocks.CRAFTER);
                         entries.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM);
@@ -60,10 +62,14 @@ public class ModItemGroups {
                         entries.add(ModItems.THERMAL_BANK_ITEM);
 //                        entries.add(ModItems.FLUID_PUMP_ITEM);
 //                        entries.add(ModBlocks.PIPE_BLOCK);
-//                        entries.add(ModBlocks.BIG_STORAGE);
+                        entries.add(ModBlocks.BELT);
+                        entries.add(ModBlocks.OUTPUT_PORT_BLOCK);
+//                        entries.add(ModBlocks.FLUID_PIPE);
+//                        entries.add(ModBlocks.FLUID_EXTRACTOR);
+//                        entries.add(ModBlocks.WATER_INJECTOR);
 
-                        entries.add(ModBlocks.SUPPLY_TERMINAL);
-                        entries.add(ModItems.GUN_TOWER_ITEM);
+//                        entries.add(ModBlocks.SUPPLY_TERMINAL);
+//                        entries.add(ModItems.GUN_TOWER_ITEM);
 
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);
@@ -82,12 +88,12 @@ public class ModItemGroups {
                         entries.add(ModItems.FERRIUM_BOTTLE);
                         entries.add(ModItems.FERRIUM_PART);
                         entries.add(ModItems.FERRIUM_COMPONENT);
-                        entries.add(ModItems.CUPRIUM_ORE);
-                        entries.add(ModItems.CUPRIUM_POWDER);
-                        entries.add(ModItems.CUPRIUM);
-                        entries.add(ModItems.CUPRIUM_PART);
-                        entries.add(ModItems.CUPRIUM_COMPONENT);
-                        entries.add(ModItems.CUPRIUM_JAR);
+//                        entries.add(ModItems.CUPRIUM_ORE);
+//                        entries.add(ModItems.CUPRIUM_POWDER);
+//                        entries.add(ModItems.CUPRIUM);
+//                        entries.add(ModItems.CUPRIUM_PART);
+//                        entries.add(ModItems.CUPRIUM_COMPONENT);
+//                        entries.add(ModItems.CUPRIUM_JAR);
                         entries.add(ModItems.CRYSTON_PART);
                         entries.add(ModItems.CRYSTON_POWDER);
                         entries.add(ModItems.CRYSTON_FIBER);

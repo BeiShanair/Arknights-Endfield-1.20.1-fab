@@ -1,8 +1,9 @@
 package com.besson.endfield.blockentity.custom;
 
-import com.besson.endfield.block.ElectrifiableDevice;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.power.PowerNetworkManager;
+import com.besson.endfield.utils.NodeEntry;
+import com.besson.endfield.utils.NodeType;
+import com.besson.endfield.utils.PowerNetworkNodeManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -20,103 +21,75 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEntity {
     private BlockPos connectedNode;
-    private boolean registeredToManager = false;
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
+    private boolean needsInit = true;
+    boolean isPowered = false;
+
+    protected int tickNum = 0;
+    
     public ElectricPylonBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.ELECTRIC_PYLON, pos, state);
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, ElectricPylonBlockEntity be) {
+        if (world.isClient()) return;
+
+        if (be.needsInit && world instanceof ServerWorld serverWorld) {
+            be.needsInit = false;
+
+            PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
+            manager.register(new NodeEntry(pos, NodeType.PYLON));
+
+            if (be.connectedNode == null) {
+                manager.findNearest(pos, NodeType.PYLON, 80).ifPresent(target -> {
+                    be.connectedNode = target.pos();
+                    be.isPowered = true;
+                    be.markDirty();
+                    world.updateListeners(pos, state, state, 3);
+                });
+            }
+        }
+        be.tickNum++;
+        
+        if (be.tickNum % 20 == 0) {
+            be.tickNum = 0;
+            if (be.connectedNode == null) return;
+
+            if (world.getBlockEntity(be.connectedNode) == null) {
+                be.removeConnectedNode();
+                if (world instanceof ServerWorld serverWorld) {
+                    PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
+
+                    manager.findNearest(pos, NodeType.PYLON, 80).ifPresent(target -> {
+                        be.connectedNode = target.pos();
+                        be.isPowered = true;
+                        be.markDirty();
+                        world.updateListeners(pos, state, state, 3);
+                    });
+                } else {
+                    be.isPowered = false;
+                    be.markDirty();
+                    world.updateListeners(pos, state, state, 3);
+                }
+            }
+        }
     }
 
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
-        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
-            PowerNetworkManager.get(serverWorld).registerConsumer(this.getPos(), () -> {
-                try {
-                    return this.getSurroundingDemand();
-                } catch (Throwable t) {
-                    return 0;
-                }
-            }, (amount) -> {
-                try {
-                    this.distributeToSurroundings(amount);
-                } catch (Throwable ignored) {
-
-                }
-            });
-            registeredToManager = true;
+        if (world instanceof ServerWorld) {
+            needsInit = true;
         }
-
-        if (connectedNode == null || world.getBlockEntity(connectedNode) == null) {
-            BlockPos closest = null;
-            double closestDist = Double.MAX_VALUE;
-
-            for (BlockPos p: BlockPos.iterate(pos.add(-30, -30, -30), pos.add(30, 30, 30))) {
-                if (p.equals(pos)) continue;
-
-                BlockEntity candidate = world.getBlockEntity(p);
-
-                if (candidate instanceof ProtocolAnchorCoreBlockEntity || candidate instanceof RelayTowerBlockEntity) {
-                    double d = pos.getSquaredDistance(p);
-                    if (d < closestDist) {
-                        closest = p.toImmutable();
-                        closestDist = d;
-                    }
-                }
-            }
-            connectedNode = closest;
-            markDirty(world, pos, this.getCachedState());
-            world.updateListeners(pos, this.getCachedState(), this.getCachedState(), 3);
-        }
-    }
-
-    private void distributeToSurroundings(Integer amount) {
-        if (world == null || amount <= 0) return;
-        List<ElectrifiableDevice> devices = new ArrayList<>();
-        for (BlockPos target: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
-            BlockEntity be = world.getBlockEntity(target);
-            if (be instanceof ElectrifiableDevice device) {
-                if (device.needsPower()) {
-                    devices.add(device);
-                }
-            }
-        }
-        if (devices.isEmpty()) return;
-
-        devices.sort((a, b) -> Integer.compare(b.getRequiredPower(), a.getRequiredPower()));
-
-        for (ElectrifiableDevice device : devices) {
-            if (amount <= 0) break;
-            int required = device.getRequiredPower();
-            int toGive = Math.min(required, amount);
-            device.receiveElectricCharge(toGive);
-            amount -= toGive;
-        }
-    }
-
-    private Integer getSurroundingDemand() {
-        if (world == null) return 0;
-        int totalDemand = 0;
-        for (BlockPos target: BlockPos.iterate(pos.add(-10, -10, -10), pos.add(10, 10, 10))) {
-            BlockEntity be = world.getBlockEntity(target);
-            if (be instanceof ElectrifiableDevice device) {
-                if (device.needsPower()) {
-                    totalDemand += device.getRequiredPower();
-                }
-            }
-        }
-        return totalDemand;
     }
 
     @Override
     public void markRemoved() {
         if (world instanceof  ServerWorld serverWorld) {
-            PowerNetworkManager.get(serverWorld).unregisterConsumer(this.getPos());
+            PowerNetworkNodeManager.get(serverWorld).unregister(this.getPos());
         }
         super.markRemoved();
     }
@@ -129,21 +102,18 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         if (connectedNode != null) {
-            nbt.putInt("connectedX", connectedNode.getX());
-            nbt.putInt("connectedY", connectedNode.getY());
-            nbt.putInt("connectedZ", connectedNode.getZ());
+            nbt.putLong("connected", connectedNode.asLong());
         }
+        nbt.putBoolean("isPowered", isPowered);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (nbt.contains("connectedX") && nbt.contains("connectedY") && nbt.contains("connectedZ")) {
-            int x = nbt.getInt("connectedX");
-            int y = nbt.getInt("connectedY");
-            int z = nbt.getInt("connectedZ");
-            connectedNode = new BlockPos(x, y, z);
+        if (nbt.contains("connected")) {
+            connectedNode = BlockPos.fromLong(nbt.getLong("connected"));
         }
+        isPowered = nbt.getBoolean("isPowered");
     }
 
     @Override
@@ -165,5 +135,14 @@ public class ElectricPylonBlockEntity extends BlockEntity implements GeoBlockEnt
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return this.cache;
+    }
+
+    public void setConnectedNode(BlockPos recorded) {
+        this.connectedNode = recorded;
+        this.isPowered = true;
+    }
+
+    public void removeConnectedNode() {
+        this.connectedNode = null;
     }
 }

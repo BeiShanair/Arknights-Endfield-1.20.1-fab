@@ -133,7 +133,6 @@ public class CrafterScreenHandler extends ScreenHandler {
 
     public void updateResult() {
         World world = player.getWorld();
-        if (world.isClient()) return;
 
         currentRecipes = world.getRecipeManager()
                 .getAllMatches(CrafterRecipe.Type.INSTANCE, inventory, world);

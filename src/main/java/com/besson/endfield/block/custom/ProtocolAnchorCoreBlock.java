@@ -74,4 +74,9 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
         }
         super.onStateReplaced(state, world, pos, newState, moved);
     }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlockEntities.PROTOCOL_ANCHOR_CORE, ProtocolAnchorCoreBlockEntity::tick);
+    }
 }

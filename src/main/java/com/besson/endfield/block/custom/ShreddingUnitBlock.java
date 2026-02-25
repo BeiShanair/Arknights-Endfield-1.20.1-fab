@@ -34,9 +34,7 @@ public class ShreddingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SHREDDING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                    ShreddingUnitBlockEntity.tick(world1, pos, state1, (ShreddingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.SHREDDING_UNIT,ShreddingUnitBlockEntity::tick);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class ShreddingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ShreddingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (ShreddingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof ShreddingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

@@ -1,5 +1,7 @@
 package com.besson.endfield.renderer.block;
 
+import com.besson.endfield.blockentity.custom.ElectricPylonBlockEntity;
+import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.RelayTowerBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
@@ -35,7 +37,9 @@ public class RelayTowerEntityRenderer implements BlockEntityRenderer<RelayTowerB
             connectedEntity = entity.getWorld().getBlockEntity(entity.getConnectedNode());
             if (connectedEntity instanceof RelayTowerBlockEntity) {
                 connectedPos = entity.getConnectedNode().add(0, 10, 0);
-            } else {
+            } else if (connectedEntity instanceof ElectricPylonBlockEntity) {
+                connectedPos = entity.getConnectedNode().add(0, 7, 0);
+            } else if (connectedEntity instanceof ProtocolAnchorCoreBlockEntity) {
                 connectedPos = entity.getConnectedNode().add(0, 27, 0);
             }
         }

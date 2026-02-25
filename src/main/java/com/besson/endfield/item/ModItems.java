@@ -203,6 +203,9 @@ public class ModItems {
     public static final Item YAZHEN_SYRINGE_A = registerItems("yazhen_syringe_a",new Item(new Item.Settings().rarity(Rarity.EPIC)));
     public static final Item YAZHEN_SYRINGE_C = registerItems("yazhen_syringe_c",new Item(new Item.Settings().rarity(Rarity.RARE)));
 
+    public static final Item CONTROL_ITEM = registerItems("control_item",
+            new ControlItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+
     private static Item registerSameBlockItem(String name, BlockItem blockItem, Block... blocks){
         for (Block b : blocks) {
             Item.BLOCK_ITEMS.put(b, blockItem);

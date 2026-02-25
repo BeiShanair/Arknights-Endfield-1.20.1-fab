@@ -5,10 +5,7 @@ import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.RelayTowerBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
@@ -38,6 +35,8 @@ public class ElectricPylonEntityRenderer implements BlockEntityRenderer<Electric
                 connectedPos = entity.getConnectedNode().add(0, 10, 0);
             } else if (be instanceof ProtocolAnchorCoreBlockEntity){
                 connectedPos = entity.getConnectedNode().add(0, 27, 0);
+            } else if (be instanceof ElectricPylonBlockEntity) {
+                connectedPos = entity.getConnectedNode().add(0, 7, 0);
             }
         }
 

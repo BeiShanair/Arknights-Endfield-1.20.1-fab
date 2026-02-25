@@ -29,9 +29,7 @@ public class ElectricMiningRigBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.ELECTRIC_MINING_RIG,
-                (world1, pos, state1, blockEntity) ->
-                    ElectricMiningRigBlockEntity.tick(world1, pos, state1, (ElectricMiningRigBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.ELECTRIC_MINING_RIG, ElectricMiningRigBlockEntity::tick);
     }
 
     @Override
@@ -50,8 +48,8 @@ public class ElectricMiningRigBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ElectricMiningRigBlockEntity) {
-                ItemScatterer.spawn(world, pos, (ElectricMiningRigBlockEntity)blockEntity);
+            if (blockEntity instanceof ElectricMiningRigBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);

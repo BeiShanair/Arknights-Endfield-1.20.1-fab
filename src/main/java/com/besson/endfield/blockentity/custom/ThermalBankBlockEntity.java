@@ -1,19 +1,24 @@
 package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.custom.ThermalBankBlock;
-import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.power.PowerNetworkManager;
+import com.besson.endfield.item.ModItems;
+import com.besson.endfield.utils.PowerNetworkManager;
 import com.besson.endfield.screen.custom.ThermalBankScreenHandler;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SidedInventory;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -34,27 +39,36 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class ThermalBankBlockEntity extends BlockEntity implements SidedInventory, GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
+public class ThermalBankBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(1, ItemStack.EMPTY);
-
+    private final SimpleInventory inputInv;
+    private final InventoryStorage inputStorage;
     private boolean registeredToManager = false;
-
+    protected boolean isWorking;
+    protected boolean enable = true;
+    protected boolean needsInit = true;
     private int burnTime;
     private int fuelTime;
     protected final PropertyDelegate propertyDelegate;
-
-    public static final int INPUT_SLOT = 0;
-    public static final int[] INPUT_SLOTS = {0};
-
+    private Item burnItem = null;
+            
     public ThermalBankBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.THERMAL_BANK, pos, state);
+        this.inputInv = new SimpleInventory(1) {
+            @Override
+            public void markDirty() {
+                super.markDirty();
+                ThermalBankBlockEntity.this.markDirty();
+            }
+        };
+        this.inputStorage = createInputStorage();
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
                     case 0 -> ThermalBankBlockEntity.this.burnTime;
                     case 1 -> ThermalBankBlockEntity.this.fuelTime;
+                    case 2 -> ThermalBankBlockEntity.this.enable ? 1 : 0;
                     default -> 0;
                 };
             }
@@ -64,12 +78,13 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
                 switch (index) {
                     case 0 -> ThermalBankBlockEntity.this.burnTime = value;
                     case 1 -> ThermalBankBlockEntity.this.fuelTime = value;
+                    case 2 -> ThermalBankBlockEntity.this.enable = value == 1;
                 }
             }
 
             @Override
             public int size() {
-                return 2;
+                return 3;
             }
         };
     }
@@ -79,19 +94,19 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
 
     }
 
+    public SimpleInventory getInputInv() {
+        return inputInv;
+    }
+    
+    protected InventoryStorage createInputStorage() {
+        return InventoryStorage.of(inputInv, null);
+    }
+    
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
-        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
-            PowerNetworkManager manager = PowerNetworkManager.get(serverWorld);
-            manager.registerGenerator(this.getPos(), () -> {
-                try {
-                    return this.getPowerOutput();
-                } catch (Throwable t) {
-                    return 0;
-                }
-            });
-            registeredToManager = true;
+        if (world instanceof ServerWorld) {
+            needsInit = true;
         }
     }
 
@@ -99,6 +114,7 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
     public void markRemoved() {
         if (world instanceof ServerWorld serverWorld) {
             PowerNetworkManager.get(serverWorld).unregisterGenerator(this.getPos());
+            registeredToManager = false;
         }
         super.markRemoved();
     }
@@ -107,26 +123,59 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
-
-    @Override
+    
     public DefaultedList<ItemStack> getItems() {
-        return inv;
+        DefaultedList<ItemStack> list = DefaultedList.ofSize(1, ItemStack.EMPTY);
+        if (inputInv != null) {
+            list.set(0, inputInv.getStack(0));
+        }
+        return list;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ThermalBankBlockEntity entity) {
+        if (world.isClient()) return;
+
+        if (entity.needsInit && world instanceof ServerWorld serverWorld) {
+            entity.needsInit = false;
+
+            PowerNetworkManager.get(serverWorld).registerGenerator(entity.getPos(), entity::getPowerOutput);
+            entity.registeredToManager = true;
+        }
+
+        if (!entity.getEnable()) {
+            entity.isWorking = false;
+            world.updateListeners(pos, state, state, 3);
+            entity.markDirty();
+            return;
+        }
+        
         if (entity.burnTime > 0) {
             entity.burnTime--;
         }
 
-        if (entity.burnTime == 0 && !entity.getStack(INPUT_SLOT).isEmpty()) {
-            Integer fuelValue = FuelRegistry.INSTANCE.get(entity.inv.get(INPUT_SLOT).getItem());
-
+        if (entity.burnTime == 0 && !entity.inputInv.getStack(0).isEmpty()) {
+            entity.burnItem = null;
+            ItemStack stack = entity.inputInv.getStack(0);
+            Integer fuelValue;
+            if (stack.isOf(ModItems.ORIGINIUM_ORE)) {
+                fuelValue = 160;
+            } else if (stack.isOf(ModItems.LC_BATTERY) ||
+                    stack.isOf(ModItems.SC_BATTERY) ||
+                    stack.isOf(ModItems.HC_BATTERY)) {
+                fuelValue = 800;
+            } else {
+                fuelValue = FuelRegistry.INSTANCE.get(stack.getItem());
+            }
+            entity.burnItem = stack.getItem();
             if (fuelValue != null && fuelValue > 0) {
                 int fuelTime = fuelValue / 2;
                 entity.fuelTime = fuelTime;
                 entity.burnTime = fuelTime;
-
-                entity.inv.get(INPUT_SLOT).decrement(1);
+                if (stack.isOf(Items.LAVA_BUCKET)) {
+                    entity.inputInv.setStack(0, new ItemStack(Items.BUCKET));
+                } else {
+                    entity.inputInv.getStack(0).decrement(1);
+                }
                 entity.markDirty();
             }
         }
@@ -137,7 +186,17 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
     }
 
     public int getPowerOutput() {
-        return isBurning() ? 150 : 0;
+        if (!enable || !isBurning()) return 0;
+        if (burnItem == ModItems.ORIGINIUM_ORE) {
+            return 50;
+        } else if (burnItem == ModItems.LC_BATTERY) {
+            return 220;
+        } else if (burnItem == ModItems.SC_BATTERY) {
+            return 420;
+        } else if (burnItem == ModItems.HC_BATTERY) {
+            return 1100;
+        }
+        return 50;
     }
 
     public float getFuelProgress() {
@@ -148,17 +207,25 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inv);
+        NbtCompound inputTag = new NbtCompound();
+        Inventories.writeNbt(inputTag, inputInv.stacks);
+        nbt.put("input", inputTag);
         nbt.putInt("burnTime", burnTime);
         nbt.putInt("fuelTime", fuelTime);
+        nbt.putBoolean("isWorking", this.isWorking);
+        nbt.putBoolean("enable", this.enable);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        Inventories.readNbt(nbt, inv);
+        if (nbt.contains("input")) {
+            Inventories.readNbt(nbt.getCompound("input"), inputInv.stacks);
+        }
         burnTime = nbt.getInt("burnTime");
         fuelTime = nbt.getInt("fuelTime");
+        this.isWorking = nbt.getBoolean("isWorking");
+        this.enable = nbt.getBoolean("enable");
     }
 
     @Override
@@ -186,26 +253,29 @@ public class ThermalBankBlockEntity extends BlockEntity implements SidedInventor
         return new ThermalBankScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
-    @Override
-    public int[] getAvailableSlots(Direction side) {
-        BlockState state = world != null && pos != null ? world.getBlockState(pos) : null;
-        if (state != null && state.contains(ThermalBankBlock.FACING)) {
-            Direction facing = state.get(ThermalBankBlock.FACING);
-            if (side == facing) {
-                return INPUT_SLOTS;
-            }
+    @Nullable
+    public Storage<ItemVariant> getStorage(BlockState state, Direction side) {
+        Direction facing = getFacing(state);
+
+        if (side == facing) {
+            return inputStorage;
         }
-        return new int[0];
+        return null;
+    }
+    
+    protected Direction getFacing(BlockState state) {
+        return state.get(ThermalBankBlock.FACING);
+    }
+    
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+        markDirty();
+        if (world != null) {
+            world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+        }
     }
 
-    @Override
-    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
-        return slot == INPUT_SLOT && FuelRegistry.INSTANCE.get(stack.getItem()) != null
-                && FuelRegistry.INSTANCE.get(stack.getItem()) > 0;
-    }
-
-    @Override
-    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
-        return false;
+    public boolean getEnable() {
+        return this.enable;
     }
 }

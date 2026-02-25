@@ -3,7 +3,6 @@ package com.besson.endfield.block.custom;
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.ThermalBankBlockEntity;
 import com.besson.endfield.blockentity.custom.ThermalBankSideBlockEntity;
 import net.minecraft.block.BlockState;
@@ -35,9 +34,7 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.THERMAL_BANK,
-                (world1, pos, state1, blockEntity) ->
-                    ThermalBankBlockEntity.tick(world1, pos, state1, (ThermalBankBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.THERMAL_BANK, ThermalBankBlockEntity::tick);
     }
 
     @Override
@@ -56,8 +53,8 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof ThermalBankBlockEntity) {
-                ItemScatterer.spawn(world, pos, (ThermalBankBlockEntity)blockEntity);
+            if (blockEntity instanceof ThermalBankBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

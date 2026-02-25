@@ -34,9 +34,7 @@ public class GrindingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.GRINDING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                    GrindingUnitBlockEntity.tick(world1, pos, state1, (GrindingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.GRINDING_UNIT, GrindingUnitBlockEntity::tick);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class GrindingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!world.isClient()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof GrindingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (GrindingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof GrindingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

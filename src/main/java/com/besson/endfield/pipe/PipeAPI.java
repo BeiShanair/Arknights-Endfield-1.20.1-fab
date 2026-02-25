@@ -25,7 +25,7 @@ public class PipeAPI {
             return pipe.getStorage();
         }
         if (be instanceof FluidPumpBlockEntity pump) {
-            return pump.getFluidStorageForSide(side);
+//            return pump.getFluidStorageForSide(side);
         }
         // 未来可支持储液罐等其他方块
         return null;

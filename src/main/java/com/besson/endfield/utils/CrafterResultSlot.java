@@ -31,17 +31,22 @@ public class CrafterResultSlot extends Slot {
     @Override
     public void onTakeItem(PlayerEntity player, ItemStack stack) {
         World world = player.getWorld();
-        if (!world.isClient()) {
-            if (handler instanceof CrafterScreenHandler crafterScreenHandler) {
-                var recipes = crafterScreenHandler.getCurrentRecipes();
-                int index = crafterScreenHandler.getSelectedRecipeIndex();
+
+        if (!world.isClient) {
+            if (handler instanceof CrafterScreenHandler crafter) {
+                var recipes = crafter.getCurrentRecipes();
+                int index = crafter.getSelectedRecipeIndex();
+
                 if (!recipes.isEmpty() && index < recipes.size()) {
                     CrafterRecipe recipe = recipes.get(index);
-                    recipe.craft(inputInventory, world.getRegistryManager());
+
+                    recipe.consumeInputs(inputInventory);
+
+                    crafter.updateResult();
                 }
             }
         }
-        handler.onContentChanged(inputInventory);
+
         super.onTakeItem(player, stack);
     }
 }

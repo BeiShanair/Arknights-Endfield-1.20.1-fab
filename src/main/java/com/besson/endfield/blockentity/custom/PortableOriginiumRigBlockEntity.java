@@ -1,28 +1,16 @@
 package com.besson.endfield.blockentity.custom;
 
-import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.custom.OreRigRecipe;
 import com.besson.endfield.screen.custom.PortableOriginiumRigScreenHandler;
-import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -35,26 +23,23 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
 
-public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory {
-
+public class PortableOriginiumRigBlockEntity extends BaseRigBlockEntity<OreRigRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private boolean isWorking;
-
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    private static final int OUTPUT_SLOT = 0;
-
-    protected final PropertyDelegate propertyDelegate;
-    private int progress = 0;
-    private int maxProgress = 40;
+    private int maxProgress = 60;
 
     public PortableOriginiumRigBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
+        super(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, pos, state, 60);
+    }
+
+    @Override
+    protected PropertyDelegate createPropertyDelegate() {
+        return new PropertyDelegate() {
             @Override
             public int get(int index) {
                 return switch (index) {
                     case 0 -> PortableOriginiumRigBlockEntity.this.progress;
                     case 1 -> PortableOriginiumRigBlockEntity.this.maxProgress;
+                    case 2 -> PortableOriginiumRigBlockEntity.this.enable ? 1 : 0;
                     default -> 0;
                 };
             }
@@ -64,40 +49,20 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
                 switch (index) {
                     case 0 -> PortableOriginiumRigBlockEntity.this.progress = value;
                     case 1 -> PortableOriginiumRigBlockEntity.this.maxProgress = value;
+                    case 2 -> PortableOriginiumRigBlockEntity.this.enable = value == 1;
                 }
             }
 
             @Override
             public int size() {
-                return 2;
+                return 3;
             }
         };
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("progress", progress);
-        nbt.putBoolean("isWorking", isWorking);
-    }
-
-    @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
-        Inventories.readNbt(nbt, inventory);
-        this.progress = nbt.getInt("progress");
-        this.isWorking = nbt.getBoolean("isWorking");
-    }
-
-    @Override
-    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        return this.createNbt();
+    protected int getPowerCostPerTick() {
+        return 0;
     }
 
     @Override
@@ -114,73 +79,58 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
     }
 
     @Override
-    public DefaultedList<ItemStack> getItems() {
-        return inventory;
-    }
-
-    @Override
-    public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf packetByteBuf) {
-        packetByteBuf.writeBlockPos(this.pos);
-    }
-
-    @Override
     public Text getDisplayName() {
         return Text.translatable("blockEntity.portable_originium_rig");
     }
+    
+    public static void tick(World world, BlockPos pos, BlockState state, PortableOriginiumRigBlockEntity be) {
+        if (world.isClient()) return;
 
-    public boolean isWorking() {
-        return isWorking;
-    }
-
-    public void tick(World world, BlockPos pos, BlockState state, PortableOriginiumRigBlockEntity entity) {
-        if (world.isClient()) {
+        if (!be.getEnable()) {
+            be.isWorking = false;
+            world.updateListeners(pos, state, state, 3);
+            be.markDirty();
             return;
         }
 
-        boolean activeNow = this.hasCorrectRecipe(world);
+        boolean activeNow = be.hasCorrectRecipe(world);
 
-        if (this.isOutputSlotAvailable()) {
+        if (be.isOutputSlotAvailable()) {
             if (activeNow) {
 
-                this.incrementProgress();
+                be.incrementProgress();
                 markDirty(world, pos, state);
 
-                if (this.hasCraftFinished()) {
-                    this.craftItem(world);
-                    this.resetProgress();
+                if (be.hasCraftingFinished()) {
+                    be.craftItem(world);
+                    be.resetProgress();
                 }
             } else {
-                this.resetProgress();
+                be.resetProgress();
             }
         } else {
-            this.resetProgress();
-            markDirty(world, pos, state);
+            be.resetProgress();
+            be.markDirty();
         }
 
-        if (entity.isWorking != activeNow) {
-            entity.isWorking = activeNow;
-            entity.markDirty();
+        if (be.isWorking != activeNow) {
+            be.isWorking = activeNow;
+            be.markDirty();
             world.updateListeners(pos, state, state, 3);
         }
     }
 
-    private void resetProgress() {
-        this.progress = 0;
+    @Override
+    protected void craftItem(World world) {
+        getMatchRecipe(world).ifPresent(recipe -> {
+            ItemStack result = recipe.getOutput(world.getRegistryManager());
+            ItemStack out = outputInv.getStack(0);
+            outputInv.setStack(0, new ItemStack(result.getItem(), out.getCount() + result.getCount()));
+        });
     }
 
-    private void craftItem(World world) {
-
-        Optional<OreRigRecipe> match = getMatchRecipe(world);
-
-        if (match.isPresent()) {
-            ItemStack result = match.get().getOutput(world.getRegistryManager());
-            this.setStack(OUTPUT_SLOT,
-                    new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
-        }
-
-    }
-
-    private Optional<OreRigRecipe> getMatchRecipe(World world) {
+    @Override
+    protected Optional<OreRigRecipe> getMatchRecipe(World world) {
         SimpleInventory inv = new SimpleInventory(1);
         BlockState belowState = world.getBlockState(this.pos.down());
         ItemStack belowStack = belowState.getBlock().asItem().getDefaultStack();
@@ -190,36 +140,12 @@ public class PortableOriginiumRigBlockEntity extends BlockEntity implements GeoB
                 .getFirstMatch(OreRigRecipe.Type.INSTANCE, inv, world)
                 .map(recipe -> (OreRigRecipe) recipe);
     }
-
-    private boolean hasCraftFinished () {
-        return this.progress >= this.maxProgress;
-    }
-
-    private void incrementProgress() {
-        this.progress++;
-    }
-
-    private boolean hasCorrectRecipe(World world) {
-
-        Optional<OreRigRecipe> match = getMatchRecipe(world);
-
-        if (match.isPresent()) {
-            ItemStack result = match.get().getOutput(world.getRegistryManager());
-            return canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
-        }
-        return false;
-    }
-
-    private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
-        return this.getStack(OUTPUT_SLOT).getCount() + result.getCount() <= getStack(OUTPUT_SLOT).getMaxCount();
-    }
-
-    private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.getStack(OUTPUT_SLOT).getItem() == item || this.getStack(OUTPUT_SLOT).isEmpty();
-    }
-
-    private boolean isOutputSlotAvailable() {
-        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    
+    @Override
+    protected boolean hasCorrectRecipe(World world) {
+        return getMatchRecipe(world)
+                .map(recipe -> canOutputAccept(recipe.getOutput(world.getRegistryManager())))
+                .orElse(false);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.entity.ModItemEntity;
 import com.besson.endfield.renderer.block.*;
+import com.besson.endfield.renderer.pre.ElectricPylonPreviewRenderer;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;
 import net.fabricmc.api.ClientModInitializer;
@@ -38,6 +39,7 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.THERMAL_BANK, ThermalBankRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.FLUID_PUMP, FluidPumpBlockRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.GUN_TOWER, GunTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.BELT, BeltRenderer::new);
 
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
@@ -57,7 +59,6 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.CRAFTER_SCREEN, CrafterScreen::new);
         HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
         HandledScreens.register(ModScreens.SUPPLY_TERMINAL_SCREEN, SupplyTerminalScreen::new);
-//        HandledScreens.register(ModScreens.BIG_STORAGE_SCREEN, BigStorageScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_AKETINE_BLOCK, RenderLayer.getCutout());
@@ -88,5 +89,10 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.YAZHEN_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_YAZHEN_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PIPE_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FLUID_PIPE, RenderLayer.getCutout());
+        
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BELT, RenderLayer.getTranslucent());
+
+//        ElectricPylonPreviewRenderer.register();
     }
 }

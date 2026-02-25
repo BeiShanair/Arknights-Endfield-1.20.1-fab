@@ -2,7 +2,6 @@ package com.besson.endfield.block;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.custom.*;
-import com.besson.endfield.blockentity.ModBlockEntities;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -32,8 +31,16 @@ public class ModBlocks {
     public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
 
-//    public static final Block BIG_STORAGE = registerBlocks("big_storage",
-//            new BigStorageBlock(AbstractBlock.Settings.create().strength(3f, 5f).nonOpaque()));
+    public static final Block BELT = registerBlocks("belt",
+            new BeltBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));
+    public static final Block OUTPUT_PORT_BLOCK = registerBlocks("output_port",
+            new OutputPortBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));
+    public static final Block FLUID_PIPE = registerBlocks("fluid_pipe",
+            new FluidPipeBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));
+    public static final Block FLUID_EXTRACTOR = registerBlocks("fluid_extractor",
+            new FluidExtractorBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));
+    public static final Block WATER_INJECTOR = registerBlocks("water_injector",
+            new WaterInjectorBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));
 
     public static final Block SUPPLY_TERMINAL = registerBlocks("supply_terminal",
             new SupplyTerminalBlock(AbstractBlock.Settings.create().strength(1f, 5f).nonOpaque()));

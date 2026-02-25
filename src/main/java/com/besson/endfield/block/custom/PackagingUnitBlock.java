@@ -36,8 +36,8 @@ public class PackagingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!world.isClient()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof PackagingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (PackagingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof PackagingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 
@@ -118,8 +118,6 @@ public class PackagingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.PACKAGING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                        PackagingUnitBlockEntity.tick(world1, pos, state1, (PackagingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.PACKAGING_UNIT, PackagingUnitBlockEntity::tick);
     }
 }

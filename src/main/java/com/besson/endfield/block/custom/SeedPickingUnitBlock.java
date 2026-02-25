@@ -36,8 +36,8 @@ public class SeedPickingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof SeedPickingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (SeedPickingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof SeedPickingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 
@@ -106,9 +106,7 @@ public class SeedPickingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SEED_PICKING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                        SeedPickingUnitBlockEntity.tick(world1, pos, state1, (SeedPickingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.SEED_PICKING_UNIT, SeedPickingUnitBlockEntity::tick);
     }
 
     @Override

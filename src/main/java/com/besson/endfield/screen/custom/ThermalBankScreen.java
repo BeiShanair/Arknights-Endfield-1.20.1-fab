@@ -1,19 +1,40 @@
 package com.besson.endfield.screen.custom;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.blockentity.custom.ThermalBankBlockEntity;
+import com.besson.endfield.network.ModNetWorking;
+import com.besson.endfield.screen.ToggleIconButton;
 import com.mojang.blaze3d.systems.RenderSystem;
+import io.netty.buffer.Unpooled;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ThermalBankScreen extends HandledScreen<ThermalBankScreenHandler> {
     private static final Identifier TEXTURE = new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/thermal_bank.png");
-
+    private final ThermalBankBlockEntity entity;
     public ThermalBankScreen(ThermalBankScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        this.entity = (ThermalBankBlockEntity) handler.entity;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        this.addDrawableChild(new ToggleIconButton(x + 150, y + 30, handler::isEnabled,
+                button -> {
+                    PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+                    buf.writeBlockPos(entity.getPos());
+                    boolean newEnableState = !handler.isEnabled();
+                    handler.setEnabled(newEnableState);
+                    buf.writeBoolean(newEnableState);
+                    ClientPlayNetworking.send(ModNetWorking.SWITCH_PACKET_ID, buf);
+                }));
     }
 
     @Override
@@ -30,7 +51,7 @@ public class ThermalBankScreen extends HandledScreen<ThermalBankScreenHandler> {
     }
 
     private void renderProgressFire(DrawContext context, int x, int y) {
-        if (handler.isCrafting()){
+        if (handler.isBurning()){
             int totalFireHeight = 14; // 火焰总高度
             int fireHeight = handler.getScaledProgress(); // 当前火焰高度
             int fireYOffset = totalFireHeight - fireHeight; // 火焰顶部偏移

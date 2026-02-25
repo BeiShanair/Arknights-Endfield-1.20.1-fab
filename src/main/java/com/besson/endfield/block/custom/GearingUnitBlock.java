@@ -34,9 +34,7 @@ public class GearingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.GEARING_UNIT,
-                (world1, pos, state1, blockEntity) ->
-                    GearingUnitBlockEntity.tick(world1, pos, state1, (GearingUnitBlockEntity) blockEntity));
+        return checkType(type, ModBlockEntities.GEARING_UNIT, GearingUnitBlockEntity::tick);
     }
 
     @Override
@@ -55,8 +53,8 @@ public class GearingUnitBlock extends ModBlockEntityWithFacing {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof GearingUnitBlockEntity) {
-                ItemScatterer.spawn(world, pos, (GearingUnitBlockEntity)blockEntity);
+            if (blockEntity instanceof GearingUnitBlockEntity be) {
+                ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
 

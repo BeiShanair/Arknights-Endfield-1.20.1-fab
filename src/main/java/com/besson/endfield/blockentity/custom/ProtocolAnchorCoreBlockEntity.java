@@ -3,8 +3,11 @@ package com.besson.endfield.blockentity.custom;
 import com.besson.endfield.block.custom.ProtocolAnchorCoreBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.power.PowerNetworkManager;
+import com.besson.endfield.utils.NodeEntry;
+import com.besson.endfield.utils.NodeType;
+import com.besson.endfield.utils.PowerNetworkManager;
 import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreenHandler;
+import com.besson.endfield.utils.PowerNetworkNodeManager;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,7 +24,6 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -39,12 +41,27 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(54, ItemStack.EMPTY);
 
+    private boolean needsInit = true;
     private boolean registeredToManager = false;
 
     public ProtocolAnchorCoreBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PROTOCOL_ANCHOR_CORE, pos, state);
     }
 
+    public static void tick(World world, BlockPos pos, BlockState state, ProtocolAnchorCoreBlockEntity be) {
+        if (world.isClient()) return;
+
+        if (be.needsInit && world instanceof ServerWorld serverWorld) {
+            be.needsInit = false;
+
+            PowerNetworkManager.get(serverWorld).registerGenerator(pos, () -> 150);
+
+            PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
+            manager.register(new NodeEntry(pos, NodeType.CORE));
+            be.registeredToManager = true;
+        }
+    }
+    
     @Override
     public DefaultedList<ItemStack> getItems() {
         return this.inv;
@@ -53,16 +70,8 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
-        if (!registeredToManager && world instanceof ServerWorld serverWorld) {
-            PowerNetworkManager manager = PowerNetworkManager.get(serverWorld);
-            manager.registerGenerator(this.getPos(), () -> {
-                try {
-                    return 150;
-                } catch (Throwable t) {
-                    return 0;
-                }
-            });
-            registeredToManager = true;
+        if (world instanceof ServerWorld) {
+            needsInit = true;
         }
     }
 
@@ -70,6 +79,8 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
     public void markRemoved() {
         if (world instanceof ServerWorld serverWorld) {
             PowerNetworkManager.get(serverWorld).unregisterGenerator(this.getPos());
+            PowerNetworkNodeManager.get(serverWorld).unregister(this.getPos());
+            registeredToManager = false;
         }
         super.markRemoved();
     }

@@ -1,7 +1,6 @@
 package com.besson.endfield.block.custom;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.FluidPumpBlockEntity;
 import com.besson.endfield.blockentity.custom.PipeBlockEntity;
 import com.besson.endfield.pipe.PipeNetworkManager;
 import net.minecraft.block.*;

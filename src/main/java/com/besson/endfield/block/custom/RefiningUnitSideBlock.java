@@ -1,11 +1,14 @@
 package com.besson.endfield.block.custom;
 
 import com.besson.endfield.block.ModBlockEntityWithFacing;
+import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.RefiningUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.RefiningUnitSideBlockEntity;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -58,5 +61,10 @@ public class RefiningUnitSideBlock extends ModBlockEntityWithFacing {
             }
         }
         super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlockEntities.REFINING_UNIT_SIDE, RefiningUnitSideBlockEntity::tick);
     }
 }

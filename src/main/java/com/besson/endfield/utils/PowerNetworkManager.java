@@ -1,13 +1,11 @@
-package com.besson.endfield.power;
+package com.besson.endfield.utils;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.PersistentStateManager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -15,10 +13,10 @@ public class PowerNetworkManager {
     private static final Map<ServerWorld, PowerNetworkManager> INSTANCE = new WeakHashMap<>();
 
     private final ServerWorld world;
-    private PowerState state;
+    private final PowerState state;
     private final Map<BlockPos, GeneratorInfo> generators = new HashMap<>();
     private final Map<BlockPos, ConsumerInfo> consumers = new HashMap<>();
-
+    
     private int lastTotalGenerated = 0;
     private int lastTotalDemand = 0;
     private double lastSupplyRatio = 0.0;
@@ -28,14 +26,19 @@ public class PowerNetworkManager {
     public PowerNetworkManager(ServerWorld world) {
         this.world = world;
         PersistentStateManager manager = world.getPersistentStateManager();
-        this.state = manager.getOrCreate(PowerState::fromNbt, PowerState::new, "power_network_state");
+
+        // 使用包含维度信息的唯一文件名，避免不同维度相互覆盖同一个 data 文件
+        String dimKey = world.getRegistryKey().getValue().toString().replace(':', '_').replace('/', '_');
+        String stateName = "power_network_state_" + dimKey;
+
+        this.state = manager.getOrCreate(PowerState::fromNbt, PowerState::new, stateName);
         this.currentStoredEnergy = state.storedEnergy;
     }
 
     public static PowerNetworkManager get(ServerWorld world) {
         return INSTANCE.computeIfAbsent(world, PowerNetworkManager::new);
     }
-
+    
     public static void registerGlobalTick() {
         ServerTickEvents.START_SERVER_TICK.register(server -> {
             for (ServerWorld world : server.getWorlds()) {
@@ -52,7 +55,7 @@ public class PowerNetworkManager {
     public void unregisterGenerator(BlockPos pos) {
         generators.remove(pos.toImmutable());
     }
-
+    
     public void registerConsumer(BlockPos pos, Supplier<Integer> demandSupplier, Consumer<Integer> receiveCallback) {
         consumers.put(pos.toImmutable(), new ConsumerInfo(pos.toImmutable(), demandSupplier, receiveCallback));
     }
@@ -137,25 +140,13 @@ public class PowerNetworkManager {
         return maxBatteryCapacity;
     }
 
-    public static class GeneratorInfo {
-        public final BlockPos pos;
-        public final Supplier<Integer> generatedSupplier;
-
-        public GeneratorInfo(BlockPos pos, Supplier<Integer> generatedSupplier) {
-            this.pos = pos;
-            this.generatedSupplier = generatedSupplier;
-        }
+    public ServerWorld getWorld() {
+        return world;
     }
 
-    public static class ConsumerInfo {
-        public final BlockPos pos;
-        public final Supplier<Integer> demandSupplier;
-        public final Consumer<Integer> receivePower;
+    public record GeneratorInfo(BlockPos pos, Supplier<Integer> generatedSupplier) {
+    }
 
-        public ConsumerInfo(BlockPos pos, Supplier<Integer> demandSupplier, Consumer<Integer> receivePower) {
-            this.pos = pos;
-            this.demandSupplier = demandSupplier;
-            this.receivePower = receivePower;
-        }
+    public record ConsumerInfo(BlockPos pos, Supplier<Integer> demandSupplier, Consumer<Integer> receivePower) {
     }
 }

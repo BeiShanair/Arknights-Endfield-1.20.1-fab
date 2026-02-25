@@ -22,9 +22,6 @@ public class ModBlockEntities {
     public static final BlockEntityType<RelayTowerBlockEntity> RELAY_TOWER = create("relay_tower",
             BlockEntityType.Builder.create(RelayTowerBlockEntity::new, ModBlocks.RELAY_TOWER));
 
-//    public static final BlockEntityType<BigStorageBlockEntity> BIG_STORAGE = create("big_storage",
-//            BlockEntityType.Builder.create(BigStorageBlockEntity::new, ModBlocks.BIG_STORAGE));
-
     public static final BlockEntityType<SupplyTerminalBlockEntity> SUPPLY_TERMINAL = create("supply_terminal",
             BlockEntityType.Builder.create(SupplyTerminalBlockEntity::new, ModBlocks.SUPPLY_TERMINAL));
     public static final BlockEntityType<GunTowerBlockEntity> GUN_TOWER = create("gun_tower",
@@ -104,6 +101,17 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(FluidPumpBlockEntity::new, ModBlocks.FLUID_PUMP));
     public static final BlockEntityType<PipeBlockEntity> PIPE = create("pipe",
             BlockEntityType.Builder.create(PipeBlockEntity::new, ModBlocks.PIPE_BLOCK));
+
+    public static final BlockEntityType<BeltBlockEntity> BELT = create("belt",
+            BlockEntityType.Builder.create(BeltBlockEntity::new, ModBlocks.BELT));
+    public static final BlockEntityType<OutputPortBlockEntity> OUTPUT_PORT = create("output_port",
+            BlockEntityType.Builder.create(OutputPortBlockEntity::new, ModBlocks.OUTPUT_PORT_BLOCK));
+    public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE = create("fluid_pipe.json",
+            BlockEntityType.Builder.create(FluidPipeBlockEntity::new, ModBlocks.FLUID_PIPE));
+    public static final BlockEntityType<FluidExtractorBlockEntity> FLUID_EXTRACTOR = create("fluid_extractor",
+            BlockEntityType.Builder.create(FluidExtractorBlockEntity::new, ModBlocks.FLUID_EXTRACTOR));
+    public static final BlockEntityType<WaterInjectorBlockEntity> WATER_INJECTOR = create("water_injector",
+            BlockEntityType.Builder.create(WaterInjectorBlockEntity::new, ModBlocks.WATER_INJECTOR));
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
