@@ -24,7 +24,7 @@ public class BeltPlacementHelper {
         this.state = state;
         this.block = (BeltBlock)state.getBlock();
         BeltShape beltShape = state.get(this.block.getShapeProperty());
-        this.forbidCurves = false;
+        this.forbidCurves = !this.block.isFlexibleRail(state, world, pos);
         this.computeNeighbors(beltShape);
     }
     public List<BlockPos> getNeighbors() {

@@ -6,6 +6,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
@@ -24,7 +25,7 @@ public class BeltBlock extends BlockWithEntity {
     public static final EnumProperty<BeltShape> SHAPE = EnumProperty.of("belt_shape", BeltShape.class);
     protected static final VoxelShape STRAIGHT_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
     protected static final VoxelShape ASCENDING_SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-    
+    private boolean isStraight = false;
     public BeltBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(SHAPE, BeltShape.NORTH_SOUTH));
@@ -188,13 +189,20 @@ public class BeltBlock extends BlockWithEntity {
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!world.isClient() && Screen.hasShiftDown()) {
+            this.isStraight = true;
+        }
         if (!oldState.isOf(state.getBlock())) {
             this.updateCurves(state, world, pos, notify);
         }
+        this.isStraight = false;
     }
     
     protected BlockState updateCurves(BlockState state, World world, BlockPos pos, boolean notify) {
         state = this.updateBlockState(world, pos, state, true);
+        if (this.isStraight) {
+            world.updateNeighbor(state, pos, this, pos, notify);
+        }
         return state;
     }
 
@@ -222,13 +230,24 @@ public class BeltBlock extends BlockWithEntity {
     
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!moved) {
+            super.onStateReplaced(state, world, pos, newState, moved);
+            if (state.get(getShapeProperty()).isAscending()) {
+                world.updateComparators(pos.up(), this);
+            }
+
+            if (this.isStraight) {
+                world.updateComparators(pos, this);
+                world.updateComparators(pos.down(), this);
+            }
+        }
+        
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity b = world.getBlockEntity(pos);
             if (b instanceof BeltBlockEntity belt) {
                 ItemScatterer.spawn(world, pos, belt.getItem());
                 world.updateComparators(pos, this);
             }
-            super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
     
@@ -290,5 +309,9 @@ public class BeltBlock extends BlockWithEntity {
         }
 
         return next;
+    }
+
+    public boolean isFlexibleRail(BlockState state, World world, BlockPos pos) {
+        return !this.isStraight;
     }
 }

@@ -1,4 +1,8 @@
 # 更新日志 / Changelog
+## 2026-02-25
+- 修改传送带的放置逻辑，优化并列摆放
+- Modified the placement logic of conveyor belts to optimize side-by-side placement
+
 ## 2026-02-23
 - 完善传送带
 - Improved conveyor belts
