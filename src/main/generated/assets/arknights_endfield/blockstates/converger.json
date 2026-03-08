@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arknights_endfield:block/converger",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arknights_endfield:block/converger"
+    },
+    "facing=south": {
+      "model": "arknights_endfield:block/converger",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arknights_endfield:block/converger",
+      "y": 270
+    }
+  }
+}

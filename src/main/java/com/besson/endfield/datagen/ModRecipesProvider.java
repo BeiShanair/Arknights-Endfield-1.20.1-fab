@@ -99,6 +99,25 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('#', ModItems.ORIGOCRUST)
                 .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "belt_from_origocrust"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.BELT_BRIDGE, 9)
+                .pattern(" # ")
+                .pattern("###")
+                .pattern(" # ")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "belt_bridge_from_origocrust"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.CONVERGER, 9)
+                .pattern(" # ")
+                .pattern("###")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "converger_from_origocrust"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.SPLITTER, 9)
+                .pattern("###")
+                .pattern(" # ")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "splitter_from_origocrust"));
 
         OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));

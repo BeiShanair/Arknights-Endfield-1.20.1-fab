@@ -63,6 +63,9 @@ public class ModItemGroups {
 //                        entries.add(ModItems.FLUID_PUMP_ITEM);
 //                        entries.add(ModBlocks.PIPE_BLOCK);
                         entries.add(ModBlocks.BELT);
+                        entries.add(ModBlocks.BELT_BRIDGE);
+                        entries.add(ModBlocks.CONVERGER);
+                        entries.add(ModBlocks.SPLITTER);
                         entries.add(ModBlocks.OUTPUT_PORT_BLOCK);
 //                        entries.add(ModBlocks.FLUID_PIPE);
 //                        entries.add(ModBlocks.FLUID_EXTRACTOR);

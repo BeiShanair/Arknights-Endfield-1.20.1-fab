@@ -22,12 +22,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class BeltBlockEntity extends BlockEntity {
-    private ItemStack storedItem = ItemStack.EMPTY;
+    public ItemStack storedItem = ItemStack.EMPTY;
 
     public float progress = 0f;
     public float lastProgress = 0f;
     public static final float SPEED = 0.025f;
-    private Direction travelDirection = null;
+    public Direction travelDirection = null;
 
     public BeltBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.BELT, pos, state);
@@ -70,7 +70,7 @@ public class BeltBlockEntity extends BlockEntity {
         world.updateListeners(pos, be.getCachedState(), be.getCachedState(), 3);
     }
 
-    private void resetItem() {
+    public void resetItem() {
         this.progress = 0f;
         this.lastProgress = 0f;
         this.storedItem = ItemStack.EMPTY;
@@ -108,11 +108,22 @@ public class BeltBlockEntity extends BlockEntity {
         }
     }
     public boolean canAcceptFrom(Direction from) {
-        return this.storedItem.isEmpty();
+        if (!this.storedItem.isEmpty()) return false;
+        BeltShape shape = this.getCachedState().get(BeltBlock.SHAPE);
+        return switch (from) {
+            case NORTH ->
+                    shape == BeltShape.NORTH_SOUTH || shape == BeltShape.NORTH_EAST || shape == BeltShape.NORTH_WEST;
+            case SOUTH -> 
+                    shape == BeltShape.NORTH_SOUTH || shape == BeltShape.SOUTH_EAST || shape == BeltShape.SOUTH_WEST;
+            case WEST -> 
+                    shape == BeltShape.EAST_WEST || shape == BeltShape.NORTH_WEST || shape == BeltShape.SOUTH_WEST;
+            case EAST -> 
+                    shape == BeltShape.EAST_WEST || shape == BeltShape.NORTH_EAST || shape == BeltShape.SOUTH_EAST;
+            default -> false;
+        };
     }
     
     public void acceptItem(ItemStack stack, Direction from) {
-
         if (!this.storedItem.isEmpty()) return;
 
         this.storedItem = stack;
@@ -137,6 +148,15 @@ public class BeltBlockEntity extends BlockEntity {
 
         BlockEntity forwardBE = world.getBlockEntity(forwardPos);
 
+        if (forwardBE instanceof BeltBridgeBlockEntity bridge) {
+            return bridge.tryPassThrough(world, forwardPos, next, this);
+        }
+        if (forwardBE instanceof SplitterBlockEntity splitter) {
+            return splitter.tryDistribute(world, forwardPos, next, this);
+        }
+        if (forwardBE instanceof ConvergerBlockEntity converger) {
+            return converger.tryMerge(world, forwardPos, next, this);
+        }
         if (forwardBE instanceof BeltBlockEntity forwardBelt) {
             if (forwardBelt.storedItem.isEmpty()) {
                 forwardBelt.storedItem = this.storedItem;

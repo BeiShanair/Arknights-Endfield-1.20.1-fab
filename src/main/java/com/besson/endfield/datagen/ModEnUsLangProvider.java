@@ -52,6 +52,9 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "Originium Ore");
 
         translationBuilder.add(ModBlocks.BELT, "Belt");
+        translationBuilder.add(ModBlocks.BELT_BRIDGE, "Belt Bridge");
+        translationBuilder.add(ModBlocks.CONVERGER, "Converger");
+        translationBuilder.add(ModBlocks.SPLITTER, "Splitter");
         translationBuilder.add(ModBlocks.OUTPUT_PORT_BLOCK, "Output Port");
         translationBuilder.add(ModBlocks.FLUID_PIPE, "Fluid Pipe");
 
@@ -296,5 +299,11 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("advancement.endfield.grinding_unit.description", "Grind materials.");
         translationBuilder.add("advancement.endfield.packaging_unit.title", "Packaging Unit");
         translationBuilder.add("advancement.endfield.packaging_unit.description", "Package products.");
+        
+        translationBuilder.add("belt.tooltip", "When placed side by side, holding down SHIFT can achieve better results");
+        translationBuilder.add("protocol_anchor_core_port.tooltip1", "After breaking the block around the protocol core and placing it, you can input and output items");
+        translationBuilder.add("protocol_anchor_core_port.tooltip2", "Right click on an item - set it to only output that item");
+        translationBuilder.add("protocol_anchor_core_port.tooltip3", "Right click on empty hand - open the GUI");
+        translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift+right-click on empty hand - cancel the output filtering restriction");
     }
 }

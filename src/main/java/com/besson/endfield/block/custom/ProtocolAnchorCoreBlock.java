@@ -17,7 +17,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
@@ -78,5 +80,18 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.PROTOCOL_ANCHOR_CORE, ProtocolAnchorCoreBlockEntity::tick);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (!world.isClient()) {
+            for (BlockPos p : BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
+                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 }

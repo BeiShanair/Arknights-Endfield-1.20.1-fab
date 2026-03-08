@@ -104,6 +104,12 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<BeltBlockEntity> BELT = create("belt",
             BlockEntityType.Builder.create(BeltBlockEntity::new, ModBlocks.BELT));
+    public static final BlockEntityType<BeltBridgeBlockEntity> BELT_BRIDGE = create("belt_bridge",
+            BlockEntityType.Builder.create(BeltBridgeBlockEntity::new, ModBlocks.BELT_BRIDGE));
+    public static final BlockEntityType<ConvergerBlockEntity> CONVERGER = create("converger", 
+            BlockEntityType.Builder.create(ConvergerBlockEntity::new, ModBlocks.CONVERGER));
+    public static final BlockEntityType<SplitterBlockEntity> SPLITTER = create("splitter",
+            BlockEntityType.Builder.create(SplitterBlockEntity::new, ModBlocks.SPLITTER));
     public static final BlockEntityType<OutputPortBlockEntity> OUTPUT_PORT = create("output_port",
             BlockEntityType.Builder.create(OutputPortBlockEntity::new, ModBlocks.OUTPUT_PORT_BLOCK));
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE = create("fluid_pipe.json",

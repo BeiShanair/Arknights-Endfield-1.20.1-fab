@@ -20,6 +20,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class RefiningUnitBlock extends ModBlockEntityWithFacing {
@@ -58,19 +59,7 @@ public class RefiningUnitBlock extends ModBlockEntityWithFacing {
                 world.updateComparators(pos, this);
             }
 
-            Direction facing = state.get(FACING);
-            Direction left = facing.rotateYCounterclockwise();
-            Direction right = facing.rotateYClockwise();
-            Direction back = facing.getOpposite();
-            Direction backLeft = back.rotateYClockwise();
-            Direction backRight = back.rotateYCounterclockwise();
-
-            BlockPos[] adjacentPositions = {
-                    pos.offset(facing), pos.offset(facing).offset(left),
-                    pos.offset(right), pos.offset(left),
-                    pos.offset(facing).offset(right), pos.offset(back),
-                    pos.offset(back).offset(backLeft), pos.offset(back).offset(backRight)
-            };
+            BlockPos[] adjacentPositions = getAdjacentPositions(state, pos);
 
             for (BlockPos p : adjacentPositions) {
                 if (world.getBlockState(p).getBlock() == ModBlocks.REFINING_UNIT_SIDE) {
@@ -85,35 +74,46 @@ public class RefiningUnitBlock extends ModBlockEntityWithFacing {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient()) {
-            Direction facing = state.get(FACING);
-            Direction left = facing.rotateYCounterclockwise();
-            Direction right = facing.rotateYClockwise();
-            Direction back = facing.getOpposite();
-            Direction backLeft = back.rotateYClockwise();
-            Direction backRight = back.rotateYCounterclockwise();
-
-            world.setBlockState(pos.offset(facing), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(right), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(left), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(facing).offset(right), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(facing).offset(left), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(back), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(back).offset(backLeft), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(back).offset(backRight), ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-
-            BlockPos[] adjacentPositions = {
-                    pos.offset(facing), pos.offset(facing).offset(left),
-                    pos.offset(right), pos.offset(left),
-                    pos.offset(facing).offset(right), pos.offset(back),
-                    pos.offset(back).offset(backLeft), pos.offset(back).offset(backRight)
-            };
+            BlockPos[] adjacentPositions = getAdjacentPositions(state, pos);
 
             for (BlockPos p : adjacentPositions) {
+                world.setBlockState(p, ModBlocks.REFINING_UNIT_SIDE.getDefaultState().with(FACING, state.get(FACING)));
                 BlockEntity be = world.getBlockEntity(p);
                 if (be instanceof RefiningUnitSideBlockEntity adjunct) {
                     adjunct.setParentPos(pos);
                 }
             }
         }
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (!world.isClient()) {
+            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+
+            for (BlockPos p : sidePositions) {
+                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
+        Direction facing = state.get(FACING);
+        Direction left = facing.rotateYCounterclockwise();
+        Direction right = facing.rotateYClockwise();
+        Direction back = facing.getOpposite();
+        Direction backLeft = back.rotateYClockwise();
+        Direction backRight = back.rotateYCounterclockwise();
+
+        return new BlockPos[]{
+                pos.offset(facing), pos.offset(facing).offset(left),
+                pos.offset(right), pos.offset(left),
+                pos.offset(facing).offset(right), pos.offset(back),
+                pos.offset(back).offset(backLeft), pos.offset(back).offset(backRight)
+        };
     }
 }

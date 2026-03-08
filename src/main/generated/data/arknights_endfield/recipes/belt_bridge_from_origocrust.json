@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "arknights_endfield:origocrust"
+    }
+  },
+  "pattern": [
+    " # ",
+    "###",
+    " # "
+  ],
+  "result": {
+    "count": 9,
+    "item": "arknights_endfield:belt_bridge"
+  },
+  "show_notification": true
+}

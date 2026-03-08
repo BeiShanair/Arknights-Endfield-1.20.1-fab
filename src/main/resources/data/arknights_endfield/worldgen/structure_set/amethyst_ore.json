@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "arknights_endfield:amethyst_ore",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1694767000,
+    "spacing": 15,
+    "separation": 12
+  }
+}

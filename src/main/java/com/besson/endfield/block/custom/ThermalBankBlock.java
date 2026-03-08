@@ -20,6 +20,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class ThermalBankBlock extends ModBlockEntityWithFacing {
@@ -57,17 +58,8 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
                 ItemScatterer.spawn(world, pos, be.getItems());
                 world.updateComparators(pos, this);
             }
-
-            Direction facing = state.get(FACING);
-            Direction right = facing.rotateYClockwise();
-            Direction back = facing.getOpposite();
-            Direction backRight = back.rotateYCounterclockwise();
-
-            BlockPos[] positionsToCheck = {
-                pos.offset(right),
-                pos.offset(back),
-                pos.offset(back).offset(backRight)
-            };
+            BlockPos[] positionsToCheck = getAdjacentPositions(state, pos);
+            
             for (BlockPos checkPos : positionsToCheck) {
                 if (world.getBlockState(checkPos).getBlock() == ModBlocks.THERMAL_BANK_SIDE) {
                     world.breakBlock(checkPos, false);
@@ -81,26 +73,43 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient()) {
-            Direction facing = state.get(FACING);
-            Direction right = facing.rotateYClockwise();
-            Direction back = facing.getOpposite();
-            Direction backRight = back.rotateYCounterclockwise();
-
-            world.setBlockState(pos.offset(right), ModBlocks.THERMAL_BANK_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(back), ModBlocks.THERMAL_BANK_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-            world.setBlockState(pos.offset(back).offset(backRight), ModBlocks.THERMAL_BANK_SIDE.getDefaultState().with(FACING, state.get(FACING)));
-
-            BlockPos[] positionsToSetParent = {
-                pos.offset(back),
-                pos.offset(back).offset(backRight),
-                pos.offset(right)
-            };
+            BlockPos[] positionsToSetParent = getAdjacentPositions(state, pos);
+            
             for (BlockPos checkPos : positionsToSetParent) {
+                world.setBlockState(checkPos, ModBlocks.THERMAL_BANK_SIDE.getDefaultState().with(FACING, state.get(FACING)));
                 BlockEntity entity = world.getBlockEntity(checkPos);
                 if (entity instanceof ThermalBankSideBlockEntity entity1) {
                     entity1.setParentPos(pos);
                 }
             }
         }
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (!world.isClient()) {
+            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+
+            for (BlockPos p : sidePositions) {
+                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
+        Direction facing = state.get(FACING);
+        Direction right = facing.rotateYClockwise();
+        Direction back = facing.getOpposite();
+        Direction backRight = back.rotateYCounterclockwise();
+
+        return new BlockPos[]{
+                pos.offset(back),
+                pos.offset(back).offset(backRight),
+                pos.offset(right)
+        };
     }
 }

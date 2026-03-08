@@ -5,7 +5,7 @@
 	"textures": {
 		"0": "arknights_endfield:block/belt_base",
 		"1": "arknights_endfield:block/belt1",
-		"particle": "arknights_endfield:block/belt_base"
+		"particle": "arknights_endfield:block/orange"
 	},
 	"elements": [
 		{

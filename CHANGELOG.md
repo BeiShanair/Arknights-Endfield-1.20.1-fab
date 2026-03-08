@@ -1,4 +1,24 @@
 # 更新日志 / Changelog
+## 2026-03-06
+- 修改工业设备放置逻辑，如果空间不足，则不会放置
+- Modified the logic of industrial equipment placement. If there is not enough space, it will not be placed
+
+## 2026-03-03
+- 终末地相关的矿石将采用结构生成，不再直接生成在世界中
+- The Endfield's ore stones will be generated using structure generation, rather than being generated in the world
+- 修复`传送带`在服务端中放置异常且报错的问题
+- Fixed the exception and error when placing `Belt` on the server
+
+## 2026-03-01
+- 添加了`物流桥`、`分流器`和`汇流器`
+- Added `Belt Bridge`, `Splitter` and `Converger`
+
+## 2026-02-28
+- 修改了传送带的逻辑，现在工业设备不会再向推送方向不一致的传送带推送东西了
+- e.g. 比如设备向南推送东西，但传送带是东西向的，那么设备就不会向它推送东西
+- Modified the logic of conveyor belts. Now, industrial equipment will no longer push items onto conveyor belts that are not aligned with the pushing direction. For example, if a device pushes items south but the conveyor belt is oriented east-west, the device will not push items onto it.
+- e.g. If a device pushes items south but the conveyor belt is oriented east-west, the device will not push items onto it.
+
 ## 2026-02-25
 - 修改传送带的放置逻辑，优化并列摆放
 - Modified the placement logic of conveyor belts to optimize side-by-side placement

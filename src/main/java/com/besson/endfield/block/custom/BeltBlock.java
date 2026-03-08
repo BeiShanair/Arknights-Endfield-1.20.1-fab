@@ -7,12 +7,16 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Property;
+import net.minecraft.text.Text;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -20,6 +24,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BeltBlock extends BlockWithEntity {
     public static final EnumProperty<BeltShape> SHAPE = EnumProperty.of("belt_shape", BeltShape.class);
@@ -189,9 +195,6 @@ public class BeltBlock extends BlockWithEntity {
 
     @Override
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        if (!world.isClient() && Screen.hasShiftDown()) {
-            this.isStraight = true;
-        }
         if (!oldState.isOf(state.getBlock())) {
             this.updateCurves(state, world, pos, notify);
         }
@@ -230,8 +233,14 @@ public class BeltBlock extends BlockWithEntity {
     
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity b = world.getBlockEntity(pos);
+            if (b instanceof BeltBlockEntity belt) {
+                ItemScatterer.spawn(world, pos, belt.getItem());
+                world.updateComparators(pos, this);
+            }
+        }
         if (!moved) {
-            super.onStateReplaced(state, world, pos, newState, moved);
             if (state.get(getShapeProperty()).isAscending()) {
                 world.updateComparators(pos.up(), this);
             }
@@ -241,18 +250,12 @@ public class BeltBlock extends BlockWithEntity {
                 world.updateComparators(pos.down(), this);
             }
         }
-        
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity b = world.getBlockEntity(pos);
-            if (b instanceof BeltBlockEntity belt) {
-                ItemScatterer.spawn(world, pos, belt.getItem());
-                world.updateComparators(pos, this);
-            }
-        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
     
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        this.isStraight = ctx.getPlayer() != null && ctx.getPlayer().isSneaking();
         BlockState blockState = super.getDefaultState();
         Direction direction = ctx.getHorizontalPlayerFacing();
         boolean bl2 = direction == Direction.EAST || direction == Direction.WEST;
@@ -313,5 +316,10 @@ public class BeltBlock extends BlockWithEntity {
 
     public boolean isFlexibleRail(BlockState state, World world, BlockPos pos) {
         return !this.isStraight;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(Text.translatable("belt.tooltip").formatted(Formatting.GRAY));
     }
 }

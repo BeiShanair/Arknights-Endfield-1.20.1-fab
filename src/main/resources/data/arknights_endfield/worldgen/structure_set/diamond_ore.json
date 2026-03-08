@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "arknights_endfield:diamond_ore",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1694767003,
+    "spacing": 120,
+    "separation": 40
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_origocrust": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arknights_endfield:origocrust"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arknights_endfield:belt_bridge_from_origocrust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_origocrust",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arknights_endfield:belt_bridge_from_origocrust"
+    ]
+  },
+  "sends_telemetry_event": false
+}

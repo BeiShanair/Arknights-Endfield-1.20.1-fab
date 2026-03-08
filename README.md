@@ -17,21 +17,31 @@ reimagined in the Minecraft universe.
 
 ## 授权信息 / License
 
-| 内容类型 | 授权协议 | 限制 |
-|-----------|-----------|------|
-| 源代码 (Java Code) | GPL-3.0 | 修改或再发布时必须保持开源 |
-| 美术/音频/模型资源 (Assets) | CC BY-NC-SA 4.0 | 禁止商用，需署名且以相同协议共享 |
+> 本模组的源代码和美术资源全部采用 All Rights Reserved 许可
+>
+> This mod's source code and art assets are licensed under All Rights Reserved.
+>
+> 涉及《明日方舟：终末地》原作内容的相关版权归鹰角网络所有。
+>
+> The copyright of the content related to the original work of "Arknights: Endfield" belongs to Hypergryph.
 
-- 📄 **GPL-3.0**: https://www.gnu.org/licenses/gpl-3.0.html
-- 🎨 **CC BY-NC-SA 4.0**: https://creativecommons.org/licenses/by-nc-sa/4.0/
+对整合包作者 / For ModPack Author:
+
+> 可根据整合包内容对本模组进行魔改，但不得发布二次修改后的模组，且不得将本模组用于商业用途。
+>
+> Modification of this mod is permitted, but not allowed to release modified versions, and must not be used for commercial purposes.
 
 ---
 
 ## 非官方声明 / Disclaimer
 - 本模组与 **鹰角网络（Hypergryph）** 及《明日方舟：终末地》官方无关；
+- This mod is not affiliated with Hypergryph or Arknights: Endfield.
 - 仅供玩家学习、研究与非商业娱乐使用；
+- This mod is for players to learn, research, and enjoy for non-commercial purposes only.
 - 禁止以任何形式用于商业用途、付费分发或盈利活动；
+- Prohibited for any form of commercial use, paid distribution, or profit activities.
 - 若原版权方提出要求，本模组将立即下架。
+- If the copyright holder requests, this mod will be immediately withdrawn.
 
 ---
 
@@ -40,10 +50,6 @@ reimagined in the Minecraft universe.
 仓库地址：`https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab`
 
 ---
-
-> © 本模组的源代码依据 GPL-3.0 许可；  
-> 所有贴图、模型、音频资源依据 CC BY-NC-SA 4.0 许可。  
-> 《明日方舟：终末地》及其相关版权归鹰角网络所有。
 
 ## 模组依赖 / Dependencies
 - Fabric Loader >= 0.16.14

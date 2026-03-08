@@ -31,6 +31,9 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "热能池");
 
         translationBuilder.add(ModBlocks.BELT, "传送带");
+        translationBuilder.add(ModBlocks.BELT_BRIDGE, "物流桥");
+        translationBuilder.add(ModBlocks.CONVERGER, "汇流器");
+        translationBuilder.add(ModBlocks.SPLITTER, "分流器");
         translationBuilder.add(ModBlocks.OUTPUT_PORT_BLOCK, "输出端口");
 
         translationBuilder.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, "紫水晶矿脉");
@@ -295,5 +298,12 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("advancement.endfield.grinding_unit.description", "制造更高级的粉末");
         translationBuilder.add("advancement.endfield.packaging_unit.title", "封装机");
         translationBuilder.add("advancement.endfield.packaging_unit.description", "封装物品");
+
+        translationBuilder.add("belt.tooltip", "并列放置时，按住 SHIFT 可获得更好的效果");
+        translationBuilder.add("protocol_anchor_core_port.tooltip1", "破坏协议核心周围方块后放置此方块，可输入/输出物品");
+        translationBuilder.add("protocol_anchor_core_port.tooltip2", "使用某物品右键——设置为只能输出该物品");
+        translationBuilder.add("protocol_anchor_core_port.tooltip3", "空手右键——打开GUI");
+        translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift + 空手右键——取消输出筛选限制");
+        
     }
 }
