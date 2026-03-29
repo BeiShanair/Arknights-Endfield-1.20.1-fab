@@ -61,6 +61,29 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "协议核心端口");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "协议核心侧面");
 
+        translationBuilder.add(ModBlocks.BEAM_TOWER, "射线塔");
+        translationBuilder.add(ModBlocks.GUN_TOWER, "铳械塔");
+        translationBuilder.add(ModBlocks.HEAVY_GUN_TOWER, "扩装铳械塔");
+        translationBuilder.add(ModBlocks.GRENADE_TOWER, "榴弹塔");
+        translationBuilder.add(ModBlocks.HE_GRENADE_TOWER, "高爆榴弹塔");
+        translationBuilder.add(ModBlocks.SENTRY_TOWER, "哨戒塔");
+        translationBuilder.add(ModBlocks.MEDICAL_TOWER, "医疗塔");
+        translationBuilder.add(ModBlocks.LN_TOWER, "液氮塔");
+        translationBuilder.add(ModBlocks.MARSH_GAS_MK_I, "“毒沼”MK-I");
+        translationBuilder.add(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER, "全向声波塔");
+        translationBuilder.add(ModBlocks.SURGE_TOWER, "电涌塔");
+
+        translationBuilder.add(ModBlocks.FLUID_PUMP, "水泵");
+        translationBuilder.add(ModBlocks.FLUID_TANK, "储液罐");
+
+        translationBuilder.add("endfield.range", "攻击范围: %s m");
+        translationBuilder.add("endfield.attack", "攻击力: %s");
+        translationBuilder.add("endfield.cooldown", "攻击间隔: %s s");
+        translationBuilder.add("endfield.powerCost", "能耗: %s EFU");
+
+        translationBuilder.add("endfield.protocolAnchorCoreTooltip", "不能合成");
+        translationBuilder.add("endfield.protocolAnchorCoreTooltip2", "建议将放置的区块设置为常加载");
+
         translationBuilder.add(ModItems.AGGAGRIT, "异香石");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "异香石块");
         translationBuilder.add(ModItems.AGGAGRIT_CLUSTER, "异香石簇");
@@ -68,9 +91,9 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.arknights_endfield.aketine", "酮化灌木");
         translationBuilder.add(ModItems.AKETINE_POWDER, "酮化灌木粉末");
         translationBuilder.add(ModItems.AKETINE_SEED, "酮化树种");
-        translationBuilder.add(ModItems.AMBER_RICE, "Amber Rice");
-        translationBuilder.add("item.arknights_endfield.amber_rice", "Amber Rice");
-        translationBuilder.add(ModItems.AMBER_RICE_SEED, "Amber Rice Seed");
+        translationBuilder.add(ModItems.AMBER_RICE, "金石稻");
+        translationBuilder.add("item.arknights_endfield.amber_rice", "金石稻");
+        translationBuilder.add(ModItems.AMBER_RICE_SEED, "金石稻种子");
         translationBuilder.add(ModItems.AMETHYST_BOTTLE, "紫晶质瓶");
         translationBuilder.add(ModItems.AMETHYST_COMPONENT, "紫晶装备原件");
         translationBuilder.add(ModItems.AMETHYST_FIBER, "紫晶纤维");
@@ -304,6 +327,11 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("protocol_anchor_core_port.tooltip2", "使用某物品右键——设置为只能输出该物品");
         translationBuilder.add("protocol_anchor_core_port.tooltip3", "空手右键——打开GUI");
         translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift + 空手右键——取消输出筛选限制");
+
+        translationBuilder.add("electric_pylon.title", "当前电网状态：");
+        translationBuilder.add("electric_pylon.total_generated", "总发电量：%s");
+        translationBuilder.add("electric_pylon.total_demand", "总耗电量：%s");
+        translationBuilder.add("electric_pylon.stored_power", "电池储能：%s");
         
     }
 }

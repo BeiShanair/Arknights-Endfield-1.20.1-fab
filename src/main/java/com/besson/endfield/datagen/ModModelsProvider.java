@@ -46,10 +46,23 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PLANTING_UNIT_SIDE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SEED_PICKING_UNIT_SIDE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.THERMAL_BANK_SIDE);
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_PUMP);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.SUPPLY_TERMINAL);
+
         blockStateModelGenerator.registerSimpleState(ModBlocks.GUN_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.HEAVY_GUN_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.GRENADE_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.HE_GRENADE_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.SENTRY_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.MEDICAL_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.BEAM_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.LN_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.MARSH_GAS_MK_I);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER);
+        blockStateModelGenerator.registerSimpleState(ModBlocks.SURGE_TOWER);
+
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_PUMP);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_TANK);
 
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.BELT_BRIDGE);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.CONVERGER);

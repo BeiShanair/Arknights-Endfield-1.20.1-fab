@@ -13,6 +13,12 @@ public enum NodeType {
         public boolean canConnectTo(NodeType other) {
             return other == CORE || other == RELAY || other == PYLON;
         }
+    },
+    CONSUMER {
+        @Override
+        public boolean canConnectTo(NodeType other) {
+            return other == RELAY || other == PYLON;
+        }
     };
 
     public boolean canConnectTo(NodeType other) {

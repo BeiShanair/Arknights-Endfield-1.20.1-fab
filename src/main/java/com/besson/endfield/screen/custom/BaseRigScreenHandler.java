@@ -1,7 +1,6 @@
 package com.besson.endfield.screen.custom;
 
-import com.besson.endfield.blockentity.custom.BaseIOBlockEntity;
-import com.besson.endfield.blockentity.custom.BaseRigBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.BaseRigBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.SimpleInventory;

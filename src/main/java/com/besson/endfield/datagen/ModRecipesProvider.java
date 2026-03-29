@@ -119,29 +119,29 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "splitter_from_origocrust"));
 
-        OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE)
+        OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.COAL_MINERAL_VEIN_BLOCK, Items.COAL)
+        OreRigRecipeBuilder.create(ModBlocks.COAL_MINERAL_VEIN_BLOCK, Items.COAL, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/coal_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, Items.RAW_COPPER)
+        OreRigRecipeBuilder.create(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, Items.RAW_COPPER, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/copper_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK, Items.DIAMOND)
+        OreRigRecipeBuilder.create(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK, Items.DIAMOND, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/diamond_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK, Items.EMERALD)
+        OreRigRecipeBuilder.create(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK, Items.EMERALD, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/emerald_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.GOLD_MINERAL_VEIN_BLOCK, Items.RAW_GOLD)
+        OreRigRecipeBuilder.create(ModBlocks.GOLD_MINERAL_VEIN_BLOCK, Items.RAW_GOLD, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/gold_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.IRON_MINERAL_VEIN_BLOCK, Items.RAW_IRON)
+        OreRigRecipeBuilder.create(ModBlocks.IRON_MINERAL_VEIN_BLOCK, Items.RAW_IRON, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/iron_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK, Items.LAPIS_LAZULI)
+        OreRigRecipeBuilder.create(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK, Items.LAPIS_LAZULI, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/lapis_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, ModItems.ORIGINIUM_ORE)
+        OreRigRecipeBuilder.create(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK, ModItems.ORIGINIUM_ORE, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/originium_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, Items.REDSTONE)
+        OreRigRecipeBuilder.create(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK, Items.REDSTONE, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/redstone_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK, ModItems.FERRIUM_ORE)
+        OreRigRecipeBuilder.create(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK, ModItems.FERRIUM_ORE, 3)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/ferrium_mineral_vein"));
-        OreRigRecipeBuilder.create(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK, ModItems.CUPRIUM_ORE)
+        OreRigRecipeBuilder.create(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK, ModItems.CUPRIUM_ORE, 4)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/cuprium_mineral_vein"));
 
         RefiningUnitRecipeBuilder.create(ModItems.DENSE_CARBON_POWDER, ModItems.STABILIZED_CARBON)
@@ -667,5 +667,39 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.OUTPUT_PORT_BLOCK)
                 .input(ModItems.ORIGOCRUST, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/output_port_block"));
+        CrafterRecipeBuilder.create(ModBlocks.GUN_TOWER)
+                .input(ModItems.ORIGOCRUST, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/gun_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.HEAVY_GUN_TOWER)
+                .input(ModItems.FERRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/heavy_gun_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.GRENADE_TOWER)
+                .input(ModItems.AMETHYST_PART, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/grenade_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.LN_TOWER)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/ln_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.HE_GRENADE_TOWER)
+                .input(ModItems.FERRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/he_grenade_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER)
+                .input(ModItems.FERRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/omnidirectional_sonic_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.SENTRY_TOWER)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/sentry_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.MEDICAL_TOWER)
+                .input(ModItems.ORIGOCRUST, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/medical_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.BEAM_TOWER)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/beam_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.SURGE_TOWER)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/surge_tower"));
+        CrafterRecipeBuilder.create(ModBlocks.MARSH_GAS_MK_I)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/marsh_gas_mk_i"));
+
     }
 }

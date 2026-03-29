@@ -6,5 +6,6 @@
   "output": {
     "count": 1,
     "item": "minecraft:coal"
-  }
+  },
+  "tier": 1
 }

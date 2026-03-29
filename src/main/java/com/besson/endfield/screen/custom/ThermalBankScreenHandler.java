@@ -1,6 +1,6 @@
 package com.besson.endfield.screen.custom;
 
-import com.besson.endfield.blockentity.custom.ThermalBankBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
 import com.besson.endfield.screen.ModScreens;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

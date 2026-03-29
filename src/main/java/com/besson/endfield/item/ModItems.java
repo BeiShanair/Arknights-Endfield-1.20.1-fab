@@ -3,6 +3,15 @@ package com.besson.endfield.item;
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.custom.*;
+import com.besson.endfield.item.custom.combat.*;
+import com.besson.endfield.item.custom.powering.ElectricPylonItem;
+import com.besson.endfield.item.custom.powering.ProtocolAnchorCoreItem;
+import com.besson.endfield.item.custom.powering.RelayTowerItem;
+import com.besson.endfield.item.custom.powering.ThermalBankItem;
+import com.besson.endfield.item.custom.resourcing.ElectricMiningRigItem;
+import com.besson.endfield.item.custom.resourcing.ElectricMiningRigMkIIItem;
+import com.besson.endfield.item.custom.resourcing.FluidPumpItem;
+import com.besson.endfield.item.custom.resourcing.PortableOriginiumRigItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -47,11 +56,35 @@ public class ModItems {
             new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.SEED_PICKING_UNIT_SIDE);
     public static final Item THERMAL_BANK_ITEM = registerSameBlockItem("thermal_bank",
             new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings().rarity(Rarity.UNCOMMON)), ModBlocks.THERMAL_BANK_SIDE);
+
     public static final Item FLUID_PUMP_ITEM = registerItems("fluid_pump",
             new FluidPumpItem(ModBlocks.FLUID_PUMP, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item FLUID_TANK_ITEM = registerItems("fluid_tank",
+            new FluidTankItem(ModBlocks.FLUID_TANK, new Item.Settings().rarity(Rarity.RARE)));
+    
+    public static final Item BEAM_TOWER_ITEM = registerItems("beam_tower",
+            new BeamTowerItem(ModBlocks.BEAM_TOWER, new Item.Settings()));
+    public static final Item GRENADE_TOWER_ITEM = registerItems("grenade_tower",
+            new GrenadeTowerItem(ModBlocks.GRENADE_TOWER, new Item.Settings()));
     public static final Item GUN_TOWER_ITEM = registerItems("gun_tower",
             new GunTowerItem(ModBlocks.GUN_TOWER, new Item.Settings()));
-
+    public static final Item HEAVY_GUN_TOWER_ITEM = registerItems("heavy_gun_tower",
+            new HeavyGunTowerItem(ModBlocks.HEAVY_GUN_TOWER, new Item.Settings()));
+    public static final Item HE_GRENADE_TOWER_ITEM = registerItems("he_grenade_tower",
+            new HeGrenadeTowerItem(ModBlocks.HE_GRENADE_TOWER, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item LN_TOWER_ITEM = registerItems("ln_tower",
+            new LNTowerItem(ModBlocks.LN_TOWER, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item MARSH_GAS_MK_I_ITEM = registerItems("marsh_gas_mk_i",
+            new MarshGasMkIItem(ModBlocks.MARSH_GAS_MK_I, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item MEDICAL_TOWER_ITEM = registerItems("medical_tower",
+            new MedicalTowerItem(ModBlocks.MEDICAL_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item OMNIDIRECTIONAL_SONIC_TOWER_ITEM = registerItems("omnidirectional_sonic_tower",
+            new OmnidirectionalSonicTowerItem(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item SENTRY_TOWER_ITEM = registerItems("sentry_tower",
+            new SentryTowerItem(ModBlocks.SENTRY_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item SURGE_TOWER_ITEM = registerItems("surge_tower",
+            new SurgeTowerItem(ModBlocks.SURGE_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item AGGAGRIT_CLUSTER = registerItems("aggagrit_cluster",new Item(new Item.Settings().rarity(Rarity.RARE)));

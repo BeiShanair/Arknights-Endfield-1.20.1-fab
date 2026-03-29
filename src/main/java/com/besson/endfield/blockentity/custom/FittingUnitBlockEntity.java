@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class FittingUnitBlockEntity extends BaseIOBlockEntity<FittingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 20;
 
     public FittingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FITTING_UNIT, pos, state, 40);

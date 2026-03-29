@@ -4,7 +4,15 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.entity.ModItemEntity;
 import com.besson.endfield.renderer.block.*;
-import com.besson.endfield.renderer.pre.ElectricPylonPreviewRenderer;
+import com.besson.endfield.renderer.block.combat.*;
+import com.besson.endfield.renderer.block.powering.ElectricPylonEntityRenderer;
+import com.besson.endfield.renderer.block.powering.ProtocolAnchorCoreRenderer;
+import com.besson.endfield.renderer.block.powering.RelayTowerEntityRenderer;
+import com.besson.endfield.renderer.block.powering.ThermalBankRenderer;
+import com.besson.endfield.renderer.block.resourcing.ElectricMiningRigMkIIRenderer;
+import com.besson.endfield.renderer.block.resourcing.ElectricMiningRigRenderer;
+import com.besson.endfield.renderer.block.resourcing.FluidPumpBlockRenderer;
+import com.besson.endfield.renderer.block.resourcing.PortableOriginiumRigEntityRenderer;
 import com.besson.endfield.screen.ModScreens;
 import com.besson.endfield.screen.custom.*;
 import net.fabricmc.api.ClientModInitializer;
@@ -37,8 +45,22 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.PLANTING_UNIT, PlantingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SEED_PICKING_UNIT, SeedPickingUnitRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.THERMAL_BANK, ThermalBankRenderer::new);
+
         BlockEntityRendererFactories.register(ModBlockEntities.FLUID_PUMP, FluidPumpBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.FLUID_TANK, FluidTankBlockRenderer::new);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.BEAM_TOWER, BeamTowerBlockRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.GUN_TOWER, GunTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.GRENADE_TOWER, GrenadeTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.HEAVY_GUN_TOWER, HeavyGunTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.HE_GRENADE_TOWER, HeGrenadeTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.LN_TOWER, LNTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.MARSH_GAS_MK_I, MarshGasMkIBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.MEDICAL_TOWER, MedicalTowerRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.OMNIDIRECTIONAL_SONIC_TOWER, OmnidirectionalSonicTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.SENTRY_TOWER, SentryTowerBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.SURGE_TOWER, SurgeTowerBlockRenderer::new);
+
         BlockEntityRendererFactories.register(ModBlockEntities.BELT, BeltRenderer::new);
 
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
@@ -57,8 +79,10 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         HandledScreens.register(ModScreens.GRINDING_UNIT_SCREEN, GrindingUnitScreen::new);
         HandledScreens.register(ModScreens.PACKAGING_UNIT_SCREEN, PackagingUnitScreen::new);
         HandledScreens.register(ModScreens.CRAFTER_SCREEN, CrafterScreen::new);
-        HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
         HandledScreens.register(ModScreens.SUPPLY_TERMINAL_SCREEN, SupplyTerminalScreen::new);
+
+        HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
+        HandledScreens.register(ModScreens.FLUID_TANK_SCREEN, FluidTankScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_AKETINE_BLOCK, RenderLayer.getCutout());

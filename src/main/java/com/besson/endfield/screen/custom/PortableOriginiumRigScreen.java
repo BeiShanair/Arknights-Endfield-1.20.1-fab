@@ -1,7 +1,7 @@
 package com.besson.endfield.screen.custom;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.blockentity.custom.PortableOriginiumRigBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.PortableOriginiumRigBlockEntity;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;

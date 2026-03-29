@@ -1,10 +1,10 @@
 package com.besson.endfield.item.custom;
 
-import com.besson.endfield.block.custom.ElectricPylonBlock;
-import com.besson.endfield.block.custom.ProtocolAnchorCoreBlock;
-import com.besson.endfield.block.custom.RelayTowerBlock;
-import com.besson.endfield.blockentity.custom.ElectricPylonBlockEntity;
-import com.besson.endfield.blockentity.custom.RelayTowerBlockEntity;
+import com.besson.endfield.block.custom.powering.ElectricPylonBlock;
+import com.besson.endfield.block.custom.powering.ProtocolAnchorCoreBlock;
+import com.besson.endfield.block.custom.powering.RelayTowerBlock;
+import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;

@@ -1,5 +1,6 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.blockentity.custom.logicitis.BeltBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
@@ -81,21 +82,15 @@ public abstract class BaseIOSideBlockEntity extends BlockEntity {
                 for (StorageView<ItemVariant> view : machine) {
 
                     if (view.isResourceBlank()) continue;
-
                     ItemVariant variant = view.getResource();
-
                     long extracted = view.extract(variant, 1, tx);
 
                     if (extracted > 0) {
 
                         ItemStack stack = variant.toStack((int) extracted);
-
-                        // 提交事务（真正扣除机器物品）
                         tx.commit();
-
-                        // 传给传送带
+                        
                         belt.acceptItem(stack, facing);
-
                         return;
                     }
                 }

@@ -2,6 +2,13 @@ package com.besson.endfield.block;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.custom.*;
+import com.besson.endfield.block.custom.combat.*;
+import com.besson.endfield.block.custom.logicitis.*;
+import com.besson.endfield.block.custom.powering.*;
+import com.besson.endfield.block.custom.resourcing.ElectricMiningRigBlock;
+import com.besson.endfield.block.custom.resourcing.ElectricMiningRigMkIIBlock;
+import com.besson.endfield.block.custom.resourcing.FluidPumpBlock;
+import com.besson.endfield.block.custom.resourcing.PortableOriginiumRigBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -51,9 +58,30 @@ public class ModBlocks {
 
     public static final Block SUPPLY_TERMINAL = registerBlocks("supply_terminal",
             new SupplyTerminalBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
+    public static final Block BEAM_TOWER = registerBlocksWithoutItem("beam_tower",
+            new BeamTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block GRENADE_TOWER = registerBlocksWithoutItem("grenade_tower",
+            new GrenadeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block GUN_TOWER = registerBlocksWithoutItem("gun_tower",
             new GunTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
+    public static final Block HEAVY_GUN_TOWER = registerBlocksWithoutItem("heavy_gun_tower",
+            new HeavyGunTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block HE_GRENADE_TOWER = registerBlocksWithoutItem("he_grenade_tower",
+            new HeGrenadeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block LN_TOWER = registerBlocksWithoutItem("ln_tower",
+            new LNTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block MARSH_GAS_MK_I = registerBlocksWithoutItem("marsh_gas_mk_i",
+            new MarshGasMkIBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block MEDICAL_TOWER = registerBlocksWithoutItem("medical_tower",
+            new MedicalTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block OMNIDIRECTIONAL_SONIC_TOWER = registerBlocksWithoutItem("omnidirectional_sonic_tower",
+            new OmnidirectionalSonicTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SENTRY_TOWER = registerBlocksWithoutItem("sentry_tower",
+            new SentryTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SURGE_TOWER = registerBlocksWithoutItem("surge_tower",
+            new SurgeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block REFINING_UNIT_SIDE = registerBlocks("refining_unit_side",
@@ -212,6 +240,8 @@ public class ModBlocks {
 
     public static final Block FLUID_PUMP = registerBlocksWithoutItem("fluid_pump",
             new FluidPumpBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
+    public static final Block FLUID_TANK = registerBlocksWithoutItem("fluid_tank",
+            new FluidTankBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
 
     public static final Block PIPE_BLOCK = registerBlocks("pipe_block",
             new PipeBlock(AbstractBlock.Settings.create().strength(1f).nonOpaque()));

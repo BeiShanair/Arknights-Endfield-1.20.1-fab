@@ -32,12 +32,24 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FLUID_PUMP);
         addDrop(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
         addDrop(ModBlocks.SUPPLY_TERMINAL);
-        addDrop(ModBlocks.GUN_TOWER);
+
         addDrop(ModBlocks.BELT);
         addDrop(ModBlocks.BELT_BRIDGE);
         addDrop(ModBlocks.CONVERGER);
         addDrop(ModBlocks.SPLITTER);
         addDrop(ModBlocks.OUTPUT_PORT_BLOCK);
+
+        addDrop(ModBlocks.GRENADE_TOWER);
+        addDrop(ModBlocks.HE_GRENADE_TOWER);
+        addDrop(ModBlocks.HEAVY_GUN_TOWER);
+        addDrop(ModBlocks.SENTRY_TOWER);
+        addDrop(ModBlocks.GUN_TOWER);
+        addDrop(ModBlocks.MEDICAL_TOWER);
+        addDrop(ModBlocks.BEAM_TOWER);
+        addDrop(ModBlocks.LN_TOWER);
+        addDrop(ModBlocks.MARSH_GAS_MK_I);
+        addDrop(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER);
+        addDrop(ModBlocks.SURGE_TOWER);
 
         addDrop(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.COAL_MINERAL_VEIN_BLOCK);

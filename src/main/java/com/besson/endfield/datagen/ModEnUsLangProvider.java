@@ -62,6 +62,29 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Anchor Core Port");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Anchor Core Side");
 
+        translationBuilder.add(ModBlocks.BEAM_TOWER, "Beam Tower");
+        translationBuilder.add(ModBlocks.GUN_TOWER, "Gun Tower");
+        translationBuilder.add(ModBlocks.HEAVY_GUN_TOWER, "Heavy Gun Tower");
+        translationBuilder.add(ModBlocks.GRENADE_TOWER, "Grenade Tower");
+        translationBuilder.add(ModBlocks.HE_GRENADE_TOWER, "HE Grenade Tower");
+        translationBuilder.add(ModBlocks.SENTRY_TOWER, "Sentry Tower");
+        translationBuilder.add(ModBlocks.MEDICAL_TOWER, "Medical Tower");
+        translationBuilder.add(ModBlocks.LN_TOWER, "LN Tower");
+        translationBuilder.add(ModBlocks.MARSH_GAS_MK_I, "Marsh Gas Mk.I");
+        translationBuilder.add(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER, "Omnidirectional Sonic Tower");
+        translationBuilder.add(ModBlocks.SURGE_TOWER, "Surge Tower");
+
+        translationBuilder.add("endfield.range", "Attack Range: %s m");
+        translationBuilder.add("endfield.attack", "ATK: %s");
+        translationBuilder.add("endfield.cooldown", "Attack Interval: %s s");
+        translationBuilder.add("endfield.powerCost", "Power Use: %s EFU");
+
+        translationBuilder.add("endfield.protocolAnchorCoreTooltip", "Can't Synthesize");
+        translationBuilder.add("endfield.protocolAnchorCoreTooltip2", "Suggest setting the chunk for placement to always load");
+
+        translationBuilder.add(ModBlocks.FLUID_PUMP, "Fluid Pump");
+        translationBuilder.add(ModBlocks.FLUID_TANK, "Fluid Tank");
+
         translationBuilder.add(ModItems.AGGAGRIT, "Aggagrit");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "Aggagrit Block");
         translationBuilder.add(ModItems.AGGAGRIT_CLUSTER, "Aggagrit Cluster");
@@ -305,5 +328,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("protocol_anchor_core_port.tooltip2", "Right click on an item - set it to only output that item");
         translationBuilder.add("protocol_anchor_core_port.tooltip3", "Right click on empty hand - open the GUI");
         translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift+right-click on empty hand - cancel the output filtering restriction");
+        
+        translationBuilder.add("electric_pylon.title", "Power Network State:");
+        translationBuilder.add("electric_pylon.total_generated", "Total Generated: %s");
+        translationBuilder.add("electric_pylon.total_demand", "Total Demand: %s");
+        translationBuilder.add("electric_pylon.stored_power", "Stored Power: %s");
     }
 }

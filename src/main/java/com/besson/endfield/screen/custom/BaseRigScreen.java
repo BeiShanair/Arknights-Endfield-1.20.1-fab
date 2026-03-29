@@ -1,7 +1,6 @@
 package com.besson.endfield.screen.custom;
 
-import com.besson.endfield.blockentity.custom.BaseIOBlockEntity;
-import com.besson.endfield.blockentity.custom.BaseRigBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.BaseRigBlockEntity;
 import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.screen.ToggleIconButton;
 import com.mojang.blaze3d.systems.RenderSystem;

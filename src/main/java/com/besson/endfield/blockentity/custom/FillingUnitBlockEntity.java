@@ -30,7 +30,7 @@ import java.util.Optional;
 public class FillingUnitBlockEntity extends BaseIOBlockEntity<FillingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 20;
 
     public FillingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FILLING_UNIT, pos, state, 200);

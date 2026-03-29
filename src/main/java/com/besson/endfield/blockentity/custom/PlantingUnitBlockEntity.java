@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class PlantingUnitBlockEntity extends BaseIOBlockEntity<PlantingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 20;
 
     public PlantingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PLANTING_UNIT, pos, state, 40);

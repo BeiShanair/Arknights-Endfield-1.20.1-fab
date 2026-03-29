@@ -1,0 +1,108 @@
+package com.besson.endfield.block.custom.powering;
+
+import com.besson.endfield.block.ModBlockEntityWithFacing;
+import com.besson.endfield.block.ModBlocks;
+import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.blockentity.custom.powering.ProtocolAnchorCoreBlockEntity;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
+
+    public ProtocolAnchorCoreBlock(Settings settings) {
+        super(settings);
+    }
+
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ProtocolAnchorCoreBlockEntity(pos, state);
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!world.isClient()) {
+            NamedScreenHandlerFactory screenHandlerFactory = ((ProtocolAnchorCoreBlockEntity) world.getBlockEntity(pos));
+            if (screenHandlerFactory != null) {
+                player.openHandledScreen(screenHandlerFactory);
+                return ActionResult.SUCCESS;
+            }
+        }
+        return ActionResult.CONSUME;
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (!world.isClient()) {
+            for (BlockPos p: BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
+                BlockState checkState = world.getBlockState(p);
+                if (checkState.isOf(this)) {
+                    continue;
+                }
+                world.setBlockState(p, ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE.getDefaultState());
+            }
+        }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof ProtocolAnchorCoreBlockEntity entity) {
+                ItemScatterer.spawn(world, pos, entity);
+                world.updateComparators(pos, this);
+            }
+
+            for (BlockPos p: BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
+                BlockState checkState = world.getBlockState(p);
+                if (checkState.isOf(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE)) {
+                    world.breakBlock(p, false);
+                }
+            }
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlockEntities.PROTOCOL_ANCHOR_CORE, ProtocolAnchorCoreBlockEntity::tick);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        if (!world.isClient()) {
+            for (BlockPos p : BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
+                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(Text.translatable("endfield.protocolAnchorCoreTooltip").formatted(Formatting.RED));
+        tooltip.add(Text.translatable("endfield.protocolAnchorCoreTooltip2").formatted(Formatting.GRAY));
+    }
+}

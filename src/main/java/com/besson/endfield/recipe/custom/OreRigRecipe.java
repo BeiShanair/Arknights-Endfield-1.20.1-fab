@@ -14,11 +14,13 @@ public class OreRigRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final Ingredient input;
     private final ItemStack output;
+    private final int tier;
 
-    public OreRigRecipe(Identifier id, Ingredient input, ItemStack output) {
+    public OreRigRecipe(Identifier id, Ingredient input, ItemStack output, int tier) {
         this.id = id;
         this.input = input;
         this.output = output;
+        this.tier = tier;
     }
 
     @Override
@@ -61,6 +63,10 @@ public class OreRigRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
+    public int getTier() {
+        return tier;
+    }
+
     public static class Type implements RecipeType<OreRigRecipe>{
         public static final Type INSTANCE = new Type();
         public static final String ID = "ore_rig";
@@ -75,20 +81,23 @@ public class OreRigRecipe implements Recipe<SimpleInventory> {
         public OreRigRecipe read(Identifier id, JsonObject json) {
             Ingredient input = Ingredient.fromJson(json.get("input"));
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            return new OreRigRecipe(id, input, output);
+            int tier = JsonHelper.getInt(json, "tier", 1);
+            return new OreRigRecipe(id, input, output, tier);
         }
 
         @Override
         public OreRigRecipe read(Identifier id, PacketByteBuf buf) {
             Ingredient input = Ingredient.fromPacket(buf);
             ItemStack output = buf.readItemStack();
-            return new OreRigRecipe(id, input, output);
+            int tier = buf.readInt();
+            return new OreRigRecipe(id, input, output, tier);
         }
 
         @Override
         public void write(PacketByteBuf buf, OreRigRecipe recipe) {
             recipe.input.write(buf);
             buf.writeItemStack(recipe.output);
+            buf.writeInt(recipe.tier);
         }
     }
 }

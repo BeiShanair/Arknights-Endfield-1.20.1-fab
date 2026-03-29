@@ -1,8 +1,7 @@
 package com.besson.endfield.pipe;
 
-import com.besson.endfield.blockentity.custom.FluidPumpBlockEntity;
-import com.besson.endfield.blockentity.custom.PipeBlockEntity;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.PipeBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.block.entity.BlockEntity;

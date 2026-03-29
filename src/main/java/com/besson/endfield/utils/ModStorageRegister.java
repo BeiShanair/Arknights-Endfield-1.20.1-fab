@@ -2,6 +2,9 @@ package com.besson.endfield.utils;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.*;
+import com.besson.endfield.blockentity.custom.logicitis.FluidPipeBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 
@@ -9,6 +12,7 @@ public class ModStorageRegister {
     public static void register() {
         FluidStorage.SIDED.registerForBlockEntity(FluidPipeBlockEntity::getFluidStorage, ModBlockEntities.FLUID_PIPE);
         FluidStorage.SIDED.registerForBlockEntity(FluidPumpBlockEntity::getFluidStorage, ModBlockEntities.FLUID_PUMP);
+        FluidStorage.SIDED.registerForBlockEntity(FluidTankBlockEntity::getFluidStorage, ModBlockEntities.FLUID_TANK);
         FluidStorage.SIDED.registerForBlockEntity(WaterInjectorBlockEntity::getFluidStorage, ModBlockEntities.WATER_INJECTOR);
 
         ItemStorage.SIDED.registerForBlockEntity((be, dir) -> be.getStorage(), ModBlockEntities.ELECTRIC_MINING_RIG);

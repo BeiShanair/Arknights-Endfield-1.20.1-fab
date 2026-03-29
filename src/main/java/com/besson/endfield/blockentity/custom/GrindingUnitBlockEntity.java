@@ -27,7 +27,7 @@ import java.util.Optional;
 
 public class GrindingUnitBlockEntity extends BaseIOBlockEntity<GrindingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 50;
 
     public GrindingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.GRINDING_UNIT, pos, state, 40);

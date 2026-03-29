@@ -6,5 +6,6 @@
   "output": {
     "count": 1,
     "item": "minecraft:raw_copper"
-  }
+  },
+  "tier": 2
 }

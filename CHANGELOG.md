@@ -1,4 +1,68 @@
 # 更新日志 / Changelog
+## 2026-03-29
+- 修复各塔防设备逻辑，取消使用实体，以避免与其他模组的兼容性问题；经验正常掉落；
+- Fixed the logic of each tower defense equipment, canceling the use of entities to avoid compatibility issues with other mods; experience drops normally;
+- 暂时移除了部分物品；
+- Temporarily removed some items;
+
+## 2026-03-24
+- 修改多输入工业设备的逻辑，现在同一个物品只能输入一个物品槽中，当该槽满了以后，不再会再向其他槽输入物品；
+- Change the logic of multi-input industrial devices. Now, the same item can only be input into one item slot, and if the slot is full, it will no longer input items into other slots
+
+## 2026-03-23
+- 修改塔防设备逻辑，确保塔防设备击杀的怪物也能正常掉落经验；但注意，这是引入了一个不可见的玩家实体，所有伤害源来自于此实体，其名称为`[Turret]`
+- Change the logic of tower defense equipment, so that the monsters killed by the tower defense equipment can also drop experience; But note that this is an invisible player entity, all damage sources come from this entity, and its name is `[Turret]`
+
+## 2026-03-20
+- 继续完善部分细节，调整一些数值
+- Continued to improve some details and adjust some values
+
+## 2026-03-19
+- 基本完成另外两端的移植
+- Basically completed the porting of the other two ends
+
+## 2026-03-18
+- 初步完成各塔防设备的逻辑
+- Preliminary completion of the logic for each tower defense equipment
+
+## 2026-03-17
+- 初步完成文档站相关内容编写
+- Completed writing and deployment of documentation site related to the mod
+
+## 2026-03-15
+- 发现一个bug，但予以保留
+- Found a bug, but retained
+- 修改部分逻辑，以契合此`特性`
+- Modified the logic, which is compatible with this feature
+
+## 2026-03-14
+- 初步部署模组相关的文档站，并部署一个分站，用于缓解大陆地区访问问题
+- Initially deployed the documentation site related to the mod, and deployed a sub-site to alleviate access issues in mainland China
+
+## 2026-03-12
+- 测试各炮台
+- Tested various gun towers
+- 开始编写和部署模组相关的文档站
+- Started writing and deploying the documentation site related to the mod
+
+## 2026-03-10
+- 各用电工业设备现在采用全局电网节点系统判断与`供电桩`和`中继器`的连接关系，不再直接遍历
+- Each powered industrial device now uses a global power grid node system to determine its connection relationship with `Electric Pylon` and `Relay Tower`, instead of directly traversing them
+- 修改`协议核心`的发电量，现在发电量为200 EFU/t
+- Modified the power generation of `Protocol Anchor Core`, now it generates 200 EFU/t
+- 现在工业设备内置电力储备的充能速度为`该设备的耗电量 * 20`，即如果设备的耗电量为10 EFU/t，那么它的充能速度就是200 EFU/s
+- Now the charging speed of the built-in power reserve of industrial equipment is `the power consumption of the device * 20`, which means if the device's power consumption is 10 EFU/t, then its charging speed is 200 EFU/s
+
+## 2026-03-09
+- 完成矿机分级，且便携源石矿机只能开采源石矿、红石矿和煤矿
+- Complete mining machine classification, and portable source stone mining machines can only originium mines, redstone mines, and coal mines
+- 现在右键`中继器`或者`供电桩`就可以获取当前电网的相关信息
+- Now can get current grid information through right-clicking `Relay Tower` or `Electric Pylon`
+
+## 2026-03-08
+- 修改一些逻辑，现在新玩家首次进入游戏会送一些相应的矿脉方块，以后更新都是如此
+- Change some logic, now new players will receive some ore vein blocks when they enter the game
+
 ## 2026-03-06
 - 修改工业设备放置逻辑，如果空间不足，则不会放置
 - Modified the logic of industrial equipment placement. If there is not enough space, it will not be placed

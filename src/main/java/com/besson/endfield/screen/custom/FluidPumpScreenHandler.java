@@ -1,6 +1,6 @@
 package com.besson.endfield.screen.custom;
 
-import com.besson.endfield.blockentity.custom.FluidPumpBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
 import com.besson.endfield.screen.ModScreens;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -9,9 +9,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
-import org.jetbrains.annotations.Nullable;
 
 public class FluidPumpScreenHandler extends ScreenHandler {
     private final FluidPumpBlockEntity blockEntity;

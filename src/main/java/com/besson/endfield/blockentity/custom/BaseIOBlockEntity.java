@@ -1,6 +1,10 @@
 package com.besson.endfield.blockentity.custom;
 
+import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
+import com.besson.endfield.utils.NodeType;
 import com.besson.endfield.utils.PowerNetworkManager;
+import com.besson.endfield.utils.PowerNetworkNodeManager;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
@@ -27,6 +31,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity implements ExtendedScreenHandlerFactory {
     protected final SimpleInventory inputInv;
@@ -58,6 +63,26 @@ public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity
                 super.markDirty();
                 BaseIOBlockEntity.this.markDirty();
             }
+
+            @Override
+            public boolean isValid(int slot, ItemStack stack) {
+                if (stack == null || stack.isEmpty()) return false;
+
+                for (int i = 0; i < this.size(); i++) {
+                    if (i == slot) continue;
+                    ItemStack s = this.getStack(i);
+                    if (!s.isEmpty() && ItemStack.canCombine(s, stack)) {
+                        return false;
+                    }
+                }
+
+                ItemStack current = this.getStack(slot);
+                if (current.isEmpty()) {
+                    return true;
+                }
+                
+                return ItemStack.canCombine(current, stack) && current.getCount() < current.getMaxCount();
+            }
         };
         this.outputInv = new SimpleInventory(getOutputSize()) {
             @Override
@@ -74,7 +99,6 @@ public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity
         this.inputStorage = createInputStorage();
         this.outputStorage = createOutputStorage();
         this.propertyDelegate = createPropertyDelegate();
-
     }
 
     protected abstract int getInputSize();
@@ -105,23 +129,25 @@ public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity
 
         be.tickNum++;
 
-        if (be.tickNum % 20 == 0) {
-            // TODO: 使用全局电网节点管理器来获取最近的 供电桩 / 中继器 ，不再使用遍历
-            for (BlockPos target : BlockPos.iterate(pos.add(-10, 0, -10), pos.add(10, 0, 10))) {
-                BlockEntity b = world.getBlockEntity(target);
-                if (b instanceof ElectricPylonBlockEntity) {
-                    be.isPowered = ((ElectricPylonBlockEntity) b).isPowered;
-                    break;
+        if (be.tickNum % 20 == 0 && world instanceof ServerWorld serverWorld) {
+            AtomicReference<BlockPos> t = new AtomicReference<>();
+            PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
+            manager.findNearest(pos, NodeType.CONSUMER, 10).ifPresent(target -> t.set(target.pos()));
+            if (t.get() != null) {
+                BlockEntity b = world.getBlockEntity(t.get());
+                if (b instanceof ElectricPylonBlockEntity || b instanceof RelayTowerBlockEntity) {
+                    be.isPowered = true;
+                } else {
+                    be.isPowered = false;
+                    be.isWorking = false;
+                    be.markDirty();
+                    world.updateListeners(pos, state, state, 3);
                 }
-                be.isPowered = false;
-                be.isWorking = false;
-                be.markDirty();
-                world.updateListeners(pos, state, state, 3);
             }
             be.tickNum = 0;
         }
-
-        if (!be.isPowered) return;
+        
+        if (!be.isPowered && be.storedPower < be.getPowerCostPerTick()) return;
 
         if (be.isOutputSlotAvailable()) {
             boolean hasRecipe = be.hasCorrectRecipe(world);
@@ -210,7 +236,7 @@ public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity
     }
 
     public void receiveElectricCharge(int amount) {
-        this.storedPower = Math.min(this.storedPower + amount, MAX_STORED_POWER);
+        this.storedPower = Math.min(this.storedPower + amount * 20, MAX_STORED_POWER);
     }
 
     public boolean needsPower() {
@@ -218,7 +244,7 @@ public abstract class BaseIOBlockEntity<R extends Recipe<?>> extends BlockEntity
     }
 
     public int getRequiredPower() {
-        if (isWorking && isPowered || storedPower < MAX_STORED_POWER) {
+        if (isWorking || isPowered && storedPower < MAX_STORED_POWER) {
             return getPowerCostPerTick();
         }
         return 0;

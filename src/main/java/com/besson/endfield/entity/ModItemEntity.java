@@ -15,7 +15,6 @@ public class ModItemEntity {
                             .setDimensions(0.25f, 0.25f)
                             .maxTrackingRange(4)
                             .build("industrial_explosive"));
-
     public static void register() {
 
     }

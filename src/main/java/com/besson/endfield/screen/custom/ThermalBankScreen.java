@@ -1,7 +1,7 @@
 package com.besson.endfield.screen.custom;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.blockentity.custom.ThermalBankBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
 import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.screen.ToggleIconButton;
 import com.mojang.blaze3d.systems.RenderSystem;

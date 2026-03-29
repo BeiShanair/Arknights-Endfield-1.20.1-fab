@@ -1,9 +1,9 @@
 package com.besson.endfield.renderer.pre;
 
 import com.besson.endfield.block.ModBlocks;
-import com.besson.endfield.block.custom.ElectricPylonBlock;
-import com.besson.endfield.blockentity.custom.ElectricPylonBlockEntity;
-import com.besson.endfield.renderer.block.ElectricPylonEntityRenderer;
+import com.besson.endfield.block.custom.powering.ElectricPylonBlock;
+import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
+import com.besson.endfield.renderer.block.powering.ElectricPylonEntityRenderer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
@@ -17,9 +17,6 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
 
 public class ElectricPylonPreviewRenderer {
     private static ElectricPylonBlockEntity fakeBe = null;

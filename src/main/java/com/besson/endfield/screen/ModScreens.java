@@ -76,6 +76,9 @@ public class ModScreens {
     public static final ScreenHandlerType<FluidPumpScreenHandler> FLUID_PUMP_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fluid_pump_screen"),
                     new ExtendedScreenHandlerType<>(FluidPumpScreenHandler::new));
+    public static final ScreenHandlerType<FluidTankScreenHandler> FLUID_TANK_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fluid_tank_screen"),
+                    new ExtendedScreenHandlerType<>(FluidTankScreenHandler::new));
 
     public static final ScreenHandlerType<SupplyTerminalScreenHandler> SUPPLY_TERMINAL_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "supply_terminal_screen"),

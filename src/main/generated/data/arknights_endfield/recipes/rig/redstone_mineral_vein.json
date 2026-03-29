@@ -6,5 +6,6 @@
   "output": {
     "count": 1,
     "item": "minecraft:redstone"
-  }
+  },
+  "tier": 1
 }

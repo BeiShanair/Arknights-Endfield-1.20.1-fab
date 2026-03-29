@@ -6,5 +6,6 @@
   "output": {
     "count": 1,
     "item": "minecraft:raw_gold"
-  }
+  },
+  "tier": 2
 }

@@ -1,23 +1,19 @@
 package com.besson.endfield.renderer.block;
 
-import com.besson.endfield.block.custom.BeltBlock;
-import com.besson.endfield.block.custom.BeltShape;
-import com.besson.endfield.blockentity.custom.BeltBlockEntity;
+import com.besson.endfield.block.custom.logicitis.BeltBlock;
+import com.besson.endfield.block.custom.logicitis.BeltShape;
+import com.besson.endfield.blockentity.custom.logicitis.BeltBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
-import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
-import org.joml.Matrix4f;
 
 public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity> {
 

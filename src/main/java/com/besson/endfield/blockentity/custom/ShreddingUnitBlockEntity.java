@@ -27,7 +27,7 @@ import java.util.Optional;
 
 public class ShreddingUnitBlockEntity extends BaseIOBlockEntity<ShreddingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 5;
 
     public ShreddingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SHREDDING_UNIT, pos, state, 40);

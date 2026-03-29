@@ -45,10 +45,27 @@ public class ModREIClientPlugins implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-
-        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, PortableOriginiumRigDisplay::new);
-        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, ElectricMiningRigDisplay::new);
-        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, ElectricMiningRigMkIIDisplay::new);
+        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, oreRigRecipe -> {
+            if (oreRigRecipe.getTier() <= 1) {
+                return new PortableOriginiumRigDisplay(oreRigRecipe);
+            } else {
+                return null;
+            }
+        });
+        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, oreRigRecipe -> {
+            if (oreRigRecipe.getTier() <= 2) {
+                return new ElectricMiningRigDisplay(oreRigRecipe);
+            } else {
+                return null;
+            }
+        });
+        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, oreRigRecipe -> {
+            if (oreRigRecipe.getTier() <= 3) {
+                return new ElectricMiningRigMkIIDisplay(oreRigRecipe);
+            } else {
+                return null;
+            }
+        });
         registry.registerRecipeFiller(CrafterRecipe.class, CrafterRecipe.Type.INSTANCE, CrafterDisplay::new);
         registry.registerRecipeFiller(FillingUnitRecipe.class, FillingUnitRecipe.Type.INSTANCE, FillingUnitDisplay::new);
         registry.registerRecipeFiller(GearingUnitRecipe.class, GearingUnitRecipe.Type.INSTANCE, GearingUnitDisplay::new);

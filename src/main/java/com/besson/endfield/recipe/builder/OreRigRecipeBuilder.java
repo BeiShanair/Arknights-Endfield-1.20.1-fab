@@ -13,22 +13,24 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 public class OreRigRecipeBuilder {
-    private static ItemConvertible input;
-    private static ItemConvertible output;
+    private final ItemConvertible input;
+    private final ItemConvertible output;
     private final int outputCount;
+    private final int tier;
 
-    private OreRigRecipeBuilder(ItemConvertible input, ItemConvertible output, int outputCount) {
+    private OreRigRecipeBuilder(ItemConvertible input, ItemConvertible output, int outputCount, int tier) {
         this.input = input;
         this.output = output;
         this.outputCount = outputCount;
+        this.tier = tier;
     }
 
-    public static OreRigRecipeBuilder create(ItemConvertible input, ItemConvertible output) {
-        return new OreRigRecipeBuilder(input, output, 1);
+    public static OreRigRecipeBuilder create(ItemConvertible input, ItemConvertible output, int tier) {
+        return new OreRigRecipeBuilder(input, output, 1, tier);
     }
 
-    public static OreRigRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount) {
-        return new OreRigRecipeBuilder(input, output, outputCount);
+    public static OreRigRecipeBuilder create(ItemConvertible input, ItemConvertible output, int outputCount, int tier) {
+        return new OreRigRecipeBuilder(input, output, outputCount, tier);
     }
 
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {
@@ -44,6 +46,8 @@ public class OreRigRecipeBuilder {
                 outputJson.addProperty("item", Registries.ITEM.getId(output.asItem()).toString());
                 outputJson.addProperty("count", outputCount);
                 json.add("output", outputJson);
+
+                json.addProperty("tier", tier);
             }
 
             @Override

@@ -3,6 +3,13 @@ package com.besson.endfield.blockentity;
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.custom.*;
+import com.besson.endfield.blockentity.custom.combat.*;
+import com.besson.endfield.blockentity.custom.logicitis.*;
+import com.besson.endfield.blockentity.custom.powering.*;
+import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigMkIIBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.PortableOriginiumRigBlockEntity;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -24,9 +31,30 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<SupplyTerminalBlockEntity> SUPPLY_TERMINAL = create("supply_terminal",
             BlockEntityType.Builder.create(SupplyTerminalBlockEntity::new, ModBlocks.SUPPLY_TERMINAL));
+    
+    public static final BlockEntityType<BeamTowerBlockEntity> BEAM_TOWER = create("beam_tower",
+            BlockEntityType.Builder.create(BeamTowerBlockEntity::new, ModBlocks.BEAM_TOWER));
+    public static final BlockEntityType<GrenadeTowerBlockEntity> GRENADE_TOWER = create("grenade_tower",
+            BlockEntityType.Builder.create(GrenadeTowerBlockEntity::new, ModBlocks.GRENADE_TOWER));
     public static final BlockEntityType<GunTowerBlockEntity> GUN_TOWER = create("gun_tower",
             BlockEntityType.Builder.create(GunTowerBlockEntity::new, ModBlocks.GUN_TOWER));
-
+    public static final BlockEntityType<HeavyGunTowerBlockEntity> HEAVY_GUN_TOWER = create("heavy_gun_tower",
+            BlockEntityType.Builder.create(HeavyGunTowerBlockEntity::new, ModBlocks.HEAVY_GUN_TOWER));
+    public static final BlockEntityType<HeGrenadeTowerBlockEntity> HE_GRENADE_TOWER = create("he_grenade_tower",
+            BlockEntityType.Builder.create(HeGrenadeTowerBlockEntity::new, ModBlocks.HE_GRENADE_TOWER));
+    public static final BlockEntityType<LNTowerBlockEntity> LN_TOWER = create("ln_tower",
+            BlockEntityType.Builder.create(LNTowerBlockEntity::new, ModBlocks.LN_TOWER));
+    public static final BlockEntityType<MedicalTowerBlockEntity> MEDICAL_TOWER = create("medical_tower",
+            BlockEntityType.Builder.create(MedicalTowerBlockEntity::new, ModBlocks.MEDICAL_TOWER));
+    public static final BlockEntityType<MarshGasMkIBlockEntity> MARSH_GAS_MK_I = create("marsh_gas__mk_i",
+            BlockEntityType.Builder.create(MarshGasMkIBlockEntity::new, ModBlocks.MARSH_GAS_MK_I));
+    public static final BlockEntityType<OmnidirectionalSonicTowerBlockEntity> OMNIDIRECTIONAL_SONIC_TOWER = create("omnidirectional_sonic_tower",
+            BlockEntityType.Builder.create(OmnidirectionalSonicTowerBlockEntity::new, ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER));
+    public static final BlockEntityType<SentryTowerBlockEntity> SENTRY_TOWER = create("sentry_tower",
+            BlockEntityType.Builder.create(SentryTowerBlockEntity::new, ModBlocks.SENTRY_TOWER));
+    public static final BlockEntityType<SurgeTowerBlockEntity> SURGE_TOWER = create("surge_tower",
+            BlockEntityType.Builder.create(SurgeTowerBlockEntity::new, ModBlocks.SURGE_TOWER));
+    
     public static final BlockEntityType<ElectricPylonBlockEntity> ELECTRIC_PYLON = create("electric_pylon",
             BlockEntityType.Builder.create(ElectricPylonBlockEntity::new, ModBlocks.ELECTRIC_PYLON));
 
@@ -114,10 +142,13 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(OutputPortBlockEntity::new, ModBlocks.OUTPUT_PORT_BLOCK));
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE = create("fluid_pipe.json",
             BlockEntityType.Builder.create(FluidPipeBlockEntity::new, ModBlocks.FLUID_PIPE));
+
     public static final BlockEntityType<FluidExtractorBlockEntity> FLUID_EXTRACTOR = create("fluid_extractor",
             BlockEntityType.Builder.create(FluidExtractorBlockEntity::new, ModBlocks.FLUID_EXTRACTOR));
     public static final BlockEntityType<WaterInjectorBlockEntity> WATER_INJECTOR = create("water_injector",
             BlockEntityType.Builder.create(WaterInjectorBlockEntity::new, ModBlocks.WATER_INJECTOR));
+    public static final BlockEntityType<FluidTankBlockEntity> FLUID_TANK = create("fluid_tank",
+            BlockEntityType.Builder.create(FluidTankBlockEntity::new, ModBlocks.FLUID_TANK));
 
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);

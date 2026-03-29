@@ -27,7 +27,7 @@ import java.util.Optional;
 
 public class PackagingUnitBlockEntity extends BaseIOBlockEntity<PackagingUnitRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private static final int POWER_PRE_TICK = 10;
+    private static final int POWER_PRE_TICK = 20;
 
     public PackagingUnitBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PACKAGING_UNIT, pos, state, 200);

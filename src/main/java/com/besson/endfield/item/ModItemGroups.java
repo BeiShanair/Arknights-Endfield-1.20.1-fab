@@ -60,7 +60,10 @@ public class ModItemGroups {
                         entries.add(ModItems.PLANTING_UNIT_ITEM);
                         entries.add(ModItems.SEED_PICKING_UNIT_ITEM);
                         entries.add(ModItems.THERMAL_BANK_ITEM);
+
 //                        entries.add(ModItems.FLUID_PUMP_ITEM);
+//                        entries.add(ModItems.FLUID_TANK_ITEM);
+
 //                        entries.add(ModBlocks.PIPE_BLOCK);
                         entries.add(ModBlocks.BELT);
                         entries.add(ModBlocks.BELT_BRIDGE);
@@ -72,7 +75,17 @@ public class ModItemGroups {
 //                        entries.add(ModBlocks.WATER_INJECTOR);
 
 //                        entries.add(ModBlocks.SUPPLY_TERMINAL);
-//                        entries.add(ModItems.GUN_TOWER_ITEM);
+                        entries.add(ModItems.BEAM_TOWER_ITEM);
+                        entries.add(ModItems.GRENADE_TOWER_ITEM);
+                        entries.add(ModItems.GUN_TOWER_ITEM);
+                        entries.add(ModItems.HEAVY_GUN_TOWER_ITEM);
+                        entries.add(ModItems.HE_GRENADE_TOWER_ITEM);
+                        entries.add(ModItems.LN_TOWER_ITEM);
+                        entries.add(ModItems.MARSH_GAS_MK_I_ITEM);
+                        entries.add(ModItems.MEDICAL_TOWER_ITEM);
+                        entries.add(ModItems.OMNIDIRECTIONAL_SONIC_TOWER_ITEM);
+                        entries.add(ModItems.SENTRY_TOWER_ITEM);
+                        entries.add(ModItems.SURGE_TOWER_ITEM);
 
                         entries.add(ModItems.ORIGINIUM_ORE);
                         entries.add(ModItems.ORIGINIUM_POWDER);
@@ -105,7 +118,7 @@ public class ModItemGroups {
                         entries.add(ModItems.STEEL);
                         entries.add(ModItems.STEEL_BOTTLE);
                         entries.add(ModItems.STEEL_PART);
-                        entries.add(ModItems.STEEL_JAR);
+//                        entries.add(ModItems.STEEL_JAR);
                         entries.add(ModItems.DENSE_ORIGINIUM_POWDER);
                         entries.add(ModItems.DENSE_ORIGOCRUST_POWDER);
                         entries.add(ModItems.DENSE_FERRIUM_POWDER);
@@ -128,10 +141,10 @@ public class ModItemGroups {
                         entries.add(ModItems.CANNED_CITROME_C);
                         entries.add(ModItems.CANNED_CITROME_B);
                         entries.add(ModItems.CANNED_CITROME_A);
-                        entries.add(ModItems.CITROME_JAM);
-                        entries.add(ModItems.CITROME_JELLY);
-                        entries.add(ModItems.CITROME_PUDDING);
-                        entries.add(ModItems.CITROBUCKY_MIX);
+//                        entries.add(ModItems.CITROME_JAM);
+//                        entries.add(ModItems.CITROME_JELLY);
+//                        entries.add(ModItems.CITROME_PUDDING);
+//                        entries.add(ModItems.CITROBUCKY_MIX);
                         entries.add(ModItems.UMBRALINE);
                         entries.add(ModItems.CITROMIX);
                         entries.add(ModItems.CITROMIX_S);
@@ -176,16 +189,16 @@ public class ModItemGroups {
 
                         entries.add(ModItems.TARTPEPPER);
                         entries.add(ModItems.TARTPEPPER_SEED);
-                        entries.add(ModItems.TARTPEPPER_PICKLE);
-                        entries.add(ModItems.TARTPEPPER_SALAD);
+//                        entries.add(ModItems.TARTPEPPER_PICKLE);
+//                        entries.add(ModItems.TARTPEPPER_SALAD);
 
                         entries.add(ModItems.CARBON);
                         entries.add(ModItems.CARBON_POWDER);
                         entries.add(ModItems.STABILIZED_CARBON);
 
-                        entries.add(ModItems.AGGAGRIT);
-                        entries.add(ModItems.AGGAGRIT_BLOCK);
-                        entries.add(ModItems.AGGAGRIT_CLUSTER);
+//                        entries.add(ModItems.AGGAGRIT);
+//                        entries.add(ModItems.AGGAGRIT_BLOCK);
+//                        entries.add(ModItems.AGGAGRIT_CLUSTER);
 
                         entries.add(ModItems.LC_BATTERY);
                         entries.add(ModItems.SC_BATTERY);
@@ -198,20 +211,20 @@ public class ModItemGroups {
                         entries.add(ModItems.KUNST_VIAL);
                         entries.add(ModItems.PERPLEXING_MEDICATION);
 
-                        entries.add(ModItems.ASHPIN_REMEDY);
-                        entries.add(ModItems.BLANCHED_REMEDY);
+//                        entries.add(ModItems.ASHPIN_REMEDY);
+//                        entries.add(ModItems.BLANCHED_REMEDY);
                         entries.add(ModItems.BIZARROTACK);
                         entries.add(ModItems.BIZARRO_CHILI);
-                        entries.add(ModItems.BUGTACK);
-                        entries.add(ModItems.CARTILAGE_TACK);
+//                        entries.add(ModItems.BUGTACK);
+//                        entries.add(ModItems.CARTILAGE_TACK);
 
-                        entries.add(ModItems.COARSE_FLATBREAD);
-                        entries.add(ModItems.CORRECTIVE_REMEDY);
+//                        entries.add(ModItems.COARSE_FLATBREAD);
+//                        entries.add(ModItems.CORRECTIVE_REMEDY);
 
                         entries.add(ModItems.FILLET);
-                        entries.add(ModItems.FILLET_CONFIT);
-                        entries.add(ModItems.FIRESTOVE_RICE);
-                        entries.add(ModItems.FIRETACK);
+//                        entries.add(ModItems.FILLET_CONFIT);
+//                        entries.add(ModItems.FIRESTOVE_RICE);
+//                        entries.add(ModItems.FIRETACK);
                         entries.add(ModItems.FORTIFYING_INFUSION);
                         entries.add(ModItems.GARDEN_FRIED_RICE);
                         entries.add(ModItems.GARDEN_STIR_FRY);
@@ -219,24 +232,24 @@ public class ModItemGroups {
                         entries.add(ModItems.GRASS_CHAFF);
                         entries.add(ModItems.CHITIN_BIT);
                         entries.add(ModItems.CARTILAGE_BIT);
-                        entries.add(ModItems.HOLLOW_BONE);
-                        entries.add(ModItems.HOLLOW_BONECHIP);
-                        entries.add(ModItems.HOT_CRUNCHY_RIBS);
+//                        entries.add(ModItems.HOLLOW_BONE);
+//                        entries.add(ModItems.HOLLOW_BONECHIP);
+//                        entries.add(ModItems.HOT_CRUNCHY_RIBS);
 
                         entries.add(ModItems.MEAT_STIR_FRY);
-                        entries.add(ModItems.MOSSFIELD_PIE);
-                        entries.add(ModItems.PRESERVE_STEW);
-                        entries.add(ModItems.SAVORY_FILLET);
-                        entries.add(ModItems.SAVORY_TANGBAO);
-                        entries.add(ModItems.SAVORY_TANGMIAN);
+//                        entries.add(ModItems.MOSSFIELD_PIE);
+//                        entries.add(ModItems.PRESERVE_STEW);
+//                        entries.add(ModItems.SAVORY_FILLET);
+//                        entries.add(ModItems.SAVORY_TANGBAO);
+//                        entries.add(ModItems.SAVORY_TANGMIAN);
                         entries.add(ModItems.SCORCHBUG);
                         entries.add(ModItems.GLOWBUG);
-                        entries.add(ModItems.SENSORY_REMEDY);
-                        entries.add(ModItems.SMOKED_RICEBALL);
+//                        entries.add(ModItems.SENSORY_REMEDY);
+//                        entries.add(ModItems.SMOKED_RICEBALL);
                         entries.add(ModItems.WOOD);
-                        entries.add(ModItems.SOAKED_WOOD);
-                        entries.add(ModItems.SOAKED_WOODCHIP);
-                        entries.add(ModItems.VALLEY_GRAYBREAD);
+//                        entries.add(ModItems.SOAKED_WOOD);
+//                        entries.add(ModItems.SOAKED_WOODCHIP);
+//                        entries.add(ModItems.VALLEY_GRAYBREAD);
                         entries.add(ModItems.WULING_FRIED_RICE);
                     }).build());
 

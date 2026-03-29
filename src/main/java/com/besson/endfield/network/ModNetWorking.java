@@ -2,8 +2,9 @@ package com.besson.endfield.network;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.blockentity.custom.*;
+import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.BaseRigBlockEntity;
 import com.besson.endfield.screen.custom.CrafterScreenHandler;
-import com.mojang.datafixers.kinds.IdF;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.Identifier;
