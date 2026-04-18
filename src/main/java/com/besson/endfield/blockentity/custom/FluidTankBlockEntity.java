@@ -2,7 +2,7 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.block.custom.resourcing.FluidPumpBlock;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.screen.custom.FluidTankScreenHandler;
+import com.besson.endfield.screen.custom.screenHandler.FluidTankScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;

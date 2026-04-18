@@ -2,7 +2,7 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.screen.custom.CrafterScreenHandler;
+import com.besson.endfield.screen.custom.screenHandler.CrafterScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

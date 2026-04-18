@@ -12,7 +12,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
-        translationBuilder.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM, "Protocol Anchor Core");
+        translationBuilder.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM, "Protocol Automation-Core");
         translationBuilder.add(ModItems.RELAY_TOWER_ITEM, "Relay Tower");
         translationBuilder.add(ModItems.ELECTRIC_PYLON_ITEM, "Electric Pylon");
         translationBuilder.add(ModItems.ELECTRIC_MINING_RIG_ITEM, "Electric Mining Rig");
@@ -59,8 +59,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.FLUID_PIPE, "Fluid Pipe");
 
         translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
-        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Anchor Core Port");
-        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Anchor Core Side");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Automation-Core Port");
+        translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Automation-Core Side");
 
         translationBuilder.add(ModBlocks.BEAM_TOWER, "Beam Tower");
         translationBuilder.add(ModBlocks.GUN_TOWER, "Gun Tower");
@@ -73,6 +73,11 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.MARSH_GAS_MK_I, "Marsh Gas Mk.I");
         translationBuilder.add(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER, "Omnidirectional Sonic Tower");
         translationBuilder.add(ModBlocks.SURGE_TOWER, "Surge Tower");
+
+        translationBuilder.add(ModItems.PROTOCOL_STASH_ITEM, "Protocol Stash");
+        translationBuilder.add(ModItems.DEPOT_BUS_SECTION_ITEM, "Depot Bus Section");
+        translationBuilder.add(ModItems.DEPOT_LOADER_ITEM, "Depot Loader");
+        translationBuilder.add(ModItems.DEPOT_UNLOADER_ITEM, "Depot Unloader");
 
         translationBuilder.add("endfield.range", "Attack Range: %s m");
         translationBuilder.add("endfield.attack", "ATK: %s");
@@ -251,7 +256,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.YAZHEN_SYRINGE_C, "Yazhen Syringe C");
 
         translationBuilder.add("blockEntity.portable_originium_rig", "Portable Originium Rig");
-        translationBuilder.add("blockEntity.protocol_anchor_core", "Protocol Anchor Core");
+        translationBuilder.add("blockEntity.protocol_anchor_core", "Protocol Automation-Core");
         translationBuilder.add("blockEntity.thermal_bank", "Thermal Bank");
         translationBuilder.add("blockEntity.refining_unit", "Refining Unit");
         translationBuilder.add("blockEntity.gearing_unit", "Gearing Unit");
@@ -268,7 +273,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.crafter", "Crafter");
         translationBuilder.add("blockEntity.fluid_pump", "Fluid Pump");
         translationBuilder.add("blockEntity.supply_terminal", "Supply Terminal");
+        translationBuilder.add("blockEntity.protocol_stash", "Protocol Stash");
+        translationBuilder.add("block.protocol_anchor_core_port", "Protocol Automation-Core Port");
         translationBuilder.add("screen.supply_terminal.level", "Level: %s");
+        translationBuilder.add("blockEntity.depot_unloader", "Depot Unloader");
 
         translationBuilder.add("screen.protocol_core.buffer", "Stored:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
@@ -277,6 +285,15 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("screen.protocol_core.consumer", "%s Con.");
         translationBuilder.add("tooltip.water_pump.fluid", "Water: %s / %s mB");
         translationBuilder.add("tooltip.water_pump.empty", "Empty");
+        
+        translationBuilder.add("key.endfield.open_storage", "Open Storage");
+        translationBuilder.add("category.endfield", "Endfield Industry");
+
+        translationBuilder.add("commands.endfield.deposit", "Items already deposited %s");
+        translationBuilder.add("commands.endfield.withdraw", "Items have been retrieved %s");
+        translationBuilder.add("commands.endfield.cap", "The storage limit has been set to %s");
+        translationBuilder.add("commands.endfield.deposit.warn", "§cInsufficient items! You only have %s§c, but you need %s");
+        translationBuilder.add("commands.endfield.cap.negative", "§cThe input value is negative!");
 
         translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
 
@@ -333,5 +350,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("electric_pylon.total_generated", "Total Generated: %s");
         translationBuilder.add("electric_pylon.total_demand", "Total Demand: %s");
         translationBuilder.add("electric_pylon.stored_power", "Stored Power: %s");
+        
+        translationBuilder.add("protocol_stash.tooltip", "Submit stored items every 10 seconds while powered on");
+        translationBuilder.add("depot_unloader.tooltip", "It needs to be placed closely to the Depot Bus Section in order to work");
     }
 }

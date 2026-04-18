@@ -2,20 +2,20 @@ package com.besson.endfield;
 
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.command.ModCommands;
 import com.besson.endfield.entity.ModItemEntity;
 import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
 import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.pipe.PipeNetworkManager;
-import com.besson.endfield.utils.PowerNetworkManager;
+import com.besson.endfield.utils.*;
+import com.besson.endfield.utils.power.PowerNetworkManager;
 import com.besson.endfield.recipe.ModRecipes;
 import com.besson.endfield.screen.ModScreens;
-import com.besson.endfield.utils.JoinHandler;
-import com.besson.endfield.utils.ModLootTableModifier;
-import com.besson.endfield.utils.ModStorageRegister;
 import com.besson.endfield.world.generation.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
@@ -48,7 +48,7 @@ public class ArknightsEndfield implements ModInitializer {
 		ModLootTableModifier.modifierLootTables();
 
 		ModStorageRegister.register();
-
+		
 		FuelRegistry.INSTANCE.add(ModItems.ORIGINIUM_ORE, 1600);
 		LOGGER.info("Hello Fabric world!");
 
@@ -56,6 +56,10 @@ public class ArknightsEndfield implements ModInitializer {
 
 		ServerTickEvents.END_WORLD_TICK.register(world -> {
 			PipeNetworkManager.getInstance(world).tickAllNetworks(world);
+		});
+
+		CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
+			ModCommands.register(commandDispatcher, commandRegistryAccess);
 		});
 	}
 }

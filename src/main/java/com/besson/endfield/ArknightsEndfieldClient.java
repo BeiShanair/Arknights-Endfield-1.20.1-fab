@@ -3,25 +3,42 @@ package com.besson.endfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.entity.ModItemEntity;
+import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.renderer.block.*;
 import com.besson.endfield.renderer.block.combat.*;
+import com.besson.endfield.renderer.block.logicitis.*;
 import com.besson.endfield.renderer.block.powering.ElectricPylonEntityRenderer;
 import com.besson.endfield.renderer.block.powering.ProtocolAnchorCoreRenderer;
 import com.besson.endfield.renderer.block.powering.RelayTowerEntityRenderer;
 import com.besson.endfield.renderer.block.powering.ThermalBankRenderer;
+import com.besson.endfield.renderer.block.production1.*;
+import com.besson.endfield.renderer.block.production2.FillingUnitRenderer;
+import com.besson.endfield.renderer.block.production2.GearingUnitRenderer;
+import com.besson.endfield.renderer.block.production2.GrindingUnitRenderer;
+import com.besson.endfield.renderer.block.production2.PackagingUnitRenderer;
 import com.besson.endfield.renderer.block.resourcing.ElectricMiningRigMkIIRenderer;
 import com.besson.endfield.renderer.block.resourcing.ElectricMiningRigRenderer;
 import com.besson.endfield.renderer.block.resourcing.FluidPumpBlockRenderer;
 import com.besson.endfield.renderer.block.resourcing.PortableOriginiumRigEntityRenderer;
 import com.besson.endfield.screen.ModScreens;
-import com.besson.endfield.screen.custom.*;
+import com.besson.endfield.screen.custom.screen.*;
+import com.besson.endfield.screen.custom.screenHandler.StorageScreenHandler;
+import com.besson.endfield.utils.KeyInputHandler;
+import com.besson.endfield.utils.ModKeyBindings;
+import com.besson.endfield.utils.storage.StorageEntry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArknightsEndfieldClient implements ClientModInitializer {
     @Override
@@ -63,6 +80,11 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
 
         BlockEntityRendererFactories.register(ModBlockEntities.BELT, BeltRenderer::new);
 
+        BlockEntityRendererFactories.register(ModBlockEntities.PROTOCOL_STASH, ProtocolStashRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.DEPOT_BUS_SECTION, DepotBusSectionRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.DEPOT_LOADER, DepotLoaderRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.DEPOT_UNLOADER, DepotUnloaderRenderer::new);
+
         HandledScreens.register(ModScreens.PORTABLE_ORIGINIUM_RIG_SCREEN, PortableOriginiumRigScreen::new);
         HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_SCREEN, ProtocolAnchorCoreScreen::new);
         HandledScreens.register(ModScreens.THERMAL_BANK_SCREEN, ThermalBankScreen::new);
@@ -83,6 +105,11 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
 
         HandledScreens.register(ModScreens.FLUID_PUMP_SCREEN, FluidPumpScreen::new);
         HandledScreens.register(ModScreens.FLUID_TANK_SCREEN, FluidTankScreen::new);
+
+        HandledScreens.register(ModScreens.STORAGE_SCREEN, StorageScreen::new);
+        HandledScreens.register(ModScreens.PROTOCOL_ANCHOR_CORE_PORT_SCREEN, ProtocolAnchorCorePortScreen::new);
+        HandledScreens.register(ModScreens.DEPOT_UNLOADER_SCREEN, DepotUnloaderScreen::new);
+        HandledScreens.register(ModScreens.PROTOCOL_STASH_SCREEN, ProtocolStashScreen::new);
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.AKETINE_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_AKETINE_BLOCK, RenderLayer.getCutout());
@@ -118,5 +145,28 @@ public class ArknightsEndfieldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BELT, RenderLayer.getTranslucent());
 
 //        ElectricPylonPreviewRenderer.register();
+
+        ClientPlayNetworking.registerGlobalReceiver(
+                ModNetWorking.SYNC_STORAGE,
+                (client, handler, buf, sender) -> {
+                    int size = buf.readInt();
+                    List<StorageEntry> newEntries = new ArrayList<>();
+
+                    for (int i = 0; i < size; i++) {
+                        Item item = Registries.ITEM.get(buf.readIdentifier());
+                        long count = buf.readLong();
+                        newEntries.add(new StorageEntry(item, count, 0));
+                    }
+
+                    client.execute(() -> {
+                        if (client.player != null && client.player.currentScreenHandler instanceof StorageScreenHandler screenHandler) {
+                            screenHandler.updateEntries(newEntries);
+                        }
+                    });
+                }
+        );
+
+        ModKeyBindings.register();
+        KeyInputHandler.register();
     }
 }

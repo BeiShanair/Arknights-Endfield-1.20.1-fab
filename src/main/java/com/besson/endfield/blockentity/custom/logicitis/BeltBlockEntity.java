@@ -2,6 +2,7 @@ package com.besson.endfield.blockentity.custom.logicitis;
 
 import com.besson.endfield.block.custom.logicitis.BeltBlock;
 import com.besson.endfield.block.custom.logicitis.BeltShape;
+import com.besson.endfield.block.custom.logicitis.DepotLoaderBlock;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
@@ -26,7 +27,7 @@ public class BeltBlockEntity extends BlockEntity {
 
     public float progress = 0f;
     public float lastProgress = 0f;
-    public static final float SPEED = 0.025f;
+    public static final float SPEED = 0.026f; // 略微调快传送带的传输速度，保证配平稳定
     public Direction travelDirection = null;
 
     public BeltBlockEntity(BlockPos pos, BlockState state) {
@@ -157,6 +158,14 @@ public class BeltBlockEntity extends BlockEntity {
         if (forwardBE instanceof ConvergerBlockEntity converger) {
             return converger.tryMerge(world, forwardPos, next, this);
         }
+        if (forwardBE instanceof DepotLoaderBlockEntity loader) {
+            if (loader.sendItemToGlobalStorage(world, this.storedItem)) {
+                this.storedItem = ItemStack.EMPTY;
+                return true;
+            }
+            return false;
+        }
+
         if (forwardBE instanceof BeltBlockEntity forwardBelt) {
             if (forwardBelt.storedItem.isEmpty()) {
                 forwardBelt.storedItem = this.storedItem;

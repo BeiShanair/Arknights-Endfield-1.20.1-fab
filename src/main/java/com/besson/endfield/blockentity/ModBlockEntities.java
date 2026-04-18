@@ -6,10 +6,16 @@ import com.besson.endfield.blockentity.custom.*;
 import com.besson.endfield.blockentity.custom.combat.*;
 import com.besson.endfield.blockentity.custom.logicitis.*;
 import com.besson.endfield.blockentity.custom.powering.*;
+import com.besson.endfield.blockentity.custom.production1.*;
+import com.besson.endfield.blockentity.custom.production2.*;
 import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigBlockEntity;
 import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigMkIIBlockEntity;
 import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
 import com.besson.endfield.blockentity.custom.resourcing.PortableOriginiumRigBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.DepotBusSectionBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.DepotBusSectionSideBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashSideBlockEntity;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -125,6 +131,24 @@ public class ModBlockEntities {
     public static final BlockEntityType<CrafterBlockEntity> CRAFTER = create("crafter",
             BlockEntityType.Builder.create(CrafterBlockEntity::new, ModBlocks.CRAFTER));
 
+    public static final BlockEntityType<ProtocolStashBlockEntity> PROTOCOL_STASH = create("protocol_stash",
+            BlockEntityType.Builder.create(ProtocolStashBlockEntity::new, ModBlocks.PROTOCOL_STASH));
+    public static final BlockEntityType<ProtocolStashSideBlockEntity> PROTOCOL_STASH_SIDE = create("protocol_stash_side",
+            BlockEntityType.Builder.create(ProtocolStashSideBlockEntity::new, ModBlocks.PROTOCOL_STASH_SIDE));
+    public static final BlockEntityType<DepotBusSectionBlockEntity> DEPOT_BUS_SECTION = create("depot_bus_section", 
+            BlockEntityType.Builder.create(DepotBusSectionBlockEntity::new, ModBlocks.DEPOT_BUS_SECTION));
+    public static final BlockEntityType<DepotBusSectionSideBlockEntity> DEPOT_BUS_SECTION_SIDE = create("depot_bus_section_side",
+            BlockEntityType.Builder.create(DepotBusSectionSideBlockEntity::new, ModBlocks.DEPOT_BUS_SECTION_SIDE));
+    public static final BlockEntityType<DepotLoaderBlockEntity> DEPOT_LOADER = create("depot_loader",
+            BlockEntityType.Builder.create(DepotLoaderBlockEntity::new, ModBlocks.DEPOT_LOADER));
+    public static final BlockEntityType<DepotLoaderSideBlockEntity> DEPOT_LOADER_SIDE = create("depot_loader_side",
+            BlockEntityType.Builder.create(DepotLoaderSideBlockEntity::new, ModBlocks.DEPOT_LOADER_SIDE));
+    public static final BlockEntityType<DepotUnloaderBlockEntity> DEPOT_UNLOADER = create("depot_unloader",
+            BlockEntityType.Builder.create(DepotUnloaderBlockEntity::new, ModBlocks.DEPOT_UNLOADER));
+    public static final BlockEntityType<DepotUnloaderSideBlockEntity> DEPOT_UNLOADER_SIDE = create("depot_unloader_side",
+            BlockEntityType.Builder.create(DepotUnloaderSideBlockEntity::new, ModBlocks.DEPOT_UNLOADER_SIDE));
+    
+    
     public static final BlockEntityType<FluidPumpBlockEntity> FLUID_PUMP = create("fluid_pump",
             BlockEntityType.Builder.create(FluidPumpBlockEntity::new, ModBlocks.FLUID_PUMP));
     public static final BlockEntityType<PipeBlockEntity> PIPE = create("pipe",

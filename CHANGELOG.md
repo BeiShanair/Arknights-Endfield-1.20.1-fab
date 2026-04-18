@@ -1,4 +1,72 @@
 # 更新日志 / Changelog
+## 2026-04-15
+- 为`协议储存箱`配置了开关，可更简单地控制是否通电
+- A switch has been configured for the `Protocol Stash` to more easily control whether it is powered on or not
+
+## 2026-04-14
+- 完成各服务端的测试，验证逻辑
+- Completed the logic of each server
+- 修复一些小bug
+- Fixed some bugs
+
+## 2026-04-13
+- 开始研究编写`帕秋莉手册`，但不在现阶段实装
+- Started researching and writing the `Patchouli`, but it will not be implemented at this stage
+- 更新`协议储存箱`、`仓库存取线基段`、`仓库取货口`、`仓库存货口`的模型贴图
+- Updated the model textures of `Protocol Stash`, `Depot Bus Section`, `Depot Unloader`, and `Depot Loader`
+- `电驱矿机`、`二型电驱矿机`现在会自动发送开采到的矿石到`全局仓储管理系统`中
+- `Electric Mining Rig` and `Electric Mining Rig Mk II` will now automatically send mined ores to the `Global Storage Manager`
+
+## 2026-04-11
+- 修正一些工业设备的鼠标中键的获取逻辑
+- Fixed some issues with the mouse middle button of industrial devices
+- 开始移植本版本新增内容
+- Started porting the new content of this version
+
+## 2026-04-10
+- 基本完成`协议储存箱`的逻辑
+- Basically completed the logic of `Protocol Stash`
+- 基本完成`仓库存取线基段`、`仓库取货口`、`仓库存货口`的相关逻辑
+- Basically completed the logic of `Depot Bus Section`, `Depot Unloader`, and `Depot Loader`
+
+## 2026-04-08
+- 略微加快了传送带的传输速度，从`0.025m/t`（0.5m/s）增加至`0.026m/t`（0.52m/s），以保证各设备满速运行
+- Slightly increased the speed of the transport belt from `0.025m/t` (0.5m/s) to `0.026m/t` (0.52m/s)
+
+## 2026-04-07
+- 补完了`种植机`和`采种机`更改大小后的放置逻辑
+- Completed the logic of `Planting Unit` and `Seed-Packing Unit`
+- 现在`协议核心端口`可以直接向`传送带`传输物品了
+- Now the protocol core port can transfer items to the transport belt
+
+## 2026-04-02
+- 现在为`协议核心端口`配置了一个GUI，可将物品放入作为输出过滤条件
+- Now configured a GUI for `Protocol Anchor Core Port`, where items can be placed as output filter conditions
+
+## 2026-04-01
+- `协议核心`现在会强制加载以自身所在区块为中心的`3×3`区块，以保持发电；
+- `Protocol Anchor Core` will now force load the chunks centered on the `3×3` chunk around it to ensure that it can generate electricity.
+- 修正`种植机`中锦草种子的生产配方
+- Fixed the production recipe of `Jincao Seeds` in the `Planting Unit`
+- 调整`种植机`和`采种机`的底座大小至`5×5`
+- Adjust the base size of the `Planting Unit` and `Seed-Packing Unit` to `5×5`
+
+## 2026-03-31
+- 初步完成全局仓储管理系统修改逻辑
+- Completed the global storage manager modification logic
+- 测试了协议储存箱的逻辑
+- Tested the logic of the protocol stash
+- 修复了`封装机`的加工逻辑
+- Fixed the logic of `Packaging Unit`
+- 修复了多输入设备加工时箭头渲染问题
+- Fixed the arrow rendering problem of multi-input industrial devices
+
+## 2026-03-30
+- 修复`Forge`&`NeoForge`版本中JEI贴图问题
+- Fixed the texture problem of `Forge` & `NeoForge` version of JEI
+- `全局仓储管理器`开始编写
+- `Global Storage Manager` has started to be written
+
 ## 2026-03-29
 - 修复各塔防设备逻辑，取消使用实体，以避免与其他模组的兼容性问题；经验正常掉落；
 - Fixed the logic of each tower defense equipment, canceling the use of entities to avoid compatibility issues with other mods; experience drops normally;

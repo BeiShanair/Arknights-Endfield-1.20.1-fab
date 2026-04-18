@@ -4,14 +4,23 @@ import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.custom.*;
 import com.besson.endfield.item.custom.combat.*;
+import com.besson.endfield.item.custom.logicitis.DepotLoaderItem;
+import com.besson.endfield.item.custom.logicitis.DepotUnloaderItem;
 import com.besson.endfield.item.custom.powering.ElectricPylonItem;
 import com.besson.endfield.item.custom.powering.ProtocolAnchorCoreItem;
 import com.besson.endfield.item.custom.powering.RelayTowerItem;
 import com.besson.endfield.item.custom.powering.ThermalBankItem;
+import com.besson.endfield.item.custom.production1.*;
+import com.besson.endfield.item.custom.production2.FillingUnitItem;
+import com.besson.endfield.item.custom.production2.GearingUnitItem;
+import com.besson.endfield.item.custom.production2.GrindingUnitItem;
+import com.besson.endfield.item.custom.production2.PackagingUnitItem;
 import com.besson.endfield.item.custom.resourcing.ElectricMiningRigItem;
 import com.besson.endfield.item.custom.resourcing.ElectricMiningRigMkIIItem;
 import com.besson.endfield.item.custom.resourcing.FluidPumpItem;
 import com.besson.endfield.item.custom.resourcing.PortableOriginiumRigItem;
+import com.besson.endfield.item.custom.logicitis.DepotBusSectionItem;
+import com.besson.endfield.item.custom.logicitis.ProtocolStashItem;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -84,6 +93,15 @@ public class ModItems {
             new SentryTowerItem(ModBlocks.SENTRY_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SURGE_TOWER_ITEM = registerItems("surge_tower",
             new SurgeTowerItem(ModBlocks.SURGE_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
+
+    public static final Item PROTOCOL_STASH_ITEM = registerItems("protocol_stash",
+            new ProtocolStashItem(ModBlocks.PROTOCOL_STASH, new Item.Settings()));
+    public static final Item DEPOT_BUS_SECTION_ITEM = registerItems("depot_bus_section",
+            new DepotBusSectionItem(ModBlocks.DEPOT_BUS_SECTION, new Item.Settings()));
+    public static final Item DEPOT_LOADER_ITEM = registerItems("depot_loader",
+            new DepotLoaderItem(ModBlocks.DEPOT_LOADER, new Item.Settings()));
+    public static final Item DEPOT_UNLOADER_ITEM = registerItems("depot_unloader",
+            new DepotUnloaderItem(ModBlocks.DEPOT_UNLOADER, new Item.Settings()));
     
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));

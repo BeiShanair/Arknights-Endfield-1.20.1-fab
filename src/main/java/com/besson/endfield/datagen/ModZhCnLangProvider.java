@@ -249,6 +249,11 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.YAZHEN_SYRINGE_A, "优质芽针针剂");
         translationBuilder.add(ModItems.YAZHEN_SYRINGE_C, "芽针针剂");
 
+        translationBuilder.add(ModItems.PROTOCOL_STASH_ITEM, "协议储存箱");
+        translationBuilder.add(ModItems.DEPOT_BUS_SECTION_ITEM, "仓库存取线基段");
+        translationBuilder.add(ModItems.DEPOT_LOADER_ITEM, "协议存货口");
+        translationBuilder.add(ModItems.DEPOT_UNLOADER_ITEM, "协议取货口");
+
         translationBuilder.add("blockEntity.portable_originium_rig", "便携源石矿机");
         translationBuilder.add("blockEntity.protocol_anchor_core", "协议核心");
         translationBuilder.add("blockEntity.thermal_bank", "热能池");
@@ -267,7 +272,10 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("blockEntity.crafter", "制造台");
         translationBuilder.add("blockEntity.fluid_pump", "抽水泵");
         translationBuilder.add("blockEntity.supply_terminal", "供货终端");
+        translationBuilder.add("blockEntity.protocol_stash", "协议储存箱");
+        translationBuilder.add("block.protocol_anchor_core_port", "协议核心端口");
         translationBuilder.add("screen.supply_terminal.level", "Level: %s");
+        translationBuilder.add("blockEntity.depot_unloader", "协议取货口");
 
         translationBuilder.add("screen.protocol_core.buffer", "电池储能:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
@@ -276,6 +284,15 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("screen.protocol_core.consumer", "%s 用电功率");
         translationBuilder.add("tooltip.water_pump.fluid", "水量: %s / %s mB");
         translationBuilder.add("tooltip.water_pump.empty", "空");
+
+        translationBuilder.add("key.endfield.open_storage", "打开全局仓库");
+        translationBuilder.add("category.endfield", "终末地工业");
+        
+        translationBuilder.add("commands.endfield.deposit", "已存入物品 %s 个");
+        translationBuilder.add("commands.endfield.withdraw", "已取出物品 %s 个");
+        translationBuilder.add("commands.endfield.cap", "已将存储上限设置为 %s");
+        translationBuilder.add("commands.endfield.deposit.warn", "§c物品不足！你只有 %s §c个，但需要 %s §c个");
+        translationBuilder.add("commands.endfield.cap.negative", "§c输入值为负值！");
 
         translationBuilder.add("itemGroup.arknights_endfield", "明日方舟：终末地" );
 
@@ -332,6 +349,8 @@ public class ModZhCnLangProvider extends FabricLanguageProvider {
         translationBuilder.add("electric_pylon.total_generated", "总发电量：%s");
         translationBuilder.add("electric_pylon.total_demand", "总耗电量：%s");
         translationBuilder.add("electric_pylon.stored_power", "电池储能：%s");
-        
+
+        translationBuilder.add("protocol_stash.tooltip", "在通电状态下，每隔10秒提交一次存储的物品");
+        translationBuilder.add("depot_unloader.tooltip", "需要紧贴仓库存取线基段放置才能工作");
     }
 }

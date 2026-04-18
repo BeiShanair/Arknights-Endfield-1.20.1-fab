@@ -3,9 +3,10 @@ package com.besson.endfield.blockentity.custom.resourcing;
 import com.besson.endfield.blockentity.custom.logicitis.BeltBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
-import com.besson.endfield.utils.NodeType;
-import com.besson.endfield.utils.PowerNetworkManager;
-import com.besson.endfield.utils.PowerNetworkNodeManager;
+import com.besson.endfield.utils.power.NodeType;
+import com.besson.endfield.utils.power.PowerNetworkManager;
+import com.besson.endfield.utils.power.PowerNetworkNodeManager;
+import com.besson.endfield.utils.storage.GlobalStorageManager;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
@@ -51,8 +52,12 @@ public abstract class BaseRigBlockEntity<R extends Recipe<?>> extends BlockEntit
     protected int maxProgress;
     protected int tier;
 
+    protected static final int SUBMIT_INTERVAL = 100;
+    protected int submitTimer = 0;
+
     protected final PropertyDelegate propertyDelegate;
     protected boolean needsInit = true;
+
     public BaseRigBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int maxProgress) {
         super(type, pos, state);
         this.maxProgress = maxProgress;
@@ -119,6 +124,14 @@ public abstract class BaseRigBlockEntity<R extends Recipe<?>> extends BlockEntit
         
         if (!be.isPowered && be.storedPower < be.getPowerCostPerTick()) return;
 
+        if (be.isPowered) {
+            be.submitTimer++;
+            if (be.submitTimer >= SUBMIT_INTERVAL) {
+                be.submitTimer = 0;
+                be.flushToGlobalStorage(world);
+            }
+        }
+
         if (be.isOutputSlotAvailable()) {
             boolean hasRecipe = be.hasCorrectRecipe(world);
             if (be.needsPower() || !hasRecipe) {
@@ -145,6 +158,26 @@ public abstract class BaseRigBlockEntity<R extends Recipe<?>> extends BlockEntit
         be.tryPushToBelt(world, pos, state);
         be.markDirty();
     }
+
+    public void flushToGlobalStorage(World world) {
+        if (!(world instanceof ServerWorld serverWorld)) return;
+
+        GlobalStorageManager manager = GlobalStorageManager.get(serverWorld);
+        boolean changed = false;
+
+        for (int i = 0; i < outputInv.size(); i++) {
+            ItemStack stack = outputInv.getStack(i);
+            if (!stack.isEmpty()) {
+                long inserted = manager.insert(stack);
+                if (inserted > 0) {
+                    stack.decrement((int) inserted);
+                    changed = true;
+                }
+            }
+        }
+        if (changed) markDirty();
+    }
+
     protected void tryPushToBelt(World world, BlockPos pos, BlockState state) {
         Storage<ItemVariant> machine =
                 ItemStorage.SIDED.find(world, pos, null);

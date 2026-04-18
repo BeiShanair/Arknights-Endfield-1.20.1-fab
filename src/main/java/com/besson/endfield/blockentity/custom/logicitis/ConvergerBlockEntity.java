@@ -52,6 +52,7 @@ public class ConvergerBlockEntity extends BlockEntity {
 
         return true;
     }
+
     private Direction[] getInputDirections(Direction outputDir) {
         Direction[] dirs = new Direction[3];
         int index = 0;

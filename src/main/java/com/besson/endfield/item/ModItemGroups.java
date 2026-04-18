@@ -42,6 +42,12 @@ public class ModItemGroups {
 //                        entries.add(ModItems.CONTROL_ITEM);
 
                         entries.add(ModBlocks.CRAFTER);
+
+                        entries.add(ModItems.PROTOCOL_STASH_ITEM);
+                        entries.add(ModItems.DEPOT_BUS_SECTION_ITEM);
+                        entries.add(ModItems.DEPOT_LOADER_ITEM);
+                        entries.add(ModItems.DEPOT_UNLOADER_ITEM);
+
                         entries.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM);
                         entries.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
                         entries.add(ModItems.RELAY_TOWER_ITEM);

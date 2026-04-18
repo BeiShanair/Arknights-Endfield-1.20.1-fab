@@ -4,7 +4,7 @@ import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
 import com.besson.endfield.item.custom.ControlItem;
-import com.besson.endfield.utils.PowerNetworkManager;
+import com.besson.endfield.utils.power.PowerNetworkManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

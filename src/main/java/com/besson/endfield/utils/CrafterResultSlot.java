@@ -1,15 +1,13 @@
 package com.besson.endfield.utils;
 
 import com.besson.endfield.recipe.custom.CrafterRecipe;
-import com.besson.endfield.screen.custom.CrafterScreenHandler;
+import com.besson.endfield.screen.custom.screenHandler.CrafterScreenHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.world.World;
-
-import java.util.Optional;
 
 public class CrafterResultSlot extends Slot {
     private final Inventory inputInventory;

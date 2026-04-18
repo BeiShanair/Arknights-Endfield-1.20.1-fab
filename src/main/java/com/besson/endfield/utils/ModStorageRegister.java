@@ -4,7 +4,13 @@ import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.*;
 import com.besson.endfield.blockentity.custom.logicitis.FluidPipeBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
+import com.besson.endfield.blockentity.custom.production1.*;
+import com.besson.endfield.blockentity.custom.production2.FillingUnitBlockEntity;
+import com.besson.endfield.blockentity.custom.production2.GearingUnitBlockEntity;
+import com.besson.endfield.blockentity.custom.production2.GrindingUnitBlockEntity;
+import com.besson.endfield.blockentity.custom.production2.PackagingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
+import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 
@@ -96,5 +102,12 @@ public class ModStorageRegister {
                     if (parent == null) return null;
                     return parent.getStorage(sideBe.getCachedState(), side);
                 }, ModBlockEntities.SHREDDING_UNIT_SIDE);
+        ItemStorage.SIDED.registerForBlockEntity((be, side) -> be.getStorage(be.getCachedState(), side), ModBlockEntities.PROTOCOL_STASH);
+        ItemStorage.SIDED.registerForBlockEntity(
+                (sideBe, side) -> {
+                    ProtocolStashBlockEntity parent = sideBe.getParentBlock();
+                    if (parent == null) return null;
+                    return parent.getStorage(sideBe.getCachedState(), side);
+                }, ModBlockEntities.PROTOCOL_STASH_SIDE);
     }
 }

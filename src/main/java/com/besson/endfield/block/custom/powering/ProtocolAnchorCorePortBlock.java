@@ -2,7 +2,6 @@ package com.besson.endfield.block.custom.powering;
 
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.powering.ProtocolAnchorCoreBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ProtocolAnchorCorePortBlockEntity;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -12,7 +11,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
@@ -40,31 +39,11 @@ public class ProtocolAnchorCorePortBlock extends ModBlockEntityWithFacing {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient()) return ActionResult.CONSUME;
 
-        BlockEntity entity = world.getBlockEntity(pos);
-        if (!(entity instanceof ProtocolAnchorCorePortBlockEntity port)) return ActionResult.CONSUME;
-
-        ItemStack heldItem = player.getStackInHand(hand);
-        if (heldItem.isEmpty() && !player.isSneaking()) {
-            ProtocolAnchorCoreBlockEntity parent = port.getParentBlock();
-            if (parent != null) {
-                player.openHandledScreen(parent);
-                return ActionResult.SUCCESS;
-            }
-            return ActionResult.CONSUME;
-        }
-
-        if (heldItem.isEmpty() && player.isSneaking()) {
-            port.clearFilter();
-            if (player instanceof ServerPlayerEntity) {
-                ((ServerPlayerEntity) player).sendMessage(Text.literal("Cleared filter"), false);
-            }
-        } else {
-            port.setFilter(heldItem);
-            if (player instanceof ServerPlayerEntity) {
-                ((ServerPlayerEntity) player).sendMessage(Text.literal("Set filter to: " + heldItem.getName().getString()), false);
-            }
-        }
-        return ActionResult.CONSUME;
+        NamedScreenHandlerFactory factory = (NamedScreenHandlerFactory) world.getBlockEntity(pos);
+        if (factory == null) return ActionResult.CONSUME;
+        
+        player.openHandledScreen(factory);
+        return ActionResult.SUCCESS;
     }
 
     @Override
@@ -82,8 +61,5 @@ public class ProtocolAnchorCorePortBlock extends ModBlockEntityWithFacing {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(Text.translatable("protocol_anchor_core_port.tooltip1").formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("protocol_anchor_core_port.tooltip2").formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("protocol_anchor_core_port.tooltip3").formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("protocol_anchor_core_port.tooltip4").formatted(Formatting.GRAY));
     }
 }

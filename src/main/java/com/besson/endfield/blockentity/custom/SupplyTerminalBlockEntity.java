@@ -2,7 +2,7 @@ package com.besson.endfield.blockentity.custom;
 
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.screen.custom.SupplyTerminalScreenHandler;
+import com.besson.endfield.screen.custom.screenHandler.SupplyTerminalScreenHandler;
 import com.besson.endfield.trade.SupplyTrade;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;

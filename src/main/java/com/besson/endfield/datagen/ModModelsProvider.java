@@ -4,11 +4,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.block.Block;
-import net.minecraft.block.enums.RailShape;
 import net.minecraft.data.client.*;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.Identifier;
 
 public class ModModelsProvider extends FabricModelProvider {
     public ModModelsProvider(FabricDataOutput output) {
@@ -72,6 +68,11 @@ public class ModModelsProvider extends FabricModelProvider {
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.FLUID_EXTRACTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.WATER_INJECTOR);
         blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.OUTPUT_PORT_BLOCK);
+
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.PROTOCOL_STASH);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DEPOT_BUS_SECTION);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DEPOT_LOADER);
+        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(ModBlocks.DEPOT_UNLOADER);
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AMETHYST_ORE_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CUPRIUM_ORE_BLOCK);

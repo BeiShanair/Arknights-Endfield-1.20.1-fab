@@ -1,10 +1,11 @@
 package com.besson.endfield.screen;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.screen.custom.*;
+import com.besson.endfield.screen.custom.screenHandler.*;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 
@@ -83,6 +84,20 @@ public class ModScreens {
     public static final ScreenHandlerType<SupplyTerminalScreenHandler> SUPPLY_TERMINAL_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "supply_terminal_screen"),
                     new ExtendedScreenHandlerType<>(SupplyTerminalScreenHandler::new));
+
+    public static final ScreenHandlerType<StorageScreenHandler> STORAGE_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "storage_screen"),
+                    new ExtendedScreenHandlerType<>(StorageScreenHandler::new));
+
+    public static final ScreenHandlerType<ProtocolAnchorCorePortScreenHandler> PROTOCOL_ANCHOR_CORE_PORT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "protocol_anchor_core_port_screen"),
+                    new ExtendedScreenHandlerType<>(ProtocolAnchorCorePortScreenHandler::new));
+    public static final ScreenHandlerType<DepotUnloaderScreenHandler> DEPOT_UNLOADER_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "depot_unloader_screen"),
+                    new ExtendedScreenHandlerType<>(DepotUnloaderScreenHandler::new));
+    public static final ScreenHandlerType<ProtocolStashScreenHandler> PROTOCOL_STASH_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "protocol_stash_screen"),
+                    new ExtendedScreenHandlerType<>(ProtocolStashScreenHandler::new));
 
     public static void register() {
 

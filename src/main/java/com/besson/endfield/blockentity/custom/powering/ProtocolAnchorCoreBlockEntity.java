@@ -3,11 +3,11 @@ package com.besson.endfield.blockentity.custom.powering;
 import com.besson.endfield.block.custom.powering.ProtocolAnchorCoreBlock;
 import com.besson.endfield.blockentity.ImplementedInventory;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.utils.NodeEntry;
-import com.besson.endfield.utils.NodeType;
-import com.besson.endfield.utils.PowerNetworkManager;
-import com.besson.endfield.screen.custom.ProtocolAnchorCoreScreenHandler;
-import com.besson.endfield.utils.PowerNetworkNodeManager;
+import com.besson.endfield.utils.power.NodeEntry;
+import com.besson.endfield.utils.power.NodeType;
+import com.besson.endfield.utils.power.PowerNetworkManager;
+import com.besson.endfield.screen.custom.screenHandler.ProtocolAnchorCoreScreenHandler;
+import com.besson.endfield.utils.power.PowerNetworkNodeManager;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -39,11 +39,12 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlockEntity, ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(54, ItemStack.EMPTY);
+    private DefaultedList<ItemStack> inv = DefaultedList.ofSize(54, ItemStack.EMPTY);
 
     private boolean needsInit = true;
     private boolean registeredToManager = false;
-
+    private BlockPos[] forcedChunks = null;
+    
     public ProtocolAnchorCoreBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PROTOCOL_ANCHOR_CORE, pos, state);
     }
@@ -59,7 +60,10 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
             PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
             manager.register(new NodeEntry(pos, NodeType.CORE));
             be.registeredToManager = true;
+            be.setForceLoadedChunks(serverWorld, pos);
         }
+
+        be.markDirty();
     }
     
     @Override
@@ -67,6 +71,34 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
         return this.inv;
     }
 
+    private void setForceLoadedChunks(ServerWorld serverWorld, BlockPos pos) {
+        int chunkX = pos.getX() >> 4;
+        int chunkZ = pos.getZ() >> 4;
+
+        forcedChunks = new BlockPos[9];
+        int index = 0;
+
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dz = -1; dz <= 1; dz++) {
+                int targetChunkX = chunkX + dx;
+                int targetChunkZ = chunkZ + dz;
+                serverWorld.setChunkForced(targetChunkX, targetChunkZ, true);
+                forcedChunks[index++] = new BlockPos(targetChunkX, 0, targetChunkZ);
+            }
+        }
+    }
+
+    private void clearForceLoadedChunks(ServerWorld serverWorld) {
+        if (forcedChunks != null) {
+            for (BlockPos chunkPos : forcedChunks) {
+                if (chunkPos != null) {
+                    serverWorld.setChunkForced(chunkPos.getX(), chunkPos.getZ(), false);
+                }
+            }
+            forcedChunks = null;
+        }
+    }
+    
     @Override
     public void setWorld(World world) {
         super.setWorld(world);
@@ -81,6 +113,7 @@ public class ProtocolAnchorCoreBlockEntity extends BlockEntity implements GeoBlo
             PowerNetworkManager.get(serverWorld).unregisterGenerator(this.getPos());
             PowerNetworkNodeManager.get(serverWorld).unregister(this.getPos());
             registeredToManager = false;
+            clearForceLoadedChunks(serverWorld);
         }
         super.markRemoved();
     }

@@ -2,7 +2,7 @@ package com.besson.endfield.blockentity.custom.resourcing;
 
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.recipe.custom.OreRigRecipe;
-import com.besson.endfield.screen.custom.PortableOriginiumRigScreenHandler;
+import com.besson.endfield.screen.custom.screenHandler.PortableOriginiumRigScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

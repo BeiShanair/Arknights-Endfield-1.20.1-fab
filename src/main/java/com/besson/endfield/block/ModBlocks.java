@@ -5,10 +5,16 @@ import com.besson.endfield.block.custom.*;
 import com.besson.endfield.block.custom.combat.*;
 import com.besson.endfield.block.custom.logicitis.*;
 import com.besson.endfield.block.custom.powering.*;
+import com.besson.endfield.block.custom.production1.*;
+import com.besson.endfield.block.custom.production2.*;
 import com.besson.endfield.block.custom.resourcing.ElectricMiningRigBlock;
 import com.besson.endfield.block.custom.resourcing.ElectricMiningRigMkIIBlock;
 import com.besson.endfield.block.custom.resourcing.FluidPumpBlock;
 import com.besson.endfield.block.custom.resourcing.PortableOriginiumRigBlock;
+import com.besson.endfield.block.custom.logicitis.DepotBusSectionBlock;
+import com.besson.endfield.block.custom.logicitis.DepotBusSectionSideBlock;
+import com.besson.endfield.block.custom.logicitis.ProtocolStashBlock;
+import com.besson.endfield.block.custom.logicitis.ProtocolStashSideBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowerBlock;
@@ -238,6 +244,23 @@ public class ModBlocks {
     public static final Block CRAFTER = registerBlocks("crafter",
             new CrafterBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
 
+    public static final Block PROTOCOL_STASH = registerBlocksWithoutItem("protocol_stash",
+            new ProtocolStashBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block PROTOCOL_STASH_SIDE = registerBlocks("protocol_stash_side",
+            new ProtocolStashSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_BUS_SECTION = registerBlocksWithoutItem("depot_bus_section",
+            new DepotBusSectionBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_BUS_SECTION_SIDE = registerBlocks("depot_bus_section_side",
+            new DepotBusSectionSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_LOADER = registerBlocksWithoutItem("depot_loader",
+            new DepotLoaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_LOADER_SIDE = registerBlocks("depot_loader_side",
+            new DepotLoaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_UNLOADER = registerBlocksWithoutItem("depot_unloader",
+            new DepotUnloaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_UNLOADER_SIDE = registerBlocks("depot_unloader_side",
+            new DepotUnloaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block FLUID_PUMP = registerBlocksWithoutItem("fluid_pump",
             new FluidPumpBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
     public static final Block FLUID_TANK = registerBlocksWithoutItem("fluid_tank",

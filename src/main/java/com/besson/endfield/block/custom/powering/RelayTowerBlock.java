@@ -3,7 +3,7 @@ package com.besson.endfield.block.custom.powering;
 import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
-import com.besson.endfield.utils.PowerNetworkManager;
+import com.besson.endfield.utils.power.PowerNetworkManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

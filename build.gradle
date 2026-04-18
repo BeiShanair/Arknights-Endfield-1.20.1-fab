@@ -25,6 +25,7 @@ repositories {
 		}
 	}
 	maven { url "https://maven.shedaniel.me" }
+	maven { url 'https://maven.blamejared.com' }
 }
 
 fabricApi {
@@ -47,6 +48,8 @@ dependencies {
 
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.1.785"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.1.785"
+
+	modImplementation "vazkii.patchouli:Patchouli:1.20.1-84-FABRIC"
 	
 }
 

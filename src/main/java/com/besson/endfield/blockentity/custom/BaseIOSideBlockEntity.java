@@ -32,6 +32,7 @@ public abstract class BaseIOSideBlockEntity extends BlockEntity {
         markDirty();
     }
 
+    @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         if (parentPos != null) {

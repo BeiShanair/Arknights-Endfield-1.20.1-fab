@@ -261,7 +261,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
         SeedPickingUnitRecipeBuilder.create(ModItems.AKETINE, ModItems.AKETINE_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/aketine"));
-        SeedPickingUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.JINCAO_POWDER, 2)
+        SeedPickingUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.JINCAO_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/jincao"));
         SeedPickingUnitRecipeBuilder.create(ModItems.YAZHEN, ModItems.YAZHEN_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/yazhen"));
@@ -700,6 +700,17 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.MARSH_GAS_MK_I)
                 .input(ModItems.STEEL_PART, 20)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/marsh_gas_mk_i"));
-
+        CrafterRecipeBuilder.create(ModBlocks.PROTOCOL_STASH)
+                .input(ModItems.ORIGOCRUST, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/protocol_stash"));
+        CrafterRecipeBuilder.create(ModBlocks.DEPOT_BUS_SECTION)
+                .input(ModItems.ORIGOCRUST, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/depot_bus_section"));
+        CrafterRecipeBuilder.create(ModBlocks.DEPOT_LOADER)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/depot_loader"));
+        CrafterRecipeBuilder.create(ModBlocks.DEPOT_UNLOADER)
+                .input(ModItems.AMETHYST_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/depot_unloader"));
     }
 }

@@ -29,8 +29,14 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PLANTING_UNIT);
         addDrop(ModBlocks.SEED_PICKING_UNIT);
         addDrop(ModBlocks.THERMAL_BANK);
-        addDrop(ModBlocks.FLUID_PUMP);
         addDrop(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
+        
+        addDrop(ModBlocks.PROTOCOL_STASH);
+        addDrop(ModBlocks.DEPOT_BUS_SECTION);
+        addDrop(ModBlocks.DEPOT_LOADER);
+        addDrop(ModBlocks.DEPOT_UNLOADER);
+
+        addDrop(ModBlocks.FLUID_PUMP);
         addDrop(ModBlocks.SUPPLY_TERMINAL);
 
         addDrop(ModBlocks.BELT);
