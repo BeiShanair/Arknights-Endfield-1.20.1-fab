@@ -38,23 +38,6 @@ public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity> {
     }
     
     private void applyTransform(BeltBlockEntity be, float progress, MatrixStack matrices) {
-//        Direction dir = be.getCachedState().get(BeltBlock.FACING);
-//
-//        float offset = progress - 0.5f;
-//
-//        float x = 0.5f;
-//        float y = 0.07f;
-//        float z = 0.5f;
-//
-//        switch (dir) {
-//            case NORTH -> z += offset;
-//            case SOUTH -> z -= offset;
-//            case WEST  -> x += offset;
-//            case EAST  -> x -= offset;
-//        }
-//
-//        matrices.translate(x, y, z);
-//        matrices.scale(0.4f, 0.4f, 0.4f);
 
         BlockState state = be.getCachedState();
         BeltShape shape = state.get(BeltBlock.SHAPE);
@@ -64,21 +47,16 @@ public class BeltRenderer implements BlockEntityRenderer<BeltBlockEntity> {
 
         Direction to = BeltBlock.getNextDirection(shape, from);
         if (to == null) return;
-
-        // 起点偏移
+        
         Vec3d start = getOffsetVec(from, 0.5f);
-
-        // 终点偏移
         Vec3d end = getOffsetVec(to, 0.5f);
-
-        // 上坡处理
         if (BeltBlock.isAscendingTowards(shape, to)) {
             end = new Vec3d(end.getX(), 1f, end.getZ());
         }
         if (BeltBlock.isAscendingTowards(shape, from)) {
             start = new Vec3d(start.getX(), 1f, start.getZ());
         }
-        // 插值
+        
         float x = lerp(progress, (float) start.getX(), (float) end.getX());
         float y = lerp(progress, (float) start.getY(), (float) end.getY());
         float z = lerp(progress, (float) start.getZ(), (float) end.getZ());

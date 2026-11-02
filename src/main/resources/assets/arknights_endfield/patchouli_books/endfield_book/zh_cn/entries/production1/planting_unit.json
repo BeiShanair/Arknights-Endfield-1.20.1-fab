@@ -1,0 +1,18 @@
+{
+  "name": "种植机",
+  "icon": "arknights_endfield:planting_unit",
+  "category": "arknights_endfield:production1",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:planting_unit",
+      "title": "种植机",
+      "text": "种植机将种子培育成植物，实现自动化农业生产。$(br2)耗电：20 $(efu)$(br)加工速度：每 2 秒 1 个$(br)空地要求：5x5$(br)模组本身的种植机仅可以加工终末地的相关作物，如需加工原版或其他模组的作物，可以通过自定义数据包实现。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

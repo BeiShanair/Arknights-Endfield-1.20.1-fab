@@ -1,0 +1,53 @@
+{
+  "name": "Control Terminal",
+  "icon": "arknights_endfield:control_item",
+  "category": "arknights_endfield:tips",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:control_item",
+      "title": "Control Terminal",
+      "text": "The Control Terminal is a cross-system debugging tool that handles three jobs at once:$(li)switch the mode of $(l:arknights_endfield:logistics/pipe)Fluid Pipes$()$(li)bind a $(l:arknights_endfield:production2/reactor_crucible)Reactor Crucible$() fluid output port$(li)manually lay out $(l:arknights_endfield:powering/power_network)grid$() transport links$(br2)Stack size: 1$(br)Rarity: Epic"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Crafting",
+      "text": "Craft one in the $(l:arknights_endfield:production1/crafter)Crafter$() from 5 $(l)Origocrust$().$(br2)It costs no power and never breaks, so a single one lasts the whole save — keep it in your inventory."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "1. Switching Pipe Modes",
+      "text": "Right-click any fluid pipe while holding the Control Terminal to cycle its mode: Transfer → Extract → Insert → Transfer. The chat bar announces the new mode.$(br2)Pipes resolve once every 20 ticks (about 1 second), so a mode change takes effect on the next tick of that cycle."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What the Modes Do",
+      "text": "$(li)$(l)Transfer (default)$(): keeps pushing whatever fluid is already inside forward. It never pulls from or injects into neighbours on its own.$(br2)$(li)$(l)Extract$(): when empty, the pipe actively pulls a batch of fluid out of adjacent containers or machines. Use this mode for the first pipe of a line.$(br2)$(li)$(l)Insert$(): when fluid reaches the end of the line, it is pushed straight into the adjacent fluid storage (machine input, tank, etc.) instead of waiting to be pulled. Use this mode for the last pipe of a line."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "2. Binding Crucible Outputs",
+      "text": "Right-click the $(l)side block$() of a Reactor Crucible (or Expanded Crucible) to cycle that side's fluid port through three states:$(li)$(l)Unbound$(): insert only, cannot be extracted from$(li)$(l)Output 1$(): marked with cyan particles$(li)$(l)Output 2$(): marked with orange particles$(br2)Once bound, extract-mode pipes attached to that side only draw fluid from the matching output slot — so two products can leave at the same time without mixing.$(br2)Note: only the side blocks respond; right-clicking the crucible body does nothing."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "3. Laying Power Links",
+      "text": "$(li)$(l)Record a start point$(): $(l)sneak$()-right-click a $(l)Relay Tower$(), $(l)Electric Pylon$() or the $(l)Protocol Core$(). The chat bar shows the recorded coordinates.$(br2)$(li)$(l)Complete the link$(): stand up and right-click a $(l)Relay Tower$() or $(l)Electric Pylon$(). That node now points at the recorded start point and draws a visible power beam in the world.$(br2)By default nodes auto-connect to the nearest node of the same kind within 80m. The Control Terminal lets you $(l)override$() that automatic choice and wire the link exactly where you want it."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Caveats",
+      "text": "$(li)A start point can be a Relay Tower, Electric Pylon or Protocol Core; the endpoint must be a Relay Tower or Electric Pylon.$(br)$(li)Right-clicking an endpoint without a recorded start point reports \"No start point recorded\".$(br)$(li)The start point is stored globally, not per player — in multiplayer only one player should operate the terminal at a time.$(br)$(li)Holding the terminal while right-clicking a relay or pylon $(l)suppresses$() the grid status readout. Switch hands or empty your hand to see generation and demand.$(br)$(li)Wired the wrong pair? Just sneak-record a new start point and link again; the old link is overwritten."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:logistics/pipe",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:production2/reactor_crucible"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Conveyor Belt",
+  "icon": "arknights_endfield:belt",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:belt",
+      "title": "Item Transport Core",
+      "text": "Belts are the foundation of logistics systems and are used to transport items between machines. They operate on a “passive reception + active push” model. $(br2)Machines actively push products onto the conveyor belt, which then automatically transports them in the specified direction to the next station."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Placement Tips",
+      "text": "Belts are placed similarly to train tracks. They automatically adjust their shape (straight or curved) based on the connection direction. $(br2) Conveyor belts can be placed suspended in the air without requiring support blocks. Holding down SHIFT while placing them allows for more precise control over the connection direction (this feature still needs to be modified)."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How It Works",
+      "text": "Belt can transport only one item at a time. Items move along the conveyor belt at a constant speed, and when they reach the end, the system attempts to push them onto the next block. $(br2)Pushing targets are prioritized as follows: $(br)1. Another conveyor belt $(br)2. A splitter/combiner $(br)3. Inventory slot$(br)4. Other compatible containers or machines$(br2)If there is no valid target ahead, the item is ejected as a drop."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "arknights_endfield:belt_from_origocrust",
+      "text": "Crafting recipe."
+    }
+  ]
+}

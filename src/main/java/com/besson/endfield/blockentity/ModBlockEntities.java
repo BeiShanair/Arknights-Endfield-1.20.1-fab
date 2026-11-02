@@ -4,18 +4,12 @@ import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.custom.*;
 import com.besson.endfield.blockentity.custom.combat.*;
+import com.besson.endfield.blockentity.custom.depot.*;
 import com.besson.endfield.blockentity.custom.logicitis.*;
 import com.besson.endfield.blockentity.custom.powering.*;
 import com.besson.endfield.blockentity.custom.production1.*;
 import com.besson.endfield.blockentity.custom.production2.*;
-import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigBlockEntity;
-import com.besson.endfield.blockentity.custom.resourcing.ElectricMiningRigMkIIBlockEntity;
-import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
-import com.besson.endfield.blockentity.custom.resourcing.PortableOriginiumRigBlockEntity;
-import com.besson.endfield.blockentity.custom.logicitis.DepotBusSectionBlockEntity;
-import com.besson.endfield.blockentity.custom.logicitis.DepotBusSectionSideBlockEntity;
-import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashBlockEntity;
-import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashSideBlockEntity;
+import com.besson.endfield.blockentity.custom.resourcing.*;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -31,7 +25,6 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(ProtocolAnchorCoreBlockEntity::new, ModBlocks.PROTOCOL_ANCHOR_CORE));
     public static final BlockEntityType<ProtocolAnchorCorePortBlockEntity> PROTOCOL_ANCHOR_CORE_PORT = create("protocol_anchor_core_port",
             BlockEntityType.Builder.create(ProtocolAnchorCorePortBlockEntity::new, ModBlocks.PROTOCOL_ANCHOR_CORE_PORT));
-
     public static final BlockEntityType<RelayTowerBlockEntity> RELAY_TOWER = create("relay_tower",
             BlockEntityType.Builder.create(RelayTowerBlockEntity::new, ModBlocks.RELAY_TOWER));
 
@@ -63,7 +56,11 @@ public class ModBlockEntities {
     
     public static final BlockEntityType<ElectricPylonBlockEntity> ELECTRIC_PYLON = create("electric_pylon",
             BlockEntityType.Builder.create(ElectricPylonBlockEntity::new, ModBlocks.ELECTRIC_PYLON));
-
+    public static final BlockEntityType<XiranitePylonBlockEntity> XIRANITE_PYLON = create("xiranite_pylon",
+            BlockEntityType.Builder.create(XiranitePylonBlockEntity::new, ModBlocks.XIRANITE_PYLON));
+    public static final BlockEntityType<XiraniteRelayBlockEntity> XIRANITE_RELAY = create("xiranite_relay",
+            BlockEntityType.Builder.create(XiraniteRelayBlockEntity::new, ModBlocks.XIRANITE_RELAY));
+    
     public static final BlockEntityType<ElectricMiningRigBlockEntity> ELECTRIC_MINING_RIG = create("electric_mining_rig",
             BlockEntityType.Builder.create(ElectricMiningRigBlockEntity::new, ModBlocks.ELECTRIC_MINING_RIG));
 
@@ -73,6 +70,16 @@ public class ModBlockEntities {
     public static final BlockEntityType<PortableOriginiumRigBlockEntity> PORTABLE_ORIGINIUM_RIG = create("portable_originium_rig",
             BlockEntityType.Builder.create(PortableOriginiumRigBlockEntity::new, ModBlocks.PORTABLE_ORIGINIUM_RIG));
 
+    public static final BlockEntityType<AcidResistantPumpMkIIBlockEntity> ACID_RESISTANT_PUMP_MK_II = create("acid_resistant_pump_mk_ii",
+            BlockEntityType.Builder.create(AcidResistantPumpMkIIBlockEntity::new, ModBlocks.ACID_RESISTANT_PUMP_MK_II));
+    public static final BlockEntityType<AcidResistantPumpMkIISideBlockEntity> ACID_RESISTANT_PUMP_MK_II_SIDE = create("acid_resistant_pump_mk_ii_side",
+            BlockEntityType.Builder.create(AcidResistantPumpMkIISideBlockEntity::new, ModBlocks.ACID_RESISTANT_PUMP_MK_II_SIDE));
+    
+    public static final BlockEntityType<HydroMiningRigBlockEntity> HYDRO_MINING_RIG = create("hydro_mining_rig",
+            BlockEntityType.Builder.create(HydroMiningRigBlockEntity::new, ModBlocks.HYDRO_MINING_RIG));
+    public static final BlockEntityType<HydroMiningRigSideBlockEntity> HYDRO_MINING_RIG_SIDE = create("hydro_mining_rig_side",
+            BlockEntityType.Builder.create(HydroMiningRigSideBlockEntity::new, ModBlocks.HYDRO_MINING_RIG_SIDE));
+    
     public static final BlockEntityType<RefiningUnitBlockEntity> REFINING_UNIT = create("refining_unit",
             BlockEntityType.Builder.create(RefiningUnitBlockEntity::new, ModBlocks.REFINING_UNIT));
     public static final BlockEntityType<RefiningUnitSideBlockEntity> REFINING_UNIT_SIDE = create("refining_unit_side",
@@ -112,7 +119,23 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(PackagingUnitBlockEntity::new, ModBlocks.PACKAGING_UNIT));
     public static final BlockEntityType<PackagingUnitSideBlockEntity> PACKAGING_UNIT_SIDE = create("packaging_unit_side",
             BlockEntityType.Builder.create(PackagingUnitSideBlockEntity::new, ModBlocks.PACKAGING_UNIT_SIDE));
-
+    public static final BlockEntityType<ReactorCrucibleBlockEntity> REACTOR_CRUCIBLE = create("reactor_crucible",
+            BlockEntityType.Builder.create(ReactorCrucibleBlockEntity::new, ModBlocks.REACTOR_CRUCIBLE));
+    public static final BlockEntityType<ReactorCrucibleSideBlockEntity> REACTOR_CRUCIBLE_SIDE = create("reactor_crucible_side",
+            BlockEntityType.Builder.create(ReactorCrucibleSideBlockEntity::new, ModBlocks.REACTOR_CRUCIBLE_SIDE));
+    public static final BlockEntityType<ExpandedCrucibleBlockEntity> EXPANDED_CRUCIBLE = create("expanded_crucible",
+            BlockEntityType.Builder.create(ExpandedCrucibleBlockEntity::new, ModBlocks.EXPANDED_CRUCIBLE));
+    public static final BlockEntityType<ExpandedCrucibleSideBlockEntity> EXPANDED_CRUCIBLE_SIDE = create("expanded_crucible_side",
+            BlockEntityType.Builder.create(ExpandedCrucibleSideBlockEntity::new, ModBlocks.EXPANDED_CRUCIBLE_SIDE));
+    public static final BlockEntityType<SeparatingUnitBlockEntity> SEPARATING_UNIT = create("separating_unit",
+            BlockEntityType.Builder.create(SeparatingUnitBlockEntity::new, ModBlocks.SEPARATING_UNIT));
+    public static final BlockEntityType<SeparatingUnitSideBlockEntity> SEPARATING_UNIT_SIDE = create("separating_unit_side",
+            BlockEntityType.Builder.create(SeparatingUnitSideBlockEntity::new, ModBlocks.SEPARATING_UNIT_SIDE));
+    public static final BlockEntityType<ForgeOfTheSkyBlockEntity> FORGE_OF_THE_SKY = create("forge_of_the_sky",
+            BlockEntityType.Builder.create(ForgeOfTheSkyBlockEntity::new, ModBlocks.FORGE_OF_THE_SKY));
+    public static final BlockEntityType<ForgeOfTheSkySideBlockEntity> FORGE_OF_THE_SKY_SIDE = create("forge_of_the_sky_side",
+            BlockEntityType.Builder.create(ForgeOfTheSkySideBlockEntity::new, ModBlocks.FORGE_OF_THE_SKY_SIDE));
+    
     public static final BlockEntityType<PlantingUnitBlockEntity> PLANTING_UNIT = create("planting_unit",
             BlockEntityType.Builder.create(PlantingUnitBlockEntity::new, ModBlocks.PLANTING_UNIT));
     public static final BlockEntityType<PlantingUnitSideBlockEntity> PLANTING_UNIT_SIDE = create("planting_unit_side",
@@ -151,8 +174,8 @@ public class ModBlockEntities {
     
     public static final BlockEntityType<FluidPumpBlockEntity> FLUID_PUMP = create("fluid_pump",
             BlockEntityType.Builder.create(FluidPumpBlockEntity::new, ModBlocks.FLUID_PUMP));
-    public static final BlockEntityType<PipeBlockEntity> PIPE = create("pipe",
-            BlockEntityType.Builder.create(PipeBlockEntity::new, ModBlocks.PIPE_BLOCK));
+    public static final BlockEntityType<FluidPumpSideBlockEntity> FLUID_PUMP_SIDE = create("fluid_pump_side",
+            BlockEntityType.Builder.create(FluidPumpSideBlockEntity::new, ModBlocks.FLUID_PUMP_SIDE));
 
     public static final BlockEntityType<BeltBlockEntity> BELT = create("belt",
             BlockEntityType.Builder.create(BeltBlockEntity::new, ModBlocks.BELT));
@@ -166,14 +189,22 @@ public class ModBlockEntities {
             BlockEntityType.Builder.create(OutputPortBlockEntity::new, ModBlocks.OUTPUT_PORT_BLOCK));
     public static final BlockEntityType<FluidPipeBlockEntity> FLUID_PIPE = create("fluid_pipe.json",
             BlockEntityType.Builder.create(FluidPipeBlockEntity::new, ModBlocks.FLUID_PIPE));
-
-    public static final BlockEntityType<FluidExtractorBlockEntity> FLUID_EXTRACTOR = create("fluid_extractor",
-            BlockEntityType.Builder.create(FluidExtractorBlockEntity::new, ModBlocks.FLUID_EXTRACTOR));
-    public static final BlockEntityType<WaterInjectorBlockEntity> WATER_INJECTOR = create("water_injector",
-            BlockEntityType.Builder.create(WaterInjectorBlockEntity::new, ModBlocks.WATER_INJECTOR));
+    public static final BlockEntityType<PipeBridgeBlockEntity> PIPE_BRIDGE = create("pipe_bridge",
+            BlockEntityType.Builder.create(PipeBridgeBlockEntity::new, ModBlocks.PIPE_BRIDGE));
+    public static final BlockEntityType<PipeSplitterBlockEntity> PIPE_SPLITTER = create("pipe_splitter",
+            BlockEntityType.Builder.create(PipeSplitterBlockEntity::new, ModBlocks.PIPE_SPLITTER));
+    public static final BlockEntityType<PipeConvergerBlockEntity> PIPE_CONVERGER = create("pipe_converger",
+            BlockEntityType.Builder.create(PipeConvergerBlockEntity::new, ModBlocks.PIPE_CONVERGER));
+    
     public static final BlockEntityType<FluidTankBlockEntity> FLUID_TANK = create("fluid_tank",
             BlockEntityType.Builder.create(FluidTankBlockEntity::new, ModBlocks.FLUID_TANK));
-
+    public static final BlockEntityType<FluidTankSideBlockEntity> FLUID_TANK_SIDE = create("fluid_tank_side",
+            BlockEntityType.Builder.create(FluidTankSideBlockEntity::new, ModBlocks.FLUID_TANK_SIDE));
+    public static final BlockEntityType<WaterTreatmentUnitBlockEntity> WATER_TREATMENT_UNIT = create("water_treatment_unit",
+            BlockEntityType.Builder.create(WaterTreatmentUnitBlockEntity::new, ModBlocks.WATER_TREATMENT_UNIT));
+    public static final BlockEntityType<WaterTreatmentUnitSideBlockEntity> WATER_TREATMENT_UNIT_SIDE = create("water_treatment_unit_side",
+            BlockEntityType.Builder.create(WaterTreatmentUnitSideBlockEntity::new, ModBlocks.WATER_TREATMENT_UNIT_SIDE));
+    
     private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
         Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(ArknightsEndfield.MOD_ID, id), builder.build(type));

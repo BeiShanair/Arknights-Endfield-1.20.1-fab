@@ -14,8 +14,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 public class MouldingUnitRecipeBuilder {
-    private static ItemCountInput input;
-    private static ItemConvertible output;
+    private final ItemCountInput input;
+    private final ItemConvertible output;
     private final int outputCount;
 
     private MouldingUnitRecipeBuilder(ItemCountInput input, ItemConvertible output, int outputCount) {
@@ -41,8 +41,8 @@ public class MouldingUnitRecipeBuilder {
             public void serialize(JsonObject json) {
                 json.addProperty("type", ArknightsEndfield.MOD_ID + ":moulding_unit");
                 JsonObject inputJson = new JsonObject();
-                inputJson.addProperty("item", Registries.ITEM.getId(input.getItemConvertible().asItem()).toString());
-                inputJson.addProperty("count", input.getCount());
+                inputJson.addProperty("item", Registries.ITEM.getId(input.itemConvertible().asItem()).toString());
+                inputJson.addProperty("count", input.count());
                 json.add("input", inputJson);
 
                 JsonObject outputJson = new JsonObject();

@@ -1,0 +1,18 @@
+{
+  "name": "HE Grenade Tower",
+  "icon": "arknights_endfield:he_grenade_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:he_grenade_tower",
+      "title": "HE Grenade Tower",
+      "text": "The HE Grenade Tower is an upgraded version of the Grenade Tower that deals higher area damage.$(br2)ATK：55 (AOE)$(br)Attack Range: 12.5 m$(br)Attack Interval: 3 s$(br)Consumption: 20 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

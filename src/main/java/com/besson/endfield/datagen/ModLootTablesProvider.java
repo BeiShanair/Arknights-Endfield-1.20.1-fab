@@ -15,9 +15,12 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PROTOCOL_ANCHOR_CORE);
         addDrop(ModBlocks.RELAY_TOWER);
         addDrop(ModBlocks.ELECTRIC_PYLON);
+        addDrop(ModBlocks.XIRANITE_PYLON);
+        addDrop(ModBlocks.XIRANITE_RELAY);
         addDrop(ModBlocks.ELECTRIC_MINING_RIG);
         addDrop(ModBlocks.ELECTRIC_MINING_RIG_MK_II);
         addDrop(ModBlocks.PORTABLE_ORIGINIUM_RIG);
+        addDrop(ModBlocks.HYDRO_MINING_RIG);
         addDrop(ModBlocks.REFINING_UNIT);
         addDrop(ModBlocks.SHREDDING_UNIT);
         addDrop(ModBlocks.FILLING_UNIT);
@@ -29,7 +32,11 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.PLANTING_UNIT);
         addDrop(ModBlocks.SEED_PICKING_UNIT);
         addDrop(ModBlocks.THERMAL_BANK);
+        addDrop(ModBlocks.SEPARATING_UNIT);
+        addDrop(ModBlocks.FORGE_OF_THE_SKY);
+        addDrop(ModBlocks.ACID_RESISTANT_PUMP_MK_II);
         addDrop(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT);
+        addDrop(ModBlocks.WATER_TREATMENT_UNIT);
         
         addDrop(ModBlocks.PROTOCOL_STASH);
         addDrop(ModBlocks.DEPOT_BUS_SECTION);
@@ -77,6 +84,10 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK);
         addDrop(ModBlocks.FERRIUM_ORE_BLOCK, oreDrops(ModBlocks.FERRIUM_ORE_BLOCK, ModItems.FERRIUM_ORE));
         addDrop(ModBlocks.ORIGINIUM_ORE_BLOCK, oreDrops(ModBlocks.ORIGINIUM_ORE_BLOCK, ModItems.ORIGINIUM_ORE));
+        
+        addDrop(ModBlocks.AMETHYST_DRUSE, oreDrops(ModBlocks.AMETHYST_DRUSE, ModItems.AMETHYST_ORE));
+        addDrop(ModBlocks.FERRIUM_DRUSE, oreDrops(ModBlocks.FERRIUM_DRUSE, ModItems.FERRIUM_ORE));
+        addDrop(ModBlocks.ORIGINIUM_DRUSE, oreDrops(ModBlocks.ORIGINIUM_DRUSE, ModItems.ORIGINIUM_ORE));
 
         addDrop(ModBlocks.AKETINE_BLOCK);
         addDrop(ModBlocks.AMBER_RICE_BLOCK);
@@ -94,5 +105,14 @@ public class ModLootTablesProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.YAZHEN_BLOCK);
 
         addDrop(ModBlocks.CRAFTER);
+
+        addDrop(ModBlocks.FLUID_PIPE);
+        addDrop(ModBlocks.PIPE_BRIDGE);
+        addDrop(ModBlocks.PIPE_SPLITTER);
+        addDrop(ModBlocks.PIPE_CONVERGER);
+        addDrop(ModBlocks.FLUID_TANK);
+        
+        addDrop(ModBlocks.REACTOR_CRUCIBLE);
+        addDrop(ModBlocks.EXPANDED_CRUCIBLE);
     }
 }

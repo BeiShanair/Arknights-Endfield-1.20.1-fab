@@ -19,6 +19,8 @@ public class FillingUnitRecipeBuilder {
     private final List<ItemCountInput> inputs;
     private final ItemConvertible output;
     private final int outputCount;
+    private Identifier fluidId;
+    private long fluidAmount;
 
     private FillingUnitRecipeBuilder(List<ItemCountInput> inputs, ItemConvertible output, int outputCount) {
         this.inputs = inputs;
@@ -34,7 +36,16 @@ public class FillingUnitRecipeBuilder {
         return new FillingUnitRecipeBuilder(inputs, output, outputCount);
     }
 
+    public FillingUnitRecipeBuilder withFluid(Identifier fluidId, long amount) {
+        this.fluidId = fluidId;
+        this.fluidAmount = amount;
+        return this;
+    }
+
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier id) {
+        final Identifier capturedFluidId = this.fluidId;
+        final long capturedFluidAmount = this.fluidAmount;
+
         exporter.accept(new RecipeJsonProvider() {
             @Override
             public void serialize(JsonObject json) {
@@ -42,11 +53,18 @@ public class FillingUnitRecipeBuilder {
                 JsonArray inputsArray = new JsonArray();
                 for (ItemCountInput input : inputs) {
                     JsonObject inputJson = new JsonObject();
-                    inputJson.addProperty("item", Registries.ITEM.getId(input.getItemConvertible().asItem()).toString());
-                    inputJson.addProperty("count", input.getCount());
+                    inputJson.addProperty("item", Registries.ITEM.getId(input.itemConvertible().asItem()).toString());
+                    inputJson.addProperty("count", input.count());
                     inputsArray.add(inputJson);
                 }
                 json.add("input", inputsArray);
+
+                if (capturedFluidId != null && capturedFluidAmount > 0) {
+                    JsonObject fluidJson = new JsonObject();
+                    fluidJson.addProperty("id", capturedFluidId.toString());
+                    fluidJson.addProperty("amount", capturedFluidAmount);
+                    json.add("fluid", fluidJson);
+                }
 
                 JsonObject outputJson = new JsonObject();
                 outputJson.addProperty("item", Registries.ITEM.getId(output.asItem()).toString());

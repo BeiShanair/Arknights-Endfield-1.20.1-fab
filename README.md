@@ -64,8 +64,8 @@ reimagined in the Minecraft universe.
 - With this mod, you can become an "Endministrator" in "Minecraft"!
 
 ## 玩法提示
-- （待定）
-- (To be determined)
+- 详见模组内的`帕秋莉手册`或者[文档站](https://endfielddoc.netlify.app/)
+- For detailed gameplay tips, please refer to the "Patchouli Handbook" in the mod or visit the [documentation site](https://endfielddoc.netlify.app/).
 
 ## 未来
 - 本模组目前仍在开发中，且限定版本为`1.20.1 Fabric`，未来将移植至`其他版本`和`Forge`、`NeoForge`

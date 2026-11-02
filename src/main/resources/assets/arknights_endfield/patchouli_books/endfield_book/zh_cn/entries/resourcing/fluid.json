@@ -1,0 +1,49 @@
+{
+  "name": "流体",
+  "icon": "arknights_endfield:sewage_bucket",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:sewage_bucket",
+      "title": "污水",
+      "text": "部分工业生产中会产生污水，但它同样是另一些生产流程的原料，可以使用废水处理机进行处理；$(br2)污水可以通过管道运输，使用管道连接污水源和废水处理机即可；$(br2)生物实体在污水中会受到伤害，不要在污水中停留！"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:precipitation_acid_bucket",
+      "title": "沉积酸",
+      "text": "重要的生产原料，性质与污水类似；$(br2)沉积酸目前无法直接合成，可在主世界的地表上找到沉积酸湖泊（生成概率为每区块1/50），可使用桶装取；"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:liquid_xiranite_bucket",
+      "title": "液化息壤",
+      "text": "重要的生产原料；$(br2)通过反应池合成，可使用桶装取；"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:jincao_solution_bucket",
+      "title": "锦草溶液",
+      "text": "生物实体在其中可回复生命值；$(br2)通过反应池合成，可使用桶装取；"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:yazhen_solution_bucket",
+      "title": "芽针溶液",
+      "text": "生物实体在其中可回复生命值；$(br2)通过反应池合成，可使用桶装取；"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:xircon_effluent_bucket",
+      "title": "壤晶废液",
+      "text": "副产物，但也可以作为某些反应的原料；$(br2)可直接使用废水处理机进行处理，可使用桶装取；"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:inert_xircon_effluent_bucket",
+      "title": "惰性壤晶废液",
+      "text": "副产物，但也可以作为某些反应的原料；$(br2)可直接使用废水处理机进行处理，可使用桶装取；"
+    }
+  ]
+}

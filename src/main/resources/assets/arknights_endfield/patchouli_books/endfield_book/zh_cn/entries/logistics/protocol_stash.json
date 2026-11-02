@@ -1,0 +1,23 @@
+{
+  "name": "协议储存箱",
+  "icon": "arknights_endfield:protocol_stash",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_stash",
+      "title": "自动提交存储",
+      "text": "协议储存箱是一种特殊的存储方块。通电时，它每 10 秒自动将内部存储的物品提交到$(l:arknights_endfield:logistics/global_storage)全局仓储$()。$(br2)不通电时，它是一个普通的 27 格箱子。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用场景",
+      "text": "协议储存箱非常适合作为生产线的中间缓冲：$(br)1. 将机器产物通过传送带输入协议储存箱；$(br)2. 箱子在通电状态下自动将物品提交到全局仓储。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

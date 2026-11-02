@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:planting_unit",
+  "input": {
+    "item": "minecraft:pumpkin_seeds"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:pumpkin_seeds"
+  }
+}

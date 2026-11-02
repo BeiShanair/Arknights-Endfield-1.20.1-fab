@@ -1,0 +1,22 @@
+{
+  "name": "FAQ",
+  "icon": "minecraft:knowledge_book",
+  "category": "arknights_endfield:tips",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "FAQ",
+      "text": "$(li)$(l)Q: What type of mod is this?$()$(br)A: Endfield Industry is a 'lightweight industrial mod' for survival exploration. It has its own self-contained industrial system.$(br2)$(li)$(l)Q: Which versions are supported?$()$(br)A: Fabric 1.20.1, Forge 1.20.1, NeoForge 1.21.1."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "More FAQ",
+      "text": "$(li)$(l)Q: How do I open Global Storage?$()$(br)A: Press G. If it doesn't work, check key bindings. You can also use /storage command.$(br2)$(li)$(l)Q: Can I use this in modpacks?$()$(br)A: Yes! But don't modify and redistribute the mod itself. Use the original mod file in your modpack."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Still have questions?",
+      "text": "Contact the author through:$(br)$(li)$(l:https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab/issues)GitHub Issues$()$(li)$(l:https://www.mcmod.cn/class/22544.html)MCMod 百科$()$(li)$(l:https://space.bilibili.com/489671468)Bilibili 北山_Besson$()$(br2)When reporting issues, include your Minecraft version, mod version, and detailed error description."
+    }
+  ]
+}

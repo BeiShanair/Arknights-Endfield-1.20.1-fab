@@ -19,7 +19,7 @@ import java.util.Objects;
 public class GearingUnitScreenHandler extends BaseIOScreenHandler<GearingUnitBlockEntity> {
     public GearingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
 
     public GearingUnitScreenHandler(int syncId, PlayerInventory playerInventory, GearingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -59,5 +59,9 @@ public class GearingUnitScreenHandler extends BaseIOScreenHandler<GearingUnitBlo
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "二型电驱矿机",
+  "icon": "arknights_endfield:electric_mining_rig_mk_ii",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:electric_mining_rig_mk_ii",
+      "title": "二型电驱矿机",
+      "text": "二型电驱矿机是更高级的资源采集设备，可以开采最高级的矿脉类型。$(br2)耗电：10 $(efu)$(br)采集速度：每 3 秒 1 个$(br)可开采：原版矿脉、源石矿脉、紫晶矿脉和蓝铁矿脉"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用说明",
+      "text": "当你需要开采更高级矿脉时，需要使用二型电驱矿机。$(br2)与电驱矿机一样，产物会自动提交到全局仓储。需要放置在供电桩范围内。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

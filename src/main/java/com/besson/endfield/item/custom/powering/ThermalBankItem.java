@@ -1,9 +1,12 @@
 package com.besson.endfield.item.custom.powering;
 
+import com.besson.endfield.item.custom.AbstractMultiBlockItem;
 import com.besson.endfield.renderer.item.powering.ThermalBankItemRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
-import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.RenderProvider;
@@ -14,7 +17,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class ThermalBankItem extends BlockItem implements GeoItem {
+public class ThermalBankItem extends AbstractMultiBlockItem implements GeoItem {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
@@ -47,5 +50,16 @@ public class ThermalBankItem extends BlockItem implements GeoItem {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    protected BlockPos[] getOccupiedPositions(ItemPlacementContext context) {
+        Direction facing = context.getHorizontalPlayerFacing().getOpposite();
+        Direction right = facing.rotateYClockwise();
+        Direction back = facing.getOpposite();
+        Direction backRight = back.rotateYCounterclockwise();
+
+        BlockPos pos = context.getBlockPos();
+        return new BlockPos[]{pos.offset(back), pos.offset(back).offset(backRight), pos.offset(right)};
     }
 }

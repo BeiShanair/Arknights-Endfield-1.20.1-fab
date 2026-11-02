@@ -1,0 +1,18 @@
+{
+  "name": "Filling Unit",
+  "icon": "arknights_endfield:filling_unit",
+  "category": "arknights_endfield:production2",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:filling_unit",
+      "title": "Filling Unit",
+      "text": "The Filling Unit loads powders or liquids into containers — producing capsules, canned goods, etc.$(br2)Power: 20 $(efu)$(br)Speed: 1 per 10 seconds$(br)Clearance: 6x4"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

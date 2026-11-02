@@ -30,6 +30,9 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> UMBRALINE_PLACED_KEY = of("umbraline_placed");
     public static final RegistryKey<PlacedFeature> YAZHEN_PLACED_KEY = of("yazhen_placed");
 
+    
+    public static final RegistryKey<PlacedFeature> LAKE_PRECIPITATION_ACID = of("lake_precipitation_acid_placed");
+    
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
@@ -89,7 +92,13 @@ public class ModPlacedFeatures {
                 registryEntryLookup.getOrThrow(ModConfiguredFeatures.YAZHEN),
                 RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(),
                 PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+    
+        PlacedFeatures.register(featureRegisterable, LAKE_PRECIPITATION_ACID,
+                registryEntryLookup.getOrThrow(ModConfiguredFeatures.LAKE_PRECIPITATION_ACID),
+                RarityFilterPlacementModifier.of(50), SquarePlacementModifier.of(),
+                PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
     }
+    
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
     }

@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:steel_part": 10
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:fluid_tank"
+  }
+}

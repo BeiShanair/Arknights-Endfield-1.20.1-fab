@@ -1,0 +1,27 @@
+{
+  "name": "Global Storage System",
+  "icon": "minecraft:chest",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Dimension-Wide Storage",
+      "text": "The Global Storage Manager is a cross-chunk, dimension-wide item storage system. Each dimension has independent storage space for any type and quantity of items.$(br2)Press G to open the Global Storage GUI. Deposit or withdraw items directly."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "交互提示",
+      "text": "In the GUI, the top 54-slot area displays the items stored in the inventory system; you can use the “mouse wheel” to scroll and view items not currently displayed; $(br) “Left-click” on an item slot in this area to retrieve one item from that slot; $(br) “Right-click” on an item slot in this area to retrieve half the maximum stack size of items from that slot; $(br) Press “Shift + left-click” on a slot in this area to take out the maximum stack size of that item; $(br) For the player’s inventory and hotbar at the bottom, the process is reversed: items are stored in the storage system;"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Automation Integration",
+      "text": "Global Storage integrates with logistics:$(br)$(li)$(l:arknights_endfield:logistics/depot_system)Depot Access System$() — auto deposit/withdraw$(li)$(l:arknights_endfield:resourcing/electric_rig)Electric Mining Rigs$() — auto-submit output$(li)$(l:arknights_endfield:logistics/protocol_stash)Protocol Stash$() — auto-submit when powered$(br2)Also supports /storage commands for CLI operations."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Persistence",
+      "text": "Storage data auto-saves to the world save. Items persist across server restarts and dimension changes.$(br2)Each dimension has independent storage — Overworld items won't appear in Nether storage and vice versa."
+    }
+  ]
+}

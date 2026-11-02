@@ -1,0 +1,23 @@
+{
+  "name": "Reactor Crucible",
+  "icon": "arknights_endfield:reactor_crucible",
+  "category": "arknights_endfield:production2",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:reactor_crucible",
+      "title": "Reactor Crucible",
+      "text": "The Reactor Crucible can process multiple formulas simultaneously.$(br2)Power：50 $(efu)$(br)Speed: 1 item per 2 seconds $(br)Clearance：5x5"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Fluid Output Ports",
+      "text": "Right-click a side block of the crucible with the $(l:arknights_endfield:tips/control_terminal)Control Terminal$() to bind that side to Output 1 or Output 2 (cyan / orange particles), and cycle back to unbound.$(br2)Once bound, extract-mode pipes on that side only draw fluid from the matching output slot, so two products can leave at the same time without mixing. Unbound sides accept insertion but cannot be extracted from."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

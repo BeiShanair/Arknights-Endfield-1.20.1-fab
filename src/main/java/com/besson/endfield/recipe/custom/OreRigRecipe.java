@@ -63,6 +63,11 @@ public class OreRigRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
+
     public int getTier() {
         return tier;
     }

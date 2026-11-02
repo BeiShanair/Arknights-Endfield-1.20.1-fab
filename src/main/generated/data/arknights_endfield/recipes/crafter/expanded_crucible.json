@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:cuprium_part": 40
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:expanded_crucible"
+  }
+}

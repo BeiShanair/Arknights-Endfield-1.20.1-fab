@@ -42,8 +42,8 @@ public class GearingUnitRecipeBuilder {
                 JsonArray inputsArray = new JsonArray();
                 for (ItemCountInput input : inputs) {
                     JsonObject inputJson = new JsonObject();
-                    inputJson.addProperty("item", Registries.ITEM.getId(input.getItemConvertible().asItem()).toString());
-                    inputJson.addProperty("count", input.getCount());
+                    inputJson.addProperty("item", Registries.ITEM.getId(input.itemConvertible().asItem()).toString());
+                    inputJson.addProperty("count", input.count());
                     inputsArray.add(inputJson);
                 }
                 json.add("input", inputsArray);

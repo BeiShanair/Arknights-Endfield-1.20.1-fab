@@ -24,11 +24,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class ElectricPylonBlock extends ModBlockEntityWithFacing {
-    public static BooleanProperty PREVIEW = BooleanProperty.of("preview");
+public class ElectricPylonBlock extends BasePylonBlock {
     public ElectricPylonBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(PREVIEW, false));
     }
 
     @Override
@@ -39,32 +37,5 @@ public class ElectricPylonBlock extends ModBlockEntityWithFacing {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return checkType(type, ModBlockEntities.ELECTRIC_PYLON, ElectricPylonBlockEntity::tick);
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(PREVIEW);
-    }
-
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient()) {
-            Item item = player.getStackInHand(hand).getItem();
-            if (item instanceof ControlItem) return super.onUse(state, world, pos, player, hand, hit);
-            
-            PowerNetworkManager manager = PowerNetworkManager.get((ServerWorld) world);
-            if (player != null) {
-                player.sendMessage(Text.literal("----------------------"));
-                player.sendMessage(Text.translatable("electric_pylon.title"));
-                player.sendMessage(Text.translatable("electric_pylon.total_generated", manager.getLastTotalGenerated()).formatted(Formatting.GREEN));
-                player.sendMessage(Text.translatable("electric_pylon.total_demand", manager.getLastTotalDemand()).formatted(Formatting.RED));
-                player.sendMessage(Text.translatable("electric_pylon.stored_power", manager.getCurrentStoredEnergy()).formatted(Formatting.YELLOW));
-                player.sendMessage(Text.literal("----------------------"));
-                return ActionResult.SUCCESS;
-            }
-            return ActionResult.CONSUME;
-        }
-        return ActionResult.CONSUME;
     }
 }

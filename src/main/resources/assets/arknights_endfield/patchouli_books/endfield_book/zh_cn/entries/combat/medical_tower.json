@@ -1,0 +1,18 @@
+{
+  "name": "医疗塔",
+  "icon": "arknights_endfield:medical_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:medical_tower",
+      "title": "医疗塔",
+      "text": "医疗塔不攻击敌人，而是治疗范围内的玩家。$(br2)治疗量：5$(br)作用范围：6 米$(br)治疗间隔：5 秒$(br)耗电：5 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

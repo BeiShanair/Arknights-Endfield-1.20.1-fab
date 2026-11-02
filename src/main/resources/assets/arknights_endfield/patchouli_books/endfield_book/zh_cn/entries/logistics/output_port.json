@@ -1,0 +1,23 @@
+{
+  "name": "输出端口",
+  "icon": "arknights_endfield:output_port",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:output_port",
+      "title": "主动抽取物品",
+      "text": "输出端口用于从相邻的容器或机器中主动抽取物品，并将其推送到连接的传送带上。$(br2)它解决了非本模组的机器不会自动将物品输出到传送带的问题。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "将输出端口贴在容器的输出面，然后将传送带连接到输出端口的输出方向。输出端口会自动从容器中抽取物品并推送到传送带。$(br2)适用于：普通箱子、其他工业模组的机器等各种容器。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

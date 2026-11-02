@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:amethyst_part": 64,
+    "arknights_endfield:originium_powder": 64,
+    "minecraft:redstone": 64
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:redstone_mineral_vein_block"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Medical Tower",
+  "icon": "arknights_endfield:medical_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:medical_tower",
+      "title": "Medical Tower",
+      "text": "The Medical Tower does not attack enemies; instead, it heals players within its range.$(br2)ATK: 5$(br)Attack Range: 6 m$(br)Attack Interval: 5 s$(br)Consumption: 5 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

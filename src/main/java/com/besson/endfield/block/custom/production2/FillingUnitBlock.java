@@ -5,6 +5,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.production2.FillingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.production2.FillingUnitSideBlockEntity;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -72,6 +73,13 @@ public class FillingUnitBlock extends ModBlockEntityWithFacing {
                 }
             }
 
+            Direction facing = state.get(FACING);
+            for (BlockPos p : getFluidTankPositions(facing, pos)) {
+                if (world.getBlockState(p).getBlock() == ModBlocks.FILLING_UNIT_SIDE) {
+                    world.breakBlock(p, false);
+                }
+            }
+
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
@@ -93,17 +101,21 @@ public class FillingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (!world.isClient()) {
-            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+        BlockPos[] sidePositions = getAdjacentPositions(state, pos);
 
-            for (BlockPos p : sidePositions) {
-                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
-                    return false;
-                }
+        for (BlockPos p : sidePositions) {
+            if (!MultiBlockPlacementUtil.isReplaceable(world, p)) {
+                return false;
             }
-            return true;
         }
-        return false;
+        return true;
+    }
+
+    public static BlockPos[] getFluidTankPositions(Direction facing, BlockPos pos) {
+        return new BlockPos[]{
+                pos.offset(facing.rotateYCounterclockwise(), 2).up(2),
+                pos.offset(facing.rotateYClockwise(), 3).up(2)
+        };
     }
 
     private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
@@ -131,5 +143,6 @@ public class FillingUnitBlock extends ModBlockEntityWithFacing {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(Text.translatable("endfield.powerCost", 20).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("endfield.require_area", "6×4").formatted(Formatting.GRAY));
     }
 }

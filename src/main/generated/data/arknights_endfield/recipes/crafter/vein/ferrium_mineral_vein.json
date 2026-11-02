@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:dense_originium_powder": 64,
+    "arknights_endfield:ferrium_ore": 64,
+    "arknights_endfield:steel_part": 64
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:ferrium_mineral_vein_block"
+  }
+}

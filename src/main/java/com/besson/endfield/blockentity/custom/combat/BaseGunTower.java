@@ -1,5 +1,7 @@
 package com.besson.endfield.blockentity.custom.combat;
 
+import com.besson.endfield.blockentity.custom.powering.BasePylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BaseRelayBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
 import com.besson.endfield.utils.power.NodeType;
@@ -91,7 +93,7 @@ public abstract class BaseGunTower extends BlockEntity implements GeoBlockEntity
             manager.findNearest(pos, NodeType.CONSUMER, 10).ifPresent(target -> t.set(target.pos()));
             if (t.get() != null) {
                 BlockEntity b = world.getBlockEntity(t.get());
-                if (b instanceof ElectricPylonBlockEntity || b instanceof RelayTowerBlockEntity) {
+                if (b instanceof BasePylonBlockEntity || b instanceof BaseRelayBlockEntity) {
                     be.isPowered = true;
                 } else {
                     be.isPowered = false;

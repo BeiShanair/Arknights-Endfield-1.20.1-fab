@@ -1,0 +1,6 @@
+{
+  "name": "战斗辅助",
+  "description": "部署各类防御塔——铳械、医疗、榴弹、射线、哨戒等，构建自动化防御体系。",
+  "icon": "arknights_endfield:gun_tower",
+  "sortnum": 6
+}

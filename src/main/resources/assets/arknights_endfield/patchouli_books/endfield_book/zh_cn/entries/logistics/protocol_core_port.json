@@ -1,0 +1,23 @@
+{
+  "name": "协议核心端口",
+  "icon": "arknights_endfield:protocol_anchor_core_port",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_anchor_core_port",
+      "title": "核心物品接口",
+      "text": "协议核心端口是协议核心与物流系统的桥梁。它允许从协议核心的内部存储中取出物品，或将物品送入协议核心。$(br2)v1.0.2 起拥有独立的 GUI 界面和物品筛选功能。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "将协议核心端口放置在协议核心的范围内（协议核心底座范围内的方块除中央方块都可以破坏）。$(br)右键打开 GUI，可以设置物品筛选规则——指定哪些物品允许进出。$(br2)配合传送带使用，可以实现协议核心与整个物流网络的联动。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

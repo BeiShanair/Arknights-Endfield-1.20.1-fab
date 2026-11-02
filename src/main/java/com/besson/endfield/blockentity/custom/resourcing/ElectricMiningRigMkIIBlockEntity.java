@@ -39,22 +39,18 @@ public class ElectricMiningRigMkIIBlockEntity extends BaseRigBlockEntity<OreRigR
                     case 0 -> ElectricMiningRigMkIIBlockEntity.this.progress;
                     case 1 -> ElectricMiningRigMkIIBlockEntity.this.maxProgress;
                     case 2 -> ElectricMiningRigMkIIBlockEntity.this.enable ? 1 : 0;
+                    case 3 -> ElectricMiningRigMkIIBlockEntity.this.storedPower;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> ElectricMiningRigMkIIBlockEntity.this.progress = value;
-                    case 1 -> ElectricMiningRigMkIIBlockEntity.this.maxProgress = value;
-                    case 2 -> ElectricMiningRigMkIIBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }

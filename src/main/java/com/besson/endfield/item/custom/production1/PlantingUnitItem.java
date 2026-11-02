@@ -1,9 +1,12 @@
 package com.besson.endfield.item.custom.production1;
 
+import com.besson.endfield.item.custom.AbstractMultiBlockItem;
 import com.besson.endfield.renderer.item.production1.PlantingUnitItemRenderer;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.item.BuiltinModelItemRenderer;
-import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.util.math.BlockPos;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
 import software.bernie.geckolib.animatable.client.RenderProvider;
@@ -14,7 +17,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class PlantingUnitItem extends BlockItem implements GeoItem {
+public class PlantingUnitItem extends AbstractMultiBlockItem implements GeoItem {
     private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
@@ -47,5 +50,11 @@ public class PlantingUnitItem extends BlockItem implements GeoItem {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    protected BlockPos[] getOccupiedPositions(ItemPlacementContext context) {
+        BlockPos pos = context.getBlockPos();
+        return MultiBlockPlacementUtil.betweenClosed(pos.add(2, 0, 2), pos.add(-2, 0, -2));
     }
 }

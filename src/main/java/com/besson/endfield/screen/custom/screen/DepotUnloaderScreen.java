@@ -11,7 +11,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class DepotUnloaderScreen extends HandledScreen<DepotUnloaderScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/portable_originium_rig.png");
+    private static final Identifier TEXTURE = new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/021_no_power.png");
 
     public DepotUnloaderScreen(DepotUnloaderScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);

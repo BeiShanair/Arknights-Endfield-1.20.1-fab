@@ -1,0 +1,17 @@
+{
+  "name": "FE转换器",
+  "icon": "arknights_endfield:thermal_bank",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "电力转换",
+      "text": "FE转换器用于将终末地工业的电力转换为通用的 Forge Energy (FE)，便于与其他工业模组联动。$(br2)转换比例：1 $(efu) = 325 FE；$(br)消耗电力：50 $(efu)/tick；$(br)每 tick 输出：16,250 FE；$(br)同样，它也有 10,000 $(efu)的缓存；$(br2)$(o)注意：FE转换器仅适用于 Forge/NeoForge 版本，Fabric 版本不包含此设备。$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用说明",
+      "text": "将 FE转换器放置在电网供电范围内（供电桩、中继器附近），它会自动将 50 $(efu) 的电力转换为 FE ，可以使用像 MEK 中的电缆进行抽取使用。$(br2)这使得终末地工业的电力可以驱动其他模组的机器，增强了与其他工业模组的兼容性。"
+    }
+  ]
+}

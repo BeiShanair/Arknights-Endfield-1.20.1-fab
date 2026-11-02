@@ -1,0 +1,32 @@
+{
+  "name": "息壤供电桩",
+  "icon": "arknights_endfield:xiranite_pylon",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:xiranite_pylon",
+      "title": "息壤供电桩",
+      "text": "息壤供电桩是供电桩在武陵地区的一个变种。它将电网的电力传递给周围的用电设备。$(br2)电网连接范围：30 米$(br)供电范围：10 米（以供电桩为中心）"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "将供电桩放置在协议核心或中继器 30 米范围内，它会自动连接到电网。$(br2)需要电力的设备（如精炼炉、粉碎机等）放置在供电桩 10 米范围内即可自动获得电力。$(br2)供电桩自身不需要电力来维持运行。$(br)右键供电桩可以查看当前电网的运行状态。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关设备",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:powering/power_network"
+      ]
+    }
+  ]
+}

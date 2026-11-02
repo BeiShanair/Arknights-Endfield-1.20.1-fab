@@ -1,0 +1,33 @@
+{
+  "name": "Protocol Anchor Core",
+  "icon": "arknights_endfield:protocol_anchor_core",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_anchor_core",
+      "title": "Where It All Begins",
+      "text": "The Protocol Anchor Core is the foundation of the entire industrial system. It's the primary generator and starting point of the power grid.$(br2)Generation: 200 $(efu)$(br)Internal Battery: 100,000 $(efu)$(br)Clearance: 9x9 (no other blocks allowed)"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Placement Rules",
+      "text": "The Protocol Core requires a 9x9 clear area. No blocks (including grass, flowers, etc.) may occupy this space.$(br2)You automatically receive one when first joining a world. If lost, you can re-craft it at a Crafter.$(br2)Once placed, the core cannot be picked up (it can be broken but won't drop). Choose your location carefully!"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How It Works",
+      "text": "The Protocol Core continuously generates 200 $(efu) of power. This is distributed through the grid to all connected devices.$(br2)Surplus power charges the internal battery (max 100,000 $(efu)).$(br2)If demand exceeds generation, stored power is automatically released from the battery to cover the shortfall."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:powering/power_network",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:powering/thermal_bank"
+      ]
+    }
+  ]
+}

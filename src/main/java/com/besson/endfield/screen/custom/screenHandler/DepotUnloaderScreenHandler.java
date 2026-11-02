@@ -1,6 +1,6 @@
 package com.besson.endfield.screen.custom.screenHandler;
 
-import com.besson.endfield.blockentity.custom.logicitis.DepotUnloaderBlockEntity;
+import com.besson.endfield.blockentity.custom.depot.DepotUnloaderBlockEntity;
 import com.besson.endfield.screen.ModScreens;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

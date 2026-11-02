@@ -1,10 +1,12 @@
 package com.besson.endfield.item.custom;
 
-import com.besson.endfield.block.custom.powering.ElectricPylonBlock;
-import com.besson.endfield.block.custom.powering.ProtocolAnchorCoreBlock;
-import com.besson.endfield.block.custom.powering.RelayTowerBlock;
-import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
-import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
+import com.besson.endfield.block.custom.logicitis.FluidPipeBlock;
+import com.besson.endfield.block.custom.powering.*;
+import com.besson.endfield.block.custom.production2.BaseCrucibleSideBlock;
+import com.besson.endfield.blockentity.custom.logicitis.FluidPipeBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BasePylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BaseRelayBlockEntity;
+import com.besson.endfield.blockentity.custom.production2.BaseCrucibleSideBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,59 +24,96 @@ public class ControlItem extends Item {
         super(settings);
     }
 
+    private static boolean canStartPowerTransport(Block block) {
+        return block instanceof BaseRelayBlock
+                || block instanceof BasePylonBlock
+                || block instanceof ProtocolAnchorCoreBlock;
+    }
+
+    private static boolean canEndPowerTransport(Block block) {
+        return block instanceof BaseRelayBlock || block instanceof BasePylonBlock;
+    }
+
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        Block clickedBlock = world.getBlockState(context.getBlockPos()).getBlock();
         BlockPos pos = context.getBlockPos();
+        Block clickedBlock = world.getBlockState(pos).getBlock();
 
-        if (!world.isClient() && player != null) {
-            // 蹲下：设置起点（只允许中继器或协议核心）
-            if (player.isSneaking()) {
-                if (clickedBlock instanceof ElectricPylonBlock) {
-                    player.sendMessage(Text.literal("请选择协议核心或中继器开始电力运输！"));
-                    return ActionResult.CONSUME;
+        if (world.isClient() || player == null) {
+            return ActionResult.CONSUME;
+        }
+
+        // 流体管道
+        if (clickedBlock instanceof FluidPipeBlock) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof FluidPipeBlockEntity pipe) {
+                pipe.mode = pipe.mode.next();
+                pipe.markDirty();
+                world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+
+                String msgKey = switch (pipe.mode) {
+                    case TRANSFER -> "message.control_item.pipe_mode.transfer";
+                    case EXTRACT -> "message.control_item.pipe_mode.extract";
+                    case INSERT -> "message.control_item.pipe_mode.insert";
+                };
+                player.sendMessage(Text.translatable(msgKey));
+            }
+            return ActionResult.CONSUME;
+        }
+
+        // 反应池
+        if (clickedBlock instanceof BaseCrucibleSideBlock) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof BaseCrucibleSideBlockEntity side) {
+                side.cycleFluidPort();
+                int portIndex = side.getFluidPortIndex();
+                if (portIndex < 0) {
+                    player.sendMessage(Text.translatable("message.control_item.crucible_port.unbound"));
+                } else {
+                    player.sendMessage(Text.translatable("message.control_item.crucible_port.bound", portIndex + 1, portIndex + 1));
                 }
+            }
+            return ActionResult.CONSUME;
+        }
 
-                if (clickedBlock instanceof RelayTowerBlock || clickedBlock instanceof ProtocolAnchorCoreBlock) {
-                    startPos = pos;
-                    player.sendMessage(Text.literal("开始电力运输，起点已记录： " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ()));
-                    return ActionResult.CONSUME;
-                }
+        // 蹲下：记录电力运输起点（中继器 / 供电桩 / 协议核心均可）
+        if (player.isSneaking()) {
+            if (canStartPowerTransport(clickedBlock)) {
+                startPos = pos;
+                player.sendMessage(Text.translatable("message.control_item.start_recorded",
+                        pos.getX(), pos.getY(), pos.getZ()));
+            }
+            return ActionResult.CONSUME;
+        }
 
-                // 其他方块不处理
+        // 非蹲下：尝试完成运输（点击中继器或供电桩）
+        if (canEndPowerTransport(clickedBlock)) {
+            if (startPos == null) {
+                player.sendMessage(Text.translatable("message.control_item.no_start"));
                 return ActionResult.CONSUME;
             }
 
-            // 非蹲下：尝试完成运输（点击中继器或供电桩）
-            if (clickedBlock instanceof RelayTowerBlock || clickedBlock instanceof ElectricPylonBlock) {
-                if (startPos != null) {
-                    BlockPos recorded = startPos;
-                    startPos = null;
+            BlockPos recorded = startPos;
+            startPos = null;
 
-                    // 设置目标方块实体的 connectedNode
-                    BlockEntity be = world.getBlockEntity(pos);
-                    if (be != null) {
-                        if (be instanceof RelayTowerBlockEntity) {
-                            ((RelayTowerBlockEntity) be).setConnectedNode(recorded);
-                        } else if (be instanceof ElectricPylonBlockEntity) {
-                            ((ElectricPylonBlockEntity) be).setConnectedNode(recorded);
-                        }
-                        // 标记脏数据/更新监听器（若需要）
-                        be.markDirty();
-                        world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
-                    }
-
-                    // 这里可以加入实际的电力传输逻辑
-                    player.sendMessage(Text.literal("电力运输完成！起点：" + recorded.getX() + "," + recorded.getY() + "," + recorded.getZ()
-                            + " -> 终点：" + pos.getX() + "," + pos.getY() + "," + pos.getZ()));
-                    return ActionResult.CONSUME;
-                } else {
-                    player.sendMessage(Text.literal("未记录起点，请先蹲下并右键中继器或协议核心开始电力运输！"));
-                    return ActionResult.CONSUME;
-                }
+            // 设置目标方块实体的 connectedNode
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof BaseRelayBlockEntity relay) {
+                relay.setConnectedNode(recorded);
+            } else if (be instanceof BasePylonBlockEntity pylon) {
+                pylon.setConnectedNode(recorded);
             }
+            if (be != null) {
+                be.markDirty();
+                world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+            }
+
+            player.sendMessage(Text.translatable("message.control_item.completed",
+                    recorded.getX(), recorded.getY(), recorded.getZ(),
+                    pos.getX(), pos.getY(), pos.getZ()));
+            return ActionResult.CONSUME;
         }
 
         return ActionResult.CONSUME;

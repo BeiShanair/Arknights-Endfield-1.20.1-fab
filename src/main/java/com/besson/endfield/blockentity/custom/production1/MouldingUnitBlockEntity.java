@@ -44,22 +44,18 @@ public class MouldingUnitBlockEntity extends BaseIOBlockEntity<MouldingUnitRecip
                     case 0 -> MouldingUnitBlockEntity.this.progress;
                     case 1 -> MouldingUnitBlockEntity.this.maxProgress;
                     case 2 -> MouldingUnitBlockEntity.this.enable ? 1 : 0;
+                    case 3 -> MouldingUnitBlockEntity.this.storedPower;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> MouldingUnitBlockEntity.this.progress = value;
-                    case 1 -> MouldingUnitBlockEntity.this.maxProgress = value;
-                    case 2 -> MouldingUnitBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }
@@ -123,8 +119,8 @@ public class MouldingUnitBlockEntity extends BaseIOBlockEntity<MouldingUnitRecip
                     new ItemStack(result.getItem(), outputInv.getStack(0).getCount() + result.getCount()));
             InputEntry recipeInput = r.getInput();
             ItemStack stack = inputInv.getStack(0);
-            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
-                inputInv.removeStack(0, recipeInput.getCount());
+            if (recipeInput.ingredient().test(stack) && stack.getCount() >= recipeInput.count()) {
+                inputInv.removeStack(0, recipeInput.count());
             }
         });
     }
@@ -136,7 +132,7 @@ public class MouldingUnitBlockEntity extends BaseIOBlockEntity<MouldingUnitRecip
             InputEntry recipeInput = match.get().getInput();
             boolean matched = false;
             ItemStack stack = inputInv.getStack(0);
-            if (recipeInput.getIngredient().test(stack) && stack.getCount() >= recipeInput.getCount()) {
+            if (recipeInput.ingredient().test(stack) && stack.getCount() >= recipeInput.count()) {
                 matched = true;
             }
             if (!matched) return false;

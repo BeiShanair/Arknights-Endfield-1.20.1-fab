@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class ElectricMiningRigScreenHandler extends BaseRigScreenHandler<ElectricMiningRigBlockEntity> {
     public ElectricMiningRigScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
-        this(syncId, playerInventory, new ArrayPropertyDelegate(3),
+        this(syncId, playerInventory, new ArrayPropertyDelegate(4),
                 Objects.requireNonNull(getClientEntity(playerInventory, packetByteBuf)));
     }
 
@@ -63,5 +63,9 @@ public class ElectricMiningRigScreenHandler extends BaseRigScreenHandler<Electri
         }
 
         return newStack;
+    }
+    
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

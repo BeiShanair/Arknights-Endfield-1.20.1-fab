@@ -1,0 +1,23 @@
+{
+  "type": "arknights_endfield:reactor_crucible",
+  "input": [
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:liquid_xiranite"
+    },
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:sewage"
+    }
+  ],
+  "output": [
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:xircon_effluent"
+    },
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:inert_xircon_effluent"
+    }
+  ]
+}

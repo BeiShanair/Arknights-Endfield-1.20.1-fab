@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
@@ -14,15 +15,16 @@ import org.jetbrains.annotations.Nullable;
 public abstract class ModBlockEntityWithFacing extends BlockWithEntity {
 
     public static final DirectionProperty FACING = ModHorizonalFacingBlock.FACING;
-
+    public static BooleanProperty PREVIEW = BooleanProperty.of("preview");
+    
     public ModBlockEntityWithFacing(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(PREVIEW, false));
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, PREVIEW);
     }
 
     @Override

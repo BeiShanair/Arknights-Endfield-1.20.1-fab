@@ -57,6 +57,11 @@ public class ShreddingUnitRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
+
     public Ingredient getInput() {
         return input;
     }

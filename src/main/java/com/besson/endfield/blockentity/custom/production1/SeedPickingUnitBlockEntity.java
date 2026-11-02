@@ -43,22 +43,18 @@ public class SeedPickingUnitBlockEntity extends BaseIOBlockEntity<SeedPickingUni
                     case 0 -> SeedPickingUnitBlockEntity.this.progress;
                     case 1 -> SeedPickingUnitBlockEntity.this.maxProgress;
                     case 2 -> SeedPickingUnitBlockEntity.this.enable ? 1 : 0;
+                    case 3 -> SeedPickingUnitBlockEntity.this.storedPower;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> SeedPickingUnitBlockEntity.this.progress = value;
-                    case 1 -> SeedPickingUnitBlockEntity.this.maxProgress = value;
-                    case 2 -> SeedPickingUnitBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }

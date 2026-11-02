@@ -1,0 +1,39 @@
+{
+  "name": "Getting Started",
+  "icon": "arknights_endfield:protocol_anchor_core",
+  "category": "arknights_endfield:intro",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Step 1: Protocol Core",
+      "text": "When you first enter the world, you will automatically receive a $(l:arknights_endfield:powering/protocol_core)Protocol Core$() in your backpack. Find an empty 9x9 area (you’ll see a prompt if there isn’t enough space) and place it there.$(br2)The Protocol Core is the heart of the entire industrial system—it generates 200 $(efu) of power per tick and has a built-in 100,000 $(efu) battery. Once placed, it will automatically begin operating."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Step 2: Build Power Grid",
+      "text": "After placing the Protocol Core, you’ll need to use $(l:arknights_endfield:powering/electric_pylon)Electric Pylons$() or $(l:arknights_endfield:powering/Relay Tower)Relay Towers$() to expand the power grid. Place an Electric Pylon within an 80-meter (square) radius of the Protocol Core, and it will automatically connect to the power grid. $(br2) Power-consuming devices (such as manufacturing machines, defense towers, etc.) must be placed within the Electric Pylon’s supply range (a 10-meter square area) to receive power."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Step 3: Start Producing",
+      "text": "Once you have a power supply, you can start placing various production units: $(br)$(li)$(l:arknights_endfield:production1/crafter)Crafter$()—requires no power; manual crafting$(li)$(l:arknights_endfield:resourcing/portable_rig)Portable Originium Rig$()— —No power required; mines ore veins$(li)$(l:arknights_endfield:production1/refining_unit)Refining Unit$()—High-temperature refining of materials $(br2) Place these devices near an Electric Pylon to automatically power them.$(br2) For related recipes, please refer to REI / JEI."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Step 4: Build Logistics",
+      "text": "As your production scale expands, you’ll need $(l:arknights_endfield:logistics/belt) conveyor belts$() to connect the various machines. Conveyor belts automatically pick up items pushed by machines and transport them to their destination. Use $(l:arknights_endfield:logistics/output_port)$() to retrieve items from containers (such as crates), and use $(l:arknights_endfield:logistics/depot_system)$() to send and receive items with the global warehouse system. Pressing the G key ($(br2)) (key binding can be modified) opens the $(l:arknights_endfield:logistics/global_storage)Global Storage$() GUI."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Recommended Reading",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/power_network",
+        "arknights_endfield:production1/crafter",
+        "arknights_endfield:logistics/belt",
+        "arknights_endfield:resourcing/ore_vein"
+      ],
+      "text": "Next, read:"
+    }
+  ]
+}

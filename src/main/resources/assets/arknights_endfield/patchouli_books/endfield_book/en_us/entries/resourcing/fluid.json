@@ -1,0 +1,49 @@
+{
+  "name": "Fluids",
+  "icon": "arknights_endfield:sewage_bucket",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:sewage_bucket",
+      "title": "Sewage",
+      "text": "Sewage is generated in some industrial production processes, but it is also a raw material for other production processes and can be treated using Water Treatment Unit;$(br2)Sewage can be transported through pipelines, which can be used to connect the sewage source and Water Treatment Unit;$(br2)Living entities will be damaged in sewage, do not stay in sewage!"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:precipitation_acid_bucket",
+      "title": "Precipitation Acid",
+      "text": "Important production raw materials with properties similar to Sewage;$(br2)Precipitation acid cannot be directly synthesized at present, and Precipitation Acid Lakes can be found on the surface of the overworld (1/50 per chunk), which can be obtained in bucket;"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:liquid_xiranite_bucket",
+      "title": "Liquid Xiranite",
+      "text": "Important production raw materials;$(br2)Synthesis through Reactor Crucible, can be obtained in bucket;"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:jincao_solution_bucket",
+      "title": "Jincao Solution",
+      "text": "Living entities can recover their health within it;$(br2)Synthesis through Reactor Crucible, can be obtained in bucket;"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:yazhen_solution_bucket",
+      "title": "Yazhen Solution",
+      "text": "Living entities can recover their health within it;$(br2)Synthesis through Reactor Crucible, can be obtained in bucket;"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:xircon_effluent_bucket",
+      "title": "Xircon Effluent",
+      "text": "By products, but can also be used as raw materials for certain reactions;$(br2)Can be treated directly with Water Treatment Unit, can be obtained in bucket;"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:inert_xircon_effluent_bucket",
+      "title": "Inert Xircon Effluent",
+      "text": "By products, but can also be used as raw materials for certain reactions;$(br2)Can be treated directly with Water Treatment Unit, can be obtained in bucket;"
+    }
+  ]
+}

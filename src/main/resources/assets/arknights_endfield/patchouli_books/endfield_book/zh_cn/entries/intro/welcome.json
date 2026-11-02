@@ -1,0 +1,41 @@
+{
+  "name": "欢迎来到终末地工业",
+  "icon": "arknights_endfield:originium_ore",
+  "category": "arknights_endfield:intro",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "欢迎!",
+      "text": "终末地工业 (Endfield Industry) 是一款基于《明日方舟：终末地》二次创作的 Minecraft 工业模组。它为游戏添加了一套完整的自动化工业体系：电力网络、传送带物流、流体管道、多级生产线和防御炮塔。$(br2)本模组是独立的工业体系，不依赖其他工业模组。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "核心特色",
+      "text": "$(li)全局电网系统——维度级、跨区块、可实现超远距离输电的电力网络，依赖服务器tick运行；$(li)传送带——放置方式类似于铁轨，运输逻辑是被动接受+主动推送；$(li)流体管道——传送带的变种，逻辑类似，当前版本尚未完善；$(li)全局仓储系统——维度级物品存储；$(li)塔防设备——11种自动化防御设备，适用多种场景$(li)REI/JEI 配方查看支持；$(li)配方数据驱动——可自定义数据包，让工业设备能支持更多内容处理。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "特别说明",
+      "text": "模组目前仅支持 Fabric & Forge 1.20.1 和 NeoForge 1.21.1。模组不会有网易版（特指基岩版），因为技术难度很高。$(br)本模组免费开源，包含本模组的整合包也必须免费。如果你是付费得到的本模组或包含本模组的整合包，那么请举报相关人员。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "关于本指南",
+      "text": "本指南本质上是文档站的另一个版本，大多数内容在文档站上都有。$(br)如果你遇到问题，可以查阅最后的「提示与技巧」章节。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "作者的话",
+      "text": "本模组是一个兴趣驱动的项目，本质上是用于驱动我自己（北山_Besson）的模组开发教程的，模组的部分内容将作为教程的案例。因此，模组将由我承担所有开发工作，如您有任何建议或意见，欢迎提出！$(br)模组的开发教程正在 B站 更新中，欢迎关注！$(br)感谢您的支持！"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "从这里开始你的终末地工业之旅：",
+      "entries": [
+        "arknights_endfield:intro/getting_started",
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:tips/faq"
+      ]
+    }
+  ]
+}

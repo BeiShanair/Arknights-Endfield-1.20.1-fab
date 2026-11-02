@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class GrenadeTowerBlock extends BlockWithEntity {
+public class GrenadeTowerBlock extends BaseTowerBlock {
     public GrenadeTowerBlock(Settings settings) {
         super(settings);
     }

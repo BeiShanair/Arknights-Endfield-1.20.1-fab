@@ -1,0 +1,18 @@
+{
+  "name": "Shredding Unit",
+  "icon": "arknights_endfield:shredding_unit",
+  "category": "arknights_endfield:production1",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:shredding_unit",
+      "title": "Shredding Unit",
+      "text": "The Shredding Unit breaks down larger materials into smaller pieces — primary processing for ores, plant fibers, etc.$(br2)Power: 5 $(efu)$(br)Speed: 1 item per 2 seconds$(br)Clearance: 3x3"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

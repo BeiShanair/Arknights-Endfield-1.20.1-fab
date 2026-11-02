@@ -19,7 +19,7 @@ import java.util.Objects;
 public class GrindingUnitScreenHandler extends BaseIOScreenHandler<GrindingUnitBlockEntity> {
     public GrindingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
 
     public GrindingUnitScreenHandler(int syncId, PlayerInventory playerInventory, GrindingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -64,5 +64,9 @@ public class GrindingUnitScreenHandler extends BaseIOScreenHandler<GrindingUnitB
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

@@ -3,7 +3,6 @@ package com.besson.endfield.block.custom.combat;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.combat.BeamTowerBlockEntity;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -18,7 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BeamTowerBlock extends BlockWithEntity {
+public class BeamTowerBlock extends BaseTowerBlock {
+    
     public BeamTowerBlock(Settings settings) {
         super(settings);
     }

@@ -1,0 +1,77 @@
+package com.besson.endfield.screen.custom.screenHandler;
+
+import com.besson.endfield.blockentity.custom.resourcing.AcidResistantPumpMkIIBlockEntity;
+import com.besson.endfield.screen.ModScreens;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.math.BlockPos;
+
+public class AcidResistantPumpMkIIScreenHandler extends ScreenHandler {
+    private final AcidResistantPumpMkIIBlockEntity blockEntity;
+    private final PropertyDelegate propertyDelegate;
+
+    public AcidResistantPumpMkIIScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf byteBuf) {
+        this(syncId, playerInventory,
+                (AcidResistantPumpMkIIBlockEntity) playerInventory.player.getWorld().getBlockEntity(byteBuf.readBlockPos()),
+                new ArrayPropertyDelegate(4));
+    }
+
+    public AcidResistantPumpMkIIScreenHandler(int syncId, PlayerInventory playerInventory, AcidResistantPumpMkIIBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
+        super(ModScreens.ACID_RESISTANT_PUMP_MK_II_SCREEN, syncId);
+        this.blockEntity = blockEntity;
+        this.propertyDelegate = propertyDelegate;
+        this.addProperties(propertyDelegate);
+        addPlayerInventory(playerInventory);
+        addPlayerHotbar(playerInventory);
+    }
+
+    public int getFluidAmount() {
+        return this.propertyDelegate.get(0);
+    }
+
+    public int getFluidCapacity() {
+        return this.propertyDelegate.get(1);
+    }
+
+    public int getStoredPower() {
+        return this.propertyDelegate.get(2);
+    }
+
+    public int getFluidId() {
+        return this.propertyDelegate.get(3);
+    }
+
+    public BlockPos getBlockEntityPos() {
+        return this.blockEntity.getPos();
+    }
+
+    private void addPlayerInventory(PlayerInventory playerInventory) {
+        for (int i = 0; i < 3; ++i) {
+            for (int l = 0; l < 9; ++l) {
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+            }
+        }
+    }
+
+    private void addPlayerHotbar(PlayerInventory playerInventory) {
+        for (int i = 0; i < 9; ++i) {
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+        }
+    }
+
+    @Override
+    public ItemStack quickMove(PlayerEntity player, int slot) {
+        return null;
+    }
+
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return true;
+    }
+}

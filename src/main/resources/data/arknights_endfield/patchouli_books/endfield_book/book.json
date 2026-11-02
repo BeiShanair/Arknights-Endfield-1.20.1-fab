@@ -1,7 +1,15 @@
 {
-  "name": "Endfield Guide",
-  "landing_text": "Welcome to the Endfield Guide!",
+  "name": "终末地工业指南",
+  "subtitle": "Endfield Industry Guide",
+  "landing_text": "欢迎来到终末地工业！本手册将引导你了解终末地工业模组的方方面面，从电力系统到自动化生产，从物流网络到防御塔阵，一应俱全。$(br2)Welcome to Endfield Industry! This guide will walk you through every aspect of the mod — power systems, automated production, logistics networks, defensive towers, and more.",
   "version": 1,
   "creative_tab": "arknights_endfield:arknights_endfield",
-  "use_resource_pack": true
+  "use_resource_pack": true,
+  "model": "patchouli:book_green",
+  "book_texture": "patchouli:textures/gui/book_green.png",
+  "show_progress": false,
+  "i18n": true,
+  "macros": {
+    "$(efu)": "$(#4a90d9)EFU$()"
+  }
 }

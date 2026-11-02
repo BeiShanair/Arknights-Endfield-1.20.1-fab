@@ -41,13 +41,24 @@ public class RefiningUnitCategory implements DisplayCategory<RefiningUnitDisplay
 
         Point start = new Point(bounds.getCenterX() - 60, bounds.getCenterY() - 8);
 
-        widgets.add(Widgets.createSlot(new Point(start.x, start.y))
+        widgets.add(Widgets.createSlot(new Point(start.x + 22, start.y))
                 .entries(display.getInputEntries().get(0))
                 .markInput());
-        widgets.add(Widgets.createArrow(new Point(start.x + 50, start.y + 1)));
-        widgets.add(Widgets.createSlot(new Point(start.x + 100, start.y))
+        if (display.getInputEntries().size() >= 2) {
+            widgets.add(Widgets.createSlot(new Point(start.x, start.y))
+                    .entries(display.getInputEntries().get(1))
+                    .markInput());
+        }
+        widgets.add(Widgets.createArrow(new Point(start.x + 45 , start.y + 1)));
+        widgets.add(Widgets.createSlot(new Point(start.x + 78, start.y))
                 .entries(display.getOutputEntries().get(0))
                 .markOutput());
+        
+        if (display.getOutputEntries().size() >= 2) {
+            widgets.add(Widgets.createSlot(new Point(start.x + 100, start.y))
+                    .entries(display.getOutputEntries().get(1))
+                    .markOutput());
+        }
         return widgets;
     }
 }

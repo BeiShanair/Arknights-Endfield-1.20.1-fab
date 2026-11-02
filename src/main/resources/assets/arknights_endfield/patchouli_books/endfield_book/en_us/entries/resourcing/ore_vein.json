@@ -1,0 +1,23 @@
+{
+  "name": "Mineral Veins",
+  "icon": "arknights_endfield:originium_mineral_vein_block",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:originium_mineral_vein_block",
+      "title": "Mineral Veins",
+      "text": "Mineral Veins are special blocks that can be continuously mined by rigs, producing infinite ore. Each vein type corresponds to a specific ore.$(br2)Veins generate naturally in the world with different rules per type."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Vein Types",
+      "text": "Exclusive Endfield Industry veins:$(br)$(li)Originium Vein — Overworld$(li)Amethyst Vein — Overworld$(li)Ferrium Vein — Overworld$(li)Cuprium Vein — Overworld$(br2)Vanilla ores (Coal, Copper, Iron, Gold, Diamond, Emerald, Lapis, Redstone) also have corresponding vein blocks."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Mining Methods",
+      "text": "Veins are mined using rigs. Place a rig above the vein to start automatic collection.$(br2)Different rig tiers can mine different veins:$(br)$(li)$(l:arknights_endfield:resourcing/portable_rig)Portable Originium Rig$() — basic veins$(li)$(l:arknights_endfield:resourcing/electric_rig)Electric Mining Rig$() — intermediate veins$(li)$(l:arknights_endfield:resourcing/electric_rig_mk2)Electric Mining Rig Mk-II$() — advanced veins"
+    }
+  ]
+}

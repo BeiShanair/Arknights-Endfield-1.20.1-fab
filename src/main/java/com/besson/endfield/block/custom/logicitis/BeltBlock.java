@@ -169,10 +169,6 @@ public class BeltBlock extends BlockWithEntity {
                         return state.with(SHAPE, BeltShape.ASCENDING_WEST);
                     case ASCENDING_WEST:
                         return state.with(SHAPE, BeltShape.ASCENDING_EAST);
-                    case ASCENDING_NORTH:
-                    case ASCENDING_SOUTH:
-                    default:
-                        break;
                     case SOUTH_EAST:
                         return state.with(SHAPE, BeltShape.SOUTH_WEST);
                     case SOUTH_WEST:
@@ -181,6 +177,10 @@ public class BeltBlock extends BlockWithEntity {
                         return state.with(SHAPE, BeltShape.NORTH_EAST);
                     case NORTH_EAST:
                         return state.with(SHAPE, BeltShape.NORTH_WEST);
+                    case ASCENDING_NORTH:
+                    case ASCENDING_SOUTH:
+                    default:
+                        break;
                 }
         }
 
@@ -263,7 +263,6 @@ public class BeltBlock extends BlockWithEntity {
 
     public static Direction[] getConnections(BeltShape shape) {
         return switch (shape) {
-
             case NORTH_SOUTH -> new Direction[]{Direction.NORTH, Direction.SOUTH};
             case EAST_WEST -> new Direction[]{Direction.EAST, Direction.WEST};
 
@@ -278,6 +277,7 @@ public class BeltBlock extends BlockWithEntity {
             case ASCENDING_SOUTH -> new Direction[]{Direction.NORTH, Direction.SOUTH};
         };
     }
+
     public static Direction getNextDirection(BeltShape shape, Direction incoming) {
         Direction[] connections = getConnections(shape);
 
@@ -288,9 +288,9 @@ public class BeltBlock extends BlockWithEntity {
         if (incoming == connections[1]) {
             return connections[0];
         }
-
-        return null; // 不匹配说明不是合法输入
+        return null;
     }
+
     public static boolean isAscendingTowards(BeltShape shape, Direction direction) {
         return switch (shape) {
             case ASCENDING_EAST -> direction == Direction.EAST;

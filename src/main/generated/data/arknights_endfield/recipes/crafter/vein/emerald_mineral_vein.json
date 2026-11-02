@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:hetonite_component": 64,
+    "arknights_endfield:originium_powder": 64,
+    "minecraft:emerald": 64
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:emerald_mineral_vein_block"
+  }
+}

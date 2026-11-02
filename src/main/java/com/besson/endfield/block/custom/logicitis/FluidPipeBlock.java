@@ -1,9 +1,5 @@
 package com.besson.endfield.block.custom.logicitis;
 
-import com.besson.endfield.block.custom.FluidExtractorBlock;
-import com.besson.endfield.block.custom.resourcing.FluidPumpBlock;
-import com.besson.endfield.block.custom.FluidTankBlock;
-import com.besson.endfield.block.custom.WaterInjectorBlock;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.logicitis.FluidPipeBlockEntity;
 import net.minecraft.block.*;
@@ -12,166 +8,40 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Property;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class FluidPipeBlock extends BlockWithEntity {
-
-    public static final BooleanProperty NORTH = BooleanProperty.of("north");
-    public static final BooleanProperty SOUTH = BooleanProperty.of("south");
-    public static final BooleanProperty EAST = BooleanProperty.of("east");
-    public static final BooleanProperty WEST = BooleanProperty.of("west");
-    public static final BooleanProperty UP = BooleanProperty.of("up");
-    public static final BooleanProperty DOWN = BooleanProperty.of("down");
-    public static final BooleanProperty HAS_NODE = BooleanProperty.of("has_node");
-
-    public static final VoxelShape SHAPE_NODE = Block.createCuboidShape(5, 5, 5, 11, 11, 11);
-    public static final VoxelShape SHAPE_NODE_N = Block.createCuboidShape(5, 5, 0, 11, 11, 5);
-    public static final VoxelShape SHAPE_NODE_S = Block.createCuboidShape(5, 5, 11, 11, 11, 16);
-    public static final VoxelShape SHAPE_NODE_E = Block.createCuboidShape(11, 5, 5, 16, 11, 11);
-    public static final VoxelShape SHAPE_NODE_W = Block.createCuboidShape(0, 5, 5, 5, 11, 11);
-    public static final VoxelShape SHAPE_NODE_U = Block.createCuboidShape(5, 11, 5, 11, 16, 11);
-    public static final VoxelShape SHAPE_NODE_D = Block.createCuboidShape(5, 0, 5, 11, 5, 11);
+    public static final EnumProperty<FluidPipeShape> SHAPE = EnumProperty.of("fluid_pipe_shape", FluidPipeShape.class);
+    protected static final VoxelShape STRAIGHT_SHAPE = Block.createCuboidShape(0.0, 5.0, 0.0, 16.0, 11.0, 16.0);
+    protected static final VoxelShape ASCENDING_SHAPE = Block.createCuboidShape(0.0, 5.0, 0.0, 16.0, 11.0, 16.0);
+    private boolean isStraight = false;
 
     public FluidPipeBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(NORTH, false)
-                .with(SOUTH, false)
-                .with(EAST, false)
-                .with(WEST, false)
-                .with(UP, false)
-                .with(DOWN, false)
-                .with(HAS_NODE, true));
+        this.setDefaultState(this.stateManager.getDefaultState().with(SHAPE, FluidPipeShape.NORTH_SOUTH));
+    }
+
+    public static boolean isPipe(World world, BlockPos pos) {
+        return isPipe(world.getBlockState(pos));
+    }
+
+    public static boolean isPipe(BlockState state) {
+        return state.getBlock() instanceof FluidPipeBlock;
     }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        VoxelShape shape = SHAPE_NODE;
-
-        if (state.get(NORTH)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_N);
-        }
-        if (state.get(SOUTH)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_S);
-        }
-        if (state.get(EAST)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_E);
-        }
-        if (state.get(WEST)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_W);
-        }
-        if (state.get(UP)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_U);
-        }
-        if (state.get(DOWN)) {
-            shape = VoxelShapes.union(shape, SHAPE_NODE_D);
-        }
-
-        return shape;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(NORTH, SOUTH, EAST, WEST, UP, DOWN, HAS_NODE);
-    }
-
-    private boolean canConnect(WorldAccess world, BlockPos pos) {
-        BlockState neighborState = world.getBlockState(pos);
-        return neighborState.getBlock() instanceof FluidPipeBlock ||
-                neighborState.getBlock() instanceof FluidPumpBlock ||
-                neighborState.getBlock() instanceof FluidExtractorBlock ||
-                neighborState.getBlock() instanceof WaterInjectorBlock ||
-                neighborState.getBlock() instanceof FluidTankBlock;
-    }
-
-    @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        int connected = 0;
-        Direction firstDir = null;
-        Direction secondDir = null;
-        for (Direction dir : Direction.values()) {
-            if (canConnect(world, pos.offset(dir))) {
-                connected++;
-                if (firstDir == null) {
-                    firstDir = dir;
-                } else {
-                    secondDir = dir;
-                }
-            }
-        }
-
-        if (connected == 2 && firstDir != null && secondDir != null) {
-            // 只有两端且互为相反方向时为直线，否则为转角
-            if (firstDir.getOpposite() == secondDir) {
-                state = state.with(HAS_NODE, false);
-            } else {
-                state = state.with(HAS_NODE, true);
-            }
-        } else {
-            state = state.with(HAS_NODE, true);
-        }
-
-        if (canConnect(world, neighborPos)) {
-            state = state.with(getPropertyForDirection(direction), true);
-        } else {
-            state = state.with(getPropertyForDirection(direction), false);
-        }
-
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    @Override
-    public @Nullable BlockState getPlacementState(ItemPlacementContext ctx) {
-        WorldAccess world = ctx.getWorld();
-        BlockPos pos = ctx.getBlockPos();
-        BlockState state = this.getDefaultState();
-
-        int connected = 0;
-        Direction firstDir = null;
-        Direction secondDir = null;
-        for (Direction dir : Direction.values()) {
-            if (canConnect(world, pos.offset(dir))) {
-                state = state.with(getPropertyForDirection(dir), true);
-                connected++;
-                if (firstDir == null) {
-                    firstDir = dir;
-                } else if (secondDir == null) {
-                    secondDir = dir;
-                }
-            }
-        }
-
-        if (connected == 2 && firstDir != null && secondDir != null) {
-            if (firstDir.getOpposite() == secondDir) {
-                state = state.with(HAS_NODE, false); // 直线段不显示节点
-            } else {
-                state = state.with(HAS_NODE, true); // 转角显示节点
-            }
-        } else {
-            state = state.with(HAS_NODE, true); // 其他情况都显示节点
-        }
-
-        return state;
-    }
-
-    private Property<Boolean> getPropertyForDirection(Direction dir) {
-        return switch (dir) {
-            case NORTH -> NORTH;
-            case SOUTH -> SOUTH;
-            case EAST -> EAST;
-            case WEST -> WEST;
-            case UP -> UP;
-            case DOWN -> DOWN;
-        };
+        FluidPipeShape pipeShape = state.isOf(this) ? state.get(this.getShapeProperty()) : null;
+        return pipeShape != null && pipeShape.isAscending() ? ASCENDING_SHAPE : STRAIGHT_SHAPE;
     }
 
     @Override
@@ -180,12 +50,253 @@ public class FluidPipeBlock extends BlockWithEntity {
     }
 
     @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlockEntities.FLUID_PIPE, FluidPipeBlockEntity::tick);
+    }
+
+    @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
 
+    public Property<FluidPipeShape> getShapeProperty() {
+        return SHAPE;
+    }
+
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.FLUID_PIPE, FluidPipeBlockEntity::tick);
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        switch (rotation) {
+            case CLOCKWISE_180:
+                switch ((FluidPipeShape) state.get(SHAPE)) {
+                    case ASCENDING_EAST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_WEST);
+                    case ASCENDING_WEST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_EAST);
+                    case ASCENDING_NORTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_SOUTH);
+                    case ASCENDING_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_NORTH);
+                    case SOUTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_WEST);
+                    case SOUTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_EAST);
+                    case NORTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_EAST);
+                    case NORTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_WEST);
+                }
+            case COUNTERCLOCKWISE_90:
+                switch ((FluidPipeShape) state.get(SHAPE)) {
+                    case ASCENDING_EAST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_NORTH);
+                    case ASCENDING_WEST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_SOUTH);
+                    case ASCENDING_NORTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_WEST);
+                    case ASCENDING_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_EAST);
+                    case SOUTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_EAST);
+                    case SOUTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_EAST);
+                    case NORTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_WEST);
+                    case NORTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_WEST);
+                    case NORTH_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.EAST_WEST);
+                    case EAST_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_SOUTH);
+                }
+            case CLOCKWISE_90:
+                switch ((FluidPipeShape) state.get(SHAPE)) {
+                    case ASCENDING_EAST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_SOUTH);
+                    case ASCENDING_WEST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_NORTH);
+                    case ASCENDING_NORTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_EAST);
+                    case ASCENDING_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_WEST);
+                    case SOUTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_WEST);
+                    case SOUTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_WEST);
+                    case NORTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_EAST);
+                    case NORTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_EAST);
+                    case NORTH_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.EAST_WEST);
+                    case EAST_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_SOUTH);
+                }
+            default:
+                return state;
+        }
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        FluidPipeShape pipeShape = state.get(SHAPE);
+        switch (mirror) {
+            case LEFT_RIGHT:
+                switch (pipeShape) {
+                    case ASCENDING_NORTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_SOUTH);
+                    case ASCENDING_SOUTH:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_NORTH);
+                    case SOUTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_EAST);
+                    case SOUTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_WEST);
+                    case NORTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_WEST);
+                    case NORTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_EAST);
+                    default:
+                        return super.mirror(state, mirror);
+                }
+            case FRONT_BACK:
+                switch (pipeShape) {
+                    case ASCENDING_EAST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_WEST);
+                    case ASCENDING_WEST:
+                        return state.with(SHAPE, FluidPipeShape.ASCENDING_EAST);
+                    case SOUTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_WEST);
+                    case SOUTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.SOUTH_EAST);
+                    case NORTH_WEST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_EAST);
+                    case NORTH_EAST:
+                        return state.with(SHAPE, FluidPipeShape.NORTH_WEST);
+                    case ASCENDING_NORTH:
+                    case ASCENDING_SOUTH:
+                    default:
+                        break;
+                }
+        }
+        return super.mirror(state, mirror);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(SHAPE);
+    }
+
+    @Override
+    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!oldState.isOf(state.getBlock())) {
+            this.updateCurves(state, world, pos, notify);
+        }
+        this.isStraight = false;
+    }
+
+    protected BlockState updateCurves(BlockState state, World world, BlockPos pos, boolean notify) {
+        state = this.updateBlockState(world, pos, state, true);
+        if (this.isStraight) {
+            world.updateNeighbor(state, pos, this, pos, notify);
+        }
+        return state;
+    }
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (!world.isClient && world.getBlockState(pos).isOf(this)) {
+            this.updateBlockState(state, world, pos, sourceBlock);
+        }
+    }
+
+    protected void updateBlockState(BlockState state, World world, BlockPos pos, Block neighbor) {
+        if (neighbor.getDefaultState().emitsRedstonePower() && new FluidPipePlacementHelper(world, pos, state).getNeighborCount() == 3) {
+            this.updateBlockState(world, pos, state, false);
+        }
+    }
+
+    protected BlockState updateBlockState(World world, BlockPos pos, BlockState state, boolean forceUpdate) {
+        if (world.isClient) {
+            return state;
+        } else {
+            FluidPipeShape pipeShape = state.get(this.getShapeProperty());
+            return new FluidPipePlacementHelper(world, pos, state).updateBlockState(world.isReceivingRedstonePower(pos), forceUpdate, pipeShape).getBlockState();
+        }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (!moved) {
+            if (state.get(getShapeProperty()).isAscending()) {
+                world.updateComparators(pos.up(), this);
+            }
+
+            if (this.isStraight) {
+                world.updateComparators(pos, this);
+                world.updateComparators(pos.down(), this);
+            }
+        }
+
+        super.onStateReplaced(state, world, pos, newState, moved);
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        this.isStraight = ctx.getPlayer() != null && ctx.getPlayer().isSneaking();
+        BlockState blockState = super.getDefaultState();
+        Direction direction = ctx.getHorizontalPlayerFacing();
+        boolean bl = direction == Direction.EAST || direction == Direction.WEST;
+        return blockState.with(this.getShapeProperty(), bl ? FluidPipeShape.EAST_WEST : FluidPipeShape.NORTH_SOUTH);
+    }
+
+    public static Direction[] getConnections(FluidPipeShape shape) {
+        return switch (shape) {
+            case NORTH_SOUTH -> new Direction[]{Direction.NORTH, Direction.SOUTH};
+            case EAST_WEST -> new Direction[]{Direction.EAST, Direction.WEST};
+
+            case SOUTH_EAST -> new Direction[]{Direction.SOUTH, Direction.EAST};
+            case SOUTH_WEST -> new Direction[]{Direction.SOUTH, Direction.WEST};
+            case NORTH_WEST -> new Direction[]{Direction.NORTH, Direction.WEST};
+            case NORTH_EAST -> new Direction[]{Direction.NORTH, Direction.EAST};
+
+            case ASCENDING_EAST -> new Direction[]{Direction.WEST, Direction.EAST};
+            case ASCENDING_WEST -> new Direction[]{Direction.EAST, Direction.WEST};
+            case ASCENDING_NORTH -> new Direction[]{Direction.SOUTH, Direction.NORTH};
+            case ASCENDING_SOUTH -> new Direction[]{Direction.NORTH, Direction.SOUTH};
+        };
+    }
+
+    public static Direction getNextDirection(FluidPipeShape shape, Direction incoming) {
+        Direction[] connections = getConnections(shape);
+        if (incoming == connections[0]) {
+            return connections[1];
+        }
+        if (incoming == connections[1]) {
+            return connections[0];
+        }
+        return null;
+    }
+
+    public static boolean isAscendingTowards(FluidPipeShape shape, Direction direction) {
+        return switch (shape) {
+            case ASCENDING_EAST -> direction == Direction.EAST;
+            case ASCENDING_WEST -> direction == Direction.WEST;
+            case ASCENDING_NORTH -> direction == Direction.NORTH;
+            case ASCENDING_SOUTH -> direction == Direction.SOUTH;
+            default -> false;
+        };
+    }
+
+    public static BlockPos getNextPos(BlockPos pos, FluidPipeShape shape, Direction direction) {
+        BlockPos next = pos.offset(direction);
+        if (isAscendingTowards(shape, direction)) {
+            next = next.up();
+        } else if (isAscendingTowards(shape, direction.getOpposite())) {
+            return next;
+        }
+        return next;
+    }
+
+    public boolean isFlexiblePipe(BlockState state, World world, BlockPos pos) {
+        return !this.isStraight;
     }
 }

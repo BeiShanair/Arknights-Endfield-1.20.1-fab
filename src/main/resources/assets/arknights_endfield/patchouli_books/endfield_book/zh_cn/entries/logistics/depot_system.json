@@ -1,0 +1,33 @@
+{
+  "name": "仓库存取线",
+  "icon": "arknights_endfield:depot_bus_section",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "仓库存取线",
+      "text": "目前其外观是「四号谷地」的存取线形式。$(br)仓库存取系统由三部分组成：$(br)$(li)仓库存取线基段——1x3 大小的基础结构$(li)仓库存货口——将传送带上的物品存入全局仓储$(li)仓库取货口——从全局仓储取出物品放到传送带$(br2)三者配合使用，实现全局仓储的自动化存取。"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:depot_loader",
+      "title": "存货口",
+      "text": "存货口接收传送带推送的物品，将它们自动存入全局仓储。只能由传送带触发，暂不接受其他来源。$(br2)蓝色标识，需要紧贴存取线基段放置。"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:depot_unloader",
+      "title": "取货口",
+      "text": "取货口从全局仓储中取出指定的物品，输出到传送带上。可以设置物品筛选，只输出特定物品。$(br2)橙红色标识，暂时只能向本模组的传送带输出，同样需要紧贴存取线基段放置。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关章节",
+      "entries": [
+        "arknights_endfield:logistics/global_storage",
+        "arknights_endfield:logistics/belt",
+        "arknights_endfield:logistics/protocol_stash"
+        ]
+    }
+  ]
+}

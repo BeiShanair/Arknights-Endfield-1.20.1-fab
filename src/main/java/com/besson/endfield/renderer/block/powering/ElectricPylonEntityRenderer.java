@@ -1,10 +1,11 @@
 package com.besson.endfield.renderer.block.powering;
 
+import com.besson.endfield.blockentity.custom.powering.BasePylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BaseRelayBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ProtocolAnchorCoreBlockEntity;
-import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
+import com.besson.endfield.config.ModClientConfig;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
@@ -19,6 +20,7 @@ public class ElectricPylonEntityRenderer implements BlockEntityRenderer<Electric
     public ElectricPylonEntityRenderer(BlockEntityRendererFactory.Context context) {
         this.geckoRenderer = new ElectricPylonRenderer(context);
     }
+    
     @Override
     public void render(ElectricPylonBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         geckoRenderer.render(entity, tickDelta, matrices, vertexConsumers, light, overlay);
@@ -31,11 +33,11 @@ public class ElectricPylonEntityRenderer implements BlockEntityRenderer<Electric
         BlockEntity be;
         if (entity.getWorld() != null) {
             be = entity.getWorld().getBlockEntity(entity.getConnectedNode());
-            if (be instanceof RelayTowerBlockEntity) {
+            if (be instanceof BaseRelayBlockEntity) {
                 connectedPos = entity.getConnectedNode().add(0, 10, 0);
             } else if (be instanceof ProtocolAnchorCoreBlockEntity){
                 connectedPos = entity.getConnectedNode().add(0, 27, 0);
-            } else if (be instanceof ElectricPylonBlockEntity) {
+            } else if (be instanceof BasePylonBlockEntity) {
                 connectedPos = entity.getConnectedNode().add(0, 7, 0);
             }
         }
@@ -48,30 +50,46 @@ public class ElectricPylonEntityRenderer implements BlockEntityRenderer<Electric
         VertexConsumer consumer = vertexConsumers.getBuffer(RenderLayer.getLines());
 
         Matrix4f matrix4f = matrices.peek().getPositionMatrix();
+        
+        final int yr = 241, yg = 237, yb = 184; // 黄色（两端，沿用原线色）
+        final int br = 140, bg = 200, bb = 255; // 淡蓝色（正中）
 
-        Camera camera = MinecraftClient.getInstance().gameRenderer.getCamera();
-        Vec3d cameraPos = camera.getPos();
+        Vec3d delta = end.subtract(start);
+        double length = delta.length();
+        if (length < 1.0E-8) return;
 
-        double dx = end.x - start.x;
-        double dy = end.y - start.y;
-        double dz = end.z - start.z;
+        Vec3d normal = delta.normalize();
+        float nx = (float) normal.x;
+        float ny = (float) normal.y;
+        float nz = (float) normal.z;
 
-        // 方向向量
-        Vec3d dir = new Vec3d(dx, dy, dz).normalize();
+        Vec3d mid = start.add(delta.multiply(0.5));
 
-        // 视角向量（从线起点指向相机）
-        Vec3d toCam = cameraPos.subtract(start).normalize();
+        drawWireSegment(consumer, matrix4f, start, mid, yr, yg, yb, br, bg, bb, nx, ny, nz);
+        drawWireSegment(consumer, matrix4f, mid, end, br, bg, bb, yr, yg, yb, nx, ny, nz);
+    }
 
-        // normal = dir × toCam
-        Vec3d normal = dir.crossProduct(toCam).normalize();
-
-        consumer.vertex(matrix4f, (float) start.x, (float) start.y, (float) start.z)
-                .color(241, 237, 184, 255)
-                .normal((float) normal.x, (float) normal.y, (float) normal.z)
+    // 画一小段线：a 处颜色为 (ar,ag,ab)，b 处为 (br,bg,bb)，两端间由渲染器线性插值。
+    private static void drawWireSegment(
+            VertexConsumer consumer,
+            Matrix4f matrix,
+            Vec3d a,
+            Vec3d b,
+            int ar, int ag, int ab,
+            int br, int bg, int bb,
+            float nx, float ny, float nz) {
+        consumer.vertex(matrix, (float) a.x, (float) a.y, (float) a.z)
+                .color(ar, ag, ab, 255)
+                .normal(nx, ny, nz)
                 .next();
-        consumer.vertex(matrix4f, (float) end.x, (float) end.y, (float) end.z)
-                .color(241, 237, 184, 255)
-                .normal((float) normal.x, (float) normal.y, (float) normal.z)
+        consumer.vertex(matrix, (float) b.x, (float) b.y, (float) b.z)
+                .color(br, bg, bb, 255)
+                .normal(nx, ny, nz)
                 .next();
+    }
+
+    @Override
+    public int getRenderDistance() {
+        return ModClientConfig.getInstance().getEquipmentRenderDistance();
     }
 }

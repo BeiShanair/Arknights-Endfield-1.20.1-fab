@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:filling_unit",
+  "fluid": {
+    "amount": 1000,
+    "id": "arknights_endfield:sewage"
+  },
+  "input": [
+    {
+      "count": 1,
+      "item": "arknights_endfield:cryston_bottle"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:cryston_bottled_sewage"
+  }
+}

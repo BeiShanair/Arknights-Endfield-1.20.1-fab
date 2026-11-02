@@ -1,0 +1,18 @@
+{
+  "name": "液氮塔",
+  "icon": "arknights_endfield:ln_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:ln_tower",
+      "title": "液氮塔",
+      "text": "液氮塔不造成直接伤害，但对敌人施加 5 秒的缓慢效果，是控场型防御塔。$(br2)攻击范围：15 米$(br)攻击间隔：5 秒$(br)耗电：10 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

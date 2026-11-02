@@ -1,0 +1,15 @@
+{
+  "type": "arknights_endfield:forge_of_the_sky",
+  "fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "input": {
+    "count": 2,
+    "item": "arknights_endfield:stabilized_carbon"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:xiranite"
+  }
+}

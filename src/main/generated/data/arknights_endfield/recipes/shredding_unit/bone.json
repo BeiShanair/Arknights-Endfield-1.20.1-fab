@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:bone"
+  },
+  "output": {
+    "count": 3,
+    "item": "minecraft:bone_meal"
+  }
+}

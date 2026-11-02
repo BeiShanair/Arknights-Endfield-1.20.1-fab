@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:filling_unit",
+  "fluid": {
+    "amount": 1000,
+    "id": "arknights_endfield:yazhen_solution"
+  },
+  "input": [
+    {
+      "count": 1,
+      "item": "arknights_endfield:ferrium_bottle"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:ferrium_bottled_yazhen_solution"
+  }
+}

@@ -7,6 +7,7 @@ import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlantingUnitDisplay implements Display {
@@ -14,7 +15,14 @@ public class PlantingUnitDisplay implements Display {
     private final List<EntryIngredient> outputs;
 
     public PlantingUnitDisplay(PlantingUnitRecipe recipe) {
-        this.inputs = List.of(EntryIngredients.ofIngredient(recipe.getInput()));
+        List<EntryIngredient> inputList = new ArrayList<>();
+        inputList.add(EntryIngredients.ofIngredient(recipe.getInput()));
+        
+        if (recipe.requiresFluid()) {
+            inputList.add(EntryIngredients.of(recipe.getRequiredFluid().getFluid(),
+                    recipe.getRequiredFluidAmount()));
+        }
+        this.inputs = List.copyOf(inputList);
         this.outputs = List.of(EntryIngredients.of(recipe.getOutput(null)));
     }
     @Override

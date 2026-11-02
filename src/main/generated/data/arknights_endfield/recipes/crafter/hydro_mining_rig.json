@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:cuprium_part": 10,
+    "arknights_endfield:portable_originium_rig": 1
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:hydro_mining_rig"
+  }
+}

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MedicalTowerBlock extends BlockWithEntity {
+public class MedicalTowerBlock extends BaseTowerBlock {
     public MedicalTowerBlock(Settings settings) {
         super(settings);
     }

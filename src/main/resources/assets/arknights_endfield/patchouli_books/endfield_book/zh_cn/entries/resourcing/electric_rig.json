@@ -1,0 +1,23 @@
+{
+  "name": "电驱矿机",
+  "icon": "arknights_endfield:electric_mining_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:electric_mining_rig",
+      "title": "电驱矿机",
+      "text": "电驱矿机是升级版的资源采集设备，需要电力驱动，可以开采更多种类的矿脉。$(br2)耗电：5 $(efu)$(br)采集速度：每 3 秒 1 个$(br)可开采：原版矿脉、源石矿脉和紫晶矿脉"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "注意事项",
+      "text": "矿机每隔 5 秒自动将产物提交到$(l:arknights_endfield:logistics/global_storage)全局仓储$()，注意不是协议核心的仓库，无需手动取出。$(br2)如果电网电力不足，矿机会自动暂停工作，等待电力恢复后继续。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

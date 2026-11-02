@@ -8,10 +8,12 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.slot.Slot;
@@ -76,11 +78,9 @@ public class StorageScreen extends HandledScreen<StorageScreenHandler> {
         StorageEntry entry = visible.get(index);
         long count = entry.getCount();
     
-        List<net.minecraft.text.Text> tooltip = new ArrayList<>();
         net.minecraft.item.ItemStack stack = slot.getStack();
-        if (!stack.isEmpty()) {
-            tooltip.add(stack.getName());
-        } else {
+        List<net.minecraft.text.Text> tooltip = new ArrayList<>(this.getTooltipFromItem(stack));
+        if (tooltip.isEmpty()) {
             tooltip.add(Text.literal("Unknown Item"));
         }
         
@@ -89,7 +89,7 @@ public class StorageScreen extends HandledScreen<StorageScreenHandler> {
                 .append(Text.literal(formatExact(count)).formatted(Formatting.AQUA)));
         
         context.getMatrices().push();
-        context.getMatrices().translate(0.0D, 0.0D, 600.0D); // tooltip 再往上，避免被其他 UI 遮挡
+        context.getMatrices().translate(0.0D, 0.0D, 600.0D);
         RenderSystem.disableDepthTest();
         context.drawTooltip(textRenderer, tooltip, mouseX, mouseY);
         RenderSystem.enableDepthTest();
@@ -173,21 +173,96 @@ public class StorageScreen extends HandledScreen<StorageScreenHandler> {
 
     @Override
     protected void onMouseClick(Slot slot, int slotId, int button, SlotActionType actionType) {
-        if (slot != null) {
-            int index = handler.slots.indexOf(slot);
-            if (index >= handler.getVisibleEntries().size()) return;
-            
-            StorageEntry entry = handler.getVisibleEntries().get(index);
-            requestItem(entry.getItem(), button == 1 ? 64 : 1);
+        if (slot == null) {
+            super.onMouseClick(slot, slotId, button, actionType);
+            return;
         }
+
+        int index = handler.slots.indexOf(slot);
+        if (index < 0) {
+            super.onMouseClick(slot, slotId, button, actionType);
+            return;
+        }
+
+        int storageSlotCount = handler.getStorageSlotCount();
+        List<StorageEntry> visible = handler.getVisibleEntries();
+        
+        if (index < storageSlotCount) {
+            if (index >= visible.size()) {
+                return;
+            }
+
+            StorageEntry entry = visible.get(index);
+            Item item = entry.getItem();
+
+            int amount;
+            boolean shift = Screen.hasShiftDown() || actionType == SlotActionType.QUICK_MOVE;
+
+            if (shift && button == 0) {
+                amount = item.getMaxCount();
+            } else if (button == 0) {
+                amount = 1;
+            } else if (button == 1) {
+                int max = item.getMaxCount();
+                amount = Math.max(1, (max + 1) / 2);
+            } else {
+                return;
+            }
+
+            long available = entry.getCount();
+            int toRequest = (int) Math.min((long) amount, available);
+            if (toRequest <= 0) return;
+
+            requestItem(entry, toRequest);
+            return;
+        }
+        
+        ItemStack stack = slot.getStack();
+        if (stack == null || stack.isEmpty()) {
+            if (actionType == SlotActionType.QUICK_MOVE) {
+                return;
+            }
+            
+            super.onMouseClick(slot, slotId, button, actionType);
+            return;
+        }
+
+        boolean shift = Screen.hasShiftDown() || actionType == SlotActionType.QUICK_MOVE;
+        int amountToDeposit;
+
+        if (shift && button == 0) {
+            amountToDeposit = stack.getCount();
+        } else if (button == 0) {
+            amountToDeposit = 1;
+        } else if (button == 1) {
+            amountToDeposit = Math.max(1, (stack.getCount() + 1) / 2);
+        } else {
+            return;
+        }
+
+        if (amountToDeposit <= 0) return;
+
+        amountToDeposit = Math.min(amountToDeposit, stack.getCount());
+
+        sendDepositPacket(stack, amountToDeposit);
     }
 
-    private void requestItem(Item item, int amount) {
+    private void requestItem(StorageEntry entry, int amount) {
 
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeIdentifier(Registries.ITEM.getId(item));
+        buf.writeIdentifier(Registries.ITEM.getId(entry.getItem()));
+        buf.writeNbt(entry.getTag());
         buf.writeInt(amount);
 
         ClientPlayNetworking.send(ModNetWorking.REQUEST_ITEM, buf);
+    }
+
+    private void sendDepositPacket(ItemStack stack, int amount) {
+        PacketByteBuf buf = PacketByteBufs.create();
+        buf.writeIdentifier(Registries.ITEM.getId(stack.getItem()));
+        buf.writeNbt(stack.getNbt());
+        buf.writeInt(amount);
+
+        ClientPlayNetworking.send(ModNetWorking.DEPOSIT_ITEM, buf);
     }
 }

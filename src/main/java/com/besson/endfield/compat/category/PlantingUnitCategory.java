@@ -10,6 +10,7 @@ import me.shedaniel.rei.api.client.gui.widgets.Widget;
 import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
+import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.text.Text;
 
@@ -41,9 +42,12 @@ public class PlantingUnitCategory implements DisplayCategory<PlantingUnitDisplay
         widgets.add(Widgets.createRecipeBase(bounds));
 
         Point start = new Point(bounds.getCenterX() - 60, bounds.getCenterY() - 8);
-        widgets.add(Widgets.createSlot(new Point(start.x, start.y))
-                .entries(display.getInputEntries().get(0))
-                .markInput());
+        List<EntryIngredient> inputs = display.getInputEntries();
+        for (int i = 0; i < inputs.size(); i++) {
+            widgets.add(Widgets.createSlot(new Point(start.x + i * 20, start.y))
+                    .entries(inputs.get(i))
+                    .markInput());
+        }
 
         widgets.add(Widgets.createArrow(new Point(start.x + 50, start.y + 1)));
         widgets.add(Widgets.createSlot(new Point(start.x + 100, start.y))

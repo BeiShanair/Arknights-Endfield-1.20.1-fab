@@ -1,6 +1,7 @@
 package com.besson.endfield.screen;
 
 import com.besson.endfield.ArknightsEndfield;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.PressableWidget;
@@ -16,9 +17,11 @@ public class ToggleIconButton extends PressableWidget {
 
     private final BooleanSupplier booleanSupplier;
     private final Consumer<Boolean> onToggle;
+    private final TextRenderer textRenderer;
 
-    public ToggleIconButton(int i, int j, BooleanSupplier booleanSupplier, Consumer<Boolean> onToggle) {
+    public ToggleIconButton(TextRenderer textRenderer, int i, int j, BooleanSupplier booleanSupplier, Consumer<Boolean> onToggle) {
         super(i, j, 16, 16, Text.empty());
+        this.textRenderer = textRenderer;
         this.booleanSupplier = booleanSupplier;
         this.onToggle = onToggle;
     }
@@ -36,11 +39,15 @@ public class ToggleIconButton extends PressableWidget {
 
         if (isHovered()) {
             context.fill(getX(), getY(), getX() + this.width, getY() + this.height, 0x40FFFFFF);
+
+            context.drawTooltip(textRenderer,
+                    Text.translatable(booleanSupplier.getAsBoolean() ? "endfield.switch_button.enable" : "endfield.switch_button.disable"),
+                    mouseX, mouseY);
         }
     }
 
     @Override
     protected void appendClickableNarrations(NarrationMessageBuilder builder) {
-
+        
     }
 }

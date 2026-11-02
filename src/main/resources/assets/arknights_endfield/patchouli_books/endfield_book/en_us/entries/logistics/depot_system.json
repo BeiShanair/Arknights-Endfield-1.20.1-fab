@@ -1,0 +1,34 @@
+{
+  "name": "Depot System",
+  "icon": "arknights_endfield:depot_bus_section",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Depot Bus Section",
+      "text": "Currently, it takes the form of the Depot Bus Section in “Valley IV”. $(br)The Depot System consists of three parts:$(br)$(li)Depot Bus Section—a 1x3-sized basic structure$(li)Depot Loader—stores items from the Belt into the Global Storage$(li)Depot Unloader—retrieves items from the global storage and places them on the conveyor belt$(br2)These three components work together to enable automated storage and retrieval in the global storage."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:depot_loader",
+      "title": "Depot Loader",
+      "text": "Receives items pushed by the Belt and automatically stores them in the Global Storage. It can only be triggered by the Belt; other sources are not currently accepted. $(br2) Blue marker; must be placed directly adjacent to the Depot Bus Section."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:depot_unloader",
+      "title": "Depot Unloader",
+      "text": "Retrieves specified items from the Global Storage and outputs them onto the Belt. You can configure item filtering to output only specific items. $(br2) Orange-red marker; currently allows output only to this mod’s Belt and must also be placed directly adjacent to the Depot Bus Section."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:logistics/global_storage",
+        "arknights_endfield:logistics/belt",
+        "arknights_endfield:logistics/protocol_stash"
+      ],
+      "text": "Other logistics components:"
+    }
+  ]
+}

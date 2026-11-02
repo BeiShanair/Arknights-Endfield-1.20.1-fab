@@ -1,0 +1,23 @@
+{
+  "type": "arknights_endfield:reactor_crucible",
+  "input": [
+    {
+      "count": 1,
+      "item": "arknights_endfield:ferrium_powder"
+    },
+    {
+      "amount": 2000,
+      "fluid": "arknights_endfield:xircon_effluent"
+    }
+  ],
+  "output": [
+    {
+      "count": 1,
+      "item": "arknights_endfield:xircon"
+    },
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:sewage"
+    }
+  ]
+}

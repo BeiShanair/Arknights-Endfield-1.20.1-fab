@@ -1,0 +1,32 @@
+{
+  "name": "Xiranite Relay",
+  "icon": "arknights_endfield:xiranite_relay",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:xiranite_relay",
+      "title": "Power Relay Station",
+      "text": "Xiranite Relay is a variant of repeater in Wuling area, used to transmit power over longer distances. Similar to pylons but with a larger connection range.$(br2)Grid Connection Range: 80m$(br)Supply Range: 10m"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Use Cases",
+      "text": "When you need to transport power far from the Protocol Core, place Relay Towers along the path to bridge the distance.$(br2)Relay Towers can chain-connect to each other (within 80m), forming relay chains. Each relay node also supplies power to devices within 10m."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/power_network"
+      ]
+    }
+  ]
+}

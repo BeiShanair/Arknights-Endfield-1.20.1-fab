@@ -1,0 +1,34 @@
+{
+  "name": "制造台",
+  "icon": "arknights_endfield:crafter",
+  "category": "arknights_endfield:production1",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:crafter",
+      "title": "基础合成平台",
+      "text": "制造台是终末地工业的基础合成设备，功能类似于工作台，但专门用于合成模组中的各种设备。$(br2)耗电：无$(br)不需要电力即可工作，是游戏初期最重要的设备。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "右键打开制造台 GUI，其界面类似于切石机。左侧放入材料，中央选择想要合成的物品，拿出右侧的物品就可以完成一次合成。$(br2)制造台的功能原本集成在协议核心中，后来分离出来作为独立设备。"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "arknights_endfield:crafter",
+      "text": "制造台的合成配方。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关设备",
+      "entries": [
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:resourcing/portable_rig",
+        "arknights_endfield:resourcing/electric_rig",
+        "arknights_endfield:production1/refining_unit"
+      ]
+    }
+  ]
+}

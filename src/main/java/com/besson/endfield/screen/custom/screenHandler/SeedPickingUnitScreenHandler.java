@@ -19,7 +19,7 @@ import java.util.Objects;
 public class SeedPickingUnitScreenHandler extends BaseIOScreenHandler<SeedPickingUnitBlockEntity> {
     public SeedPickingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
 
     public SeedPickingUnitScreenHandler(int syncId, PlayerInventory playerInventory, SeedPickingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -64,5 +64,9 @@ public class SeedPickingUnitScreenHandler extends BaseIOScreenHandler<SeedPickin
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

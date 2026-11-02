@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:packaging_unit",
+  "input": [
+    {
+      "count": 10,
+      "item": "arknights_endfield:cuprium_part"
+    },
+    {
+      "count": 5,
+      "item": "arknights_endfield:cuprium_bottled_jincao_solution"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:jincao_tea"
+  }
+}

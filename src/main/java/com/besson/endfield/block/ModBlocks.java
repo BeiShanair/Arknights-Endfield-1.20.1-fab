@@ -3,22 +3,16 @@ package com.besson.endfield.block;
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.custom.*;
 import com.besson.endfield.block.custom.combat.*;
+import com.besson.endfield.block.custom.depot.*;
+import com.besson.endfield.block.custom.fluid.HealingFluidBlock;
+import com.besson.endfield.block.custom.fluid.PotionFluidBlock;
 import com.besson.endfield.block.custom.logicitis.*;
 import com.besson.endfield.block.custom.powering.*;
 import com.besson.endfield.block.custom.production1.*;
 import com.besson.endfield.block.custom.production2.*;
-import com.besson.endfield.block.custom.resourcing.ElectricMiningRigBlock;
-import com.besson.endfield.block.custom.resourcing.ElectricMiningRigMkIIBlock;
-import com.besson.endfield.block.custom.resourcing.FluidPumpBlock;
-import com.besson.endfield.block.custom.resourcing.PortableOriginiumRigBlock;
-import com.besson.endfield.block.custom.logicitis.DepotBusSectionBlock;
-import com.besson.endfield.block.custom.logicitis.DepotBusSectionSideBlock;
-import com.besson.endfield.block.custom.logicitis.ProtocolStashBlock;
-import com.besson.endfield.block.custom.logicitis.ProtocolStashSideBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.block.FlowerPotBlock;
+import com.besson.endfield.block.custom.resourcing.*;
+import com.besson.endfield.fluid.ModFluids;
+import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -27,6 +21,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
+    // region Powering
     public static final Block PROTOCOL_ANCHOR_CORE = registerBlocksWithoutItem("protocol_anchor_core",
             new ProtocolAnchorCoreBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block PROTOCOL_ANCHOR_CORE_PORT = registerBlocks("protocol_anchor_core_port",
@@ -37,15 +32,40 @@ public class ModBlocks {
             new RelayTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block ELECTRIC_PYLON = registerBlocksWithoutItem("electric_pylon",
             new ElectricPylonBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+
+    public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
+            new ThermalBankBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block THERMAL_BANK_SIDE = registerBlocks("thermal_bank_side",
+            new ThermalBankSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block XIRANITE_PYLON = registerBlocksWithoutItem("xiranite_pylon",
+            new XiranitePylonBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block XIRANITE_RELAY = registerBlocksWithoutItem("xiranite_relay",
+            new XiraniteRelayBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
+    
+    // region Resourcing
     public static final Block ELECTRIC_MINING_RIG = registerBlocksWithoutItem("electric_mining_rig",
             new ElectricMiningRigBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block ELECTRIC_MINING_RIG_MK_II = registerBlocksWithoutItem("electric_mining_rig_mk_ii",
             new ElectricMiningRigMkIIBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block PORTABLE_ORIGINIUM_RIG = registerBlocksWithoutItem("portable_originium_rig",
             new PortableOriginiumRigBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
+    
+    public static final Block HYDRO_MINING_RIG = registerBlocksWithoutItem("hydro_mining_rig",
+            new HydroMiningRigBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block HYDRO_MINING_RIG_SIDE = registerBlocks("hydro_mining_rig_side",
+            new HydroMiningRigSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block ACID_RESISTANT_PUMP_MK_II = registerBlocksWithoutItem("acid_resistant_pump_mk_ii",
+            new AcidResistantPumpMkIIBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block ACID_RESISTANT_PUMP_MK_II_SIDE = registerBlocks("acid_resistant_pump_mk_ii_side",
+            new AcidResistantPumpMkIISideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
+    
+    // region Logicitis
     public static final Block BELT = registerBlocks("belt",
-            new BeltBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+            new BeltBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque().noCollision()));
     public static final Block BELT_BRIDGE = registerBlocks("belt_bridge",
             new BeltBridgeBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block SPLITTER = registerBlocks("splitter",
@@ -55,39 +75,71 @@ public class ModBlocks {
     public static final Block OUTPUT_PORT_BLOCK = registerBlocks("output_port",
             new OutputPortBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     
+    public static final Block PROTOCOL_STASH = registerBlocksWithoutItem("protocol_stash",
+            new ProtocolStashBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block PROTOCOL_STASH_SIDE = registerBlocks("protocol_stash_side",
+            new ProtocolStashSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_BUS_SECTION = registerBlocksWithoutItem("depot_bus_section",
+            new DepotBusSectionBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_BUS_SECTION_SIDE = registerBlocks("depot_bus_section_side",
+            new DepotBusSectionSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_LOADER = registerBlocksWithoutItem("depot_loader",
+            new DepotLoaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_LOADER_SIDE = registerBlocks("depot_loader_side",
+            new DepotLoaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_UNLOADER = registerBlocksWithoutItem("depot_unloader",
+            new DepotUnloaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block DEPOT_UNLOADER_SIDE = registerBlocks("depot_unloader_side",
+            new DepotUnloaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block FLUID_PIPE = registerBlocks("fluid_pipe",
-            new FluidPipeBlock(AbstractBlock.Settings.create().strength(0.5f, 5f).nonOpaque()));
-    public static final Block FLUID_EXTRACTOR = registerBlocks("fluid_extractor",
-            new FluidExtractorBlock(AbstractBlock.Settings.create().strength(0.5f, 5f).nonOpaque()));
-    public static final Block WATER_INJECTOR = registerBlocks("water_injector",
-            new WaterInjectorBlock(AbstractBlock.Settings.create().strength(0.5f, 5f).nonOpaque()));
-
+            new FluidPipeBlock(AbstractBlock.Settings.create().strength(0.5f, 5f).noCollision()));
+    public static final Block PIPE_BRIDGE = registerBlocks("pipe_bridge",
+            new PipeBridgeBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block PIPE_SPLITTER = registerBlocks("pipe_splitter",
+            new PipeSplitterBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block PIPE_CONVERGER = registerBlocks("pipe_converger",
+            new PipeConvergerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
+    
     public static final Block SUPPLY_TERMINAL = registerBlocks("supply_terminal",
             new SupplyTerminalBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     
+    // region Combat
     public static final Block BEAM_TOWER = registerBlocksWithoutItem("beam_tower",
             new BeamTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block GRENADE_TOWER = registerBlocksWithoutItem("grenade_tower",
             new GrenadeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block GUN_TOWER = registerBlocksWithoutItem("gun_tower",
             new GunTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block HEAVY_GUN_TOWER = registerBlocksWithoutItem("heavy_gun_tower",
             new HeavyGunTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block HE_GRENADE_TOWER = registerBlocksWithoutItem("he_grenade_tower",
             new HeGrenadeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block LN_TOWER = registerBlocksWithoutItem("ln_tower",
             new LNTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block MARSH_GAS_MK_I = registerBlocksWithoutItem("marsh_gas_mk_i",
             new MarshGasMkIBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block MEDICAL_TOWER = registerBlocksWithoutItem("medical_tower",
             new MedicalTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block OMNIDIRECTIONAL_SONIC_TOWER = registerBlocksWithoutItem("omnidirectional_sonic_tower",
             new OmnidirectionalSonicTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block SENTRY_TOWER = registerBlocksWithoutItem("sentry_tower",
             new SentryTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    
     public static final Block SURGE_TOWER = registerBlocksWithoutItem("surge_tower",
             new SurgeTowerBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
     
+    // region Production1
     public static final Block REFINING_UNIT = registerBlocksWithoutItem("refining_unit",
             new RefiningUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block REFINING_UNIT_SIDE = registerBlocks("refining_unit_side",
@@ -98,15 +150,36 @@ public class ModBlocks {
     public static final Block SHREDDING_UNIT_SIDE = registerBlocks("shredding_unit_side",
             new ShreddingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
 
-    public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
-            new FillingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block FILLING_UNIT_SIDE = registerBlocks("filling_unit_side",
-            new FillingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
     public static final Block FITTING_UNIT = registerBlocksWithoutItem("fitting_unit",
             new FittingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block FITTING_UNIT_SIDE = registerBlocks("fitting_unit_side",
             new FittingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+
+    public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
+            new MouldingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block MOULDING_UNIT_SIDE = registerBlocks("moulding_unit_side",
+            new MouldingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+
+    public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
+            new PlantingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block PLANTING_UNIT_SIDE = registerBlocks("planting_unit_side",
+            new PlantingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+
+    public static final Block SEED_PICKING_UNIT = registerBlocksWithoutItem("seed_picking_unit",
+            new SeedPickingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SEED_PICKING_UNIT_SIDE = registerBlocks("seed_picking_unit_side",
+            new SeedPickingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block WATER_TREATMENT_UNIT = registerBlocksWithoutItem("water_treatment_unit",
+            new WaterTreatmentUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block WATER_TREATMENT_UNIT_SIDE = registerBlocks("water_treatment_unit_side",
+            new WaterTreatmentUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
+
+    // region Production2
+    public static final Block FILLING_UNIT = registerBlocksWithoutItem("filling_unit",
+            new FillingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FILLING_UNIT_SIDE = registerBlocks("filling_unit_side",
+            new FillingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
 
     public static final Block GEARING_UNIT = registerBlocksWithoutItem("gearing_unit",
             new GearingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
@@ -118,33 +191,38 @@ public class ModBlocks {
     public static final Block GRINDING_UNIT_SIDE = registerBlocks("grinding_unit_side",
             new GrindingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
 
-    public static final Block MOULDING_UNIT = registerBlocksWithoutItem("moulding_unit",
-            new MouldingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block MOULDING_UNIT_SIDE = registerBlocksWithoutItem("moulding_unit_side",
-            new MouldingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
     public static final Block PACKAGING_UNIT = registerBlocksWithoutItem("packaging_unit",
             new PackagingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block PACKAGING_UNIT_SIDE = registerBlocks("packaging_unit_side",
             new PackagingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block REACTOR_CRUCIBLE = registerBlocksWithoutItem("reactor_crucible",
+            new ReactorCrucibleBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block REACTOR_CRUCIBLE_SIDE = registerBlocks("reactor_crucible_side",
+            new ReactorCrucibleSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block EXPANDED_CRUCIBLE = registerBlocksWithoutItem("expanded_crucible",
+            new ExpandedCrucibleBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block EXPANDED_CRUCIBLE_SIDE = registerBlocks("expanded_crucible_side",
+            new ExpandedCrucibleSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SEPARATING_UNIT = registerBlocksWithoutItem("separating_unit",
+            new SeparatingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block SEPARATING_UNIT_SIDE = registerBlocks("separating_unit_side",
+            new SeparatingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FORGE_OF_THE_SKY = registerBlocksWithoutItem("forge_of_the_sky",
+            new ForgeOfTheSkyBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FORGE_OF_THE_SKY_SIDE = registerBlocks("forge_of_the_sky_side",
+            new ForgeOfTheSkySideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    // endregion
+
+    // region Resource
+    public static final Block AMETHYST_DRUSE = registerBlocks("amethyst_druse",
+            new Block(AbstractBlock.Settings.create().strength(2f, 2f).nonOpaque()));
+    public static final Block FERRIUM_DRUSE = registerBlocks("ferrium_druse",
+            new Block(AbstractBlock.Settings.create().strength(2f, 2f).nonOpaque()));
+    public static final Block ORIGINIUM_DRUSE = registerBlocks("originium_druse",
+            new Block(AbstractBlock.Settings.create().strength(2f, 2f).nonOpaque()));
     
-    public static final Block PLANTING_UNIT = registerBlocksWithoutItem("planting_unit",
-            new PlantingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block PLANTING_UNIT_SIDE = registerBlocks("planting_unit_side",
-            new PlantingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
-    public static final Block SEED_PICKING_UNIT = registerBlocksWithoutItem("seed_picking_unit",
-            new SeedPickingUnitBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block SEED_PICKING_UNIT_SIDE = registerBlocks("seed_picking_unit_side",
-            new SeedPickingUnitSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
-    public static final Block THERMAL_BANK = registerBlocksWithoutItem("thermal_bank",
-            new ThermalBankBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block THERMAL_BANK_SIDE = registerBlocks("thermal_bank_side",
-            new ThermalBankSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
     public static final Block AMETHYST_MINERAL_VEIN_BLOCK = registerBlocks("amethyst_mineral_vein_block",
-            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+            new AmethystDruseBlock(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block COAL_MINERAL_VEIN_BLOCK = registerBlocks("coal_mineral_vein_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block COPPER_MINERAL_VEIN_BLOCK = registerBlocks("copper_mineral_vein_block",
@@ -162,7 +240,7 @@ public class ModBlocks {
     public static final Block EMERALD_MINERAL_VEIN_BLOCK = registerBlocks("emerald_mineral_vein_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block ORIGINIUM_MINERAL_VEIN_BLOCK = registerBlocks("originium_mineral_vein_block",
-            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+            new OriginiumDruseBlock(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block AMETHYST_ORE_BLOCK = registerBlocks("amethyst_ore_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block CUPRIUM_MINERAL_VEIN_BLOCK = registerBlocks("cuprium_mineral_vein_block",
@@ -178,12 +256,12 @@ public class ModBlocks {
     public static final Block DEEPSLATE_ORIGINIUM_ORE = registerBlocks("deepslate_originium_ore",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block FERRIUM_MINERAL_VEIN_BLOCK = registerBlocks("ferrium_mineral_vein_block",
-            new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
+            new FerriumDruseBlock(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block FERRIUM_ORE_BLOCK = registerBlocks("ferrium_ore_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
     public static final Block ORIGINIUM_ORE_BLOCK = registerBlocks("originium_ore_block",
             new Block(AbstractBlock.Settings.create().strength(5f, 5f).requiresTool()));
-
+    
     public static final Block AKETINE_BLOCK = registerBlocksWithoutItem("aketine_block",
             new FlowerBlock(StatusEffects.JUMP_BOOST, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
     public static final Block POTTED_AKETINE_BLOCK = registerBlocksWithoutItem("potted_aketine_block",
@@ -240,35 +318,46 @@ public class ModBlocks {
             new FlowerBlock(StatusEffects.REGENERATION, 100, AbstractBlock.Settings.create().strength(0.5f).nonOpaque().breakInstantly().noCollision()));
     public static final Block POTTED_YAZHEN_BLOCK = registerBlocksWithoutItem("potted_yazhen_block",
             new FlowerPotBlock(ModBlocks.YAZHEN_BLOCK, AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
+    // endregion
+    
     public static final Block CRAFTER = registerBlocks("crafter",
             new CrafterBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-
-    public static final Block PROTOCOL_STASH = registerBlocksWithoutItem("protocol_stash",
-            new ProtocolStashBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block PROTOCOL_STASH_SIDE = registerBlocks("protocol_stash_side",
-            new ProtocolStashSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_BUS_SECTION = registerBlocksWithoutItem("depot_bus_section",
-            new DepotBusSectionBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_BUS_SECTION_SIDE = registerBlocks("depot_bus_section_side",
-            new DepotBusSectionSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_LOADER = registerBlocksWithoutItem("depot_loader",
-            new DepotLoaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_LOADER_SIDE = registerBlocks("depot_loader_side",
-            new DepotLoaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_UNLOADER = registerBlocksWithoutItem("depot_unloader",
-            new DepotUnloaderBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
-    public static final Block DEPOT_UNLOADER_SIDE = registerBlocks("depot_unloader_side",
-            new DepotUnloaderSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     
     public static final Block FLUID_PUMP = registerBlocksWithoutItem("fluid_pump",
-            new FluidPumpBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
+            new FluidPumpBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FLUID_PUMP_SIDE = registerBlocks("fluid_pump_side",
+            new FluidPumpSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
     public static final Block FLUID_TANK = registerBlocksWithoutItem("fluid_tank",
-            new FluidTankBlock(AbstractBlock.Settings.create().strength(3f).nonOpaque()));
+            new FluidTankBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
+    public static final Block FLUID_TANK_SIDE = registerBlocks("fluid_tank_side",
+            new FluidTankSideBlock(AbstractBlock.Settings.create().strength(0.5f).nonOpaque()));
 
-    public static final Block PIPE_BLOCK = registerBlocks("pipe_block",
-            new PipeBlock(AbstractBlock.Settings.create().strength(1f).nonOpaque()));
-
+    // region Fluids
+    public static final Block SEWAGE_BLOCK = registerBlocksWithoutItem("sewage",
+            new PotionFluidBlock(ModFluids.STILL_SEWAGE,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    public static final Block PRECIPITATION_ACID_BLOCK = registerBlocksWithoutItem("precipitation_acid",
+            new PotionFluidBlock(ModFluids.STILL_PRECIPITATION_ACID,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    
+    public static final Block XIRCON_EFFLUENT_BLOCK = registerBlocksWithoutItem("xircon_effluent",
+            new PotionFluidBlock(ModFluids.STILL_XIRCON_EFFLUENT,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    public static final Block INERT_XIRCON_EFFLUENT_BLOCK = registerBlocksWithoutItem("inert_xircon_effluent",
+            new PotionFluidBlock(ModFluids.STILL_INERT_XIRCON_EFFLUENT,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    public static final Block YAZHEN_SOLUTION_BLOCK = registerBlocksWithoutItem("yazhen_solution",
+            new HealingFluidBlock(ModFluids.STILL_YAZHEN_SOLUTION,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    public static final Block JINCAO_SOLUTION_BLOCK = registerBlocksWithoutItem("jincao_solution",
+            new HealingFluidBlock(ModFluids.STILL_JINCAO_SOLUTION,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    public static final Block LIQUID_XIRANITE_BLOCK = registerBlocksWithoutItem("liquid_xiranite",
+            new FluidBlock(ModFluids.STILL_LIQUID_XIRANITE,
+                    AbstractBlock.Settings.create().noCollision().replaceable().liquid().strength(100.0F)));
+    // endregion
+    
+    
     private static Block registerBlocksWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ArknightsEndfield.MOD_ID, name), block);
     }

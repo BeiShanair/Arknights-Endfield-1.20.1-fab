@@ -1,6 +1,5 @@
 package com.besson.endfield.datagen;
 
-import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

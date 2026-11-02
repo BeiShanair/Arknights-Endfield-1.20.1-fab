@@ -2,8 +2,8 @@ package com.besson.endfield.blockentity.custom.logicitis;
 
 import com.besson.endfield.block.custom.logicitis.BeltBlock;
 import com.besson.endfield.block.custom.logicitis.BeltShape;
-import com.besson.endfield.block.custom.logicitis.DepotLoaderBlock;
 import com.besson.endfield.blockentity.ModBlockEntities;
+import com.besson.endfield.blockentity.custom.depot.DepotLoaderBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;

@@ -1,0 +1,23 @@
+{
+  "name": "水驱矿机",
+  "icon": "arknights_endfield:hydro_mining_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:hydro_mining_rig",
+      "title": "水驱矿机",
+      "text": "水驱矿机是更高级的资源采集设备，可以开采最高级的矿脉类型。$(br2)不消耗电力，但每次开采消耗1000 mB的水 $(efu)$(br)采集速度：每 3 秒 1 个$(br)可开采：原版矿脉、源石矿脉、紫晶矿脉、蓝铁矿脉和赤铜矿脉"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用说明",
+      "text": "水驱矿机需要水来开采，水可通过流体管道运输。$(br2)与前述矿机一样，产物会自动提交到全局仓储。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

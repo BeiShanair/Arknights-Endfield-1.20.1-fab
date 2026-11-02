@@ -8,6 +8,7 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,15 +17,21 @@ public class FillingUnitDisplay implements Display {
     private final List<EntryIngredient> outputs;
 
     public FillingUnitDisplay(FillingUnitRecipe recipe) {
-        this.inputs = recipe.getInput().stream().map(entry -> {
-            List<ItemStack> stacks = Arrays.asList(entry.getIngredient().getMatchingStacks());
+        List<EntryIngredient> inputList = new ArrayList<>(recipe.getInput().stream().map(entry -> {
+            List<ItemStack> stacks = Arrays.asList(entry.ingredient().getMatchingStacks());
             return EntryIngredients.ofItemStacks(
                     stacks.stream().map(stack -> {
                         ItemStack copy = stack.copy();
-                        copy.setCount(entry.getCount());
+                        copy.setCount(entry.count());
                         return copy;
                     }).toList());
-        }).toList();
+        }).toList());
+        
+        if (recipe.requiresFluid()) {
+            inputList.add(EntryIngredients.of(recipe.getRequiredFluid().getFluid(),
+                    recipe.getRequiredFluidAmount()));
+        }
+        this.inputs = List.copyOf(inputList);
 
         this.outputs = List.of(EntryIngredients.of(recipe.getOutput(null)));
     }

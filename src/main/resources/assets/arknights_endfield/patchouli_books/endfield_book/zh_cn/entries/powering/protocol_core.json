@@ -1,0 +1,33 @@
+{
+  "name": "协议核心",
+  "icon": "arknights_endfield:protocol_anchor_core",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_anchor_core",
+      "title": "一切开始的地方",
+      "text": "协议核心是整个工业体系的根基。它是唯二的发电设备（还有个热能池），也是电网的起点。$(br2)发电量：200 $(efu)$(br)内置电池：100,000 $(efu)$(br)占地面积：9x9"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "放置规则",
+      "text": "协议核心需要 9x9 的空旷区域才能放置。区域内不能有任何方块（草、花、水等可被直接替换的方块除外）。$(br2)首次加入世界时，你会自动获得一个协议核心。如果丢失了，那么就开创造再拿一个吧，不能合成。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "工作原理",
+      "text": "协议核心持续产生 200 $(efu) 的电力。这些电力通过电网传输到所有连接的用电设备。$(br2)如果总发电量大于总需求，多余的电力会存入协议核心的内置电池（上限 100,000 $(efu)）。$(br2)如果总需求大于总发电量，电池中的储备电力会自动释放来弥补缺口。$(br)注意，协议核心内部的存储系统独立于全局仓储，未来可能移除。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关设备",
+      "entries": [
+        "arknights_endfield:powering/power_network",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:powering/thermal_bank"
+      ]
+    }
+  ]
+}

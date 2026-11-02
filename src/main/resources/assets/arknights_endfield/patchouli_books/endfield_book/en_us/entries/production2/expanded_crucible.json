@@ -1,0 +1,18 @@
+{
+  "name": "Expanded Crucible",
+  "icon": "arknights_endfield:expanded_crucible",
+  "category": "arknights_endfield:production2",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:expanded_crucible",
+      "title": "Expanded Crucible",
+      "text": "Expanded Crucible can simultaneously process more formulas.$(br2)Power: 100 $(efu)$(br)Speed: 1 item per 2 seconds $(br)Clearance: 5x5"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

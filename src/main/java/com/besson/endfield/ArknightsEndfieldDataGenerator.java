@@ -21,6 +21,7 @@ public class ArknightsEndfieldDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModZhCnLangProvider::new);
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModAdvancementProvider::new);
+		pack.addProvider(ModWelcomePackagesProvider::new);
 	}
 
 	@Override

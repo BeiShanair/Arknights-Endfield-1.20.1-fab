@@ -1,7 +1,10 @@
 package com.besson.endfield.model.block.combat;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.block.custom.combat.HeGrenadeTowerBlock;
 import com.besson.endfield.blockentity.custom.combat.HeGrenadeTowerBlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
@@ -13,11 +16,22 @@ public class HeGrenadeTowerModel extends GeoModel<HeGrenadeTowerBlockEntity> {
 
     @Override
     public Identifier getTextureResource(HeGrenadeTowerBlockEntity heGrenadeTowerBlockEntity) {
+        Block block = heGrenadeTowerBlockEntity.getCachedState().getBlock();
+        if (block instanceof HeGrenadeTowerBlock b) {
+            if (b.getDefaultState().get(HeGrenadeTowerBlock.PREVIEW)) {
+                return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/he_grenade_tower_pre.png");
+            }
+        }
         return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/he_grenade_tower.png");
     }
 
     @Override
     public Identifier getAnimationResource(HeGrenadeTowerBlockEntity heGrenadeTowerBlockEntity) {
         return null;
+    }
+
+    @Override
+    public RenderLayer getRenderType(HeGrenadeTowerBlockEntity animatable, Identifier texture) {
+        return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
     }
 }

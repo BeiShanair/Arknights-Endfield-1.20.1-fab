@@ -1,0 +1,18 @@
+{
+  "name": "扩装铳械塔",
+  "icon": "arknights_endfield:heavy_gun_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:heavy_gun_tower",
+      "title": "扩装铳械塔",
+      "text": "扩装铳械塔是铳械塔的升级版，提供更高的单体伤害输出。$(br2)攻击力：21$(br)攻击范围：15 米$(br)攻击间隔：2 秒$(br)耗电：20 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.math.BlockPos;
 
 public class FluidPumpScreenHandler extends ScreenHandler {
     private final FluidPumpBlockEntity blockEntity;
@@ -17,7 +18,7 @@ public class FluidPumpScreenHandler extends ScreenHandler {
 
     public FluidPumpScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf byteBuf) {
         this(syncId, playerInventory, (FluidPumpBlockEntity) playerInventory.player.getWorld().getBlockEntity(byteBuf.readBlockPos()),
-                new ArrayPropertyDelegate(2));
+                new ArrayPropertyDelegate(4));
     }
     public FluidPumpScreenHandler(int syncId, PlayerInventory playerInventory, FluidPumpBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
         super(ModScreens.FLUID_PUMP_SCREEN, syncId);
@@ -33,6 +34,15 @@ public class FluidPumpScreenHandler extends ScreenHandler {
     }
     public int getFluidCapacity() {
         return this.propertyDelegate.get(1);
+    }
+    public int getStoredPower() {
+        return this.propertyDelegate.get(2);
+    }
+    public int getFluidId() {
+        return this.propertyDelegate.get(3);
+    }
+    public BlockPos getBlockEntityPos() {
+        return this.blockEntity.getPos();
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {

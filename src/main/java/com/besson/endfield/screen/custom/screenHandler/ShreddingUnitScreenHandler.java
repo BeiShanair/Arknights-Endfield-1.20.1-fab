@@ -19,7 +19,7 @@ import java.util.Objects;
 public class ShreddingUnitScreenHandler extends BaseIOScreenHandler<ShreddingUnitBlockEntity> {
     public ShreddingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
 
     public ShreddingUnitScreenHandler(int syncId, PlayerInventory playerInventory, ShreddingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -64,5 +64,9 @@ public class ShreddingUnitScreenHandler extends BaseIOScreenHandler<ShreddingUni
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

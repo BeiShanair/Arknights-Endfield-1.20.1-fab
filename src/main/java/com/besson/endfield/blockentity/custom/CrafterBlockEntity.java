@@ -22,7 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 public class CrafterBlockEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory {
-    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(4, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inv = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     public CrafterBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CRAFTER, pos, state);

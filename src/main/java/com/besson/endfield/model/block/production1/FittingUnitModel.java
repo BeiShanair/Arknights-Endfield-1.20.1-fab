@@ -1,7 +1,10 @@
 package com.besson.endfield.model.block.production1;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.block.custom.production1.FittingUnitBlock;
 import com.besson.endfield.blockentity.custom.production1.FittingUnitBlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
@@ -13,11 +16,22 @@ public class FittingUnitModel extends GeoModel<FittingUnitBlockEntity> {
 
     @Override
     public Identifier getTextureResource(FittingUnitBlockEntity animatable) {
+        Block block = animatable.getCachedState().getBlock();
+        if (block instanceof FittingUnitBlock b) {
+            if (b.getDefaultState().get(FittingUnitBlock.PREVIEW)) {
+                return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/fitting_unit_pre.png");
+            }
+        }
         return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/fitting_unit.png");
     }
 
     @Override
     public Identifier getAnimationResource(FittingUnitBlockEntity animatable) {
         return null;
+    }
+
+    @Override
+    public RenderLayer getRenderType(FittingUnitBlockEntity animatable, Identifier texture) {
+        return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
     }
 }

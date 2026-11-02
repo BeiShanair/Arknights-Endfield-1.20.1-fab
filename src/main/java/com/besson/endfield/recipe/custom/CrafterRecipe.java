@@ -91,6 +91,12 @@ public class CrafterRecipe implements Recipe<Inventory> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
+    
+
     public Map<ItemConvertible, Integer> getRequired() {
         return required;
     }

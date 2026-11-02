@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:packaging_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights_endfield:xiranite"
+    },
+    {
+      "count": 15,
+      "item": "arknights_endfield:dense_originium_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:lc_wuling_battery"
+  }
+}

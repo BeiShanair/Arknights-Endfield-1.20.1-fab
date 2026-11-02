@@ -1,0 +1,23 @@
+{
+  "name": "反应池",
+  "icon": "arknights_endfield:reactor_crucible",
+  "category": "arknights_endfield:production2",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:reactor_crucible",
+      "title": "反应池",
+      "text": "反应池能够同时进行多个配方加工。$(br2)耗电：50 $(efu)$(br)加工速度：每 2 秒 1 个$(br)空地要求：5x5"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "流体输出口",
+      "text": "手持$(l:arknights_endfield:tips/control_terminal)控制终端$()右键反应池的侧面方块，可以把这个侧面绑定到「输出口 1」或「输出口 2」（青色 / 橙色粒子标记），再循环回未绑定。$(br2)绑定后，该侧面的抽取管道只会抽走对应输出槽的液体，两种产物可以同时导出而不串液；未绑定的侧面只能注入，不能被抽取。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

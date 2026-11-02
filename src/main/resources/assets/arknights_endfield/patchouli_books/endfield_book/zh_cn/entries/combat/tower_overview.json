@@ -1,0 +1,39 @@
+{
+  "name": "防御塔概述",
+  "icon": "arknights_endfield:gun_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "自动化防御体系",
+      "text": "模组目前提供了 11 种不同类型的防御塔，可以自动攻击范围内的敌对生物。所有防御塔采用「无实体攻击」机制——直接对目标造成伤害，同时用粒子效果模拟攻击轨迹。$(br2)攻击前会自动取消目标的受击伤害免疫（PHDI），确保高频攻击时不会丢失伤害。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "通用特性",
+      "text": "所有防御塔共享以下特性：$(br)$(li)需要接入电网才能工作$(li)内置 10,000 $(efu) 电池储能$(li)电池充能速度为耗电功率的 20 倍$(li)自动瞄准范围内最近的敌对生物$(li)攻击动画由代码驱动$(br2)防御塔的炮塔部分会自动旋转瞄准目标。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "电力特性",
+      "text": "防御塔只要在供电桩或中继器的范围内即可获得电力——即使电网总电力不足，防御塔仍可从电池中获取能量。$(br2)$(#ff0000)注意：当前版本防御塔暂不支持用电池手动充能，必须通过电网供电。$()"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "查看各防御塔的详细信息：",
+      "entries": [
+        "arknights_endfield:combat/gun_tower",
+        "arknights_endfield:combat/medical_tower",
+        "arknights_endfield:combat/grenade_tower",
+        "arknights_endfield:combat/ln_tower",
+        "arknights_endfield:combat/heavy_gun_tower",
+        "arknights_endfield:combat/omnidirectional_sonic_tower",
+        "arknights_endfield:combat/beam_tower",
+        "arknights_endfield:combat/surge_tower",
+        "arknights_endfield:combat/sentry_tower",
+        "arknights_endfield:combat/he_grenade_tower",
+        "arknights_endfield:combat/marsh_gas_mk1"
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@ import java.util.Optional;
 
 public class PortableOriginiumRigBlockEntity extends BaseRigBlockEntity<OreRigRecipe> implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private int maxProgress = 60;
+    private final int maxProgress = 60;
 
     public PortableOriginiumRigBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.PORTABLE_ORIGINIUM_RIG, pos, state, 60);
@@ -46,11 +46,6 @@ public class PortableOriginiumRigBlockEntity extends BaseRigBlockEntity<OreRigRe
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> PortableOriginiumRigBlockEntity.this.progress = value;
-                    case 1 -> PortableOriginiumRigBlockEntity.this.maxProgress = value;
-                    case 2 -> PortableOriginiumRigBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override

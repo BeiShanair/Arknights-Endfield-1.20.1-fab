@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:moulding_unit",
+  "input": {
+    "count": 3,
+    "item": "minecraft:glass"
+  },
+  "output": {
+    "count": 3,
+    "item": "minecraft:glass_bottle"
+  }
+}

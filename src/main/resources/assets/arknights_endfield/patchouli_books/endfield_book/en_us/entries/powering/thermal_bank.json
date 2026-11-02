@@ -1,0 +1,23 @@
+{
+  "name": "Thermal Bank",
+  "icon": "arknights_endfield:thermal_bank",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:thermal_bank",
+      "title": "Auxiliary Generator",
+      "text": "Thermal Bank is an additional power-generating device. When burning Minecraft fuels (such as coal or charcoal), it consistently generates 150 $(efu) of power; when burning batteries from this mod, it generates varying amounts of power that are significantly higher than those produced by burning regular fuels. $(br2)Base power output: 150 $(efu)$(br)Footprint: 2x2"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "When the power grid is experiencing a shortage, you can add a Thermal Bank to increase total power generation. Thermal Bank can be placed anywhere and connected to the power grid. $(br2) Multiple Thermal Banks can be used in combination, and their power generation capacities add up directly."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

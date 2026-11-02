@@ -1,0 +1,25 @@
+{
+  "name": "物流桥、分流器与汇流器",
+  "icon": "arknights_endfield:belt_bridge",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:belt_bridge",
+      "title": "物流桥",
+      "text": "物流桥允许两条传送带交叉而不互相干扰。放置在交叉点即可，传送带会从物流桥上「跨过」另一条传送带。$(br2)这对于构建复杂的传送带网络非常有用。不过注意，此处所述的三个物品都由传送带触发逻辑。"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:splitter",
+      "title": "分流器",
+      "text": "分流器可以将一条输入分成三路输出。物品会轮流分配到三个输出方向。$(br2)放置在传送带网络中作为分支节点，实现一对多的物品分配。"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:converger",
+      "title": "汇流器",
+      "text": "汇流器将三路输入合并为一路输出。放置在传送带汇合处，实现多对一的物品合并。$(br2)三个输入方向的物品交替通过，不会发生阻塞。"
+    }
+  ]
+}

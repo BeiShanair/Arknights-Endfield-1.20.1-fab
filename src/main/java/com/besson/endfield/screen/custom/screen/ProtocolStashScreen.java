@@ -1,7 +1,7 @@
 package com.besson.endfield.screen.custom.screen;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.blockentity.custom.logicitis.ProtocolStashBlockEntity;
+import com.besson.endfield.blockentity.custom.depot.ProtocolStashBlockEntity;
 import com.besson.endfield.network.ModNetWorking;
 import com.besson.endfield.screen.ToggleIconButton;
 import com.besson.endfield.screen.custom.screenHandler.ProtocolStashScreenHandler;
@@ -28,7 +28,7 @@ public class ProtocolStashScreen extends HandledScreen<ProtocolStashScreenHandle
     @Override
     protected void init() {
         super.init();
-        this.addDrawableChild(new ToggleIconButton(x + 150, y + 1, handler::isEnabled,
+        this.addDrawableChild(new ToggleIconButton(textRenderer, x + 150, y + 1, handler::isEnabled,
                 button -> {
                     PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                     buf.writeBlockPos(entity.getPos());

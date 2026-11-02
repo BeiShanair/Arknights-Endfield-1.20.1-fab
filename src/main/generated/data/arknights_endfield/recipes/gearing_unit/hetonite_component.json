@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:gearing_unit",
+  "input": [
+    {
+      "count": 2,
+      "item": "arknights_endfield:hetonite_part"
+    },
+    {
+      "count": 2,
+      "item": "arknights_endfield:heavy_xiranite"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:hetonite_component"
+  }
+}

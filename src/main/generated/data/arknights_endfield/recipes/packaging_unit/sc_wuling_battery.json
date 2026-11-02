@@ -1,0 +1,17 @@
+{
+  "type": "arknights_endfield:packaging_unit",
+  "input": [
+    {
+      "count": 5,
+      "item": "arknights_endfield:xircon"
+    },
+    {
+      "count": 20,
+      "item": "arknights_endfield:dense_originium_powder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:sc_wuling_battery"
+  }
+}

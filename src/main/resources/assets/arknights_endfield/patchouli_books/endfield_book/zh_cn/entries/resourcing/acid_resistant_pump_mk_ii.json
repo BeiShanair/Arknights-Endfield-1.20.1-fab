@@ -1,0 +1,18 @@
+{
+  "name": "二型耐酸水泵",
+  "icon": "arknights_endfield:acid_resistant_pump_mk_ii",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:acid_resistant_pump_mk_ii",
+      "title": "二型耐酸水泵",
+      "text": "二型耐酸水泵可采集沉积酸。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "将水泵的抽取口放置在水中。水泵会自动开始抽取。$(br2)抽出的水可以通过$(l:arknights_endfield:logistics/pipe)流体管道$()输送到需要液体的设备中。"
+    }
+  ]
+}

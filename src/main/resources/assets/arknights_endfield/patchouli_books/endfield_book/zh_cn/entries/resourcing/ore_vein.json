@@ -1,0 +1,23 @@
+{
+  "name": "矿脉",
+  "icon": "arknights_endfield:originium_mineral_vein_block",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:originium_mineral_vein_block",
+      "title": "矿脉",
+      "text": "矿脉是一种特殊的方块，可以被矿机持续开采，产出无限的矿石资源。每种矿脉对应一种矿石类型。$(br2)矿脉会在世界生成时自然出现，不同矿脉有不同的生成规则。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "矿脉类型",
+      "text": "终末地工业添加了以下专属矿脉：$(br)$(li)源石矿脉 (Originium) ——主世界生成$(li)紫晶矿脉 (Amethyst) ——主世界生成$(li)蓝铁矿脉 (Ferrium) ——主世界生成$(li)赤铜矿脉 (Cuprium) ——主世界生成$(br2)此外，原版矿物（煤炭、铜、铁、金、钻石、绿宝石、青金石、红石）也都有对应的矿脉方块。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "开采方式",
+      "text": "矿脉需要使用矿机来开采。将矿机放置在矿脉上方即可开始自动采集。$(br2)不同等级的矿机可以开采不同种类的矿脉：$(br)$(li)$(l:arknights_endfield:resourcing/portable_rig)便携源石矿机$()——基础矿脉$(li)$(l:arknights_endfield:resourcing/electric_rig)电驱矿机$()——中级矿脉$(li)$(l:arknights_endfield:resourcing/electric_rig_mk2)二型电驱矿机$()——高级矿脉"
+    }
+  ]
+}

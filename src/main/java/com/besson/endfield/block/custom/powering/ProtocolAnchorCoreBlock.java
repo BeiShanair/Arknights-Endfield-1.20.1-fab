@@ -4,6 +4,7 @@ import com.besson.endfield.block.ModBlockEntityWithFacing;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.powering.ProtocolAnchorCoreBlockEntity;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -89,20 +90,18 @@ public class ProtocolAnchorCoreBlock extends ModBlockEntityWithFacing {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (!world.isClient()) {
-            for (BlockPos p : BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
-                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
-                    return false;
-                }
+        for (BlockPos p : BlockPos.iterate(pos.add(4, 0, 4), pos.add(-4, 0, -4))) {
+            if (!MultiBlockPlacementUtil.isReplaceable(world, p)) {
+                return false;
             }
-            return true;
         }
-        return false;
+        return true;
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(Text.translatable("endfield.protocolAnchorCoreTooltip").formatted(Formatting.RED));
         tooltip.add(Text.translatable("endfield.protocolAnchorCoreTooltip2").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("endfield.require_area", "9×9").formatted(Formatting.GRAY));
     }
 }

@@ -1,4 +1,262 @@
 # 更新日志 / Changelog
+## 2026-10-27
+- 补充并修改了一些多方块工业设备的放置逻辑
+- Supplemented and modified the placement logic of some multi-block industrial equipment
+- 增加了帕秋莉手册中关于`控制终端`的部分说明
+- Added some explanations about `Control Terminal` in the Patchouli manual
+- 截至当前，模组`v1.3.1-beta-Fabric`正式封包
+- As of now, the mod `v1.3.1-beta-Fabric` is officially packaged
+
+## 2026-10-26
+- 新增版本化「欢迎 / 更新礼包」系统
+- Added a versioned welcome/update package system
+- `终末地工业指南`、`协议核心` 与四种矿脉方块改为由礼包系统统一发放，移除了原先依赖进度奖励的一次性发放逻辑
+- The `Endfield Industry Guide`, `Protocol Anchor Core` and the four mineral vein blocks are now handled by the package system; removed the old one-shot delivery that relied on advancement rewards
+- 修复了全局仓储 GUI 中 `Shift + 点击` 空槽位导致游戏崩溃的 bug
+- Fixed a crash in the Global Storage GUI when `Shift + clicking` an empty slot
+
+## 2026-10-18
+- 修复了`息壤供电桩`、`息壤中继器`无法为`水泵`供电的bug
+- Fixed the bug that `Xiranite Pylon` and `Xiranite Relay Tower` cannot supply power to `Fluid Pump`
+
+## 2026-10-15
+- 完善了一些工业设备的配方
+- Improved some recipes of industrial equipment
+- 添加了`赤铜瓶`以及相应的瓶装流体
+- Added `Cuprium Bottle` and corresponding bottled fluids
+- 截至当前，模组`v1.3.0-beta-Fabric`正式封包
+- As of now, the mod `v1.3.0-beta-Fabric` is officially packaged
+
+## 2026-10-14
+- 为各矿脉方块添加了相应的合成配方
+- Added corresponding crafting recipes for each ore vein block
+- 为`种植机`、`灌装机`添加了流体模式，并修改了它们的配方
+- Added fluid mode for `Planting Unit` and `Filling Unit`, and modified their recipes
+- 补充了`控制终端`的贴图
+- Added textures for `Control Terminal`
+- 新增了`管道桥`、`管道分流器`、`管道汇流器`三种管道设备，它们的逻辑与传送带类似
+- Added three new pipeline devices: `Pipeline Bridge`, `Pipeline Splitter`, and `Pipeline Converger`. Their logic is similar to conveyor belts. 
+
+## 2026-10-13
+- 完善了帕秋莉手册的部分内容
+- Improved some contents of the Patchouli manual
+- 修正了全局仓储系统的GUI
+- Fixed the GUI of the global storage system
+- 补充了`拆解机`、`水驱矿机`的贴图
+- Added textures for `Separating Unit` and `Hydro Mining Rig`
+- 新增了`紫晶晶簇`、`蓝铁晶簇`和`源石晶簇`三种晶簇方块，它们会随机生成在相应的矿脉方块上方
+- Added three new crystal druse blocks: `Amethyst Druse`, `Ferrium Druse`, and `Originium Druse`. They will randomly generate above the corresponding ore vein blocks.
+
+## 2026-10-12
+- 完善`水驱矿机`、`精炼炉`、`天有烘炉`、`反应池`、`扩容反应池`的`REI`适配
+- Improved `REI` adaptation for `Hydro Mining Rig`, `Refining Unit`, `Forge of the Sky`, `Reaction Pool`, and `Expanded Reaction Pool`
+- 按照原作游戏调整了`精炼炉`的部分配方
+- Adjusted some recipes of `Refining Unit` according to the original game
+- 完善了`天有烘炉`、`反应池`相关配方
+- Improved recipes related to `Forge of the Sky` and `Reaction Pool`
+- 增加了`反应池`GUI上输出槽的悬浮文本
+- Added floating text for the output slot on the `Reaction Pool` GUI
+
+## 2026-10-11
+- 修改了`精炼炉`的部分逻辑，现在切换到非流体模式下，所有流体槽中的流体将会被清空
+- Modified some logic of `Refining Unit`. Now, when switching to non-fluid mode, all fluids in the fluid slots will be cleared.
+- `控制终端`现在也支持以`供电桩`（含`息壤供电桩`）作为电力运输的起点
+- The `Control Terminal` now also accepts `Electric Pylons` (including `Xiranite Pylons`) as the start point of a power transport link
+- `控制终端`的所有提示文本改为使用语言文件，并补齐了中英文本地化
+- All messages of the `Control Terminal` now come from language files, with complete English and Chinese localizations
+
+## 2026-10-10
+- 更新了`精炼炉`、`采种机`的贴图
+- Updated the textures of `Refining Unit` and `Seed-Picking Unit`
+
+## 2026-10-09
+- 更新了`水泵`、`二型耐酸水泵`、`流体管道`、`储液罐`、`废水处理机`、`反应池`、`扩容反应池`的贴图
+- Updated the textures of `Fluid Pump`, `Acid-Resistant Fluid Pump Mk II`, `Fluid Pipeline`, `Fluid Tank`, `Wastewater Treatment Unit`, `Reaction Pool`, and `Expanded Reaction Pool`
+
+## 2026-10-08
+- 正式迭代物品贴图`V1.0`，优化了部分贴图的材质
+- Officially iterated item textures `V1.0`, optimizing the materials of some textures
+- 新增了一些物品
+- Added some new items
+- 更新了`息壤供电桩`、`息壤中继器`、`配件机`、`天有烘炉`的贴图
+- Updated the textures of `Xiranite Pylon`, `Xiranite Relay Tower`, `Fitting Unit`, and `Forge of the Sky`
+
+## 2026-09-20
+- 添加了`废水处理机`，并配置了相应的GUI界面和逻辑
+- Added `Wastewater Treatment Unit`, and configured the corresponding GUI interface and logic
+- 优化了`反应池`流体槽的渲染逻辑，现在根据流体实际储量渲染流体高度，而不是直接绘制整个格子
+- Optimized the rendering logic of the fluid slots in the `Reaction Pool`. Now, the fluid height is rendered based on the actual amount of fluid stored, rather than directly drawing the entire slot.
+
+## 2026-09-16
+- 添加了`二型耐酸水泵`，并配置了相应的GUI界面和逻辑
+- Added `Acid-Resistant Fluid Pump Mk II`, and configured the corresponding GUI interface and logic
+- 为`水泵`和`二型耐酸水泵`添加了电网相关的逻辑
+- Added power grid related logic for `Fluid Pump` and `Acid-Resistant Fluid Pump Mk II`
+- 修改了`水泵`和`二型耐酸水泵`的GUI绘制逻辑，现在它们会根据抽取到的流体类型渲染不同的材质，而不是硬编码
+- Modified the GUI rendering logic of `Fluid Pump` and `Acid-Resistant Fluid Pump Mk II`. Now they will render different textures based on the type of fluid extracted, rather than being hardcoded.
+
+## 2026-09-15
+- 添加了`天有烘炉`，并配置了相应的GUI界面和逻辑
+- Added `Forge of the Sky`, and configured the corresponding GUI interface and logic
+- 修复了`水泵`相关逻辑
+- Fixed the logic related to `Fluid Pump`
+
+## 2026-09-14
+- 添加了`拆解机`，并配置了相应的GUI界面和逻辑
+- Added `Separating Unit`, and configured the corresponding GUI interface and logic
+- 配置了正确的`水泵`模型
+- Configured the correct model for `Fluid Pump`
+
+## 2026-09-09
+- 修复了日志中出现的大多数警告信息
+- Fixed most of the warning messages that appeared in the logs
+- 完整构建`反应池`相关逻辑，并改进了`反应池`的GUI界面
+- Completed the construction of the `Reaction Pool` related logic and improved the GUI interface of the `Reaction Pool`
+
+## 2026-09-08
+- 完善了手册`流体`的部分说明
+- Improved some explanations in the manual `Fluid` section
+- 添加了`息壤供电桩`、`息壤中继器`，其工作原理与`供电桩`、`中继器`类似
+- Added `Xiranite Pylon` and `Xiranite Relay Tower`, which work similarly to `Electric Pylon` and `Relay Tower`
+
+## 2026-09-07
+- 为剩余的工业设备GUI添加了`能量槽`的渲染
+- Added rendering of `energy slot` for the remaining industrial equipment GUIs
+- 合并了一些`GUI`贴图，提高复用性
+- Merged some `GUI` textures to improve reusability
+- 修复了自定义配方出现`Unknown recipe category`警告的问题
+- Fixed the issue of `Unknown recipe category` warning appearing for custom recipes
+- 为一些工业设备添加了`Minecraft`相关的配方，详情参见`REI/JEI`
+- Added `Minecraft` related recipes for some industrial equipment, see `REI/JEI` for details
+
+## 2026-09-06
+- 添加了`壤晶废液`、`惰性壤晶废液`、`芽针溶液`、`锦草溶液`和`液化息壤`五种流体
+- Added five fluids: `Xircon Effluent`, `Inert Xircon Effluent`, `Yazhen Solution`, `Jincao Solution`, and `Liquid Xiranite`
+- 完善了`水驱矿机`的逻辑，它的输入位置在上方
+- Improved the logic of `Hydro Mining Rig`, its input position is on the top
+- 修改了`精炼炉`GUI的绘制逻辑，现在在流体模式下，GUI上将额外绘制两个罐体背景；非流体模式下则没有
+- Modified the drawing logic of the `Refining Unit` GUI. Now, in fluid mode, two additional tank backgrounds will be drawn on the GUI; in non-fluid mode, they will not be drawn.
+
+## 2026-09-05
+- `储液罐`现在通过获取流体的类型来渲染不同颜色的材质，而不是硬编码
+- The `Fluid Tank` now renders different colored textures based on the type of fluid it contains, rather than being hardcoded.
+- `供电桩`、`中继器`顶端渲染的线现在是`黄-淡蓝-黄`的渐变色，而不是单一的黄色
+- The top-rendered lines of `Electric Pylon` and `Relay Tower` are now a gradient of `yellow-light blue-yellow`, rather than a single yellow color.
+
+## 2026-09-03
+- 将`精炼炉`、`采种机`、`配件机`的模型修正为公测版本的模型
+- Corrected the models of `Refining Unit`, `Seed-Picking Unit`, and `Fitting Unit` to the public beta version models
+- 贴图尚未修改，上线版本将会修正贴图，但动画相关内容后续版本再补足
+- The textures have not been modified yet. The textures will be corrected in the online version, but the animation-related content will be supplemented in subsequent versions.
+- 添加`水驱矿机`及相关逻辑，模型目前未绘制贴图，后续补足
+- Added `Hydro Mining Rig` and related logic. The model has not been textured yet, and will be supplemented later.
+
+## 2026-09-01
+- 所有工业设备的渲染距离调整完成
+- All industrial equipment rendering distances have been adjusted
+- 发现全局仓储系统的一个bug，待修复
+- Found a bug in the global storage system, pending fix
+- 添加了`流体模式`的切换开关，并补充了悬浮文本
+- Added a toggle switch for `Fluid Mode` and supplemented the floating text
+
+## 2026-08-31
+- 优化了帕秋莉手册的翻译内容
+- Optimized the translation content of the Patchouli manual
+- 添加了`赤铜矿`的世界生成
+- Added world generation for `Cuprium Ore`
+- 新增`沉积酸`流体，性质与`污水`类似，生物在其中`会受到伤害`；并添加了`沉积酸湖泊`的世界生成
+- Added a new fluid `Precipitation Acid`, which has properties similar to `Sewage`, and Living Entity can be harmed in it; and added world generation for `Precipitation Acid Lakes`.
+
+## 2026-08-01
+- 调整工业设备的渲染距离，现在默认渲染距离为`256`，并且可以在`配置文件`中使用`equipmentRenderDistance`修改
+- Adjusted the rendering distance of industrial equipment. The default rendering distance is now `256`, and it can be modified in the `configuration file` using `equipmentRenderDistance`.
+
+## 2026-07-31
+- 修正帕秋莉手册重复给予的问题，同时模组原先给予物品的逻辑改为`数据驱动`
+- Fixed the issue of Patchouli giving items repeatedly, and changed the logic of the mod originally giving items to be data-driven
+
+## 2026-07-30
+- 现在`传送带`可以通过`配置文件`中的`beltRenderLayer`参数修改渲染层级，默认渲染层级为`translucent`，如果想降低渲染消耗，请将其改为`cutout`
+- Now `Belt` can modify the rendering layer through the `beltRenderLayer` parameter in the `configuration file`. The default rendering layer is `translucent`. If you want to reduce rendering consumption, please change it to `cutout`.
+
+## 2026-07-11 ~ ？？
+- 搓模型中
+- Modeling in progress
+
+## 2026-07-10
+- 完成`反应池`的初步设计，准备后续实装
+- Completed the preliminary design of `Reaction Pool`, ready for subsequent implementation
+
+## 2026-06-22
+- 头脑风暴中，设计猜想`反应池`的运作逻辑
+- Brainstorming, designing the conjectured operation logic of `Reaction Pool`
+
+## 2026-06-15
+- 测试`帕秋莉手册`相关内容，准备实装
+- Test the contents of the `Patchouli`, ready to implement
+- 由于某种原因，开发进程进入停滞阶段，可能需要到7月中旬才能继续开发工作
+- Because of some reasons, the development process has entered a stagnation stage, and it may take until July 2026 to continue the development work
+
+## 2026-05-31
+- 推送更新`v1.0.3`版本，*特别说明*：**此次更新仍未完全实装武陵工业部分，如果确需体验已有内容，请做好存档备份，完全实装请等待下一次大版本（`v1.3.0`）更新**
+- Updated to version `v1.0.3`, *Note*: **This update has not yet fully implemented the Wuling Industrial Parts, if you need to experience the existing content, please make a backup, and fully implement the next major version (`v1.3.0`) update**
+
+## 2026-05-30
+- 优化各工业设备放置逻辑，现在放置范围内如果有可被替换的方块（比如水、草等），也可以正常放置了
+- Now, if there is a replaceable block (such as water or grass) within the placement range, the equipment can be placed normally
+- 完善全部工业设备的放置预览
+- Complete all industrial equipment placement preview
+
+## 2026-05-26
+- 为模组添加了`源石锤`，可以用来锤击工业设备，开启/关闭工业设备的流体模式（仅测试）
+- Added a `Originium Hammer` to process industrial equipment, open/close the industrial equipment's fluid mode（Only Test）
+
+## 2026-05-23
+- 更改`制造台`的GUI界面，现在它与原版的`切石机`界面类似
+- Improved the GUI interface of the `Crafter`, now it is similar to the GUI interface of the `Stone Cutter`
+
+## 2026-05-19
+- 为工业设备添加`能量槽`，可以显示工业设备目前储存的能量
+- Adding an `energy slot` to industrial equipment can display the energy currently stored in the equipment
+
+## 2026-05-18
+- 将前述内容移植至`Forge`端
+- Transplant the aforementioned content to the `Forge`
+
+## 2026-05-15
+- 新增流体`污水`，其性质与水类似，但生物在其中`会受到伤害`
+- The newly added fluid `Sewage` has properties similar to water, but Living Entity can be harmed in it
+- `精炼炉`现在支持流体输入，支持`赤铜矿`加工（仅测试）
+- The `Refining Unit` now supports fluid input, supports processing `cuprium ore` (Only Test)
+
+## 2026-05-14
+- 重启开发，研究武陵工业计划部分
+- Restarted development and researched the Wuling Industrial Plan section
+- 管道现在设计为`传送带`的变种，其放置逻辑和传输逻辑与传送带类似
+- Pipelines are now designed as variants of `Belt`, with similar placement and transportation logic to conveyor belts
+- 在`水泵`中，现在拿着空桶点击GUI上显示流体的槽位时，可以直接从水泵中取出流体，一桶单位为`1B`（1000mB）
+- In the ` Fluid Pump`, now when you hold an empty bucket and click on the slot in the GUI that shows the fluid, you can directly take out the fluid from the pump, with one bucket unit being `1B` (1000mB)
+- 流体工业设备现在显示的流体量单位为`B`
+- The unit of fluid amount displayed in fluid industrial equipment is now `B`
+
+## 2026-05-13
+- 重绘了一部分贴图，但不是最终版本，仍需迭代
+- Part of the texture has been redrawn, but it is not the final version and still needs to be iterated
+
+## 2026-04-21
+- 优化各设备的放置逻辑，在空间不足时将提醒玩家
+- Optimized the placement logic of each device, reminding players when there is insufficient space
+
+## 2026-04-19
+- 全局仓储管理系统的GUI，仓库部分的GUI中，`左键`点击时可取出1个物品，`右键`点击取出该物品最大堆叠上限的一半，`shift + 左键`点击取出该物品的最大堆叠上限个物品；
+- 玩家部分的`物品栏`和`快捷栏`反之，向仓库系统存入物品
+- The GUI of the Global Storage Manager. In the GUI of the storage section, when `left-clicking`, one item can be retrieved. `Right-clicking` retrieves half of the maximum stacking limit for that item. `Shift + left-clicking` retrieves the maximum stacking limit for that item
+- The `player's inventory` and `hotbar` are reversed, and items are stored in the storage manager
+
+## 2026-04-18
+- 调整`工业爆炸物`的爆炸威力至`5`，那么在普通难度下，100%爆炸接触率时，最大的爆炸伤害为`71`
+- Adjusting the explosive power of `industrial explosives` to `5`, the maximum explosive damage at 100% explosive contact rate under normal difficulty is `71`
+
 ## 2026-04-15
 - 为`协议储存箱`配置了开关，可更简单地控制是否通电
 - A switch has been configured for the `Protocol Stash` to more easily control whether it is powered on or not

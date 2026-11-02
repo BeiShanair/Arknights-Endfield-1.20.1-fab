@@ -1,0 +1,18 @@
+{
+  "name": "Gun Tower",
+  "icon": "arknights_endfield:gun_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:gun_tower",
+      "title": "Gun Tower",
+      "text": "The Gun Tower is the most basic defensive turret, providing consistent single-target damage.$(br2)ATK: 6$(br)Attack Range: 15 m$(br)Attack Interval: 2 s$(br)Consumption: 5 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "全局仓储系统",
+  "icon": "minecraft:chest",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "维度级物品存储",
+      "text": "全局仓储管理系统（Global Storage Manager）是一个跨区块、跨维度的物品存储系统。每个维度拥有独立的仓储空间，可以存储任意种类和数量的物品。$(br2)按 G 键即可打开全局仓储 GUI。你可以直接往里面存放或取出物品。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "交互提示",
+      "text": "在 GUI 界面上，上方 54 格区域展示的是仓储系统所存储的物品，可使用「鼠标滚轮」滚动查看未展示的物品；$(br)「鼠标左键」该区域物品槽，可取出该物品槽中的一个物品；$(br)「鼠标右键」该区域物品槽，可取出该物品槽中物品最大堆叠数量一半的物品；$(br)「Shift + 鼠标左键」该区域物品槽，可取出该物品槽中物品最大堆叠数量的物品；$(br)对于下方玩家物品栏和快捷栏则相反，是向仓储系统存入物品；"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "自动化交互",
+      "text": "全局仓储可以与物流系统联动：$(br)$(li)$(l:arknights_endfield:logistics/depot_system)仓库存取系统$()——通过存货口/取货口自动存取$(li)$(l:arknights_endfield:resourcing/electric_rig)电驱矿机$()——自动将产物提交到仓储$(li)$(l:arknights_endfield:logistics/protocol_stash)协议储存箱$()——通电后自动提交$(br2)还可以使用 /storage 指令进行指令操作。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "数据持久化",
+      "text": "全局仓储的数据会自动保存到世界存档中。即使服务器重启或你离开维度，仓储中的物品也不会丢失。$(br2)每个维度的仓储是独立的——主世界的物品不会出现在下界的仓储中，反之亦然。"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "电涌塔",
+  "icon": "arknights_endfield:surge_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:surge_tower",
+      "title": "电涌塔",
+      "text": "电涌塔释放电弧攻击敌人，造成可观的中等伤害。$(br2)攻击力：48$(br)攻击范围：12.5 米$(br)攻击间隔：3 秒$(br)耗电：20 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

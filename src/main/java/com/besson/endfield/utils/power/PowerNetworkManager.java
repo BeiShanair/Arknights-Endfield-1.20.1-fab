@@ -64,14 +64,12 @@ public class PowerNetworkManager {
     }
 
     public void tick() {
-        // 聚合当前发电量 & 当前需求
         int totalGenerated = 0;
         for (GeneratorInfo g : generators.values()) {
             try {
                 int v = Math.max(0, g.generatedSupplier.get());
                 totalGenerated += v;
             } catch (Throwable t) {
-                // 容错
             }
         }
 
@@ -80,8 +78,7 @@ public class PowerNetworkManager {
             try {
                 int d = Math.max(0, c.demandSupplier.get());
                 totalDemand += d;
-            } catch (Throwable t) {
-                // 容错
+            } catch (Throwable ignored) {
             }
         }
 
@@ -110,8 +107,7 @@ public class PowerNetworkManager {
                 int demand = Math.max(0, c.demandSupplier.get());
                 int supply = (int) Math.floor(demand * supplyRatio);
                 c.receivePower.accept(supply);
-            } catch (Throwable t) {
-                // 容错
+            } catch (Throwable ignored) {
             }
         }
 

@@ -20,7 +20,7 @@ public class PlantingUnitScreenHandler extends BaseIOScreenHandler<PlantingUnitB
 
     public PlantingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(8));
     }
 
     public PlantingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PlantingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -65,5 +65,21 @@ public class PlantingUnitScreenHandler extends BaseIOScreenHandler<PlantingUnitB
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
+    }
+    public boolean nowFluidMode() {
+        return propertyDelegate.get(6) == 1;
+    }
+    public int getFluidAmount() {
+        return propertyDelegate.get(4);
+    }
+    public int getFluidCapacity() {
+        return propertyDelegate.get(5);
+    }
+    public int getFluidId() {
+        return propertyDelegate.get(7);
     }
 }

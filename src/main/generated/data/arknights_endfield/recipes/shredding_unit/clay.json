@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:clay"
+  },
+  "output": {
+    "count": 4,
+    "item": "minecraft:clay_ball"
+  }
+}

@@ -15,7 +15,7 @@ public class PortableOriginiumRigScreen extends BaseRigScreen<PortableOriginiumR
 
     @Override
     protected Identifier setTexture() {
-        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/portable_originium_rig.png");
+        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/021_no_power.png");
     }
 
     @Override

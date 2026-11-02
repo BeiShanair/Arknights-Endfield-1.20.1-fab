@@ -29,7 +29,7 @@ public abstract class BaseRigScreen<T extends BaseRigScreenHandler<B>, B extends
     @Override
     protected void init() {
         super.init();
-        this.addDrawableChild(new ToggleIconButton(x + 150, y + 30, handler::isEnabled,
+        this.addDrawableChild(new ToggleIconButton(textRenderer, x + 140, y + 10, handler::isEnabled,
                 button -> {
                     PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                     buf.writeBlockPos(entity.getPos());

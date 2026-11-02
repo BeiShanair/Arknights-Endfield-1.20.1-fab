@@ -1,0 +1,31 @@
+{
+  "name": "Global Power Network",
+  "icon": "arknights_endfield:electric_pylon",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Network Overview",
+      "text": "Endfield Industry uses a Global Power Network Manager (singleton pattern) for cross-chunk, long-distance power transmission. The grid operates independently of chunk loading — power distribution continues even when you're far away.$(br2)Each dimension has its own independent grid instance."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Node System",
+      "text": "The grid uses a node system for connection management:$(br)$(li)Core Node (CORE) — Protocol Core$(li)Relay Node (RELAY) — Relay Tower$(li)Pylon Node (PYLON) — Electric Pylon$(li)Consumer Node (CONSUMER) — powered devices$(br2)Maximum connection distance between nodes is 80 meters."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Distribution Mechanism",
+      "text": "Every tick (1/20s), the network manager:$(br)1. Sums all generator output$(br)2. Sums all consumer demand$(br)3. Calculates supply ratio$(br)4. Distributes power proportionally$(br2)Surplus charges the Protocol Core battery; deficit draws from battery storage."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/relay_tower"
+      ]
+    }
+  ]
+}

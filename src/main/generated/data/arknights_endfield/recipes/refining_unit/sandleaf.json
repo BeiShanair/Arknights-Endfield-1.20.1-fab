@@ -1,7 +1,7 @@
 {
   "type": "arknights_endfield:refining_unit",
   "input": {
-    "count": 3,
+    "count": 1,
     "item": "arknights_endfield:sandleaf"
   },
   "output": {

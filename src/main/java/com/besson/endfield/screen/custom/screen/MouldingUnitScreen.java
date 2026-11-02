@@ -15,7 +15,7 @@ public class MouldingUnitScreen extends BaseIOScreen<MouldingUnitScreenHandler, 
 
     @Override
     protected Identifier setTexture() {
-        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/moulding_unit.png");
+        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/121.png");
     }
 
     @Override
@@ -23,5 +23,13 @@ public class MouldingUnitScreen extends BaseIOScreen<MouldingUnitScreenHandler, 
         if (handler.isCrafting()){
             context.drawTexture(TEXTURE,x + 85, y + 30, 176,0,8,handler.getScaledProgress());
         }
+        renderStoredPowerBar(context, x, y);
+    }
+
+    private void renderStoredPowerBar(DrawContext context, int x, int y) {
+        int storedPower = handler.getStoredPower();
+        int powerHeight = (int) ((10000F - storedPower) / 10000f * 64);
+        if (powerHeight <= 0) return;
+        context.drawTexture(TEXTURE, x + 158, y + 11, 187, 0, 8, powerHeight);
     }
 }

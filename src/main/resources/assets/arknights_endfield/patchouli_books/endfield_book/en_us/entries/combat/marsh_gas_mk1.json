@@ -1,0 +1,18 @@
+{
+  "name": "Marsh Gas MK-I",
+  "icon": "arknights_endfield:marsh_gas_mk_i",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:marsh_gas_mk_i",
+      "title": "Marsh Gas MK-I",
+      "text": "Marsh Gas MK-I inflicts a poison effect on enemies, dealing continuous damage while slowing them down.$(br2)ATK: 54 (+poison)$(br)Attack Range: 18 m$(br)Attack Interval: 5 s$(br)Consumption: 20 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

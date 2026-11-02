@@ -5,23 +5,30 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ThermalBankSideBlockEntity;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ThermalBankBlock extends ModBlockEntityWithFacing {
     public ThermalBankBlock(Settings settings) {
@@ -87,17 +94,14 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (!world.isClient()) {
-            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+        BlockPos[] sidePositions = getAdjacentPositions(state, pos);
 
-            for (BlockPos p : sidePositions) {
-                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
-                    return false;
-                }
+        for (BlockPos p : sidePositions) {
+            if (!MultiBlockPlacementUtil.isReplaceable(world, p)) {
+                return false;
             }
-            return true;
         }
-        return false;
+        return true;
     }
     
     private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
@@ -111,5 +115,10 @@ public class ThermalBankBlock extends ModBlockEntityWithFacing {
                 pos.offset(back).offset(backRight),
                 pos.offset(right)
         };
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        tooltip.add(Text.translatable("endfield.require_area", "2×2").formatted(Formatting.GRAY));
     }
 }

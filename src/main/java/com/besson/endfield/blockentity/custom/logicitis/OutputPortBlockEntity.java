@@ -22,18 +22,14 @@ public class OutputPortBlockEntity extends BlockEntity {
     public static void tick(World world, BlockPos pos, BlockState state, OutputPortBlockEntity be) {
 
         if (world.isClient()) return;
-
-        // 机器方向
         Direction facing = state.get(OutputPortBlock.FACING);
-
-        // 获取机器 Storage
+        
         BlockPos machinePos = pos.offset(facing.getOpposite());
         Storage<ItemVariant> machine =
                 ItemStorage.SIDED.find(world, machinePos, facing);
 
         if (machine == null) return;
-
-        // 传送带方向（反方向）
+        
         BlockPos beltPos = pos.offset(facing);
 
         BlockEntity targetBe = world.getBlockEntity(beltPos);
@@ -55,11 +51,7 @@ public class OutputPortBlockEntity extends BlockEntity {
                 if (extracted > 0) {
 
                     ItemStack stack = variant.toStack((int) extracted);
-
-                    // 提交事务（真正扣除机器物品）
                     tx.commit();
-
-                    // 传给传送带
                     belt.acceptItem(stack, facing.getOpposite());
 
                     return;

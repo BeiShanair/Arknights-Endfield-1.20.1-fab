@@ -1,0 +1,18 @@
+{
+  "name": "Grenade Tower",
+  "icon": "arknights_endfield:grenade_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:grenade_tower",
+      "title": "Grenade Tower",
+      "text": "The Grenade Tower fires grenades that deal area-of-effect (AOE) damage, making it extremely effective against groups of enemies.$(br2)ATK: 9 (AOE)$(br)Attack Range: 12.5 m$(br)Attack Interval: 3 s$(br)Consumption: 10 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

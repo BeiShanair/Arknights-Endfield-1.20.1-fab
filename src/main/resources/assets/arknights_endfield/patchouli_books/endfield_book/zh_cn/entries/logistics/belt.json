@@ -1,0 +1,28 @@
+{
+  "name": "传送带",
+  "icon": "arknights_endfield:belt",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:belt",
+      "title": "传送带",
+      "text": "传送带是物流系统的基础，用于在机器之间传输物品。它采用「被动接受 + 主动推送」的工作模式。$(br2)机器主动将产物推送到传送带，传送带则按方向自动运输到下一格。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "放置技巧",
+      "text": "传送带放置方式类似铁轨。传送带会自动根据连接方向调整形状（直行或转弯）。$(br2)传送带可以悬空放置，无需支撑方块。按住 SHIFT 放置可以更精确地控制连接方向（此方案还需修改）。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "工作原理",
+      "text": "传送带每次只能运输一个物品。物品以恒定速度沿传送带移动，到达末端时会尝试推送到下一个方块。$(br2)推送目标按以下优先级：$(br)1. 另一条传送带$(br)2. 分流器/汇流器$(br)3. 仓库存货口$(br)4. 其他兼容的容器或机器$(br2)如果前方没有有效目标，物品会以掉落物形式吐出。"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "arknights_endfield:belt_from_origocrust",
+      "text": "传送带的合成配方。"
+    }
+  ]
+}

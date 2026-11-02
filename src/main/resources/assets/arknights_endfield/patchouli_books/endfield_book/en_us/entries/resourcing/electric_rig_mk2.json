@@ -1,0 +1,23 @@
+{
+  "name": "Electric Mining Rig Mk-II",
+  "icon": "arknights_endfield:electric_mining_rig_mk_ii",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:electric_mining_rig_mk_ii",
+      "title": "Electric Mining Rig Mk-II",
+      "text": "The highest-tier mining rig, capable of mining the most advanced veins.$(br2)Power Draw: 10 $(efu)$(br)Speed: 1 item per 3 seconds$(br)Mines: all vein types including advanced exclusive veins"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Use this rig when you need to mine advanced veins like Ferrium, Cuprium, and Amethyst.$(br2)Like the Electric Mining Rig, output goes to Global Storage automatically. Must be within pylon supply range."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

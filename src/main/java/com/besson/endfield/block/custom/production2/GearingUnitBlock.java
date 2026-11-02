@@ -5,6 +5,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.production2.GearingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.production2.GearingUnitSideBlockEntity;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -93,17 +94,14 @@ public class GearingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (!world.isClient()) {
-            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+        BlockPos[] sidePositions = getAdjacentPositions(state, pos);
 
-            for (BlockPos p : sidePositions) {
-                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
-                    return false;
-                }
+        for (BlockPos p : sidePositions) {
+            if (!MultiBlockPlacementUtil.isReplaceable(world, p)) {
+                return false;
             }
-            return true;
         }
-        return false;
+        return true;
     }
     
     private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
@@ -131,5 +129,6 @@ public class GearingUnitBlock extends ModBlockEntityWithFacing {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(Text.translatable("endfield.powerCost", 10).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("endfield.require_area", "6×4").formatted(Formatting.GRAY));
     }
 }

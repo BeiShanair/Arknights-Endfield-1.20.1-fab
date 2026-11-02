@@ -1,0 +1,18 @@
+{
+  "name": "哨戒塔",
+  "icon": "arknights_endfield:sentry_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:sentry_tower",
+      "title": "哨戒塔",
+      "text": "哨戒塔拥有最远的攻击范围和极高的伤害，但攻击间隔稍长。$(br2)攻击力：116$(br)攻击范围：20 米$(br)攻击间隔：5 秒$(br)耗电：20 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

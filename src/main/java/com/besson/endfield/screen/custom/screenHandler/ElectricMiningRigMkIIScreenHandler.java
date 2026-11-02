@@ -19,7 +19,7 @@ import java.util.Objects;
 public class ElectricMiningRigMkIIScreenHandler extends BaseRigScreenHandler<ElectricMiningRigMkIIBlockEntity> {
     public ElectricMiningRigMkIIScreenHandler(int sync, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(sync, playerInventory, Objects.requireNonNull(getClientEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
     public ElectricMiningRigMkIIScreenHandler(int syncId, PlayerInventory playerInventory, ElectricMiningRigMkIIBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
         super(ModScreens.ELECTRIC_MINING_RIG_MK_II_SCREEN, syncId,playerInventory, blockEntity, propertyDelegate, 1);
@@ -62,5 +62,9 @@ public class ElectricMiningRigMkIIScreenHandler extends BaseRigScreenHandler<Ele
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

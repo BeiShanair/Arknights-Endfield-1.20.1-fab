@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:seed_picking_unit",
+  "input": {
+    "item": "minecraft:pumpkin"
+  },
+  "output": {
+    "count": 2,
+    "item": "minecraft:pumpkin_seeds"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "arknights_endfield:forge_of_the_sky",
+  "fluid": {
+    "amount": 5000,
+    "id": "arknights_endfield:xircon_effluent"
+  },
+  "input": {
+    "count": 10,
+    "item": "arknights_endfield:xiranite"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:heavy_xiranite"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "arknights_endfield:crafter",
+  "input": {
+    "arknights_endfield:cuprium_ore": 64,
+    "arknights_endfield:dense_originium_powder": 64,
+    "arknights_endfield:xiranite": 64
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:cuprium_mineral_vein_block"
+  }
+}

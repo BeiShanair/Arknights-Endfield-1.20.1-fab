@@ -12,24 +12,42 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        // region Powering
         translationBuilder.add(ModItems.PROTOCOL_ANCHOR_CORE_ITEM, "Protocol Automation-Core");
         translationBuilder.add(ModItems.RELAY_TOWER_ITEM, "Relay Tower");
         translationBuilder.add(ModItems.ELECTRIC_PYLON_ITEM, "Electric Pylon");
+        translationBuilder.add(ModItems.XIRANITE_PYLON_ITEM, "Xiranite Pylon");
+        translationBuilder.add(ModItems.XIRANITE_RELAY_ITEM, "Xiranite Relay");
+        translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "Thermal Unit");
+        // endregion
+        // region Resourcing
         translationBuilder.add(ModItems.ELECTRIC_MINING_RIG_ITEM, "Electric Mining Rig");
         translationBuilder.add(ModItems.ELECTRIC_MINING_RIG_MK_II_ITEM, "Electric Mining Rig Mk II");
         translationBuilder.add(ModItems.PORTABLE_ORIGINIUM_RIG_ITEM, "Portable Originium Rig");
+        translationBuilder.add(ModBlocks.FLUID_PUMP, "Fluid Pump");
+        translationBuilder.add(ModBlocks.ACID_RESISTANT_PUMP_MK_II, "Acid-Resistant Pump Mk.II");
+        translationBuilder.add(ModItems.HYDRO_MINING_RIG_ITEM, "Hydro Mining Rig");
+        // endregion
+        // region Production1
         translationBuilder.add(ModItems.REFINING_UNIT_ITEM, "Refining Unit");
         translationBuilder.add(ModItems.SHREDDING_UNIT_ITEM, "Shredding Unit");
-        translationBuilder.add(ModItems.FILLING_UNIT_ITEM, "Filling Unit");
-        translationBuilder.add(ModItems.FITTING_UNIT_ITEM, "Fitting Unit");
-        translationBuilder.add(ModItems.GEARING_UNIT_ITEM, "Gearing Unit");
-        translationBuilder.add(ModItems.GRINDING_UNIT_ITEM, "Grinding Unit");
-        translationBuilder.add(ModItems.MOULDING_UNIT_ITEM, "Moulding Unit");
-        translationBuilder.add(ModItems.PACKAGING_UNIT_ITEM, "Packaging Unit");
         translationBuilder.add(ModItems.PLANTING_UNIT_ITEM, "Planting Unit");
         translationBuilder.add(ModItems.SEED_PICKING_UNIT_ITEM, "Seed-Picking Unit");
-        translationBuilder.add(ModItems.THERMAL_BANK_ITEM, "Thermal Unit");
-
+        translationBuilder.add(ModItems.MOULDING_UNIT_ITEM, "Moulding Unit");
+        translationBuilder.add(ModItems.FITTING_UNIT_ITEM, "Fitting Unit");
+        translationBuilder.add(ModItems.WATER_TREATMENT_UNIT_ITEM, "Water Treatment Unit");
+        // endregion
+        // region Production2
+        translationBuilder.add(ModItems.FILLING_UNIT_ITEM, "Filling Unit");
+        translationBuilder.add(ModItems.GEARING_UNIT_ITEM, "Gearing Unit");
+        translationBuilder.add(ModItems.GRINDING_UNIT_ITEM, "Grinding Unit");
+        translationBuilder.add(ModItems.PACKAGING_UNIT_ITEM, "Packaging Unit");
+        translationBuilder.add(ModItems.SEPARATING_UNIT_ITEM, "Separating Unit");
+        translationBuilder.add(ModItems.REACTOR_CRUCIBLE, "Reactor Crucible");
+        translationBuilder.add(ModItems.EXPANDED_CRUCIBLE, "Expanded Crucible");
+        translationBuilder.add(ModItems.FORGE_OF_THE_SKY, "Forge Of The Sky");
+        // endregion
+        // region Ores
         translationBuilder.add(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, "Amethyst Mineral Vein");
         translationBuilder.add(ModBlocks.COAL_MINERAL_VEIN_BLOCK, "Coal Mineral Vein");
         translationBuilder.add(ModBlocks.COPPER_MINERAL_VEIN_BLOCK, "Copper Mineral Vein");
@@ -50,18 +68,26 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK, "Ferrium Mineral Vein");
         translationBuilder.add(ModBlocks.FERRIUM_ORE_BLOCK, "Ferrium Ore");
         translationBuilder.add(ModBlocks.ORIGINIUM_ORE_BLOCK, "Originium Ore");
-
+        // endregion
+        // region Logistics
         translationBuilder.add(ModBlocks.BELT, "Belt");
         translationBuilder.add(ModBlocks.BELT_BRIDGE, "Belt Bridge");
         translationBuilder.add(ModBlocks.CONVERGER, "Converger");
         translationBuilder.add(ModBlocks.SPLITTER, "Splitter");
         translationBuilder.add(ModBlocks.OUTPUT_PORT_BLOCK, "Output Port");
         translationBuilder.add(ModBlocks.FLUID_PIPE, "Fluid Pipe");
-
-        translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
+        translationBuilder.add(ModBlocks.PIPE_BRIDGE, "Pipe Bridge");
+        translationBuilder.add(ModBlocks.PIPE_CONVERGER, "Pipe Converger");
+        translationBuilder.add(ModBlocks.PIPE_SPLITTER, "Pipe Splitter");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_PORT, "Protocol Automation-Core Port");
         translationBuilder.add(ModBlocks.PROTOCOL_ANCHOR_CORE_SIDE, "Protocol Automation-Core Side");
-
+        translationBuilder.add(ModItems.PROTOCOL_STASH_ITEM, "Protocol Stash");
+        translationBuilder.add(ModItems.DEPOT_BUS_SECTION_ITEM, "Depot Bus Section");
+        translationBuilder.add(ModItems.DEPOT_LOADER_ITEM, "Depot Loader");
+        translationBuilder.add(ModItems.DEPOT_UNLOADER_ITEM, "Depot Unloader");
+        translationBuilder.add(ModBlocks.FLUID_TANK, "Fluid Tank");
+        // endregion
+        // region Combat
         translationBuilder.add(ModBlocks.BEAM_TOWER, "Beam Tower");
         translationBuilder.add(ModBlocks.GUN_TOWER, "Gun Tower");
         translationBuilder.add(ModBlocks.HEAVY_GUN_TOWER, "Heavy Gun Tower");
@@ -73,12 +99,8 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlocks.MARSH_GAS_MK_I, "Marsh Gas Mk.I");
         translationBuilder.add(ModBlocks.OMNIDIRECTIONAL_SONIC_TOWER, "Omnidirectional Sonic Tower");
         translationBuilder.add(ModBlocks.SURGE_TOWER, "Surge Tower");
-
-        translationBuilder.add(ModItems.PROTOCOL_STASH_ITEM, "Protocol Stash");
-        translationBuilder.add(ModItems.DEPOT_BUS_SECTION_ITEM, "Depot Bus Section");
-        translationBuilder.add(ModItems.DEPOT_LOADER_ITEM, "Depot Loader");
-        translationBuilder.add(ModItems.DEPOT_UNLOADER_ITEM, "Depot Unloader");
-
+        // endregion
+        // region Core Tooltip
         translationBuilder.add("endfield.range", "Attack Range: %s m");
         translationBuilder.add("endfield.attack", "ATK: %s");
         translationBuilder.add("endfield.cooldown", "Attack Interval: %s s");
@@ -86,19 +108,50 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
 
         translationBuilder.add("endfield.protocolAnchorCoreTooltip", "Can't Synthesize");
         translationBuilder.add("endfield.protocolAnchorCoreTooltip2", "Suggest setting the chunk for placement to always load");
-
-        translationBuilder.add(ModBlocks.FLUID_PUMP, "Fluid Pump");
-        translationBuilder.add(ModBlocks.FLUID_TANK, "Fluid Tank");
-
+        
+        translationBuilder.add("protocol_anchor_core_port.tooltip1", "After breaking the block around the protocol core and placing it, you can input and output items");
+        translationBuilder.add("protocol_anchor_core_port.tooltip2", "Right click on an item - set it to only output that item");
+        translationBuilder.add("protocol_anchor_core_port.tooltip3", "Right click on empty hand - open the GUI");
+        translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift+right-click on empty hand - cancel the output filtering restriction");
+        // endregion
+        // region Fluid Buckets
+        translationBuilder.add(ModItems.SEWAGE_BUCKET, "Sewage Bucket");
+        translationBuilder.add(ModItems.PRECIPITATION_ACID_BUCKET, "Precipitation Acid Bucket");
+        translationBuilder.add(ModItems.XIRCON_EFFLUENT_BUCKET, "Xircon Effluent Bucket");
+        translationBuilder.add(ModItems.INERT_XIRCON_EFFLUENT_BUCKET, "Inert Xircon Effluent Bucket");
+        translationBuilder.add(ModItems.YAZHEN_SOLUTION_BUCKET, "Yazhen Solution Bucket");
+        translationBuilder.add(ModItems.JINCAO_SOLUTION_BUCKET, "Jincao Solution Bucket");
+        translationBuilder.add(ModItems.LIQUID_XIRANITE_BUCKET, "Liquid Xiranite Bucket");
+        // endregion
+        // region Fluid Bottles
+        String[][] bottledMaterials = {
+                {"amethyst", "Amethyst"}, {"ferrium", "Ferrium"}, {"cryston", "Cryston"},
+                {"steel", "Steel"}, {"hetonite", "Hetonite"}, {"cuprium", "Cuprium"}};
+        String[][] bottledFluids = {
+                {"water", "Water"}, {"sewage", "Sewage"}, {"precipitation_acid", "Precipitation Acid"},
+                {"xircon_effluent", "Xircon Effluent"}, {"inert_xircon_effluent", "Inert Xircon Effluent"},
+                {"yazhen_solution", "Yazhen Solution"}, {"jincao_solution", "Jincao Solution"},
+                {"liquid_xiranite", "Liquid Xiranite"}};
+        for (String[] material : bottledMaterials) {
+            for (String[] fluid : bottledFluids) {
+                translationBuilder.add("item.arknights_endfield." + material[0] + "_bottled_" + fluid[0],
+                        material[1] + " Bottle (" + fluid[1] + ")");
+            }
+        }
+        // endregion
+        translationBuilder.add(ModBlocks.CRAFTER, "Crafter");
+        
+        translationBuilder.add(ModBlocks.AMETHYST_DRUSE, "Amethyst Druse");
+        translationBuilder.add(ModBlocks.FERRIUM_DRUSE, "Ferrium Druse");
+        translationBuilder.add(ModBlocks.ORIGINIUM_DRUSE, "Originium Druse");
+        
         translationBuilder.add(ModItems.AGGAGRIT, "Aggagrit");
         translationBuilder.add(ModItems.AGGAGRIT_BLOCK, "Aggagrit Block");
         translationBuilder.add(ModItems.AGGAGRIT_CLUSTER, "Aggagrit Cluster");
         translationBuilder.add(ModItems.AKETINE, "Aketine");
-        translationBuilder.add("item.arknights_endfield.aketine", "Aketine");
         translationBuilder.add(ModItems.AKETINE_POWDER, "Aketine Powder");
         translationBuilder.add(ModItems.AKETINE_SEED, "Aketine Seed");
         translationBuilder.add(ModItems.AMBER_RICE, "Amber Rice");
-        translationBuilder.add("item.arknights_endfield.amber_rice", "Amber Rice");
         translationBuilder.add(ModItems.AMBER_RICE_SEED, "Amber Rice Seed");
         translationBuilder.add(ModItems.AMETHYST_BOTTLE, "Amethyst Bottle");
         translationBuilder.add(ModItems.AMETHYST_COMPONENT, "Amethyst Component");
@@ -113,7 +166,6 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BIZARRO_CHILI, "Bizarro Chili");
         translationBuilder.add(ModItems.BLANCHED_REMEDY, "Blanched Remedy");
         translationBuilder.add(ModItems.BUCKFLOWER, "Buckflower");
-        translationBuilder.add("item.arknights_endfield.buckflower", "Buckflower");
         translationBuilder.add(ModItems.BUCKFLOWER_POWDER, "Buckflower Powder");
         translationBuilder.add(ModItems.BUCKFLOWER_SEED, "Buckflower Seed");
         translationBuilder.add(ModItems.BUCKPILL_L, "Buckpill L");
@@ -133,7 +185,6 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CHITIN_BIT, "Chitin Bit");
         translationBuilder.add(ModItems.CITROBUCKY_MIX, "Citrobucky Mix");
         translationBuilder.add(ModItems.CITROME, "Citrome");
-        translationBuilder.add("item.arknights_endfield.citrome", "Citrome");
         translationBuilder.add(ModItems.CITROME_JAM, "Citrome Jam");
         translationBuilder.add(ModItems.CITROME_JELLY, "Citrome Jelly");
         translationBuilder.add(ModItems.CITROME_POWDER, "Citrome Powder");
@@ -156,6 +207,7 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.CUPRIUM_ORE, "Cuprium Ore");
         translationBuilder.add(ModItems.CUPRIUM_PART, "Cuprium Part");
         translationBuilder.add(ModItems.CUPRIUM_POWDER, "Cuprium Powder");
+        translationBuilder.add(ModItems.CUPRIUM_BOTTLE, "Cuprium Bottle");
         translationBuilder.add(ModItems.DENSE_CARBON_POWDER, "Dense Carbon Powder");
         translationBuilder.add(ModItems.DENSE_FERRIUM_POWDER, "Dense Ferrium Powder");
         translationBuilder.add(ModItems.DENSE_ORIGINIUM_POWDER, "Dense Originium Powder");
@@ -169,12 +221,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.FILLET, "Fillet");
         translationBuilder.add(ModItems.FILLET_CONFIT, "Fillet Confit");
         translationBuilder.add(ModItems.FIREBUCKLE, "Firebuckle");
-        translationBuilder.add("item.arknights_endfield.firebuckle", "Firebuckle");
         translationBuilder.add(ModItems.FIREBUCKLE_POWDER, "Firebuckle Powder");
         translationBuilder.add(ModItems.FIRESTOVE_RICE, "Firestove Rice");
         translationBuilder.add(ModItems.FIRETACK, "Firetack");
         translationBuilder.add(ModItems.FLUFFED_JINCAO, "Fluffed Jincao");
-        translationBuilder.add("item.arknights_endfield.fluffed_jincao", "Fluffed Jincao");
         translationBuilder.add(ModItems.FLUFFED_JINCAO_POWDER, "Fluffed Jincao Powder");
         translationBuilder.add(ModItems.FORTIFYING_INFUSION, "Fortifying Infusion");
         translationBuilder.add(ModItems.GARDEN_FRIED_RICE, "Garden Fried Rice");
@@ -190,7 +240,6 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.HOT_CRUNCHY_RIBS, "Hot Crunchy Ribs");
         translationBuilder.add(ModItems.INDUSTRIAL_EXPLOSIVE, "Industrial Explosive");
         translationBuilder.add(ModItems.JINCAO, "Jincao");
-        translationBuilder.add("item.arknights_endfield.jincao", "Jincao");
         translationBuilder.add(ModItems.JINCAO_DRINK, "Jincao Drink");
         translationBuilder.add(ModItems.JINCAO_INFUSION, "Jincao Infusion");
         translationBuilder.add(ModItems.JINCAO_POWDER, "Jincao Powder");
@@ -210,13 +259,10 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PERPLEXING_MEDICATION, "Perplexing Medication");
         translationBuilder.add(ModItems.PRESERVE_STEW, "Preserve Stew");
         translationBuilder.add(ModItems.REDJADE_GINSENG, "Redjade Ginseng");
-        translationBuilder.add("item.arknights_endfield.redjade_ginseng", "Redjade Ginseng");
         translationBuilder.add(ModItems.REDJADE_GINSENG_SEED, "Redjade Ginseng Seed");
         translationBuilder.add(ModItems.REED_RYE, "Reed Rye");
-        translationBuilder.add("item.arknights_endfield.reed_rye", "Reed Rye");
         translationBuilder.add(ModItems.REED_RYE_SEED, "Reed Rye Seed");
         translationBuilder.add(ModItems.SANDLEAF, "Sandleaf");
-        translationBuilder.add("item.arknights_endfield.sandleaf", "Sandleaf");
         translationBuilder.add(ModItems.SANDLEAF_POWDER, "Sandleaf Powder");
         translationBuilder.add(ModItems.SANDLEAF_SEED, "Sandleaf Seed");
         translationBuilder.add(ModItems.SAVORY_FILLET, "Savory Fillet");
@@ -234,31 +280,41 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.STEEL_JAR, "Steel Jar");
         translationBuilder.add(ModItems.STEEL_PART, "Steel Part");
         translationBuilder.add(ModItems.TARTPEPPER, "Tartpepper");
-        translationBuilder.add("item.arknights_endfield.tartpepper", "Tartpepper");
         translationBuilder.add(ModItems.TARTPEPPER_PICKLE, "Tartpepper Pickle");
         translationBuilder.add(ModItems.TARTPEPPER_SALAD, "Tartpepper Salad");
         translationBuilder.add(ModItems.TARTPEPPER_SEED, "Tartpepper Seed");
         translationBuilder.add(ModItems.THORNY_YAZHEN, "Thorny Yazhen");
-        translationBuilder.add("item.arknights_endfield.thorny_yazhen", "Thorny Yazhen");
         translationBuilder.add(ModItems.THORNY_YAZHEN_POWDER, "Thorny Yazhen Powder");
         translationBuilder.add(ModItems.UMBRALINE, "Umbraline");
-        translationBuilder.add("item.arknights_endfield.umbraline", "Umbraline");
         translationBuilder.add(ModItems.VALLEY_GRAYBREAD, "Valley Graybread");
         translationBuilder.add(ModItems.WOOD, "Wood");
         translationBuilder.add(ModItems.WULING_FRIED_RICE, "Wuling Fried Rice");
         translationBuilder.add(ModItems.YAZHEN, "Yazhen");
-        translationBuilder.add("item.arknights_endfield.yazhen", "Yazhen");
         translationBuilder.add(ModItems.YAZHEN_POWDER, "Yazhen Powder");
         translationBuilder.add(ModItems.YAZHEN_SEED, "Yazhen Seed");
         translationBuilder.add(ModItems.YAZHEN_SPRAY_L, "Yazhen Spray L");
         translationBuilder.add(ModItems.YAZHEN_SPRAY_S, "Yazhen Spray S");
         translationBuilder.add(ModItems.YAZHEN_SYRINGE_A, "Yazhen Syringe A");
         translationBuilder.add(ModItems.YAZHEN_SYRINGE_C, "Yazhen Syringe C");
-
+        
+        translationBuilder.add(ModItems.XIRANITE, "Xiranite");
+        translationBuilder.add(ModItems.HEAVY_XIRANITE, "Heavy Xiranite");
+        translationBuilder.add(ModItems.HETONITE, "Hetonite");
+        translationBuilder.add(ModItems.HETONITE_BOTTLE, "Hetonite Bottle");
+        translationBuilder.add(ModItems.HETONITE_PART, "Hetonite Part");
+        translationBuilder.add(ModItems.HETONITE_COMPONENT, "Hetonite Component");
+        translationBuilder.add(ModItems.LC_WULING_BATTERY, "LC Wuling Battery");
+        translationBuilder.add(ModItems.SC_WULING_BATTERY, "Sc Wuling Battery");
+        translationBuilder.add(ModItems.XIRANITE_COMPONENT, "Xiranite Component");
+        translationBuilder.add(ModItems.XIRCON, "Xircon");
+        
+        // region BlockEntity Names
         translationBuilder.add("blockEntity.portable_originium_rig", "Portable Originium Rig");
+        translationBuilder.add("blockEntity.hydro_mining_rig", "Hydro Mining Rig");
         translationBuilder.add("blockEntity.protocol_anchor_core", "Protocol Automation-Core");
         translationBuilder.add("blockEntity.thermal_bank", "Thermal Bank");
         translationBuilder.add("blockEntity.refining_unit", "Refining Unit");
+        translationBuilder.add("blockEntity.water_treatment_unit", "Water Treatment Unit");
         translationBuilder.add("blockEntity.gearing_unit", "Gearing Unit");
         translationBuilder.add("blockEntity.electric_mining_rig", "Electric Mining Rig");
         translationBuilder.add("blockEntity.electric_mining_rig_mk_ii", "Electric Mining Rig Mk II");
@@ -277,26 +333,71 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("block.protocol_anchor_core_port", "Protocol Automation-Core Port");
         translationBuilder.add("screen.supply_terminal.level", "Level: %s");
         translationBuilder.add("blockEntity.depot_unloader", "Depot Unloader");
-
+        translationBuilder.add("blockEntity.fluid_tank", "Fluid Tank");
+        translationBuilder.add("blockEntity.reactor_crucible", "Reactor Crucible");
+        translationBuilder.add("blockEntity.expanded_crucible", "Expanded Crucible");
+        translationBuilder.add("blockEntity.separating_unit", "Separating Unit");
+        translationBuilder.add("blockEntity.forge_of_the_sky", "Forge of the Sky");
+        translationBuilder.add("blockEntity.acid_resistant_pump_mk_ii", "Acid-Resistant Pump Mk.II");
+        // endregion
+        // region Screen Translations
         translationBuilder.add("screen.protocol_core.buffer", "Stored:");
         translationBuilder.add("screen.protocol_core.storedEnergy", " %s /");
         translationBuilder.add("screen.protocol_core.max", "%s");
         translationBuilder.add("screen.protocol_core.generated", "Gen. %s");
         translationBuilder.add("screen.protocol_core.consumer", "%s Con.");
-        translationBuilder.add("tooltip.water_pump.fluid", "Water: %s / %s mB");
+        translationBuilder.add("screen.global_storage", "Global Storage");
+        // endregion
+        // region Tooltip Translations
+        translationBuilder.add("tooltip.water_pump.fluid", "Water: %s / %s B");
+        translationBuilder.add("tooltip.water_pump.fluid_type", "%s: %s / %s B");
         translationBuilder.add("tooltip.water_pump.empty", "Empty");
-        
-        translationBuilder.add("key.endfield.open_storage", "Open Storage");
-        translationBuilder.add("category.endfield", "Endfield Industry");
+        translationBuilder.add("tooltip.fluid_pump.stored_power", "Power: %s EFU");
+        translationBuilder.add("tooltip.refining_unit.stored_power", "Power: %s EFU");
 
+        translationBuilder.add("tooltip.refining_unit.empty", "Empty");
+        translationBuilder.add("tooltip.refining_unit.sewage", "Sewage: %s / %s B");
+        translationBuilder.add("tooltip.refining_unit.sewage_empty", "No Sewage");
+        translationBuilder.add("tooltip.filling_unit.tank", "Fluid: %s / %s B");
+        translationBuilder.add("tooltip.filling_unit.tank_empty", "Empty");
+        translationBuilder.add("tooltip.planting_unit.tank", "Fluid: %s / %s B");
+        translationBuilder.add("tooltip.planting_unit.tank_empty", "Empty");
+
+        translationBuilder.add("tooltip.water_treatment_unit.empty", "Empty");
+        translationBuilder.add("tooltip.water_treatment_unit.fluid", "%s: %s / %s B");
+        translationBuilder.add("tooltip.water_treatment_unit.stored_power", "Power: %s EFU");
+
+        translationBuilder.add("tooltip.separating_unit.fluid", "%s: %s / %s B");
+        translationBuilder.add("tooltip.separating_unit.fluid_empty", "Empty");
+        translationBuilder.add("tooltip.separating_unit.stored_power", "Power: %s EFU");
+
+        translationBuilder.add("tooltip.crucible.item_output", "Item Output");
+        translationBuilder.add("tooltip.crucible.fluid_output", "Fluid Output");
+        translationBuilder.add("tooltip.crucible.unset", "Not set");
+        translationBuilder.add("tooltip.crucible.click_clear", "Click to clear");
+        // endregion
+        // region Fluid Translations
+        translationBuilder.add("fluid.arknights_endfield.sewage", "Sewage");
+        translationBuilder.add("block.arknights_endfield.sewage", "Sewage");
+        translationBuilder.add("fluid.arknights_endfield.xircon_effluent", "Xiron Effluent");
+        translationBuilder.add("block.arknights_endfield.xircon_effluent", "Xiron Effluent");
+        translationBuilder.add("fluid.arknights_endfield.inert_xircon_effluent", "Inert Xircon Effluent");
+        translationBuilder.add("block.arknights_endfield.inert_xircon_effluent", "Inert Xircon Effluent");
+        translationBuilder.add("fluid.arknights_endfield.yazhen_solution", "Yazhen Solution");
+        translationBuilder.add("block.arknights_endfield.yazhen_solution", "Yazhen Solution");
+        translationBuilder.add("fluid.arknights_endfield.jincao_solution", "Jincao Solution");
+        translationBuilder.add("block.arknights_endfield.jincao_solution", "Jincao Solution");
+        translationBuilder.add("fluid.arknights_endfield.liquid_xiranite", "Liquid Xiranite");
+        translationBuilder.add("block.arknights_endfield.liquid_xiranite", "Liquid Xiranite");
+        // endregion
+        // region Command Translations
         translationBuilder.add("commands.endfield.deposit", "Items already deposited %s");
         translationBuilder.add("commands.endfield.withdraw", "Items have been retrieved %s");
         translationBuilder.add("commands.endfield.cap", "The storage limit has been set to %s");
         translationBuilder.add("commands.endfield.deposit.warn", "§cInsufficient items! You only have %s§c, but you need %s");
         translationBuilder.add("commands.endfield.cap.negative", "§cThe input value is negative!");
-
-        translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
-
+        // endregion
+        // region Advancement Translations
         translationBuilder.add("advancement.endfield.root.title", "Arknights Endfield");
         translationBuilder.add("advancement.endfield.root.description", "Welcome to Arknights Endfield!");
         translationBuilder.add("advancement.endfield.originium_ore.title", "Originium Ore");
@@ -339,19 +440,51 @@ public class ModEnUsLangProvider extends FabricLanguageProvider {
         translationBuilder.add("advancement.endfield.grinding_unit.description", "Grind materials.");
         translationBuilder.add("advancement.endfield.packaging_unit.title", "Packaging Unit");
         translationBuilder.add("advancement.endfield.packaging_unit.description", "Package products.");
+        // endregion
         
+        
+        translationBuilder.add(ModItems.ORIGINIUM_HAMMER, "Originium Hammer");
+        
+        // region Control Item
+        translationBuilder.add(ModItems.CONTROL_ITEM, "Control Terminal");
+        translationBuilder.add("message.control_item.pipe_mode.transfer", "Pipe switched to default mode (pure transfer)");
+        translationBuilder.add("message.control_item.pipe_mode.extract", "Pipe switched to extract mode");
+        translationBuilder.add("message.control_item.pipe_mode.insert", "Pipe switched to insert mode");
+        translationBuilder.add("message.control_item.crucible_port.bound", "This side is bound to fluid output %s: extraction pipes here only pull fluid from output slot %s");
+        translationBuilder.add("message.control_item.crucible_port.unbound", "This side is unbound from fluid outputs: it can only be inserted into, not extracted from");
+        translationBuilder.add("message.control_item.start_recorded", "Power transport started. Start point recorded: %s, %s, %s");
+        translationBuilder.add("message.control_item.completed", "Power transport complete! Start: %s,%s,%s -> End: %s,%s,%s");
+        translationBuilder.add("message.control_item.no_start", "No start point recorded. Sneak-right-click a Relay Tower, an Electric Pylon or the Protocol Core to start power transport!");
+        // endregion
+        
+        // region Other Translations
+        translationBuilder.add("itemGroup.arknights_endfield", "Arknights Endfield");
+        
+        translationBuilder.add("endfield.fluid_mode.open", "Fluid Mode: Open");
+        translationBuilder.add("endfield.fluid_mode.close", "Fluid Mode: Close");
+        translationBuilder.add("endfield.fluid_mode.blocked", "No room above for fluid mode tanks");
+        translationBuilder.add("endfield.switch_button.enable", "Enable");
+        translationBuilder.add("endfield.switch_button.disable", "Disable");
+        
+        translationBuilder.add("message.no_enough_area", "There is not enough area to place it");
+        translationBuilder.add("endfield.require_area", "Required Area: %s");
+        
+        translationBuilder.add("protocol_stash.tooltip", "Submit stored items every 10 seconds while powered on");
+        translationBuilder.add("depot_unloader.tooltip", "It needs to be placed closely to the Depot Bus Section in order to work");
         translationBuilder.add("belt.tooltip", "When placed side by side, holding down SHIFT can achieve better results");
-        translationBuilder.add("protocol_anchor_core_port.tooltip1", "After breaking the block around the protocol core and placing it, you can input and output items");
-        translationBuilder.add("protocol_anchor_core_port.tooltip2", "Right click on an item - set it to only output that item");
-        translationBuilder.add("protocol_anchor_core_port.tooltip3", "Right click on empty hand - open the GUI");
-        translationBuilder.add("protocol_anchor_core_port.tooltip4", "Shift+right-click on empty hand - cancel the output filtering restriction");
         
+        translationBuilder.add("key.endfield.open_storage", "Open Storage");
+        translationBuilder.add("category.endfield", "Endfield Industry");
+
         translationBuilder.add("electric_pylon.title", "Power Network State:");
         translationBuilder.add("electric_pylon.total_generated", "Total Generated: %s");
         translationBuilder.add("electric_pylon.total_demand", "Total Demand: %s");
         translationBuilder.add("electric_pylon.stored_power", "Stored Power: %s");
-        
-        translationBuilder.add("protocol_stash.tooltip", "Submit stored items every 10 seconds while powered on");
-        translationBuilder.add("depot_unloader.tooltip", "It needs to be placed closely to the Depot Bus Section in order to work");
+
+        // region Welcome package
+        translationBuilder.add("message.arknights_endfield.welcome_package", "Endfield Industry: the updated starter kit has been delivered to your inventory.");
+        translationBuilder.add("message.arknights_endfield.welcome_package_dropped", "Inventory full — %s package item(s) dropped at your feet, pick them up before they despawn.");
+        // endregion
+        // endregion
     }
 }

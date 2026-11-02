@@ -38,3 +38,8 @@ hs_err_*.log
 replay_*.log
 *.hprof
 *.jfr
+
+# misc
+/CLAUDE.md
+/.workbuddy/
+/tools/

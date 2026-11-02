@@ -1,0 +1,19 @@
+{
+  "type": "arknights_endfield:reactor_crucible",
+  "input": [
+    {
+      "count": 1,
+      "item": "arknights_endfield:jincao_powder"
+    },
+    {
+      "amount": 1000,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "output": [
+    {
+      "amount": 1000,
+      "fluid": "arknights_endfield:jincao_solution"
+    }
+  ]
+}

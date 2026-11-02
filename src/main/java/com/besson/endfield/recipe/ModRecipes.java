@@ -63,9 +63,23 @@ public class ModRecipes {
         Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, PackagingUnitRecipe.Type.ID),
                 PackagingUnitRecipe.Type.INSTANCE);
 
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, SeparatingUnitRecipe.Serializer.ID),
+                SeparatingUnitRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, SeparatingUnitRecipe.Type.ID),
+                SeparatingUnitRecipe.Type.INSTANCE);
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, ReactorCrucibleRecipe.Serializer.ID),
+                ReactorCrucibleRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, ReactorCrucibleRecipe.Type.ID),
+                ReactorCrucibleRecipe.Type.INSTANCE);
+
         Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, CrafterRecipe.Serializer.ID),
                 CrafterRecipe.Serializer.INSTANCE);
         Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, CrafterRecipe.Type.ID),
                 CrafterRecipe.Type.INSTANCE);
+
+        Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(ArknightsEndfield.MOD_ID, ForgeOfTheSkyRecipe.Serializer.ID),
+                ForgeOfTheSkyRecipe.Serializer.INSTANCE);
+        Registry.register(Registries.RECIPE_TYPE, new Identifier(ArknightsEndfield.MOD_ID, ForgeOfTheSkyRecipe.Type.ID),
+                ForgeOfTheSkyRecipe.Type.INSTANCE);
     }
 }

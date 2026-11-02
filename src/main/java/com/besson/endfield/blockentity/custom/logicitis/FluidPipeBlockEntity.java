@@ -1,12 +1,12 @@
 package com.besson.endfield.blockentity.custom.logicitis;
 
 import com.besson.endfield.block.custom.logicitis.FluidPipeBlock;
+import com.besson.endfield.block.custom.logicitis.FluidPipeShape;
 import com.besson.endfield.blockentity.ModBlockEntities;
-import com.besson.endfield.blockentity.custom.resourcing.FluidPumpBlockEntity;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
+import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -14,147 +14,238 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 public class FluidPipeBlockEntity extends BlockEntity {
 
-    public static final long CAPACITY = 1000;
-    public static final long TRANSFER_RATE = 100;
+    public static final long CAPACITY = 2000;
+    public FluidVariant storedFluid = FluidVariant.blank();
+    public long storedAmount = 0;
+    public Direction travelDirection = null;
+    public PipeMode mode = PipeMode.TRANSFER;
 
-    private final SingleVariantStorage<FluidVariant> tank =
-            new SingleVariantStorage<>() {
-
-                @Override
-                protected FluidVariant getBlankVariant() {
-                    return FluidVariant.blank();
-                }
-
-                @Override
-                protected long getCapacity(FluidVariant fluidVariant) {
-                    return CAPACITY;
-                }
-
-                @Override
-                protected void onFinalCommit() {
-                    markDirty();
-                }
-            };
-
-    private final Map<Direction, Long> lastReceivedTick = new EnumMap<>(Direction.class);
+    private int tickCounter = 0;
 
     public FluidPipeBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FLUID_PIPE, pos, state);
     }
 
-    public Storage<FluidVariant> getFluidStorage(@Nullable Direction direction) {
-        if (direction == null) return null;
-
-        return tank;
-    }
-
-    private static BooleanProperty propertyFor(Direction dir) {
-        return switch (dir) {
-            case NORTH -> FluidPipeBlock.NORTH;
-            case SOUTH -> FluidPipeBlock.SOUTH;
-            case EAST -> FluidPipeBlock.EAST;
-            case WEST -> FluidPipeBlock.WEST;
-            case UP -> FluidPipeBlock.UP;
-            case DOWN -> FluidPipeBlock.DOWN;
-        };
-    }
-
-    public static void tick(World world, BlockPos pos, BlockState state, FluidPipeBlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, FluidPipeBlockEntity be) {
         if (world.isClient()) return;
 
-        long availableInTank = blockEntity.tank.getAmount();
-        if (availableInTank == 0) return;
+        be.tickCounter++;
+        if (be.tickCounter < 20) return;
+        be.tickCounter = 0;
 
-        FluidVariant fluid = blockEntity.tank.getResource();
-        if (fluid.isBlank()) return;
+        BlockState currentState = world.getBlockState(pos);
 
-        for (Direction dir : Direction.values()) {
-            BooleanProperty prop = propertyFor(dir);
-            if (!state.get(prop)) continue; // 该方向未连接，跳过
+        if (be.mode == PipeMode.EXTRACT && be.storedFluid.isBlank() && be.storedAmount == 0) {
+            be.tryExtractFromNeighbor(world, pos, currentState);
+        }
 
-            BlockPos targetPos = pos.offset(dir);
+        if (be.storedFluid.isBlank() || be.storedAmount == 0) return;
+        if (be.travelDirection == null) return;
 
-            // 优先判断目标是否为管道：如果是管道，比较其 tank 状态决定是否推送
-            BlockEntity neighborBe = world.getBlockEntity(targetPos);
-            if (neighborBe instanceof FluidPipeBlockEntity targetPipe) {
-                FluidVariant targetVariant = targetPipe.tank.getResource();
-                long targetAmount = targetPipe.tank.getAmount();
+        int pushResult = be.tryPushToStorage(world, pos, currentState);
+        if (pushResult == 1) {
+            be.resetFluid();
+            return;
+        } else if (pushResult == 0) {
+            be.markDirty();
+            world.updateListeners(pos, currentState, currentState, 3);
+            return;
+        }
 
-                // 只在目标未满且（目标为空或与当前同种流体且目标量小于当前管道量）时才推送
-                boolean sameOrEmpty = targetVariant.isBlank() || targetVariant.equals(fluid);
-                boolean notFull = targetAmount < CAPACITY;
-                boolean targetLessThanSource = targetAmount < blockEntity.tank.getAmount();
+        boolean moved = be.tryPushForward(world, pos, currentState);
+        if (!moved) {
+            be.markDirty();
+            world.updateListeners(pos, currentState, currentState, 3);
+        } else {
+            be.resetFluid();
+        }
+    }
 
-                if (!(notFull && sameOrEmpty && targetLessThanSource)) {
-                    continue; // 不满足推送条件，跳过该方向
-                }
-            }
+    public void resetFluid() {
+        this.storedFluid = FluidVariant.blank();
+        this.storedAmount = 0;
+        this.travelDirection = null;
+    }
+    
+    private void tryExtractFromNeighbor(World world, BlockPos pos, BlockState state) {
+        FluidPipeShape shape = state.get(FluidPipeBlock.SHAPE);
+        for (Direction side : FluidPipeBlock.getConnections(shape)) {
+            BlockPos neighborPos = pos.offset(side);
+            if (world.getBlockEntity(neighborPos) instanceof FluidPipeBlockEntity) continue;
 
-            if (neighborBe instanceof FluidPumpBlockEntity) continue;
-
-            // 找到目标的 storage（可能不是管道也能接受）
-            Storage<FluidVariant> target = FluidStorage.SIDED.find(world, targetPos, dir.getOpposite());
-            if (target == null) continue;
-
-            // 计算本次最大尝试量（不超过当前管内量）
-            long maxAttempt = Math.min(availableInTank, TRANSFER_RATE);
-            if (maxAttempt == 0) continue;
+            Storage<FluidVariant> storage = FluidStorage.SIDED.find(world, neighborPos, side.getOpposite());
+            if (storage == null) continue;
 
             try (Transaction tx = Transaction.openOuter()) {
-                long accepted = target.insert(fluid, maxAttempt, tx);
-                if (accepted == 0) {
-                    // 插入不接受，事务结束回滚
-                    continue;
-                }
+                for (StorageView<FluidVariant> view : storage) {
+                    FluidVariant variant = view.getResource();
+                    if (variant.isBlank() || view.getAmount() <= 0) continue;
 
-                long extracted = blockEntity.tank.extract(fluid, accepted, tx);
-                if (extracted != accepted) {
-                    // 无法从 tank 中提取期望量，回滚
-                    continue;
+                    long extracted = storage.extract(variant, Math.min(CAPACITY, view.getAmount()), tx);
+                    if (extracted > 0) {
+                        this.storedFluid = variant;
+                        this.storedAmount = extracted;
+                        this.travelDirection = side;
+                        tx.commit();
+                        markDirty();
+                        world.updateListeners(pos, state, state, 3);
+                        return;
+                    }
                 }
-
-                // 提取与插入量匹配，提交事务
-                tx.commit();
-                // 更新本地可用量，避免对后续方向重复使用已传出的量
-                availableInTank -= extracted;
-                if (availableInTank == 0) break;
             }
         }
+    }
+
+    private int tryPushToStorage(World world, BlockPos pos, BlockState state) {
+        if (this.mode != PipeMode.INSERT) return -1;
+        if (this.storedFluid.isBlank()) return -1;
+
+        FluidPipeShape shape = state.get(FluidPipeBlock.SHAPE);
+        Direction next = FluidPipeBlock.getNextDirection(shape, this.travelDirection);
+        if (next == null) return -1;
+
+        BlockPos outputPos = FluidPipeBlock.getNextPos(pos, shape, next);
+        BlockEntity targetBe = world.getBlockEntity(outputPos);
+
+        if (targetBe instanceof FluidPipeBlockEntity) return -1;
+
+        Storage<FluidVariant> storage = FluidStorage.SIDED.find(world, outputPos, next.getOpposite());
+        if (storage == null) return -1;
+
+        try (Transaction tx = Transaction.openOuter()) {
+            long inserted = storage.insert(this.storedFluid, this.storedAmount, tx);
+            if (inserted > 0) {
+                this.storedAmount -= inserted;
+                if (this.storedAmount <= 0) {
+                    this.storedFluid = FluidVariant.blank();
+                    this.storedAmount = 0;
+                }
+                tx.commit();
+                markDirty();
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    }
+
+    private boolean tryPushForward(World world, BlockPos pos, BlockState state) {
+        FluidPipeShape shape = state.get(FluidPipeBlock.SHAPE);
+
+        Direction next = FluidPipeBlock.getNextDirection(shape, this.travelDirection);
+        if (next == null) return false;
+
+        BlockPos forwardPos = FluidPipeBlock.getNextPos(pos, shape, next);
+        BlockEntity forwardBe = world.getBlockEntity(forwardPos);
+
+        if (forwardBe instanceof PipeBridgeBlockEntity bridge) {
+            return bridge.tryPassThrough(world, forwardPos, next, this);
+        }
+        if (forwardBe instanceof PipeSplitterBlockEntity splitter) {
+            return splitter.tryDistribute(world, forwardPos, next, this);
+        }
+        if (forwardBe instanceof PipeConvergerBlockEntity converger) {
+            return converger.tryMerge(world, forwardPos, next, this);
+        }
+
+        if (forwardBe instanceof FluidPipeBlockEntity forwardPipe) {
+            if (forwardPipe.canAcceptFrom(next.getOpposite())) {
+                forwardPipe.acceptFluid(this.storedFluid, this.storedAmount, next.getOpposite());
+                return true;
+            }
+            return false;
+        } else if (world.getBlockEntity(forwardPos.down()) instanceof FluidPipeBlockEntity b) {
+            if (b.canAcceptFrom(next.getOpposite())) {
+                b.acceptFluid(this.storedFluid, this.storedAmount, next.getOpposite());
+                return true;
+            }
+            return false;
+        }
+
+        if (this.mode != PipeMode.INSERT) return false;
+
+        Storage<FluidVariant> storage = FluidStorage.SIDED.find(world, forwardPos, next.getOpposite());
+        if (storage != null) {
+            try (Transaction tx = Transaction.openOuter()) {
+                long inserted = storage.insert(this.storedFluid, this.storedAmount, tx);
+                if (inserted > 0) {
+                    this.storedAmount -= inserted;
+                    if (this.storedAmount <= 0) {
+                        this.storedFluid = FluidVariant.blank();
+                        this.storedAmount = 0;
+                    }
+                    tx.commit();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean canAcceptFrom(Direction from) {
+        if (!this.storedFluid.isBlank() || this.storedAmount > 0) return false;
+
+        BlockState state = world.getBlockState(pos);
+        FluidPipeShape shape = state.get(FluidPipeBlock.SHAPE);
+        Direction[] connections = FluidPipeBlock.getConnections(shape);
+        return from == connections[0] || from == connections[1];
+    }
+
+    public void acceptFluid(FluidVariant fluid, long amount, Direction from) {
+        if (!this.storedFluid.isBlank() || this.storedAmount > 0) return;
+
+        this.storedFluid = fluid;
+        this.storedAmount = amount;
+        this.travelDirection = from;
+
+        markDirty();
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        NbtCompound tankNbt = new NbtCompound();
-        tank.writeNbt(tankNbt);
-        nbt.put("Tank", tankNbt);
+        nbt.putLong("storedAmount", storedAmount);
+        if (!this.storedFluid.isBlank()) {
+            nbt.put("storedFluid", this.storedFluid.toNbt());
+        }
+        if (this.travelDirection != null) {
+            nbt.putInt("travelDirection", this.travelDirection.getId());
+        }
+        nbt.putInt("mode", this.mode.ordinal());
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (!nbt.contains("Tank")) return;
+        this.storedAmount = nbt.getLong("storedAmount");
+        if (nbt.contains("storedFluid")) {
+            this.storedFluid = FluidVariant.fromNbt(nbt.getCompound("storedFluid"));
+        } else {
+            this.storedFluid = FluidVariant.blank();
+        }
+        if (nbt.contains("travelDirection")) {
+            this.travelDirection = Direction.byId(nbt.getInt("travelDirection"));
+        } else {
+            this.travelDirection = null;
+        }
+        if (nbt.contains("mode")) {
+            int id = nbt.getInt("mode");
+            this.mode = (id >= 0 && id < PipeMode.values().length) ? PipeMode.values()[id] : PipeMode.TRANSFER;
+        } else {
+            this.mode = PipeMode.TRANSFER;
+        }
+    }
 
-        NbtCompound tankNbt = nbt.getCompound("Tank");
-
-        FluidVariant variant =
-                FluidVariant.fromNbt(tankNbt.getCompound("variant"));
-
-        long amount = tankNbt.getLong("amount");
-
-        tank.variant = amount == 0 ? FluidVariant.blank() : variant;
-        tank.amount = amount;
+    @Override
+    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     @Override
@@ -162,8 +253,17 @@ public class FluidPipeBlockEntity extends BlockEntity {
         return this.createNbt();
     }
 
-    @Override
-    public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
-        return BlockEntityUpdateS2CPacket.create(this);
+    public enum PipeMode {
+        TRANSFER,
+        EXTRACT,
+        INSERT;
+
+        public PipeMode next() {
+            return switch (this) {
+                case TRANSFER -> EXTRACT;
+                case EXTRACT -> INSERT;
+                case INSERT -> TRANSFER;
+            };
+        }
     }
 }

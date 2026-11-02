@@ -1,0 +1,15 @@
+{
+  "type": "arknights_endfield:separating_unit",
+  "input": {
+    "count": 1,
+    "item": "minecraft:water_bucket"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:bucket"
+  },
+  "output_fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  }
+}

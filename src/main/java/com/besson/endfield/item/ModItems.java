@@ -2,75 +2,136 @@ package com.besson.endfield.item;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
+import com.besson.endfield.fluid.ModFluids;
 import com.besson.endfield.item.custom.*;
 import com.besson.endfield.item.custom.combat.*;
-import com.besson.endfield.item.custom.logicitis.DepotLoaderItem;
-import com.besson.endfield.item.custom.logicitis.DepotUnloaderItem;
-import com.besson.endfield.item.custom.powering.ElectricPylonItem;
-import com.besson.endfield.item.custom.powering.ProtocolAnchorCoreItem;
-import com.besson.endfield.item.custom.powering.RelayTowerItem;
-import com.besson.endfield.item.custom.powering.ThermalBankItem;
+import com.besson.endfield.item.custom.depot.DepotLoaderItem;
+import com.besson.endfield.item.custom.depot.DepotUnloaderItem;
+import com.besson.endfield.item.custom.powering.*;
 import com.besson.endfield.item.custom.production1.*;
-import com.besson.endfield.item.custom.production2.FillingUnitItem;
-import com.besson.endfield.item.custom.production2.GearingUnitItem;
-import com.besson.endfield.item.custom.production2.GrindingUnitItem;
-import com.besson.endfield.item.custom.production2.PackagingUnitItem;
-import com.besson.endfield.item.custom.resourcing.ElectricMiningRigItem;
-import com.besson.endfield.item.custom.resourcing.ElectricMiningRigMkIIItem;
-import com.besson.endfield.item.custom.resourcing.FluidPumpItem;
-import com.besson.endfield.item.custom.resourcing.PortableOriginiumRigItem;
-import com.besson.endfield.item.custom.logicitis.DepotBusSectionItem;
-import com.besson.endfield.item.custom.logicitis.ProtocolStashItem;
+import com.besson.endfield.item.custom.production2.*;
+import com.besson.endfield.item.custom.resourcing.*;
+import com.besson.endfield.item.custom.depot.DepotBusSectionItem;
+import com.besson.endfield.item.custom.depot.ProtocolStashItem;
 import net.minecraft.block.Block;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class ModItems {
+    // region Powering
     public static final Item PROTOCOL_ANCHOR_CORE_ITEM = registerItems("protocol_anchor_core",
             new ProtocolAnchorCoreItem(ModBlocks.PROTOCOL_ANCHOR_CORE, new Item.Settings().rarity(Rarity.EPIC)));
     public static final Item RELAY_TOWER_ITEM = registerItems("relay_tower",
             new RelayTowerItem(ModBlocks.RELAY_TOWER, new Item.Settings()));
     public static final Item ELECTRIC_PYLON_ITEM = registerItems("electric_pylon",
             new ElectricPylonItem(ModBlocks.ELECTRIC_PYLON, new Item.Settings()));
+    public static final Item XIRANITE_PYLON_ITEM = registerItems("xiranite_pylon",
+            new XiranitePylonItem(ModBlocks.XIRANITE_PYLON, new Item.Settings()));
+    public static final Item XIRANITE_RELAY_ITEM = registerItems("xiranite_relay",
+            new XiraniteRelayItem(ModBlocks.XIRANITE_RELAY, new Item.Settings()));
+    public static final Item THERMAL_BANK_ITEM = registerSameBlockItem("thermal_bank",
+            new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    // endregion
+    // region Resourcing
     public static final Item ELECTRIC_MINING_RIG_ITEM = registerItems("electric_mining_rig",
             new ElectricMiningRigItem(ModBlocks.ELECTRIC_MINING_RIG, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item ELECTRIC_MINING_RIG_MK_II_ITEM = registerItems("electric_mining_rig_mk_ii",
             new ElectricMiningRigMkIIItem(ModBlocks.ELECTRIC_MINING_RIG_MK_II, new Item.Settings().rarity(Rarity.RARE)));
     public static final Item PORTABLE_ORIGINIUM_RIG_ITEM = registerItems("portable_originium_rig",
             new PortableOriginiumRigItem(ModBlocks.PORTABLE_ORIGINIUM_RIG, new Item.Settings()));
-
-    public static final Item REFINING_UNIT_ITEM = registerSameBlockItem("refining_unit",
-            new RefiningUnitItem(ModBlocks.REFINING_UNIT, new Item.Settings()), ModBlocks.REFINING_UNIT_SIDE);
-    public static final Item SHREDDING_UNIT_ITEM = registerSameBlockItem("shredding_unit",
-            new ShreddingUnitItem(ModBlocks.SHREDDING_UNIT, new Item.Settings()), ModBlocks.SHREDDING_UNIT_SIDE);
-    public static final Item FILLING_UNIT_ITEM = registerSameBlockItem("filling_unit",
-            new FillingUnitItem(ModBlocks.FILLING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.FILLING_UNIT_SIDE);
-    public static final Item FITTING_UNIT_ITEM = registerSameBlockItem("fitting_unit",
-            new FittingUnitItem(ModBlocks.FITTING_UNIT, new Item.Settings().rarity(Rarity.UNCOMMON)), ModBlocks.FITTING_UNIT_SIDE);
-    public static final Item GEARING_UNIT_ITEM = registerSameBlockItem("gearing_unit",
-            new GearingUnitItem(ModBlocks.GEARING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.GEARING_UNIT_SIDE);
-    public static final Item GRINDING_UNIT_ITEM = registerSameBlockItem("grinding_unit",
-            new GrindingUnitItem(ModBlocks.GRINDING_UNIT, new Item.Settings().rarity(Rarity.EPIC)), ModBlocks.GRINDING_UNIT_SIDE);
-    public static final Item MOULDING_UNIT_ITEM = registerSameBlockItem("moulding_unit",
-            new MouldingUnitItem(ModBlocks.MOULDING_UNIT, new Item.Settings().rarity(Rarity.UNCOMMON)), ModBlocks.MOULDING_UNIT_SIDE);
-    public static final Item PACKAGING_UNIT_ITEM = registerSameBlockItem("packaging_unit",
-            new PackagingUnitItem(ModBlocks.PACKAGING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.PACKAGING_UNIT_SIDE);
-    public static final Item PLANTING_UNIT_ITEM = registerSameBlockItem("planting_unit",
-            new PlantingUnitItem(ModBlocks.PLANTING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.PLANTING_UNIT_SIDE);
-    public static final Item SEED_PICKING_UNIT_ITEM = registerSameBlockItem("seed_picking_unit",
-            new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings().rarity(Rarity.RARE)), ModBlocks.SEED_PICKING_UNIT_SIDE);
-    public static final Item THERMAL_BANK_ITEM = registerSameBlockItem("thermal_bank",
-            new ThermalBankItem(ModBlocks.THERMAL_BANK, new Item.Settings().rarity(Rarity.UNCOMMON)), ModBlocks.THERMAL_BANK_SIDE);
-
+    public static final Item HYDRO_MINING_RIG_ITEM = registerItems("hydro_mining_rig",
+            new HydroMiningRigItem(ModBlocks.HYDRO_MINING_RIG, new Item.Settings()));
     public static final Item FLUID_PUMP_ITEM = registerItems("fluid_pump",
             new FluidPumpItem(ModBlocks.FLUID_PUMP, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item ACID_RESISTANT_PUMP_MK_II_ITEM = registerItems("acid_resistant_pump_mk_ii",
+            new AcidResistantPumpMkIIItem(ModBlocks.ACID_RESISTANT_PUMP_MK_II, new Item.Settings().rarity(Rarity.RARE)));
+    // endregion
+    // region Production1
+    public static final Item REFINING_UNIT_ITEM = registerSameBlockItem("refining_unit",
+            new RefiningUnitItem(ModBlocks.REFINING_UNIT, new Item.Settings()));
+    public static final Item SHREDDING_UNIT_ITEM = registerSameBlockItem("shredding_unit",
+            new ShreddingUnitItem(ModBlocks.SHREDDING_UNIT, new Item.Settings()));
+    public static final Item FITTING_UNIT_ITEM = registerSameBlockItem("fitting_unit",
+            new FittingUnitItem(ModBlocks.FITTING_UNIT, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item PLANTING_UNIT_ITEM = registerSameBlockItem("planting_unit",
+            new PlantingUnitItem(ModBlocks.PLANTING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item SEED_PICKING_UNIT_ITEM = registerSameBlockItem("seed_picking_unit",
+            new SeedPickingUnitItem(ModBlocks.SEED_PICKING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item WATER_TREATMENT_UNIT_ITEM = registerItems("water_treatment_unit",
+            new WaterTreatmentUnitItem(ModBlocks.WATER_TREATMENT_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    // endregion
+    // region Production2
+    public static final Item FILLING_UNIT_ITEM = registerSameBlockItem("filling_unit",
+            new FillingUnitItem(ModBlocks.FILLING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item GEARING_UNIT_ITEM = registerSameBlockItem("gearing_unit",
+            new GearingUnitItem(ModBlocks.GEARING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item GRINDING_UNIT_ITEM = registerSameBlockItem("grinding_unit",
+            new GrindingUnitItem(ModBlocks.GRINDING_UNIT, new Item.Settings().rarity(Rarity.EPIC)));
+    public static final Item MOULDING_UNIT_ITEM = registerSameBlockItem("moulding_unit",
+            new MouldingUnitItem(ModBlocks.MOULDING_UNIT, new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final Item PACKAGING_UNIT_ITEM = registerSameBlockItem("packaging_unit",
+            new PackagingUnitItem(ModBlocks.PACKAGING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item SEPARATING_UNIT_ITEM = registerItems("separating_unit",
+            new SeparatingUnitItem(ModBlocks.SEPARATING_UNIT, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item FORGE_OF_THE_SKY = registerItems("forge_of_the_sky",
+            new ForgeOfTheSkyItem(ModBlocks.FORGE_OF_THE_SKY, new Item.Settings().rarity(Rarity.EPIC)));
+    public static final Item REACTOR_CRUCIBLE = registerSameBlockItem("reactor_crucible",
+            new ReactorCrucibleItem(ModBlocks.REACTOR_CRUCIBLE, new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item EXPANDED_CRUCIBLE = registerSameBlockItem("expanded_crucible",
+            new ExpandedCrucibleItem(ModBlocks.EXPANDED_CRUCIBLE, new Item.Settings().rarity(Rarity.RARE)));
+    // endregion
+    // region Logistics
+    public static final Item PROTOCOL_STASH_ITEM = registerItems("protocol_stash",
+            new ProtocolStashItem(ModBlocks.PROTOCOL_STASH, new Item.Settings()));
+    public static final Item DEPOT_BUS_SECTION_ITEM = registerItems("depot_bus_section",
+            new DepotBusSectionItem(ModBlocks.DEPOT_BUS_SECTION, new Item.Settings()));
+    public static final Item DEPOT_LOADER_ITEM = registerItems("depot_loader",
+            new DepotLoaderItem(ModBlocks.DEPOT_LOADER, new Item.Settings()));
+    public static final Item DEPOT_UNLOADER_ITEM = registerItems("depot_unloader",
+            new DepotUnloaderItem(ModBlocks.DEPOT_UNLOADER, new Item.Settings()));
     public static final Item FLUID_TANK_ITEM = registerItems("fluid_tank",
             new FluidTankItem(ModBlocks.FLUID_TANK, new Item.Settings().rarity(Rarity.RARE)));
-    
+    // endregion
+    // region Fluid Buckets
+    public static final Item SEWAGE_BUCKET = registerItems("sewage_bucket",
+            new BucketItem(ModFluids.STILL_SEWAGE,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item PRECIPITATION_ACID_BUCKET = registerItems("precipitation_acid_bucket",
+            new BucketItem(ModFluids.STILL_PRECIPITATION_ACID,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item XIRCON_EFFLUENT_BUCKET = registerItems("xircon_effluent_bucket",
+            new BucketItem(ModFluids.STILL_XIRCON_EFFLUENT,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item INERT_XIRCON_EFFLUENT_BUCKET = registerItems("inert_xircon_effluent_bucket",
+            new BucketItem(ModFluids.STILL_INERT_XIRCON_EFFLUENT,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item YAZHEN_SOLUTION_BUCKET = registerItems("yazhen_solution_bucket",
+            new BucketItem(ModFluids.STILL_YAZHEN_SOLUTION,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item JINCAO_SOLUTION_BUCKET = registerItems("jincao_solution_bucket",
+            new BucketItem(ModFluids.STILL_JINCAO_SOLUTION,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item LIQUID_XIRANITE_BUCKET = registerItems("liquid_xiranite_bucket",
+            new BucketItem(ModFluids.STILL_LIQUID_XIRANITE,
+                    new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    // endregion
+    // region Combat
     public static final Item BEAM_TOWER_ITEM = registerItems("beam_tower",
             new BeamTowerItem(ModBlocks.BEAM_TOWER, new Item.Settings()));
     public static final Item GRENADE_TOWER_ITEM = registerItems("grenade_tower",
@@ -93,16 +154,7 @@ public class ModItems {
             new SentryTowerItem(ModBlocks.SENTRY_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item SURGE_TOWER_ITEM = registerItems("surge_tower",
             new SurgeTowerItem(ModBlocks.SURGE_TOWER, new Item.Settings().rarity(Rarity.UNCOMMON)));
-
-    public static final Item PROTOCOL_STASH_ITEM = registerItems("protocol_stash",
-            new ProtocolStashItem(ModBlocks.PROTOCOL_STASH, new Item.Settings()));
-    public static final Item DEPOT_BUS_SECTION_ITEM = registerItems("depot_bus_section",
-            new DepotBusSectionItem(ModBlocks.DEPOT_BUS_SECTION, new Item.Settings()));
-    public static final Item DEPOT_LOADER_ITEM = registerItems("depot_loader",
-            new DepotLoaderItem(ModBlocks.DEPOT_LOADER, new Item.Settings()));
-    public static final Item DEPOT_UNLOADER_ITEM = registerItems("depot_unloader",
-            new DepotUnloaderItem(ModBlocks.DEPOT_UNLOADER, new Item.Settings()));
-    
+    // endregion
     public static final Item AGGAGRIT = registerItems("aggagrit",new Item(new Item.Settings()));
     public static final Item AGGAGRIT_BLOCK = registerItems("aggagrit_block",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item AGGAGRIT_CLUSTER = registerItems("aggagrit_cluster",new Item(new Item.Settings().rarity(Rarity.RARE)));
@@ -111,7 +163,7 @@ public class ModItems {
     public static final Item AKETINE_SEED = registerItems("aketine_seed",new Item(new Item.Settings()));
     public static final Item AMBER_RICE = registerItems("amber_rice",new BlockItem(ModBlocks.AMBER_RICE_BLOCK, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item AMBER_RICE_SEED = registerItems("amber_rice_seed",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
-    public static final Item AMETHYST_BOTTLE = registerItems("amethyst_bottle",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final MaterialBottleItem AMETHYST_BOTTLE = registerMaterialBottle("amethyst_bottle",new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item AMETHYST_COMPONENT = registerItems("amethyst_component",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item AMETHYST_FIBER = registerItems("amethyst_fiber",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item AMETHYST_ORE = registerItems("amethyst_ore",new Item(new Item.Settings()));
@@ -154,7 +206,7 @@ public class ModItems {
     public static final Item CITROMIX_S = registerItems("citromix_ss",new Item(new Item.Settings().rarity(Rarity.EPIC).food(ModFoodComponents.CITROMIX_S)));
     public static final Item COARSE_FLATBREAD = registerItems("coarse_flatbread",new Item(new Item.Settings().rarity(Rarity.EPIC).food(ModFoodComponents.COARSE_FLATBREAD)));
     public static final Item CORRECTIVE_REMEDY = registerItems("corrective_remedy",new ModEpicItem(new Item.Settings().food(ModFoodComponents.CORRECTIVE_REMEDY)));
-    public static final Item CRYSTON_BOTTLE = registerItems("cryston_bottle",new Item(new Item.Settings().rarity(Rarity.RARE)));
+    public static final MaterialBottleItem CRYSTON_BOTTLE = registerMaterialBottle("cryston_bottle",new Item.Settings().rarity(Rarity.RARE));
     public static final Item CRYSTON_COMPONENT = registerItems("cryston_component",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item CRYSTON_FIBER = registerItems("cryston_fiber",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item CRYSTON_PART = registerItems("cryston_part",new Item(new Item.Settings().rarity(Rarity.RARE)));
@@ -162,6 +214,7 @@ public class ModItems {
     public static final Item CUPRIUM = registerItems("cuprium",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item CUPRIUM_COMPONENT = registerItems("cuprium_component",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item CUPRIUM_JAR = registerItems("cuprium_jar",new Item(new Item.Settings().rarity(Rarity.RARE)));
+    public static final MaterialBottleItem CUPRIUM_BOTTLE = registerMaterialBottle("cuprium_bottle", new Item.Settings().rarity(Rarity.RARE));
     public static final Item CUPRIUM_ORE = registerItems("cuprium_ore",new Item(new Item.Settings()));
     public static final Item CUPRIUM_PART = registerItems("cuprium_part",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item CUPRIUM_POWDER = registerItems("cuprium_powder",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
@@ -170,7 +223,7 @@ public class ModItems {
     public static final Item DENSE_ORIGINIUM_POWDER = registerItems("dense_originium_powder",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item DENSE_ORIGOCRUST_POWDER = registerItems("dense_origocrust_powder",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item FERRIUM = registerItems("ferrium",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
-    public static final Item FERRIUM_BOTTLE = registerItems("ferrium_bottle",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
+    public static final MaterialBottleItem FERRIUM_BOTTLE = registerMaterialBottle("ferrium_bottle",new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item FERRIUM_COMPONENT = registerItems("ferrium_component",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item FERRIUM_ORE = registerItems("ferrium_ore",new Item(new Item.Settings()));
     public static final Item FERRIUM_PART = registerItems("ferrium_part",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
@@ -233,7 +286,7 @@ public class ModItems {
     public static final Item SOAKED_WOODCHIP = registerItems("soaked_woodchip",new Item(new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item STABILIZED_CARBON = registerItems("stabilized_carbon",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item STEEL = registerItems("steel",new Item(new Item.Settings().rarity(Rarity.RARE)));
-    public static final Item STEEL_BOTTLE = registerItems("steel_bottle",new Item(new Item.Settings().rarity(Rarity.RARE)));
+    public static final MaterialBottleItem STEEL_BOTTLE = registerMaterialBottle("steel_bottle",new Item.Settings().rarity(Rarity.RARE));
     public static final Item STEEL_JAR = registerItems("steel_jar",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item STEEL_PART = registerItems("steel_part",new Item(new Item.Settings().rarity(Rarity.RARE)));
     public static final Item TARTPEPPER = registerItems("tartpepper",new BlockItem(ModBlocks.TARTPEPPER_BLOCK, new Item.Settings().rarity(Rarity.UNCOMMON)));
@@ -253,10 +306,50 @@ public class ModItems {
     public static final Item YAZHEN_SPRAY_S = registerItems("yazhen_spray_s",new Item(new Item.Settings().rarity(Rarity.EPIC).food(ModFoodComponents.YAZHEN_SPRAY_L)));
     public static final Item YAZHEN_SYRINGE_A = registerItems("yazhen_syringe_a",new Item(new Item.Settings().rarity(Rarity.EPIC)));
     public static final Item YAZHEN_SYRINGE_C = registerItems("yazhen_syringe_c",new Item(new Item.Settings().rarity(Rarity.RARE)));
-
+    
     public static final Item CONTROL_ITEM = registerItems("control_item",
             new ControlItem(new Item.Settings().maxCount(1).rarity(Rarity.EPIC)));
+    
+    public static final Item ORIGINIUM_HAMMER = registerItems("originium_hammer",
+            new OriginiumHammer(new Item.Settings().maxCount(1).rarity(Rarity.RARE)));
 
+    public static final Item XIRANITE = registerItems("xiranite",new Item(new Item.Settings()));
+    public static final Item HEAVY_XIRANITE = registerItems("heavy_xiranite",new Item(new Item.Settings()));
+    public static final Item HETONITE = registerItems("hetonite",new Item(new Item.Settings()));
+    public static final MaterialBottleItem HETONITE_BOTTLE = registerMaterialBottle("hetonite_bottle",new Item.Settings());
+    public static final Item HETONITE_PART = registerItems("hetonite_part",new Item(new Item.Settings()));
+    public static final Item HETONITE_COMPONENT = registerItems("hetonite_component",new Item(new Item.Settings()));
+    public static final Item LC_WULING_BATTERY = registerItems("lc_wuling_battery",new Item(new Item.Settings()));
+    public static final Item SC_WULING_BATTERY = registerItems("sc_wuling_battery",new Item(new Item.Settings()));
+    public static final Item XIRANITE_COMPONENT = registerItems("xiranite_component",new Item(new Item.Settings()));
+    public static final Item XIRCON = registerItems("xircon",new Item(new Item.Settings()));
+
+    // region Fluid Bottles
+    public static final Map<String, Fluid> BOTTLED_FLUIDS;
+    static {
+        Map<String, Fluid> m = new LinkedHashMap<>();
+        m.put("water", Fluids.WATER);
+        m.put("sewage", ModFluids.STILL_SEWAGE);
+        m.put("precipitation_acid", ModFluids.STILL_PRECIPITATION_ACID);
+        m.put("xircon_effluent", ModFluids.STILL_XIRCON_EFFLUENT);
+        m.put("inert_xircon_effluent", ModFluids.STILL_INERT_XIRCON_EFFLUENT);
+        m.put("yazhen_solution", ModFluids.STILL_YAZHEN_SOLUTION);
+        m.put("jincao_solution", ModFluids.STILL_JINCAO_SOLUTION);
+        m.put("liquid_xiranite", ModFluids.STILL_LIQUID_XIRANITE);
+        BOTTLED_FLUIDS = Collections.unmodifiableMap(m);
+    }
+    public static final List<Item> AMETHYST_BOTTLED_SERIES = registerBottledSeries("amethyst", AMETHYST_BOTTLE);
+    public static final List<Item> FERRIUM_BOTTLED_SERIES = registerBottledSeries("ferrium", FERRIUM_BOTTLE);
+    public static final List<Item> CRYSTON_BOTTLED_SERIES = registerBottledSeries("cryston", CRYSTON_BOTTLE);
+    public static final List<Item> STEEL_BOTTLED_SERIES = registerBottledSeries("steel", STEEL_BOTTLE);
+    public static final List<Item> CUPRIUM_BOTTLED_SERIES = registerBottledSeries("cuprium", CUPRIUM_BOTTLE);
+    public static final List<Item> HETONITE_BOTTLED_SERIES = registerBottledSeries("hetonite", HETONITE_BOTTLE);
+    public static final List<Item> ALL_BOTTLED_FLUIDS = Stream.of(
+            AMETHYST_BOTTLED_SERIES, FERRIUM_BOTTLED_SERIES, CRYSTON_BOTTLED_SERIES,
+            STEEL_BOTTLED_SERIES, CUPRIUM_BOTTLED_SERIES, HETONITE_BOTTLED_SERIES
+    ).flatMap(List::stream).toList();
+    // endregion
+    
     private static Item registerSameBlockItem(String name, BlockItem blockItem, Block... blocks){
         for (Block b : blocks) {
             Item.BLOCK_ITEMS.put(b, blockItem);
@@ -269,6 +362,22 @@ public class ModItems {
             ((BlockItem)item).appendBlocks(Item.BLOCK_ITEMS, item);
         }
         return Registry.register(Registries.ITEM, new Identifier(ArknightsEndfield.MOD_ID, name), item);
+    }
+    
+    private static List<Item> registerBottledSeries(String materialId, MaterialBottleItem bottle) {
+        List<Item> series = new ArrayList<>();
+        for (Map.Entry<String, Fluid> entry : BOTTLED_FLUIDS.entrySet()) {
+            FluidBottleItem bottled = new FluidBottleItem(entry.getValue(), bottle,
+                    new Item.Settings().maxCount(64));
+            registerItems(materialId + "_bottled_" + entry.getKey(), bottled);
+            bottle.addBottled(entry.getValue(), bottled);
+            series.add(bottled);
+        }
+        return Collections.unmodifiableList(series);
+    }
+
+    private static MaterialBottleItem registerMaterialBottle(String name, Item.Settings settings) {
+        return (MaterialBottleItem) registerItems(name, new MaterialBottleItem(settings));
     }
 
     public static void registerModItems() {

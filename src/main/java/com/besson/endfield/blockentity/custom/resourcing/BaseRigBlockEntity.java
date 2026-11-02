@@ -1,8 +1,11 @@
 package com.besson.endfield.blockentity.custom.resourcing;
 
 import com.besson.endfield.blockentity.custom.logicitis.BeltBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BasePylonBlockEntity;
+import com.besson.endfield.blockentity.custom.powering.BaseRelayBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.ElectricPylonBlockEntity;
 import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
+import com.besson.endfield.utils.power.NodeEntry;
 import com.besson.endfield.utils.power.NodeType;
 import com.besson.endfield.utils.power.PowerNetworkManager;
 import com.besson.endfield.utils.power.PowerNetworkNodeManager;
@@ -107,17 +110,17 @@ public abstract class BaseRigBlockEntity<R extends Recipe<?>> extends BlockEntit
         if (be.tickNum % 20 == 0 && world instanceof ServerWorld serverWorld) {
             AtomicReference<BlockPos> t = new AtomicReference<>();
             PowerNetworkNodeManager manager = PowerNetworkNodeManager.get(serverWorld);
-            manager.findNearest(pos, NodeType.CONSUMER, 10).ifPresent(target -> t.set(target.pos()));
-            if (t.get() != null) {
-                BlockEntity b = world.getBlockEntity(t.get());
-                if (b instanceof ElectricPylonBlockEntity || b instanceof RelayTowerBlockEntity) {
-                    be.isPowered = true;
-                } else {
-                    be.isPowered = false;
-                    be.isWorking = false;
-                }
-                be.markDirty();
-                world.updateListeners(pos, state, state, 3);
+            boolean powered = false;
+            
+            Optional<NodeEntry> nearest = manager.findNearest(pos, NodeType.CONSUMER, 10);
+            if (nearest.isPresent()) {
+                BlockEntity b = world.getBlockEntity(nearest.get().pos());
+                powered = b instanceof BasePylonBlockEntity || b instanceof BaseRelayBlockEntity;
+            }
+            
+            be.isPowered = powered;
+            if (!powered) {
+                be.isWorking = false;
             }
             be.tickNum = 0;
         }
@@ -269,7 +272,7 @@ public abstract class BaseRigBlockEntity<R extends Recipe<?>> extends BlockEntit
     }
 
     public int getRequiredPower() {
-        if (isWorking || isPowered && storedPower < MAX_STORED_POWER) {
+        if (isPowered && storedPower < MAX_STORED_POWER) {
             return getPowerCostPerTick();
         }
         return 0;

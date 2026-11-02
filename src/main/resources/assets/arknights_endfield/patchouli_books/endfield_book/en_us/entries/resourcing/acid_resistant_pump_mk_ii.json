@@ -1,0 +1,18 @@
+{
+  "name": "Acid-Resistant Fluid Pump Mk II",
+  "icon": "arknights_endfield:acid_resistant_pump_mk_ii",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:acid_resistant_pump_mk_ii",
+      "title": "Acid-Resistant Fluid Pump Mk II",
+      "text": "The Acid-Resistant Fluid Pump Mk II is capable of extracting Precipitation Acid."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place the pump near a water source. It auto-detects nearby water blocks and starts extracting.$(br2)Extracted water can be transported via $(l:arknights_endfield:logistics/pipe)Fluid Pipes$() to machines that need it."
+    }
+  ]
+}

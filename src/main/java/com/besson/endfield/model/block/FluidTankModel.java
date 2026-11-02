@@ -1,7 +1,7 @@
 package com.besson.endfield.model.block;
 
 import com.besson.endfield.ArknightsEndfield;
-import com.besson.endfield.blockentity.custom.FluidTankBlockEntity;
+import com.besson.endfield.blockentity.custom.depot.FluidTankBlockEntity;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 

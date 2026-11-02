@@ -1,6 +1,6 @@
 package com.besson.endfield.screen.custom.screenHandler;
 
-import com.besson.endfield.blockentity.custom.FluidTankBlockEntity;
+import com.besson.endfield.blockentity.custom.depot.FluidTankBlockEntity;
 import com.besson.endfield.screen.ModScreens;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,6 +10,7 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.util.math.BlockPos;
 
 public class FluidTankScreenHandler extends ScreenHandler {
     private final FluidTankBlockEntity entity;
@@ -17,7 +18,7 @@ public class FluidTankScreenHandler extends ScreenHandler {
 
     public FluidTankScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf byteBuf) {
         this(syncId, playerInventory, (FluidTankBlockEntity) playerInventory.player.getWorld().getBlockEntity(byteBuf.readBlockPos()),
-                new ArrayPropertyDelegate(2));
+                new ArrayPropertyDelegate(3));
     }
 
     public FluidTankScreenHandler(int syncId, PlayerInventory playerInventory, FluidTankBlockEntity entity, PropertyDelegate propertyDelegate) {
@@ -34,6 +35,12 @@ public class FluidTankScreenHandler extends ScreenHandler {
     }
     public int getFluidCapacity() {
         return this.propertyDelegate.get(1);
+    }
+    public int getFluidId() {
+        return this.propertyDelegate.get(2);
+    }
+    public BlockPos getBlockEntityPos() {
+        return this.entity.getPos();
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {

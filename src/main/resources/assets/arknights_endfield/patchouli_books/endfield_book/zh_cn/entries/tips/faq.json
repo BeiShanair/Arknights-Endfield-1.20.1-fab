@@ -1,0 +1,22 @@
+{
+  "name": "常见问题",
+  "icon": "minecraft:knowledge_book",
+  "category": "arknights_endfield:tips",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "FAQ",
+      "text": "$(li)$(l)Q: 模组是什么定位？$()$(br)A: 终末地工业是一款「轻量工业模组」，服务于生存探索。它拥有独立的工业体系，不依赖其他工业模组。$(br2)$(li)$(l)Q: 支持哪些版本？$()$(br)A: Fabric 1.20.1、Forge 1.20.1、NeoForge 1.21.1。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "更多 FAQ",
+      "text": "$(li)$(l)Q: 全局仓储怎么打开？$()$(br)A: 按 G 键。如果不起作用，检查按键绑定设置。也可以用 /storage 指令。$(br2)$(li)$(l)Q: 可以用于整合包吗？$()$(br)A: 可以！但不可修改模组本身后二次发布。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "还有问题？",
+      "text": "如果你有更多问题，欢迎通过以下渠道联系作者：$(br)$(li)$(l:https://github.com/BeiShanair/Arknights-Endfield-1.20.1-fab/issues)GitHub Issues$()$(li)$(l:https://www.mcmod.cn/class/22544.html)MCMod 百科$()$(li)$(l:https://space.bilibili.com/489671468)Bilibili 北山_Besson$()$(br2)反馈问题时请提供 Minecraft 版本、模组版本和详细的错误描述。"
+    }
+  ]
+}

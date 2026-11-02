@@ -2,6 +2,7 @@ package com.besson.endfield.world;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -30,6 +31,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> UMBRALINE = of("umbraline");
     public static final RegistryKey<ConfiguredFeature<?, ?>> YAZHEN = of("yazhen");
 
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LAKE_PRECIPITATION_ACID = of("lake_precipitation_acid");
+    
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         ConfiguredFeatures.register(featureRegisterable, AKETINE, Feature.FLOWER,
                 new RandomPatchFeatureConfig(10, 4, 3,
@@ -87,6 +90,13 @@ public class ModConfiguredFeatures {
                 new RandomPatchFeatureConfig(15, 4, 3,
                         PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                                 new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.YAZHEN_BLOCK)))));
+        
+        ConfiguredFeatures.register(
+                featureRegisterable,
+                LAKE_PRECIPITATION_ACID,
+                Feature.LAKE,
+                new LakeFeature.Config(BlockStateProvider.of(ModBlocks.PRECIPITATION_ACID_BLOCK.getDefaultState()), BlockStateProvider.of(Blocks.STONE.getDefaultState()))
+        );
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {

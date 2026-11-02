@@ -27,7 +27,7 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     public boolean matches(SimpleInventory inventory, World world) {
         if (world.isClient()) return false;
         ItemStack inputs = inventory.getStack(0);
-        return input.getIngredient().test(inputs);
+        return input.ingredient().test(inputs);
     }
 
     public InputEntry getInput() {
@@ -57,7 +57,7 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> ingredients = DefaultedList.of();
-        ingredients.add(input.getIngredient());
+        ingredients.add(input.ingredient());
         return ingredients;
     }
 
@@ -69,6 +69,11 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
     }
 
     public static class Type implements RecipeType<MouldingUnitRecipe> {
@@ -106,8 +111,8 @@ public class MouldingUnitRecipe implements Recipe<SimpleInventory> {
         @Override
         public void write(PacketByteBuf buf, MouldingUnitRecipe recipe) {
             InputEntry entry = recipe.getInput();
-            entry.getIngredient().write(buf);
-            buf.writeInt(entry.getCount());
+            entry.ingredient().write(buf);
+            buf.writeInt(entry.count());
             buf.writeItemStack(recipe.output);
         }
     }

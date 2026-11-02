@@ -15,10 +15,13 @@ public class ModREIClientPlugins implements REIClientPlugin {
         registry.add(new PortableOriginiumRigCategory());
         registry.add(new ElectricMiningRigCategory());
         registry.add(new ElectricMiningRigMkIICategory());
+        registry.add(new HydroMiningRigCategory());
         registry.add(new CrafterCategory());
         registry.add(new FillingUnitCategory());
         registry.add(new GearingUnitCategory());
         registry.add(new RefiningUnitCategory());
+        registry.add(new ReactorCrucibleCategory());
+        registry.add(new ForgeOfTheSkyCategory());
         registry.add(new FittingUnitCategory());
         registry.add(new GrindingUnitCategory());
         registry.add(new MouldingUnitCategory());
@@ -30,10 +33,14 @@ public class ModREIClientPlugins implements REIClientPlugin {
         registry.addWorkstations(PortableOriginiumRigCategory.PORTABLE_ORIGINIUM_RIG, EntryStacks.of(ModBlocks.PORTABLE_ORIGINIUM_RIG));
         registry.addWorkstations(ElectricMiningRigCategory.ELECTRIC_MINING_RIG, EntryStacks.of(ModBlocks.ELECTRIC_MINING_RIG));
         registry.addWorkstations(ElectricMiningRigMkIICategory.ELECTRIC_MINING_RIG_MK_II, EntryStacks.of(ModBlocks.ELECTRIC_MINING_RIG_MK_II));
+        registry.addWorkstations(HydroMiningRigCategory.HYDRO_MINING_RIG, EntryStacks.of(ModBlocks.HYDRO_MINING_RIG));
         registry.addWorkstations(CrafterCategory.CRAFTER, EntryStacks.of(ModBlocks.CRAFTER));
         registry.addWorkstations(FillingUnitCategory.FILLING_UNIT, EntryStacks.of(ModBlocks.FILLING_UNIT));
         registry.addWorkstations(GearingUnitCategory.GEARING_UNIT, EntryStacks.of(ModBlocks.GEARING_UNIT));
         registry.addWorkstations(RefiningUnitCategory.REFINING_UNIT, EntryStacks.of(ModBlocks.REFINING_UNIT));
+        registry.addWorkstations(ReactorCrucibleCategory.REACTOR_CRUCIBLE,
+                EntryStacks.of(ModBlocks.REACTOR_CRUCIBLE), EntryStacks.of(ModBlocks.EXPANDED_CRUCIBLE));
+        registry.addWorkstations(ForgeOfTheSkyCategory.FORGE_OF_THE_SKY, EntryStacks.of(ModBlocks.FORGE_OF_THE_SKY));
         registry.addWorkstations(FittingUnitCategory.FITTING_UNIT, EntryStacks.of(ModBlocks.FITTING_UNIT));
         registry.addWorkstations(GrindingUnitCategory.GRINDING_UNIT, EntryStacks.of(ModBlocks.GRINDING_UNIT));
         registry.addWorkstations(MouldingUnitCategory.MOULDING_UNIT, EntryStacks.of(ModBlocks.MOULDING_UNIT));
@@ -66,10 +73,19 @@ public class ModREIClientPlugins implements REIClientPlugin {
                 return null;
             }
         });
+        registry.registerRecipeFiller(OreRigRecipe.class, OreRigRecipe.Type.INSTANCE, oreRigRecipe -> {
+            if (oreRigRecipe.getTier() <= 4) {
+                return new HydroMiningRigDisplay(oreRigRecipe);
+            } else {
+                return null;
+            }
+        });
         registry.registerRecipeFiller(CrafterRecipe.class, CrafterRecipe.Type.INSTANCE, CrafterDisplay::new);
         registry.registerRecipeFiller(FillingUnitRecipe.class, FillingUnitRecipe.Type.INSTANCE, FillingUnitDisplay::new);
         registry.registerRecipeFiller(GearingUnitRecipe.class, GearingUnitRecipe.Type.INSTANCE, GearingUnitDisplay::new);
         registry.registerRecipeFiller(RefiningUnitRecipe.class, RefiningUnitRecipe.Type.INSTANCE, RefiningUnitDisplay::new);
+        registry.registerRecipeFiller(ReactorCrucibleRecipe.class, ReactorCrucibleRecipe.Type.INSTANCE, ReactorCrucibleDisplay::new);
+        registry.registerRecipeFiller(ForgeOfTheSkyRecipe.class, ForgeOfTheSkyRecipe.Type.INSTANCE, ForgeOfTheSkyDisplay::new);
         registry.registerRecipeFiller(FittingUnitRecipe.class, FittingUnitRecipe.Type.INSTANCE, FittingUnitDisplay::new);
         registry.registerRecipeFiller(GrindingUnitRecipe.class, GrindingUnitRecipe.Type.INSTANCE, GrindingUnitDisplay::new);
         registry.registerRecipeFiller(MouldingUnitRecipe.class, MouldingUnitRecipe.Type.INSTANCE, MouldingUnitDisplay::new);

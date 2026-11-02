@@ -9,6 +9,7 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RefiningUnitDisplay implements Display {
@@ -17,14 +18,27 @@ public class RefiningUnitDisplay implements Display {
 
     public RefiningUnitDisplay(RefiningUnitRecipe recipe) {
         InputEntry entry = recipe.getInput();
-        List<ItemStack> stacks = List.of(entry.getIngredient().getMatchingStacks());
-        this.inputs = List.of(EntryIngredients.ofItemStacks(
+        List<ItemStack> stacks = List.of(entry.ingredient().getMatchingStacks());
+        List<EntryIngredient> inputList = new ArrayList<>();
+        inputList.add(EntryIngredients.ofItemStacks(
                 stacks.stream().map(stack -> {
                     ItemStack copy = stack.copy();
-                    copy.setCount(entry.getCount());
+                    copy.setCount(entry.count());
                     return copy;
                 }).toList()));
-        this.outputs = List.of(EntryIngredients.of(recipe.getOutput(null)));
+        
+        if (recipe.requiresFluid()) {
+            inputList.add(EntryIngredients.of(recipe.getRequiredFluid().getFluid(), recipe.getRequiredFluidAmount()));
+        }
+        this.inputs = List.copyOf(inputList);
+
+        List<EntryIngredient> outputList = new ArrayList<>();
+        outputList.add(EntryIngredients.of(recipe.getOutput(null)));
+        
+        if (recipe.producesFluid()) {
+            outputList.add(EntryIngredients.of(recipe.getOutputFluid().getFluid(), recipe.getOutputFluidAmount()));
+        }
+        this.outputs = List.copyOf(outputList);
     }
     @Override
     public List<EntryIngredient> getInputEntries() {

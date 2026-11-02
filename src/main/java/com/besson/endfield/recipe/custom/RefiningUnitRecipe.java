@@ -2,11 +2,14 @@ package com.besson.endfield.recipe.custom;
 
 import com.besson.endfield.recipe.InputEntry;
 import com.google.gson.JsonObject;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
@@ -16,22 +19,56 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final InputEntry input;
     private final ItemStack output;
+    private final FluidVariant requiredFluid;
+    private final long requiredFluidAmount;
+    private final FluidVariant outputFluid;
+    private final long outputFluidAmount;
 
-    public RefiningUnitRecipe(Identifier id, InputEntry input, ItemStack output) {
+    public RefiningUnitRecipe(Identifier id, InputEntry input, ItemStack output,
+                              FluidVariant requiredFluid, long requiredFluidAmount,
+                              FluidVariant outputFluid, long outputFluidAmount) {
         this.id = id;
         this.input = input;
         this.output = output;
+        this.requiredFluid = requiredFluid;
+        this.requiredFluidAmount = requiredFluidAmount;
+        this.outputFluid = outputFluid;
+        this.outputFluidAmount = outputFluidAmount;
     }
 
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
         if (world.isClient()) return false;
         ItemStack inputs = inventory.getStack(0);
-        return input.getIngredient().test(inputs);
+        return input.ingredient().test(inputs);
     }
 
     public InputEntry getInput() {
         return input;
+    }
+
+    public FluidVariant getRequiredFluid() {
+        return requiredFluid;
+    }
+
+    public long getRequiredFluidAmount() {
+        return requiredFluidAmount;
+    }
+
+    public boolean requiresFluid() {
+        return !requiredFluid.isBlank() && requiredFluidAmount > 0;
+    }
+
+    public FluidVariant getOutputFluid() {
+        return outputFluid;
+    }
+
+    public long getOutputFluidAmount() {
+        return outputFluidAmount;
+    }
+
+    public boolean producesFluid() {
+        return !outputFluid.isBlank() && outputFluidAmount > 0;
     }
 
     @Override
@@ -57,7 +94,7 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> ingredients = DefaultedList.of();
-        ingredients.add(input.getIngredient());
+        ingredients.add(input.ingredient());
         return ingredients;
     }
 
@@ -69,6 +106,11 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
     }
 
     public static class Type implements RecipeType<RefiningUnitRecipe> {
@@ -91,7 +133,27 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
             int count = ingredients.has("count") ? JsonHelper.getInt(ingredients, "count") : 1;
             inputs = new InputEntry(ingredient, count);
 
-            return new RefiningUnitRecipe(id, inputs, output);
+            FluidVariant requiredFluid = FluidVariant.blank();
+            long requiredFluidAmount = 0;
+            if (json.has("fluid")) {
+                JsonObject fluidObj = JsonHelper.getObject(json, "fluid");
+                Identifier fluidId = new Identifier(JsonHelper.getString(fluidObj, "id"));
+                Fluid fluid = Registries.FLUID.get(fluidId);
+                requiredFluid = FluidVariant.of(fluid);
+                requiredFluidAmount = fluidObj.has("amount") ? JsonHelper.getLong(fluidObj, "amount") : 1000;
+            }
+
+            FluidVariant outputFluid = FluidVariant.blank();
+            long outputFluidAmount = 0;
+            if (json.has("output_fluid")) {
+                JsonObject fluidObj = JsonHelper.getObject(json, "output_fluid");
+                Identifier fluidId = new Identifier(JsonHelper.getString(fluidObj, "id"));
+                Fluid fluid = Registries.FLUID.get(fluidId);
+                outputFluid = FluidVariant.of(fluid);
+                outputFluidAmount = fluidObj.has("amount") ? JsonHelper.getLong(fluidObj, "amount") : 1000;
+            }
+
+            return new RefiningUnitRecipe(id, inputs, output, requiredFluid, requiredFluidAmount, outputFluid, outputFluidAmount);
         }
 
         @Override
@@ -100,15 +162,50 @@ public class RefiningUnitRecipe implements Recipe<SimpleInventory> {
             int count = buf.readInt();
             InputEntry inputs = new InputEntry(ingredient, count);
             ItemStack output = buf.readItemStack();
-            return new RefiningUnitRecipe(id, inputs, output);
+
+            boolean hasFluid = buf.readBoolean();
+            FluidVariant requiredFluid = FluidVariant.blank();
+            long requiredFluidAmount = 0;
+            if (hasFluid) {
+                Identifier fluidId = buf.readIdentifier();
+                Fluid fluid = Registries.FLUID.get(fluidId);
+                requiredFluid = FluidVariant.of(fluid);
+                requiredFluidAmount = buf.readLong();
+            }
+
+            boolean hasOutputFluid = buf.readBoolean();
+            FluidVariant outputFluid = FluidVariant.blank();
+            long outputFluidAmount = 0;
+            if (hasOutputFluid) {
+                Identifier fluidId = buf.readIdentifier();
+                Fluid fluid = Registries.FLUID.get(fluidId);
+                outputFluid = FluidVariant.of(fluid);
+                outputFluidAmount = buf.readLong();
+            }
+
+            return new RefiningUnitRecipe(id, inputs, output, requiredFluid, requiredFluidAmount, outputFluid, outputFluidAmount);
         }
 
         @Override
         public void write(PacketByteBuf buf, RefiningUnitRecipe recipe) {
             InputEntry entry = recipe.getInput();
-            entry.getIngredient().write(buf);
-            buf.writeInt(entry.getCount());
+            entry.ingredient().write(buf);
+            buf.writeInt(entry.count());
             buf.writeItemStack(recipe.output);
+
+            boolean hasFluid = recipe.requiresFluid();
+            buf.writeBoolean(hasFluid);
+            if (hasFluid) {
+                buf.writeIdentifier(Registries.FLUID.getId(recipe.requiredFluid.getFluid()));
+                buf.writeLong(recipe.requiredFluidAmount);
+            }
+
+            boolean hasOutputFluid = recipe.producesFluid();
+            buf.writeBoolean(hasOutputFluid);
+            if (hasOutputFluid) {
+                buf.writeIdentifier(Registries.FLUID.getId(recipe.outputFluid.getFluid()));
+                buf.writeLong(recipe.outputFluidAmount);
+            }
         }
     }
 }

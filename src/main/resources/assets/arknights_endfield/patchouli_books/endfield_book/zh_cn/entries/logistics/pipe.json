@@ -1,0 +1,31 @@
+{
+  "name": "流体管道",
+  "icon": "arknights_endfield:fluid_pipe",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:fluid_pipe",
+      "title": "流体管道",
+      "text": "流体管道用于在设备之间传输液体（如水、污水等）。$(br2)每个管道节点有 1,000 mB （1B，对应原作的 1 单位）的内部缓冲。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "工作原理",
+      "text": "管道的工作原理与传送带类似，是传送带的变种。$(br)每次最多传输 1,000 mB。$(br)$(#ff0000)注意：流体系统目前仍在开发中。$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "切换管道模式",
+      "text": "管道默认只做「纯传输」：把管内已有的液体继续往前推。$(br2)手持$(l:arknights_endfield:tips/control_terminal)控制终端$()右键管道，可在$(l)纯传输 / 抽取 / 插入$()之间循环——起点管道用抽取模式，末端管道用插入模式。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关条目",
+      "entries": [
+        "arknights_endfield:tips/control_terminal",
+        "arknights_endfield:logistics/protocol_core_port"
+      ]
+    }
+  ]
+}

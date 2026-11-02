@@ -1,0 +1,18 @@
+{
+  "name": "铳械塔",
+  "icon": "arknights_endfield:gun_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:gun_tower",
+      "title": "铳械塔",
+      "text": "铳械塔是最基础的防御塔，提供稳定的单体伤害。$(br2)攻击力：6$(br)攻击范围：15 米$(br)攻击间隔：2 秒$(br)耗电：5 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "全局电网系统",
+  "icon": "arknights_endfield:electric_pylon",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "电网概述",
+      "text": "本模组采用了全局电网管理系统（单例模式），实现了跨区块、超远距离的电力传输。电网不依赖方块实体所在区块的加载状态，因此即使你远离协议核心，电力调度仍然正常运作。$(br2)每个维度拥有独立的电网实例，各维度的电力互不干扰（何不将工业基地建到末地去呢？）。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "电网节点系统",
+      "text": "电网通过节点系统来管理连接。节点类型包括：$(br)$(li)核心节点（CORE）——协议核心$(li)中继节点（RELAY）——中继器$(li)电桩节点（PYLON）——供电桩$(li)消费节点（CONSUMER）——用电设备$(br2)节点间最大连接距离为 80 米。节点管理器维护节点映射表，代替遍历方式大幅提升性能。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "电力分配机制",
+      "text": "每 tick（1/20 秒），电网管理器会：$(br)1. 汇总所有发电设备的发电量$(br)2. 汇总所有用电设备的需求量$(br)3. 计算供需比（supplyRatio）$(br)4. 按比例向用电设备分配电力$(br2)盈余电力存入协议核心电池；不足时从电池放电补充。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关设备",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/relay_tower"
+      ]
+    }
+  ]
+}

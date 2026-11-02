@@ -1,0 +1,23 @@
+{
+  "name": "采种机",
+  "icon": "arknights_endfield:seed_picking_unit",
+  "category": "arknights_endfield:production1",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:seed_picking_unit",
+      "title": "采种机",
+      "text": "采种机从成熟植物中提取种子，用于种植机的持续生产。$(br2)耗电：10 $(efu)$(br)加工速度：每 2 秒 1 个$(br)空地要求：5x5"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "生产循环",
+      "text": "一个采种机可与两个种植机组成持续且无限的生产系统。源石科技，很神奇吧！"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

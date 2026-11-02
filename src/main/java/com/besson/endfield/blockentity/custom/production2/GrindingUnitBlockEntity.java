@@ -43,22 +43,18 @@ public class GrindingUnitBlockEntity extends BaseIOBlockEntity<GrindingUnitRecip
                     case 0 -> GrindingUnitBlockEntity.this.progress;
                     case 1 -> GrindingUnitBlockEntity.this.maxProgress;
                     case 2 -> GrindingUnitBlockEntity.this.enable ? 1 : 0;
+                    case 3 -> GrindingUnitBlockEntity.this.storedPower;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> GrindingUnitBlockEntity.this.progress = value;
-                    case 1 -> GrindingUnitBlockEntity.this.maxProgress = value;
-                    case 2 -> GrindingUnitBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }
@@ -123,8 +119,8 @@ public class GrindingUnitBlockEntity extends BaseIOBlockEntity<GrindingUnitRecip
             for (InputEntry entry: recipeInputs) {
                 for (int i = 0; i < used.length; i++) {
                     ItemStack stack = inputInv.getStack(i);
-                    if (!used[i] && entry.getIngredient().test(stack) && stack.getCount() >= entry.getCount()) {
-                        inputInv.removeStack(i, entry.getCount());
+                    if (!used[i] && entry.ingredient().test(stack) && stack.getCount() >= entry.count()) {
+                        inputInv.removeStack(i, entry.count());
                         used[i] = true;
                         break;
 
@@ -144,7 +140,7 @@ public class GrindingUnitBlockEntity extends BaseIOBlockEntity<GrindingUnitRecip
                 boolean matched = false;
                 for (int i = 0; i < used.length; i++) {
                     ItemStack stack = inputInv.getStack(i);
-                    if (!used[i] && entry.getIngredient().test(stack) && stack.getCount() >= entry.getCount()) {
+                    if (!used[i] && entry.ingredient().test(stack) && stack.getCount() >= entry.count()) {
                         matched = true;
                         used[i] = true;
                         break;

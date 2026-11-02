@@ -4,5 +4,6 @@ public class ModWorldGeneration {
     public static void registerWorldGeneration() {
         ModOreGeneration.registerOres();
         ModFlowerGeneration.registerFlowers();
+        ModFluidGeneration.registerFluidGeneration();
     }
 }

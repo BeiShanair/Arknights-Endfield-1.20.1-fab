@@ -1,0 +1,23 @@
+{
+  "name": "Electric Mining Rig",
+  "icon": "arknights_endfield:electric_mining_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:electric_mining_rig",
+      "title": "Electric Mining Rig",
+      "text": "An upgraded mining rig that requires power but can mine more vein types.$(br2)Power Draw: 5 $(efu)$(br)Speed: 1 item per 3 seconds$(br)Mines: wider range of vein types"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "The Electric Mining Rig must be within a pylon's supply range. Output is automatically sent to the $(l:arknights_endfield:logistics/global_storage)Global Storage$().$(br2)If power is insufficient, the rig pauses and resumes when power is restored."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

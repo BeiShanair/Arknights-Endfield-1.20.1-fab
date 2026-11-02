@@ -1,6 +1,7 @@
 package com.besson.endfield.renderer.block.combat;
 
 import com.besson.endfield.blockentity.custom.combat.MarshGasMkIBlockEntity;
+import com.besson.endfield.config.ModClientConfig;
 import com.besson.endfield.model.block.combat.MarshGasMkIModel;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -28,5 +29,10 @@ public class MarshGasMkIBlockRenderer extends GeoBlockRenderer<MarshGasMkIBlockE
             barrelBone.setRotX((float) Math.toRadians(animatable.getTurretPitch()));
         }
         super.actuallyRender(poseStack, animatable, model, renderType, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    }
+
+    @Override
+    public int getRenderDistance() {
+        return ModClientConfig.getInstance().getEquipmentRenderDistance();
     }
 }

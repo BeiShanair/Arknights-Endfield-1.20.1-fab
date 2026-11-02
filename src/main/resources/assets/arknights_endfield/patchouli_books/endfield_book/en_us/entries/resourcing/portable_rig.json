@@ -1,0 +1,23 @@
+{
+  "name": "Portable Originium Rig",
+  "icon": "arknights_endfield:portable_originium_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:portable_originium_rig",
+      "title": "Portable Originium Rig",
+      "text": "The Portable Originium Rig is the most basic resource collector. No power required — perfect for early game.$(br2)Power: None$(br)Speed: 1 item per 3 seconds$(br)Mines: Originium, Coal, Redstone veins"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place the rig on top of a mineral vein block. It starts collecting automatically — output goes into the rig's built-in output slot.$(br2)Manual extraction works, or use an $(l:arknights_endfield:logistics/output_port)Output Port$() with belts for automation."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

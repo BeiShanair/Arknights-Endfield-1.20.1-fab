@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "Count": 1,
+      "id": "patchouli:guide_book",
+      "tag": {
+        "patchouli:book": "arknights_endfield:endfield_book"
+      }
+    },
+    {
+      "Count": 1,
+      "id": "arknights_endfield:protocol_anchor_core"
+    },
+    {
+      "Count": 10,
+      "id": "arknights_endfield:originium_mineral_vein_block"
+    },
+    {
+      "Count": 10,
+      "id": "arknights_endfield:amethyst_mineral_vein_block"
+    },
+    {
+      "Count": 10,
+      "id": "arknights_endfield:ferrium_mineral_vein_block"
+    },
+    {
+      "Count": 10,
+      "id": "arknights_endfield:cuprium_mineral_vein_block"
+    }
+  ],
+  "version": 1
+}

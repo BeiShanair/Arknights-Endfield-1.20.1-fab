@@ -48,7 +48,7 @@ public abstract class BaseIOSideBlockEntity extends BlockEntity {
         }
     }
 
-    public abstract @Nullable BaseIOBlockEntity<?> getParentBlock();
+    public abstract @Nullable BlockEntity getParentBlock();
     
     @Override
     public NbtCompound toInitialChunkDataNbt() {
@@ -63,7 +63,7 @@ public abstract class BaseIOSideBlockEntity extends BlockEntity {
     public static <T extends BaseIOSideBlockEntity> void tick(World world, BlockPos pos,  BlockState state, T be) {
         if (world.isClient()) return;
 
-        BaseIOBlockEntity<?> parent = be.getParentBlock();
+        BlockEntity parent = be.getParentBlock();
         if (parent != null) {
             Direction facing = state.get(FACING);
             Storage<ItemVariant> machine =

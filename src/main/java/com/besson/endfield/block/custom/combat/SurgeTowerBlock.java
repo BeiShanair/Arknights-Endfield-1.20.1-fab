@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SurgeTowerBlock extends BlockWithEntity {
+public class SurgeTowerBlock extends BaseTowerBlock {
     public SurgeTowerBlock(Settings settings) {
         super(settings);
     }

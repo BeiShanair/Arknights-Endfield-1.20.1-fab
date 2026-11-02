@@ -3,11 +3,12 @@ package com.besson.endfield;
 import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.command.ModCommands;
+import com.besson.endfield.data.WelcomePackageHandler;
 import com.besson.endfield.entity.ModItemEntity;
+import com.besson.endfield.fluid.ModFluids;
 import com.besson.endfield.item.ModItemGroups;
 import com.besson.endfield.item.ModItems;
 import com.besson.endfield.network.ModNetWorking;
-import com.besson.endfield.pipe.PipeNetworkManager;
 import com.besson.endfield.utils.*;
 import com.besson.endfield.utils.power.PowerNetworkManager;
 import com.besson.endfield.recipe.ModRecipes;
@@ -16,7 +17,6 @@ import com.besson.endfield.world.generation.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +32,7 @@ public class ArknightsEndfield implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModFluids.register();
 		ModItemGroups.registerItemGroup();
 
 		ModBlockEntities.registerModBlockEntities();
@@ -41,11 +42,13 @@ public class ArknightsEndfield implements ModInitializer {
 		ModWorldGeneration.registerWorldGeneration();
 
 		GeckoLib.initialize();
-		JoinHandler.register();
 
 		ModNetWorking.register();
 		ModItemEntity.register();
 		ModLootTableModifier.modifierLootTables();
+
+		// 版本化欢迎礼包：数据包定义内容，玩家进服时补发没领过的版本
+		WelcomePackageHandler.register();
 
 		ModStorageRegister.register();
 		
@@ -53,10 +56,6 @@ public class ArknightsEndfield implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
 
 		PowerNetworkManager.registerGlobalTick();
-
-		ServerTickEvents.END_WORLD_TICK.register(world -> {
-			PipeNetworkManager.getInstance(world).tickAllNetworks(world);
-		});
 
 		CommandRegistrationCallback.EVENT.register((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> {
 			ModCommands.register(commandDispatcher, commandRegistryAccess);

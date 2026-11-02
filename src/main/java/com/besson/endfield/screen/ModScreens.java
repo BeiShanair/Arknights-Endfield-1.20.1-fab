@@ -26,9 +26,21 @@ public class ModScreens {
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit_screen"),
                     new ExtendedScreenHandlerType<>(RefiningUnitScreenHandler::new));
 
+    public static final ScreenHandlerType<WaterTreatmentUnitScreenHandler> WATER_TREATMENT_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "water_treatment_unit_screen"),
+                    new ExtendedScreenHandlerType<>(WaterTreatmentUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<SeparatingUnitScreenHandler> SEPARATING_UNIT_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "separating_unit_screen"),
+                    new ExtendedScreenHandlerType<>(SeparatingUnitScreenHandler::new));
+
     public static final ScreenHandlerType<GearingUnitScreenHandler> GEARING_UNIT_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit_screen"),
                     new ExtendedScreenHandlerType<>(GearingUnitScreenHandler::new));
+
+    public static final ScreenHandlerType<HydroMiningRigScreenHandler> HYDRO_MINING_RIG_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "hydro_mining_rig_screen"),
+                    new ExtendedScreenHandlerType<>(HydroMiningRigScreenHandler::new));
 
     public static final ScreenHandlerType<ElectricMiningRigScreenHandler> ELECTRIC_MINING_RIG_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "electric_mining_rig_screen"),
@@ -69,6 +81,12 @@ public class ModScreens {
     public static final ScreenHandlerType<PackagingUnitScreenHandler> PACKAGING_UNIT_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit_screen"),
                     new ExtendedScreenHandlerType<>(PackagingUnitScreenHandler::new));
+    public static final ScreenHandlerType<ReactorCrucibleScreenHandler> REACTOR_CRUCIBLE_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible_screen"),
+                    new ExtendedScreenHandlerType<>(ReactorCrucibleScreenHandler::new));
+    public static final ScreenHandlerType<ExpandedCrucibleScreenHandler> EXPANDED_CRUCIBLE_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "expanded_crucible_screen"),
+                    new ExtendedScreenHandlerType<>(ExpandedCrucibleScreenHandler::new));
 
     public static final ScreenHandlerType<CrafterScreenHandler> CRAFTER_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "crafter_screen"),
@@ -77,6 +95,9 @@ public class ModScreens {
     public static final ScreenHandlerType<FluidPumpScreenHandler> FLUID_PUMP_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fluid_pump_screen"),
                     new ExtendedScreenHandlerType<>(FluidPumpScreenHandler::new));
+    public static final ScreenHandlerType<AcidResistantPumpMkIIScreenHandler> ACID_RESISTANT_PUMP_MK_II_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "acid_resistant_pump_mk_ii_screen"),
+                    new ExtendedScreenHandlerType<>(AcidResistantPumpMkIIScreenHandler::new));
     public static final ScreenHandlerType<FluidTankScreenHandler> FLUID_TANK_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "fluid_tank_screen"),
                     new ExtendedScreenHandlerType<>(FluidTankScreenHandler::new));
@@ -98,6 +119,10 @@ public class ModScreens {
     public static final ScreenHandlerType<ProtocolStashScreenHandler> PROTOCOL_STASH_SCREEN =
             Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "protocol_stash_screen"),
                     new ExtendedScreenHandlerType<>(ProtocolStashScreenHandler::new));
+
+    public static final ScreenHandlerType<ForgeOfTheSkyScreenHandler> FORGE_OF_THE_SKY_SCREEN =
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(ArknightsEndfield.MOD_ID, "forge_of_the_sky_screen"),
+                    new ExtendedScreenHandlerType<>(ForgeOfTheSkyScreenHandler::new));
 
     public static void register() {
 

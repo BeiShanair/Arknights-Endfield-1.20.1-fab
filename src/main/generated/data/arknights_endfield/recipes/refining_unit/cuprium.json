@@ -1,0 +1,19 @@
+{
+  "type": "arknights_endfield:refining_unit",
+  "fluid": {
+    "amount": 1000,
+    "id": "minecraft:water"
+  },
+  "input": {
+    "count": 1,
+    "item": "arknights_endfield:cuprium_ore"
+  },
+  "output": {
+    "count": 1,
+    "item": "arknights_endfield:cuprium"
+  },
+  "output_fluid": {
+    "amount": 1000,
+    "id": "arknights_endfield:sewage"
+  }
+}

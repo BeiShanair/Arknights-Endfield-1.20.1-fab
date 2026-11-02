@@ -2,7 +2,9 @@ package com.besson.endfield.datagen;
 
 import com.besson.endfield.ArknightsEndfield;
 import com.besson.endfield.block.ModBlocks;
+import com.besson.endfield.fluid.ModFluids;
 import com.besson.endfield.item.ModItems;
+import com.besson.endfield.item.custom.MaterialBottleItem;
 import com.besson.endfield.recipe.ItemCountInput;
 import com.besson.endfield.recipe.builder.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -10,14 +12,19 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class ModRecipesProvider extends FabricRecipeProvider {
@@ -29,6 +36,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> consumer) {
+        // region Common Recipes
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.CRAFTER)
                 .pattern("###")
                 .pattern("###")
@@ -39,7 +47,7 @@ public class ModRecipesProvider extends FabricRecipeProvider {
 
         offerSmelting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 200, "origocrust");
         offerBlasting(consumer, ORIGOCRUST, RecipeCategory.MISC, ModItems.ORIGOCRUST, 0.7f, 100, "origocrust");
-
+        
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WOOD, 3)
                 .pattern("###")
                 .input('#', ItemTags.LOGS)
@@ -118,7 +126,27 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .input('#', ModItems.ORIGOCRUST)
                 .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "splitter_from_origocrust"));
-
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.PIPE_BRIDGE, 9)
+                .pattern(" # ")
+                .pattern("# #")
+                .pattern(" # ")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "pipe_bridge_from_origocrust"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.PIPE_CONVERGER, 9)
+                .pattern(" # ")
+                .pattern("# #")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "pipe_converger_from_origocrust"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.PIPE_SPLITTER, 9)
+                .pattern("# #")
+                .pattern(" # ")
+                .input('#', ModItems.ORIGOCRUST)
+                .criterion("has_origocrust", conditionsFromItem(ModItems.ORIGOCRUST))
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "pipe_splitter_from_origocrust"));
+        // endregion
+        // region Ore Rig Recipes 
         OreRigRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK, ModItems.AMETHYST_ORE, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/amethyst_mineral_vein"));
         OreRigRecipeBuilder.create(ModBlocks.COAL_MINERAL_VEIN_BLOCK, Items.COAL, 1)
@@ -143,7 +171,23 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/ferrium_mineral_vein"));
         OreRigRecipeBuilder.create(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK, ModItems.CUPRIUM_ORE, 4)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "rig/cuprium_mineral_vein"));
-
+        // endregion
+        // region Refining Unit Recipes
+        RefiningUnitRecipeBuilder.create(Items.RAW_COPPER, Items.COPPER_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_copper"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_IRON, Items.IRON_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_iron"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_GOLD, Items.GOLD_INGOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_gold"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_COPPER_BLOCK, Items.COPPER_BLOCK)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_copper_block"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_IRON_BLOCK, Items.IRON_BLOCK)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_iron_block"));
+        RefiningUnitRecipeBuilder.create(Items.RAW_GOLD_BLOCK, Items.GOLD_BLOCK)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/raw_gold_block"));
+        RefiningUnitRecipeBuilder.create(Items.ANCIENT_DEBRIS, Items.NETHERITE_SCRAP)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/ancient_debris"));
+        
         RefiningUnitRecipeBuilder.create(ModItems.DENSE_CARBON_POWDER, ModItems.STABILIZED_CARBON)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/dense_carbon_powder"));
         RefiningUnitRecipeBuilder.create(ModItems.GROUND_BUCKFLOWER_POWDER, ModItems.DENSE_CARBON_POWDER)
@@ -154,23 +198,23 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/buckflower"));
         RefiningUnitRecipeBuilder.create(ModItems.CITROME, ModItems.CARBON)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/citrome"));
-        RefiningUnitRecipeBuilder.create(new ItemCountInput(ModItems.SANDLEAF, 3), ModItems.CARBON)
+        RefiningUnitRecipeBuilder.create(ModItems.SANDLEAF, ModItems.CARBON)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/sandleaf"));
         RefiningUnitRecipeBuilder.create(ModItems.WOOD, ModItems.CARBON)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/wood"));
-        RefiningUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.CARBON)
+        RefiningUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.CARBON, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/jincao"));
-        RefiningUnitRecipeBuilder.create(ModItems.YAZHEN, ModItems.CARBON)
+        RefiningUnitRecipeBuilder.create(ModItems.YAZHEN, ModItems.CARBON, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/yazhen"));
         RefiningUnitRecipeBuilder.create(ModItems.BUCKFLOWER_POWDER, ModItems.CARBON_POWDER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/buckflower_powder"));
         RefiningUnitRecipeBuilder.create(ModItems.CITROME_POWDER, ModItems.CARBON_POWDER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/citrome_powder"));
-        RefiningUnitRecipeBuilder.create(new ItemCountInput(ModItems.SANDLEAF_POWDER, 3), ModItems.CARBON_POWDER)
+        RefiningUnitRecipeBuilder.create(new ItemCountInput(ModItems.SANDLEAF_POWDER, 3), ModItems.CARBON_POWDER, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/sandleaf_powder"));
-        RefiningUnitRecipeBuilder.create(ModItems.JINCAO_POWDER, ModItems.CARBON_POWDER)
+        RefiningUnitRecipeBuilder.create(ModItems.JINCAO_POWDER, ModItems.CARBON_POWDER, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/jincao_powder"));
-        RefiningUnitRecipeBuilder.create(ModItems.YAZHEN_POWDER, ModItems.CARBON_POWDER)
+        RefiningUnitRecipeBuilder.create(ModItems.YAZHEN_POWDER, ModItems.CARBON_POWDER, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/yazhen_powder"));
         RefiningUnitRecipeBuilder.create(ModItems.DENSE_ORIGOCRUST_POWDER, ModItems.PACKED_ORIGOCRUST)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/dense_origocrust_powder"));
@@ -194,7 +238,33 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/amethyst_ore"));
         RefiningUnitRecipeBuilder.create(ModItems.AMETHYST_POWDER, ModItems.AMETHYST_FIBER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/amethyst_powder"));
-
+        RefiningUnitRecipeBuilder.create(ModItems.CUPRIUM_ORE, ModItems.CUPRIUM)
+                .withFluid(new Identifier("minecraft", "water"), 1000)
+                .withOutputFluid(new Identifier(ArknightsEndfield.MOD_ID, "sewage"), 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "refining_unit/cuprium"));
+        // endregion
+        // region Separating Unit Recipes
+        // 拆解机测试配方：水桶 -> 空桶 + 水
+        SeparatingUnitRecipeBuilder.create(Items.WATER_BUCKET, Items.BUCKET)
+                .withOutputFluid(new Identifier("minecraft", "water"), 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "separating_unit/water_bucket"));
+        // endregion
+        // region Shredding Unit Recipes
+        ShreddingUnitRecipeBuilder.create(Items.REDSTONE_BLOCK, Items.REDSTONE, 9)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/redstone_block"));
+        ShreddingUnitRecipeBuilder.create(Items.BONE, Items.BONE_MEAL, 3)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/bone"));
+        ShreddingUnitRecipeBuilder.create(Items.BONE_BLOCK, Items.BONE_MEAL, 9)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/bone_block"));
+        ShreddingUnitRecipeBuilder.create(Items.CLAY, Items.CLAY_BALL, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/clay"));
+        ShreddingUnitRecipeBuilder.create(Items.GLOWSTONE, Items.GLOWSTONE_DUST, 4)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/glowstone"));
+        ShreddingUnitRecipeBuilder.create(Items.BLAZE_ROD, Items.BLAZE_POWDER, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/blaze_rod"));
+        ShreddingUnitRecipeBuilder.create(Items.SUGAR_CANE, Items.SUGAR, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/sugar_cane"));
+        
         ShreddingUnitRecipeBuilder.create(ModItems.CARBON, ModItems.CARBON_POWDER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/carbon"));
         ShreddingUnitRecipeBuilder.create(ModItems.ORIGOCRUST, ModItems.ORIGOCRUST_POWDER)
@@ -217,7 +287,10 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/sandleaf"));
         ShreddingUnitRecipeBuilder.create(ModItems.AMETHYST_FIBER, ModItems.AMETHYST_POWDER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/amethyst_fiber"));
-
+        ShreddingUnitRecipeBuilder.create(ModItems.CUPRIUM, ModItems.CUPRIUM_POWDER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "shredding_unit/cuprium"));
+        // endregion
+        // region Fitting Unit Recipes
         FittingUnitRecipeBuilder.create(ModItems.CUPRIUM, ModItems.CUPRIUM_PART)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit/cuprium"));
         FittingUnitRecipeBuilder.create(ModItems.AMETHYST_FIBER, ModItems.AMETHYST_PART)
@@ -228,7 +301,15 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit/steel"));
         FittingUnitRecipeBuilder.create(ModItems.FERRIUM, ModItems.FERRIUM_PART)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit/ferrium"));
-
+        FittingUnitRecipeBuilder.create(ModItems.HETONITE, ModItems.HETONITE_PART)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "fitting_unit/hetonite"));
+        // endregion
+        // region Moulding Unit Recipes
+        MouldingUnitRecipeBuilder.create(new ItemCountInput(Items.GLASS, 3), Items.GLASS_BOTTLE, 3)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/glass_bottle"));
+        MouldingUnitRecipeBuilder.create(new ItemCountInput(Items.IRON_INGOT, 3), Items.BUCKET)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/bucket"));
+        
         MouldingUnitRecipeBuilder.create(new ItemCountInput(ModItems.AMETHYST_FIBER, 2), ModItems.AMETHYST_BOTTLE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/amethyst_bottle"));
         MouldingUnitRecipeBuilder.create(new ItemCountInput(ModItems.CRYSTON_FIBER, 2), ModItems.CRYSTON_BOTTLE)
@@ -237,7 +318,23 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/ferrium_bottle"));
         MouldingUnitRecipeBuilder.create(new ItemCountInput(ModItems.STEEL, 2), ModItems.STEEL_BOTTLE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/steel_bottle"));
-
+        MouldingUnitRecipeBuilder.create(new ItemCountInput(ModItems.CUPRIUM, 2), ModItems.CUPRIUM_BOTTLE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/cuprium_bottle"));
+        MouldingUnitRecipeBuilder.create(new ItemCountInput(ModItems.HETONITE, 2), ModItems.HETONITE_BOTTLE)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "moulding_unit/hetonite_bottle"));
+        // endregion
+        // region Planting Unit Recipes
+        PlantingUnitRecipeBuilder.create(Items.WHEAT_SEEDS, Items.WHEAT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/wheat"));
+        PlantingUnitRecipeBuilder.create(Items.BEETROOT_SEEDS, Items.BEETROOT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/beetroot"));
+        PlantingUnitRecipeBuilder.create(Items.MELON_SEEDS, Items.MELON_SEEDS)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/melon"));
+        PlantingUnitRecipeBuilder.create(Items.PUMPKIN_SEEDS, Items.PUMPKIN_SEEDS)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/pumpkin"));
+        PlantingUnitRecipeBuilder.create(Items.TORCHFLOWER_SEEDS, Items.TORCHFLOWER)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/torchflower"));
+        
         PlantingUnitRecipeBuilder.create(ModItems.AKETINE_SEED, ModItems.AKETINE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/aketine"));
         PlantingUnitRecipeBuilder.create(ModItems.BUCKFLOWER_SEED, ModItems.BUCKFLOWER)
@@ -254,16 +351,31 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/reed_rye"));
         PlantingUnitRecipeBuilder.create(ModItems.TARTPEPPER_SEED, ModItems.TARTPEPPER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/tartpepper"));
-        PlantingUnitRecipeBuilder.create(ModItems.JINCAO_SEED, ModItems.JINCAO)
+        
+        PlantingUnitRecipeBuilder.create(ModItems.JINCAO_SEED, ModItems.JINCAO, 2)
+                .withFluid(Registries.FLUID.getId(Fluids.WATER), 1000)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/jincao"));
-        PlantingUnitRecipeBuilder.create(ModItems.YAZHEN_SEED, ModItems.YAZHEN)
+        PlantingUnitRecipeBuilder.create(ModItems.YAZHEN_SEED, ModItems.YAZHEN, 2)
+                .withFluid(Registries.FLUID.getId(Fluids.WATER), 1000)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "planting_unit/yazhen"));
-
+        // endregion
+        // region Seed Picking Unit Recipes
+        SeedPickingUnitRecipeBuilder.create(Items.WHEAT, Items.WHEAT_SEEDS, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/wheat"));
+        SeedPickingUnitRecipeBuilder.create(Items.BEETROOT, Items.BEETROOT_SEEDS, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/beetroot"));
+        SeedPickingUnitRecipeBuilder.create(Items.MELON, Items.MELON_SEEDS, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/melon"));
+        SeedPickingUnitRecipeBuilder.create(Items.PUMPKIN, Items.PUMPKIN_SEEDS, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/pumpkin"));
+        SeedPickingUnitRecipeBuilder.create(Items.TORCHFLOWER, Items.TORCHFLOWER_SEEDS, 2)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/torchflower"));
+        
         SeedPickingUnitRecipeBuilder.create(ModItems.AKETINE, ModItems.AKETINE_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/aketine"));
-        SeedPickingUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.JINCAO_SEED, 2)
+        SeedPickingUnitRecipeBuilder.create(ModItems.JINCAO, ModItems.JINCAO_SEED, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/jincao"));
-        SeedPickingUnitRecipeBuilder.create(ModItems.YAZHEN, ModItems.YAZHEN_SEED, 2)
+        SeedPickingUnitRecipeBuilder.create(ModItems.YAZHEN, ModItems.YAZHEN_SEED, 1)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/yazhen"));
         SeedPickingUnitRecipeBuilder.create(ModItems.BUCKFLOWER, ModItems.BUCKFLOWER_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/buckflower"));
@@ -279,7 +391,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/redjade_ginseng"));
         SeedPickingUnitRecipeBuilder.create(ModItems.AMBER_RICE, ModItems.AMBER_RICE_SEED, 2)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "seed_picking_unit/amber_rice"));
-
+        // endregion
+        // region Filling Unit Recipes
         List<ItemCountInput> CANNED_CITROME_C = List.of(
                 new ItemCountInput(ModItems.AMETHYST_BOTTLE, 5),
                 new ItemCountInput(ModItems.CITROME_POWDER, 5));
@@ -311,6 +424,15 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         FillingUnitRecipeBuilder.create(BUCK_CAPSULE_A, ModItems.BUCK_CAPSULE_A)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "filling_unit/buck_capsule_a"));
 
+        // 流体模式：各材质瓶装取各流体（1 空瓶 + 1000 mB 流体 → 1 瓶装流体）
+        offerFluidBottlingRecipes(consumer, ModItems.AMETHYST_BOTTLE, "amethyst");
+        offerFluidBottlingRecipes(consumer, ModItems.FERRIUM_BOTTLE, "ferrium");
+        offerFluidBottlingRecipes(consumer, ModItems.CRYSTON_BOTTLE, "cryston");
+        offerFluidBottlingRecipes(consumer, ModItems.STEEL_BOTTLE, "steel");
+        offerFluidBottlingRecipes(consumer, ModItems.HETONITE_BOTTLE, "hetonite");
+        offerFluidBottlingRecipes(consumer, ModItems.CUPRIUM_BOTTLE, "cuprium");
+        // endregion
+        // region Gearing Unit Recipes
         List<ItemCountInput> AMETHYST_COMPONENT = List.of(
                 new ItemCountInput(ModItems.ORIGOCRUST, 5),
                 new ItemCountInput(ModItems.AMETHYST_FIBER, 5));
@@ -327,11 +449,22 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         GearingUnitRecipeBuilder.create(CRYSTON_COMPONENT, ModItems.CRYSTON_COMPONENT)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/cryston_component"));
         List<ItemCountInput> CUPRIUM_COMPONENT = List.of(
-                new ItemCountInput(ModItems.PACKED_ORIGOCRUST, 10),
-                new ItemCountInput(ModItems.CUPRIUM, 5));
+                new ItemCountInput(ModItems.CUPRIUM_PART, 10),
+                new ItemCountInput(ModItems.XIRANITE, 10));
         GearingUnitRecipeBuilder.create(CUPRIUM_COMPONENT, ModItems.CUPRIUM_COMPONENT)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/cuprium_component"));
-
+        List<ItemCountInput> XIRANITE_COMPONENT = List.of(
+                new ItemCountInput(ModItems.PACKED_ORIGOCRUST, 10),
+                new ItemCountInput(ModItems.XIRANITE, 10));
+        GearingUnitRecipeBuilder.create(XIRANITE_COMPONENT, ModItems.XIRANITE_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/xiranite_component"));
+        List<ItemCountInput> HETONITE_COMPONENT = List.of(
+                new ItemCountInput(ModItems.HETONITE_PART, 2),
+                new ItemCountInput(ModItems.HEAVY_XIRANITE, 2));
+        GearingUnitRecipeBuilder.create(HETONITE_COMPONENT, ModItems.HETONITE_COMPONENT)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "gearing_unit/hetonite_component"));
+        // endregion
+        // region Grinding Unit Recipes
         List<ItemCountInput> DENSE_CARBON_POWDER = List.of(
                 new ItemCountInput(ModItems.CARBON_POWDER, 2),
                 new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
@@ -367,7 +500,8 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 new ItemCountInput(ModItems.SANDLEAF_POWDER, 1));
         GrindingUnitRecipeBuilder.create(CRYSTON_POWDER, ModItems.CRYSTON_POWDER)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "grinding_unit/cryston_powder"));
-
+        // endregion
+        // region Packaging Unit Recipes
         List<ItemCountInput> LC_BATTERY = List.of(
                 new ItemCountInput(ModItems.AMETHYST_PART, 5),
                 new ItemCountInput(ModItems.ORIGINIUM_POWDER, 10));
@@ -388,7 +522,38 @@ public class ModRecipesProvider extends FabricRecipeProvider {
                 new ItemCountInput(ModItems.AKETINE_POWDER, 1));
         PackagingUnitRecipeBuilder.create(INDUSTRIAL_EXPLOSIVE, ModItems.INDUSTRIAL_EXPLOSIVE)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/industrial_explosive"));
-
+        List<ItemCountInput> LC_WULING_BATTERY = List.of(
+                new ItemCountInput(ModItems.XIRANITE, 5),
+                new ItemCountInput(ModItems.DENSE_ORIGINIUM_POWDER, 15));
+        PackagingUnitRecipeBuilder.create(LC_WULING_BATTERY, ModItems.LC_WULING_BATTERY)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/lc_wuling_battery"));
+        List<ItemCountInput> SC_WULING_BATTERY = List.of(
+                new ItemCountInput(ModItems.XIRCON, 5),
+                new ItemCountInput(ModItems.DENSE_ORIGINIUM_POWDER, 20));
+        PackagingUnitRecipeBuilder.create(SC_WULING_BATTERY, ModItems.SC_WULING_BATTERY)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/sc_wuling_battery"));
+        List<ItemCountInput> YAZHEN_SYRINGE_A = List.of(
+                new ItemCountInput(ModItems.FERRIUM_PART, 10),
+                new ItemCountInput(bottled(ModItems.FERRIUM_BOTTLE, ModFluids.STILL_YAZHEN_SOLUTION), 5));
+        PackagingUnitRecipeBuilder.create(YAZHEN_SYRINGE_A, ModItems.YAZHEN_SYRINGE_A)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/yazhen_syringe_a"));
+        List<ItemCountInput> YAZHEN_SYRINGE_C = List.of(
+                new ItemCountInput(ModItems.CUPRIUM_PART, 10),
+                new ItemCountInput(bottled(ModItems.CUPRIUM_BOTTLE, ModFluids.STILL_YAZHEN_SOLUTION), 5));
+        PackagingUnitRecipeBuilder.create(YAZHEN_SYRINGE_C, ModItems.YAZHEN_SYRINGE_C)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/yazhen_syringe_c"));
+        List<ItemCountInput> JINCAO_DRINK = List.of(
+                new ItemCountInput(ModItems.FERRIUM_PART, 10),
+                new ItemCountInput(bottled(ModItems.FERRIUM_BOTTLE, ModFluids.STILL_JINCAO_SOLUTION), 5));
+        PackagingUnitRecipeBuilder.create(JINCAO_DRINK, ModItems.JINCAO_DRINK)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/jincao_drink"));
+        List<ItemCountInput> JINCAO_TEA = List.of(
+                new ItemCountInput(ModItems.CUPRIUM_PART, 10),
+                new ItemCountInput(bottled(ModItems.CUPRIUM_BOTTLE, ModFluids.STILL_JINCAO_SOLUTION), 5));
+        PackagingUnitRecipeBuilder.create(JINCAO_TEA, ModItems.JINCAO_TEA)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "packaging_unit/jincao_tea"));
+        // endregion
+        // region Crafter Recipes
         CrafterRecipeBuilder.create(ModBlocks.PORTABLE_ORIGINIUM_RIG)
                 .input(ModItems.ORIGOCRUST, 5)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/portable_originium_rig"));
@@ -712,5 +877,169 @@ public class ModRecipesProvider extends FabricRecipeProvider {
         CrafterRecipeBuilder.create(ModBlocks.DEPOT_UNLOADER)
                 .input(ModItems.AMETHYST_PART, 20)
                 .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/depot_unloader"));
+        CrafterRecipeBuilder.create(ModItems.CONTROL_ITEM)
+                .input(ModItems.ORIGOCRUST, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/control_item"));
+        CrafterRecipeBuilder.create(ModBlocks.XIRANITE_PYLON)
+                .input(ModItems.XIRANITE, 5)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/xiranite_pylon"));
+        CrafterRecipeBuilder.create(ModBlocks.XIRANITE_RELAY)
+                .input(ModItems.XIRANITE, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/xiranite_relay"));
+        CrafterRecipeBuilder.create(ModBlocks.FORGE_OF_THE_SKY)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/forge_of_the_sky"));
+        CrafterRecipeBuilder.create(ModBlocks.HYDRO_MINING_RIG)
+                .input(ModItems.CUPRIUM_PART, 10)
+                .input(ModBlocks.PORTABLE_ORIGINIUM_RIG, 1)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/hydro_mining_rig"));
+        CrafterRecipeBuilder.create(ModBlocks.WATER_TREATMENT_UNIT)
+                .input(ModItems.CUPRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/water_treatment_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.ACID_RESISTANT_PUMP_MK_II)
+                .input(ModItems.CUPRIUM_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/acid_resistant_pump_mk_ii"));
+        CrafterRecipeBuilder.create(ModBlocks.FLUID_PUMP)
+                .input(ModItems.STEEL_PART, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/fluid_pump"));
+        CrafterRecipeBuilder.create(ModBlocks.FLUID_TANK)
+                .input(ModItems.STEEL_PART, 10)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/fluid_tank"));
+        CrafterRecipeBuilder.create(ModBlocks.SEPARATING_UNIT)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/separating_unit"));
+        CrafterRecipeBuilder.create(ModBlocks.REACTOR_CRUCIBLE)
+                .input(ModItems.STEEL_PART, 20)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/reactor_crucible"));
+        CrafterRecipeBuilder.create(ModBlocks.EXPANDED_CRUCIBLE)
+                .input(ModItems.CUPRIUM_PART, 40)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/expanded_crucible"));
+        // endregion
+        // region Reactor Crucible Recipes
+        ReactorCrucibleRecipeBuilder.create()
+                .input(ModItems.JINCAO_POWDER)
+                .fluidInput(Fluids.WATER, 1000)
+                .fluidOutput(ModFluids.STILL_JINCAO_SOLUTION, 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible/jincao_solution"));
+        ReactorCrucibleRecipeBuilder.create()
+                .input(ModItems.YAZHEN_POWDER)
+                .fluidInput(Fluids.WATER, 1000)
+                .fluidOutput(ModFluids.STILL_YAZHEN_SOLUTION, 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible/yazhen_solution"));
+        ReactorCrucibleRecipeBuilder.create()
+                .input(ModItems.XIRANITE)
+                .fluidInput(Fluids.WATER, 1000)
+                .fluidOutput(ModFluids.STILL_LIQUID_XIRANITE, 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible/xiranite_solution"));
+        ReactorCrucibleRecipeBuilder.create()
+                .fluidInput(ModFluids.STILL_LIQUID_XIRANITE, 1000)
+                .fluidInput(ModFluids.STILL_SEWAGE, 1000)
+                .fluidOutput(ModFluids.STILL_XIRCON_EFFLUENT, 1000)
+                .fluidOutput(ModFluids.STILL_INERT_XIRCON_EFFLUENT, 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible/xircon_effluent"));
+        ReactorCrucibleRecipeBuilder.create()
+                .fluidInput(ModFluids.STILL_XIRCON_EFFLUENT, 2000)
+                .input(ModItems.FERRIUM_POWDER)
+                .fluidOutput(ModFluids.STILL_SEWAGE, 1000)
+                .output(ModItems.XIRCON)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "reactor_crucible/xircon_effluent_to_ferrium"));
+        // endregion
+        // region Forge of the Sky Recipes
+        ForgeOfTheSkyRecipeBuilder.create(ModItems.STABILIZED_CARBON, 2, ModItems.XIRANITE, 1)
+                .fluid(Fluids.WATER, 1000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "forge_of_the_sky/stabilized_carbon"));
+        ForgeOfTheSkyRecipeBuilder.create(ModItems.XIRANITE, 10, ModItems.HEAVY_XIRANITE, 1)
+                .fluid(ModFluids.STILL_XIRCON_EFFLUENT, 5000)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "forge_of_the_sky/heavy_xiranite"));
+        // endregion
+        // region Mineral Vein Recipes
+        CrafterRecipeBuilder.create(ModBlocks.COAL_MINERAL_VEIN_BLOCK)
+                .input(Items.COAL, 64)
+                .input(ModItems.AMETHYST_PART, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/coal_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.REDSTONE_MINERAL_VEIN_BLOCK)
+                .input(Items.REDSTONE, 64)
+                .input(ModItems.AMETHYST_PART, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/redstone_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.ORIGINIUM_MINERAL_VEIN_BLOCK)
+                .input(ModItems.ORIGINIUM_ORE, 64)
+                .input(ModItems.AMETHYST_PART, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/originium_mineral_vein"));
+       
+        CrafterRecipeBuilder.create(ModBlocks.COPPER_MINERAL_VEIN_BLOCK)
+                .input(Items.RAW_COPPER, 64)
+                .input(ModItems.AMETHYST_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/copper_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.IRON_MINERAL_VEIN_BLOCK)
+                .input(Items.RAW_IRON, 64)
+                .input(ModItems.AMETHYST_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/iron_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.LAPIS_MINERAL_VEIN_BLOCK)
+                .input(Items.LAPIS_LAZULI, 64)
+                .input(ModItems.AMETHYST_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/lapis_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.GOLD_MINERAL_VEIN_BLOCK)
+                .input(Items.RAW_GOLD, 64)
+                .input(ModItems.AMETHYST_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/gold_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.AMETHYST_MINERAL_VEIN_BLOCK)
+                .input(ModItems.AMETHYST_ORE, 64)
+                .input(ModItems.AMETHYST_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/amethyst_mineral_vein"));
+        
+        CrafterRecipeBuilder.create(ModBlocks.DIAMOND_MINERAL_VEIN_BLOCK)
+                .input(Items.DIAMOND, 64)
+                .input(ModItems.HETONITE_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/diamond_mineral_vein"));
+        CrafterRecipeBuilder.create(ModBlocks.EMERALD_MINERAL_VEIN_BLOCK)
+                .input(Items.EMERALD, 64)
+                .input(ModItems.HETONITE_COMPONENT, 64)
+                .input(ModItems.ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/emerald_mineral_vein"));
+        
+        CrafterRecipeBuilder.create(ModBlocks.FERRIUM_MINERAL_VEIN_BLOCK)
+                .input(ModItems.FERRIUM_ORE, 64)
+                .input(ModItems.STEEL_PART, 64)
+                .input(ModItems.DENSE_ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/ferrium_mineral_vein"));
+        
+        CrafterRecipeBuilder.create(ModBlocks.CUPRIUM_MINERAL_VEIN_BLOCK)
+                .input(ModItems.CUPRIUM_ORE, 64)
+                .input(ModItems.XIRANITE, 64)
+                .input(ModItems.DENSE_ORIGINIUM_POWDER, 64)
+                .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID, "crafter/vein/cuprium_mineral_vein"));
+        // endregion
+    }
+    
+    private static Item bottled(MaterialBottleItem bottle, Fluid fluid) {
+        Item item = bottle.getBottledItem(fluid);
+        if (item == null) {
+            throw new IllegalStateException("该材质瓶未注册流体瓶装变种: "
+                    + Registries.ITEM.getId(bottle) + " + " + Registries.FLUID.getId(fluid));
+        }
+        return item;
+    }
+
+    private static void offerFluidBottlingRecipes(Consumer<RecipeJsonProvider> consumer,
+                                                  MaterialBottleItem bottle, String materialId) {
+        for (Map.Entry<String, Fluid> entry : ModItems.BOTTLED_FLUIDS.entrySet()) {
+            Item bottled = bottle.getBottledItem(entry.getValue());
+            if (bottled == null) continue;
+
+            List<ItemCountInput> inputs = List.of(new ItemCountInput(bottle, 1));
+            FillingUnitRecipeBuilder.create(inputs, bottled)
+                    .withFluid(Registries.FLUID.getId(entry.getValue()), 1000)
+                    .offerTo(consumer, new Identifier(ArknightsEndfield.MOD_ID,
+                            "filling_unit/" + materialId + "_bottled_" + entry.getKey()));
+        }
     }
 }

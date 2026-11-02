@@ -1,7 +1,10 @@
 package com.besson.endfield.model.block.powering;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.block.custom.powering.ThermalBankBlock;
 import com.besson.endfield.blockentity.custom.powering.ThermalBankBlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
@@ -13,11 +16,22 @@ public class ThermalBankModel extends GeoModel<ThermalBankBlockEntity> {
 
     @Override
     public Identifier getTextureResource(ThermalBankBlockEntity animatable) {
+        Block block = animatable.getCachedState().getBlock();
+        if (block instanceof ThermalBankBlock b) {
+            if (b.getDefaultState().get(ThermalBankBlock.PREVIEW)) {
+                return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/thermal_bank_pre.png");
+            }
+        }
         return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/thermal_bank.png");
     }
 
     @Override
     public Identifier getAnimationResource(ThermalBankBlockEntity animatable) {
         return null;
+    }
+
+    @Override
+    public RenderLayer getRenderType(ThermalBankBlockEntity animatable, Identifier texture) {
+        return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
     }
 }

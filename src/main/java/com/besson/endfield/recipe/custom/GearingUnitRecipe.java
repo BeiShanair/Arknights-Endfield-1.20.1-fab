@@ -39,7 +39,7 @@ public class GearingUnitRecipe implements Recipe<SimpleInventory> {
         for (InputEntry inputEntry : input) {
             boolean matched = false;
             for (ItemStack stack : inputs) {
-                if (inputEntry.getIngredient().test(stack)) {
+                if (inputEntry.ingredient().test(stack)) {
                     matched = true;
                     break;
                 }
@@ -79,6 +79,11 @@ public class GearingUnitRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isIgnoredInRecipeBook() {
+        return true;
+    }
+
     public DefaultedList<InputEntry> getInput() {
         return input;
     }
@@ -87,7 +92,7 @@ public class GearingUnitRecipe implements Recipe<SimpleInventory> {
     public DefaultedList<Ingredient> getIngredients() {
         DefaultedList<Ingredient> ingredients = DefaultedList.of();
         for (InputEntry entry : input) {
-            ingredients.add(entry.getIngredient());
+            ingredients.add(entry.ingredient());
         }
         return ingredients;
     }
@@ -133,8 +138,8 @@ public class GearingUnitRecipe implements Recipe<SimpleInventory> {
         public void write(PacketByteBuf buf, GearingUnitRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
             for (InputEntry entry: recipe.input) {
-                entry.getIngredient().write(buf);
-                buf.writeInt(entry.getCount());
+                entry.ingredient().write(buf);
+                buf.writeInt(entry.count());
             }
             buf.writeItemStack(recipe.output);
         }

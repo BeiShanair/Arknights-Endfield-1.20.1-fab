@@ -1,0 +1,18 @@
+{
+  "name": "Fluid Pump",
+  "icon": "arknights_endfield:fluid_pump",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:fluid_pump",
+      "title": "Fluid Pump",
+      "text": "The Fluid Pump extracts water from water sources for use in fluid systems.$(br2)$(#ff0000)Note: This device is still under development. Functionality may be incomplete.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place the pump near a water source. It auto-detects nearby water blocks and starts extracting.$(br2)Extracted water can be transported via $(l:arknights_endfield:logistics/pipe)Fluid Pipes$() to machines that need it."
+    }
+  ]
+}

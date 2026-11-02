@@ -17,11 +17,11 @@ public class MouldingUnitDisplay implements Display {
 
     public MouldingUnitDisplay(MouldingUnitRecipe recipe) {
         InputEntry entry = recipe.getInput();
-        List<ItemStack> stacks = List.of(entry.getIngredient().getMatchingStacks());
+        List<ItemStack> stacks = List.of(entry.ingredient().getMatchingStacks());
         this.inputs = List.of(EntryIngredients.ofItemStacks(
                 stacks.stream().map(stack -> {
                     ItemStack copy = stack.copy();
-                    copy.setCount(entry.getCount());
+                    copy.setCount(entry.count());
                     return copy;
                 }).toList()));
         this.outputs = List.of(EntryIngredients.of(recipe.getOutput(null)));

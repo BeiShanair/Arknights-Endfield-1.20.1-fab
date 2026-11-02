@@ -1,0 +1,38 @@
+{
+  "name": "快速入门",
+  "icon": "arknights_endfield:protocol_anchor_core",
+  "category": "arknights_endfield:intro",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "第一步：协议核心",
+      "text": "当你第一次进入世界时，背包中会自动获得一个$(l:arknights_endfield:powering/protocol_core)协议核心$()。找一个 9x9 的空旷区域（空间不足会提示），将它放置下来。$(br2)协议核心是整个工业体系的核心——它每tick会产生 200 $(efu) 的电力，内置 100,000 $(efu) 电池。一旦放置，它会自动开始工作。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "第二步：建立电网",
+      "text": "放置协议核心后，你需要使用$(l:arknights_endfield:powering/electric_pylon)供电桩$()或$(l:arknights_endfield:powering/relay_tower)中继器$()来扩展电网。放置供电桩在协议核心 80 米（方形）范围内，它会自动连接到电网。$(br2)用电设备（如制造机器、防御塔等）需要放置在供电桩的供电范围（10米方形范围）内才能获得电力。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "第三步：开始生产",
+      "text": "有了电力供应，你可以开始放置各种生产设备：$(br)$(li)$(l:arknights_endfield:production1/crafter)制造台$()——无需电力，手动合成$(li)$(l:arknights_endfield:resourcing/portable_rig)便携源石矿机$()——无需电力，开采矿脉$(li)$(l:arknights_endfield:production1/refining_unit)精炼炉$()——高温精炼材料$(br2)将这些设备放在供电桩附近即可自动通电。$(br2)相关配方请参阅 REI / JEI。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "第四步：搭建物流",
+      "text": "随着生产规模扩大，你需要$(l:arknights_endfield:logistics/belt)传送带$()来连接各台机器。传送带会自动接受机器推送的物品并运输到目的地。$(br2)使用$(l:arknights_endfield:logistics/output_port)输出端口$()从容器（如箱子）中抽取物品，使用$(l:arknights_endfield:logistics/depot_system)仓库存取线$()来与全局仓储系统收发物品。$(br2)按 G 键（可修改按键绑定）可以打开$(l:arknights_endfield:logistics/global_storage)全局仓储$()界面。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "接下来建议阅读：",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/power_network",
+        "arknights_endfield:production1/crafter",
+        "arknights_endfield:logistics/belt",
+        "arknights_endfield:resourcing/ore_vein"
+      ]
+    }
+  ]
+}

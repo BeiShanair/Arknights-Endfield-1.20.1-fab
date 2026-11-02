@@ -1,0 +1,23 @@
+{
+  "name": "Protocol Core Port",
+  "icon": "arknights_endfield:protocol_anchor_core_port",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_anchor_core_port",
+      "title": "Core Item Interface",
+      "text": "The Protocol Core Port bridges the Protocol Core with the logistics system. It allows extracting from or inserting into the core's internal storage.$(br2)Since v1.0.2: has an independent GUI with item filtering."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place on the side of a Protocol Core(All blocks within the protocol's core base area, except for the central block, can be destroyed). Right-click to open the GUI and set item filters — specify which items are allowed in/out.$(br2)Used with belts, it enables the Protocol Core to interact with the entire logistics network."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

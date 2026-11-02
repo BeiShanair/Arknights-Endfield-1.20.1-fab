@@ -59,8 +59,11 @@ public class ModCommands {
         int amount = IntegerArgumentType.getInteger(ctx, "amount");
 
         Item item = itemArg.getItem();
-        
-        int availableAmount = IntStream.range(0, player.getInventory().size()).mapToObj(i -> player.getInventory().getStack(i)).filter(stack -> !stack.isEmpty() && stack.getItem() == item).mapToInt(ItemStack::getCount).sum();
+
+        int availableAmount = IntStream.range(0, player.getInventory().size())
+                .mapToObj(i -> player.getInventory().getStack(i))
+                .filter(stack -> !stack.isEmpty() && stack.isOf(item))
+                .mapToInt(ItemStack::getCount).sum();
 
         if (availableAmount < amount) {
             ctx.getSource().sendFeedback(
@@ -69,27 +72,32 @@ public class ModCommands {
             );
             return 0;
         }
-        
-        int remainingToRemove = amount;
-        for (int i = 0; i < player.getInventory().size() && remainingToRemove > 0; i++) {
-            ItemStack stack = player.getInventory().getStack(i);
-            if (!stack.isEmpty() && stack.getItem() == item) {
-                int removeCount = Math.min(stack.getCount(), remainingToRemove);
-                stack.decrement(removeCount);
-                remainingToRemove -= removeCount;
-                if (stack.isEmpty()) {
-                    player.getInventory().setStack(i, ItemStack.EMPTY);
-                }
-            }
-        }
 
         GlobalStorageManager manager = new GlobalStorageManager(player.getServerWorld());
 
-        ItemStack stack = itemArg.createStack(amount, false);
-        long inserted = manager.insert(stack);
+        int remaining = amount;
+        long totalInserted = 0;
+        for (int i = 0; i < player.getInventory().size() && remaining > 0; i++) {
+            ItemStack stack = player.getInventory().getStack(i);
+            if (stack.isEmpty() || !stack.isOf(item)) continue;
 
+            ItemStack chunk = stack.copy();
+            chunk.setCount(Math.min(stack.getCount(), remaining));
+            long inserted = manager.insert(chunk);
+            int actuallyInserted = (int) inserted;
+            if (actuallyInserted <= 0) continue;
+
+            stack.decrement(actuallyInserted);
+            if (stack.isEmpty()) {
+                player.getInventory().setStack(i, ItemStack.EMPTY);
+            }
+            remaining -= actuallyInserted;
+            totalInserted += actuallyInserted;
+        }
+
+        final long insertedReported = totalInserted;
         ctx.getSource().sendFeedback(
-                () -> Text.translatable("commands.endfield.deposit", inserted),
+                () -> Text.translatable("commands.endfield.deposit", insertedReported),
                 false
         );
 
@@ -103,13 +111,15 @@ public class ModCommands {
         ItemStackArgument itemArg = ItemStackArgumentType.getItemStackArgument(ctx, "item");
         int amount = IntegerArgumentType.getInteger(ctx, "amount");
 
-        Item item = itemArg.getItem();
+        ItemStack prototype = itemArg.createStack(1, false);
         GlobalStorageManager manager = new GlobalStorageManager(player.getServerWorld());
-        ItemStack extracted = manager.extract(item, amount);
-        int inserted = extracted.getCount();
-        player.getInventory().insertStack(extracted);
+        ItemStack extracted = manager.extract(prototype, amount);
+        int taken = extracted.getCount();
+        if (!extracted.isEmpty()) {
+            player.giveItemStack(extracted);
+        }
         ctx.getSource().sendFeedback(
-                () -> Text.translatable("commands.endfield.withdraw", inserted),
+                () -> Text.translatable("commands.endfield.withdraw", taken),
                 false
         );
 

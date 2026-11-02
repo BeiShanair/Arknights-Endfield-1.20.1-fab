@@ -1,0 +1,23 @@
+{
+  "name": "Hydro Mining Rig",
+  "icon": "arknights_endfield:hydro_mining_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:hydro_mining_rig",
+      "title": "Hydro Mining Rig",
+      "text": "The highest-tier mining rig, capable of mining the most advanced veins.$(br2)Not consuming electricity, but each mining operation consumes 1000 mB of water $(efu)$(br)Speed: 1 item pre 3 seconds $(br)Mines: all vein types including advanced exclusive veins"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Hydro Mining Rig require water for extraction, which can be transported through fluid pipes.$(br2)Like the previous mining rigs, the products will be automatically submitted to the Global Storage."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

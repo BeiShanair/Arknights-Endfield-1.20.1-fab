@@ -13,20 +13,47 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
 public class FillingUnitScreenHandler extends BaseIOScreenHandler<FillingUnitBlockEntity> {
     public FillingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(8));
     }
 
     public FillingUnitScreenHandler(int syncId, PlayerInventory playerInventory, FillingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
         super(ModScreens.FILLING_UNIT_SCREEN, syncId, playerInventory, blockEntity, propertyDelegate, 3);
 
         this.addSlot(new Slot(inputInv, 0, 47, 22));
-        this.addSlot(new Slot(inputInv, 1, 47, 49));
+        // 可变输入槽：流体模式下作为流体输入槽展示，禁止物品的存取
+        this.addSlot(new Slot(inputInv, 1, 47, 49) {
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return !nowFluidMode();
+            }
+
+            @Override
+            public boolean canTakeItems(PlayerEntity playerEntity) {
+                return !nowFluidMode();
+            }
+
+            @Override
+            public ItemStack insertStack(ItemStack stack) {
+                return nowFluidMode() ? stack : super.insertStack(stack);
+            }
+
+            @Override
+            public ItemStack insertStack(ItemStack stack, int amount) {
+                return nowFluidMode() ? stack : super.insertStack(stack, amount);
+            }
+
+            @Override
+            public ItemStack takeStack(int amount) {
+                return nowFluidMode() ? ItemStack.EMPTY : super.takeStack(amount);
+            }
+        });
         this.addSlot(new Slot(outputInv, 0, 113, 35) {
             @Override
             public boolean canInsert(ItemStack stack) {
@@ -65,5 +92,26 @@ public class FillingUnitScreenHandler extends BaseIOScreenHandler<FillingUnitBlo
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
+    }
+
+    public boolean nowFluidMode() {
+        return propertyDelegate.get(6) == 1;
+    }
+
+    public int getFluidAmount() {
+        return propertyDelegate.get(4);
+    }
+
+    public int getFluidCapacity() {
+        return propertyDelegate.get(5);
+    }
+
+    /** 原料罐内流体的注册表 ID（空罐时为水），用于 GUI 按类型取色 */
+    public int getFluidId() {
+        return propertyDelegate.get(7);
     }
 }

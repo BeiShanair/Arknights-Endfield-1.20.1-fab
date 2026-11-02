@@ -1,0 +1,42 @@
+{
+  "name": "Welcome to Endfield Industry",
+  "icon": "arknights_endfield:originium_ore",
+  "category": "arknights_endfield:intro",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Welcome!",
+      "text": "Endfield Industry is a Minecraft industrial mod based on fan creations inspired by Arknights: Endfield. It adds a complete automated industrial system to the game, including a power grid, conveyor belt logistics, fluid pipelines, multi-stage production lines, and defensive turrets. $(br2)This mod features a standalone industrial system and does not rely on any other industrial mods."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Key Features",
+      "text": "$(li) Global Power Grid System—A power network operating at the dimensional level, spanning multiple chunks, and capable of ultra-long-distance power transmission; it relies on server ticks to function; $(li) Conveyor Belt—Placed similarly to railroad tracks; its transport logic combines passive reception and active pushing; $(li) Fluid Pipeline—A variant of the conveyor belt with similar logic; but not yet fully implemented in the current version; $(li) Global Warehousing System — Dimension-level item storage; $(li) Tower Defense Equipment — 11 types of automated defense devices suitable for various scenarios; $(li) REI/JEI recipe viewing support; $(li) Recipe Data-Driven — Customizable data packets enable industrial equipment to support more content processing."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Special Note",
+      "text": "This mod currently only supports Fabric & Forge 1.20.1 and NeoForge 1.21.1. There will be no NetEase version (specifically referring to the Bedrock Edition) of this mod due to the high technical difficulty involved. $(br)This mod is free and open-source, and any modpack that includes it must also be free. If you obtained this mod or a modpack containing it for a fee, please report the relevant parties."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "About This Guide",
+      "text": "This guide is essentially another version of the documentation site, and most of the content is available there. $(br) If you encounter any problems, you can refer to the 「Tips and Tricks」 section at the end."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Author's Note",
+      "text": "This mod is a passion project, essentially created to support my (Beishan_Besson) mod development tutorial; some parts of the mod will serve as examples in the tutorial. Therefore, I will be handling all development work for this mod. If you have any suggestions or feedback, please feel free to share them!$(br)The mod development tutorial is currently being updated on Bilibili—feel free to follow it!$(br)Thank you for your support!"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related Chapters",
+      "entries": [
+        "arknights_endfield:intro/getting_started",
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:tips/faq"
+      ],
+      "text": "Start your Endfield Industry journey here:"
+    }
+  ]
+}

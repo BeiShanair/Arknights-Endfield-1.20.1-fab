@@ -1,0 +1,25 @@
+{
+  "name": "Bridges & Splitters",
+  "icon": "arknights_endfield:belt_bridge",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:belt_bridge",
+      "title": "Belt Bridge",
+      "text": "The Belt Bridge allows two belts to cross without interference. Place at the intersection — belts pass over each other seamlessly.$(br2)Essential for building complex belt networks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:splitter",
+      "title": "Splitter",
+      "text": "The Splitter divides one input into three outputs. Items are distributed round-robin to the three directions.$(br2)Use as a branching node in belt networks for one-to-many distribution."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:converger",
+      "title": "Converger",
+      "text": "The Converger merges three inputs into one output. Place at belt junctions for many-to-one merging.$(br2)Items from the three inputs alternate through without blocking."
+    }
+  ]
+}

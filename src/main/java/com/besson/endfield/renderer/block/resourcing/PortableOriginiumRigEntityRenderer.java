@@ -1,6 +1,7 @@
 package com.besson.endfield.renderer.block.resourcing;
 
 import com.besson.endfield.blockentity.custom.resourcing.PortableOriginiumRigBlockEntity;
+import com.besson.endfield.config.ModClientConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -41,5 +42,10 @@ public class PortableOriginiumRigEntityRenderer implements BlockEntityRenderer<P
 
             matrices.pop();
         }
+    }
+
+    @Override
+    public int getRenderDistance() {
+        return ModClientConfig.getInstance().getEquipmentRenderDistance();
     }
 }

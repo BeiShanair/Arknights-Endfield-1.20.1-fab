@@ -15,7 +15,7 @@ public class PackagingUnitScreen extends BaseIOScreen<PackagingUnitScreenHandler
 
     @Override
     protected Identifier setTexture() {
-        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/packaging_unit.png");
+        return new Identifier(ArknightsEndfield.MOD_ID, "textures/gui/221.png");
     }
 
     @Override
@@ -23,5 +23,13 @@ public class PackagingUnitScreen extends BaseIOScreen<PackagingUnitScreenHandler
         if (handler.isCrafting()) {
             context.drawTexture(TEXTURE, x + 75, y + 40, 176, 0, handler.getScaledProgress(), 8);
         }
+        renderStoredPowerBar(context, x, y);
+    }
+
+    private void renderStoredPowerBar(DrawContext context, int x, int y) {
+        int storedPower = handler.getStoredPower();
+        int powerHeight = (int) ((10000F - storedPower) / 10000f * 64);
+        if (powerHeight <= 0) return;
+        context.drawTexture(TEXTURE, x + 158, y + 11, 204, 0, 8, powerHeight);
     }
 }

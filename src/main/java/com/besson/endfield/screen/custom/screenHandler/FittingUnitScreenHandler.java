@@ -19,7 +19,7 @@ import java.util.Objects;
 public class FittingUnitScreenHandler extends BaseIOScreenHandler<FittingUnitBlockEntity> {
     public FittingUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
         this(syncId, playerInventory, Objects.requireNonNull(getBlockEntity(playerInventory, packetByteBuf)),
-                new ArrayPropertyDelegate(3));
+                new ArrayPropertyDelegate(4));
     }
 
     public FittingUnitScreenHandler(int syncId, PlayerInventory playerInventory, FittingUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -64,5 +64,9 @@ public class FittingUnitScreenHandler extends BaseIOScreenHandler<FittingUnitBlo
         }
 
         return newStack;
+    }
+
+    public int getStoredPower() {
+        return propertyDelegate.get(3);
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "arknights_endfield:moulding_unit",
+  "input": {
+    "count": 3,
+    "item": "minecraft:iron_ingot"
+  },
+  "output": {
+    "count": 1,
+    "item": "minecraft:bucket"
+  }
+}

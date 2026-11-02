@@ -1,0 +1,32 @@
+{
+  "name": "息壤中继器",
+  "icon": "arknights_endfield:xiranite_relay",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:xiranite_relay",
+      "title": "电力中转站",
+      "text": "息壤中继器是中继器在武陵地区的一个变种，用于跨越更远的距离传输电力。功能与供电桩类似，但电网连接范围更大。$(br2)电网连接范围：80 米$(br)供电范围：10 米"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用场景",
+      "text": "当你需要将电力传输到距离协议核心较远的位置时，可以在中间布置中继器来延长传输距离。$(br2)中继器之间也可以互相连接（80米内），形成链式传输网络。每个中继器节点同样可以为周围 10 米内的设备供电。$(br)右键中继器可以查看当前电网的运行状态。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关设备",
+      "entries": [
+        "arknights_endfield:powering/protocol_core",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:powering/power_network"
+      ]
+    }
+  ]
+}

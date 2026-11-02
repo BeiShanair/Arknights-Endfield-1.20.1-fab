@@ -1,0 +1,23 @@
+{
+  "name": "Output Port",
+  "icon": "arknights_endfield:output_port",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:output_port",
+      "title": "Active Item Extraction",
+      "text": "The Output Port actively extracts items from adjacent containers or machines and pushes them onto connected belts.$(br2)Solves the problem of machines not auto-outputting to belts."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place the Output Port against a container's output side, then connect a belt to its output direction. The port auto-extracts items and pushes them to the belt.$(br2)Works with: regular chests, machine output slots, Protocol Stashes, and other containers."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Fluid Pipes",
+  "icon": "arknights_endfield:fluid_pipe",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:fluid_pipe",
+      "title": "Fluid Pipes",
+      "text": "Fluid pipes are used to transport liquids (such as water, sewage, etc.) between devices. $(br2)Each pipe node has an internal buffer of 1,000 mB (1B, corresponding to 1 unit in the original work)."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "How It Works",
+      "text": "Pipes work similarly to Belts and are a variation of them. $(br)They can transport up to 1,000 mB at a time.$(br)$(#ff0000)Note: The fluid system is currently still under development.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Switching Modes",
+      "text": "By default a pipe only does pure transfer: it keeps pushing whatever fluid is already inside forward.$(br2)Right-click a pipe with the $(l:arknights_endfield:tips/control_terminal)Control Terminal$() to cycle Transfer / Extract / Insert — use Extract for the first pipe of a line and Insert for the last one."
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "Related",
+      "entries": [
+        "arknights_endfield:tips/control_terminal",
+        "arknights_endfield:logistics/protocol_core_port"
+      ]
+    }
+  ]
+}

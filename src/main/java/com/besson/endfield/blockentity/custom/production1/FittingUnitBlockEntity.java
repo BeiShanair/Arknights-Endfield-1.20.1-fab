@@ -41,22 +41,18 @@ public class FittingUnitBlockEntity extends BaseIOBlockEntity<FittingUnitRecipe>
                     case 0 -> FittingUnitBlockEntity.this.progress;
                     case 1 -> FittingUnitBlockEntity.this.maxProgress;
                     case 2 -> FittingUnitBlockEntity.this.enable ? 1 : 0;
+                    case 3 -> FittingUnitBlockEntity.this.storedPower;
                     default -> 0;
                 };
             }
 
             @Override
             public void set(int index, int value) {
-                switch (index) {
-                    case 0 -> FittingUnitBlockEntity.this.progress = value;
-                    case 1 -> FittingUnitBlockEntity.this.maxProgress = value;
-                    case 2 -> FittingUnitBlockEntity.this.enable = value == 1;
-                }
             }
 
             @Override
             public int size() {
-                return 3;
+                return 4;
             }
         };
     }

@@ -1,0 +1,53 @@
+{
+  "name": "控制终端",
+  "icon": "arknights_endfield:control_item",
+  "category": "arknights_endfield:tips",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:control_item",
+      "title": "控制终端",
+      "text": "控制终端是一把跨系统的「调试工具」，同时兼管三件事：$(li)切换$(l:arknights_endfield:logistics/pipe)流体管道$()的工作模式$(li)绑定$(l:arknights_endfield:production2/reactor_crucible)反应池$()的流体输出口$(li)手动铺设$(l:arknights_endfield:powering/power_network)电网$()的运输链路$(br2)堆叠上限：1$(br)稀有度：史诗"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "合成与获取",
+      "text": "在$(l:arknights_endfield:production1/crafter)制造台$()中用 5 个$(l)晶体外壳$()即可合成一个控制终端。$(br2)它不消耗电力、也不会损坏，做好一个就够用整个存档——建议放进背包常备。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "一、切换管道模式",
+      "text": "手持控制终端$(l)右键任意流体管道$()，管道的工作模式会在 纯传输 → 抽取 → 插入 → 纯传输 之间循环，聊天栏会播报切换后的模式。$(br2)管道每 20 tick（约 1 秒）结算一次，切换模式后需要等一拍才会看到效果。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "三种模式的含义",
+      "text": "$(li)$(l)纯传输（默认）$()：只把管内已有的液体继续往前推，既不主动抽取，也不主动注入。$(br2)$(li)$(l)抽取$()：管道空置时，会主动从相邻的容器或机器里抽走一批液体。作为管路起点的管道请切换到此模式。$(br2)$(li)$(l)插入$()：液体走到管道末端时，直接注入相邻的流体存储（机器输入口、储罐等），而不是等待对方来取。作为管路终点的管道请切换到此模式。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "二、绑定反应池输出口",
+      "text": "手持控制终端$(l)右键反应池（或扩展反应池）的侧面方块$()，该侧面的流体口会在三种状态间循环：$(li)$(l)未绑定$()：只能注入，不能被抽取$(li)$(l)输出口 1$()：青色粒子标记$(li)$(l)输出口 2$()：橙色粒子标记$(br2)绑定后，接在这个侧面上的抽取管道只会抽到对应输出槽的液体——两种产物可以同时导出而不串液。$(br2)注意：只对侧面方块生效，右键反应池主体不会触发。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "三、手动铺设电力链路",
+      "text": "$(li)$(l)记录起点$()：$(l)蹲下$()右键$(l)中继器$()、$(l)供电桩$()或$(l)协议核心$()，聊天栏会显示已记录的坐标。$(br2)$(li)$(l)完成连接$()：站起身，右键$(l)中继器$()或$(l)供电桩$()，该节点就会指向你记录的起点，并在世界中拉出一条可见的电力光束。$(br2)默认情况下节点会自动连接 80 米内最近的同类节点；控制终端的作用是$(l)手动覆盖$()这个自动选择，把链路精确接到你想要的节点上。"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "注意事项",
+      "text": "$(li)起点可以是 中继器 / 供电桩 / 协议核心；终点只能是 中继器 或 供电桩。$(br)$(li)没有记录起点就直接右键终点，会提示「未记录起点」。$(br)$(li)起点记录是全局共享的（不区分玩家），多人游戏中同一时间请只让一个人操作。$(br)$(li)手持控制终端右键中继器 / 供电桩时$(l)不会$()弹出电网状态；想看发电量与耗电量，请换手或空手右键。$(br)$(li)连错了不要紧：重新蹲下记录新的起点，再连接一次即可覆盖旧链路。"
+    },
+    {
+      "type": "patchouli:relations",
+      "title": "相关条目",
+      "entries": [
+        "arknights_endfield:logistics/pipe",
+        "arknights_endfield:powering/relay_tower",
+        "arknights_endfield:powering/electric_pylon",
+        "arknights_endfield:production2/reactor_crucible"
+      ]
+    }
+  ]
+}

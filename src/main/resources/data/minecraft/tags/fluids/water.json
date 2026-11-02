@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "arknights_endfield:sewage",
+    "arknights_endfield:flowing_sewage",
+    "arknights_endfield:precipitation_acid",
+    "arknights_endfield:flowing_precipitation_acid",
+    "arknights_endfield:jincao_solution",
+    "arknights_endfield:flowing_jincao_solution",
+    "arknights_endfield:xircon_effluent",
+    "arknights_endfield:flowing_xircon_effluent",
+    "arknights_endfield:inert_xircon_effluent",
+    "arknights_endfield:flowing_inert_xircon_effluent",
+    "arknights_endfield:yazhen_solution",
+    "arknights_endfield:flowing_yazhen_solution",
+    "arknights_endfield:liquid_xiranite",
+    "arknights_endfield:flowing_liquid_xiranite"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "热能池",
+  "icon": "arknights_endfield:thermal_bank",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:thermal_bank",
+      "title": "额外发电设备",
+      "text": "热能池是一种额外的发电设备。若燃烧 Minecraft 的燃料（如煤炭、木炭等）则固定提供 150 $(efu) 的发电量；若燃烧本模组中的电池，则可提供不同且远高于燃烧普通燃料的电力。$(br2)基础发电量：150 $(efu)$(br)占地面积：2x2"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "在电网供电不足时，可以添加热能池来增加总发电量。热能池放置在任意地方都可接入电网。$(br2)多个热能池可以叠加使用，发电量直接累加。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

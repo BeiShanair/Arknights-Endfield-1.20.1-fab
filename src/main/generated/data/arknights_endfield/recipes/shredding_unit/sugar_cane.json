@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:sugar_cane"
+  },
+  "output": {
+    "count": 2,
+    "item": "minecraft:sugar"
+  }
+}

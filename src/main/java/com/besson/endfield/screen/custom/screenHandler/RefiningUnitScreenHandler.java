@@ -18,7 +18,7 @@ import java.util.Objects;
 
 public class RefiningUnitScreenHandler extends BaseIOScreenHandler<RefiningUnitBlockEntity> {
     public RefiningUnitScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
-        this(syncId, playerInventory, Objects.requireNonNull(getClientEntity(playerInventory, packetByteBuf)), new ArrayPropertyDelegate(3));
+        this(syncId, playerInventory, Objects.requireNonNull(getClientEntity(playerInventory, packetByteBuf)), new ArrayPropertyDelegate(11));
     }
 
     public RefiningUnitScreenHandler(int syncId, PlayerInventory playerInventory, RefiningUnitBlockEntity blockEntity, PropertyDelegate propertyDelegate) {
@@ -63,5 +63,39 @@ public class RefiningUnitScreenHandler extends BaseIOScreenHandler<RefiningUnitB
         }
 
         return newStack;
+    }
+
+    public boolean nowFluidMode() {
+        return propertyDelegate.get(8) == 1;
+    }
+
+    public int getFluidAmount() {
+        return propertyDelegate.get(3);
+    }
+
+    public int getFluidCapacity() {
+        return propertyDelegate.get(4);
+    }
+
+    public int getSewageAmount() {
+        return propertyDelegate.get(5);
+    }
+
+    public int getSewageCapacity() {
+        return propertyDelegate.get(6);
+    }
+
+    public int getStoredPower() {
+        return this.propertyDelegate.get(7);
+    }
+
+    /** 原料罐内流体的注册表 ID（空罐时为水），用于 GUI 按类型取色 */
+    public int getFluidId() {
+        return this.propertyDelegate.get(9);
+    }
+
+    /** 污水罐内流体的注册表 ID（空罐时为水），用于 GUI 按类型取色 */
+    public int getSewageId() {
+        return this.propertyDelegate.get(10);
     }
 }

@@ -31,7 +31,7 @@ public class IndustrialExplosiveEntity extends ThrownItemEntity {
             double y = this.getY();
             double z = this.getZ();
 
-            float power = 10.0f;
+            float power = 5.0f;
 
             this.getWorld().createExplosion(this, x, y, z, power, World.ExplosionSourceType.TNT);
             this.discard();

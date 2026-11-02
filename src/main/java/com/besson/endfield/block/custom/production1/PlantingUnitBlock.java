@@ -5,6 +5,7 @@ import com.besson.endfield.block.ModBlocks;
 import com.besson.endfield.blockentity.ModBlockEntities;
 import com.besson.endfield.blockentity.custom.production1.PlantingUnitBlockEntity;
 import com.besson.endfield.blockentity.custom.production1.PlantingUnitSideBlockEntity;
+import com.besson.endfield.util.MultiBlockPlacementUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -73,6 +74,14 @@ public class PlantingUnitBlock extends ModBlockEntityWithFacing {
                 }
             }
 
+            // 流体模式下上方左右两侧的原料罐 Side 方块也一并移除
+            Direction facing = state.get(FACING);
+            for (BlockPos p : getFluidTankPositions(facing, pos)) {
+                if (world.getBlockState(p).getBlock() == ModBlocks.PLANTING_UNIT_SIDE) {
+                    world.breakBlock(p, false);
+                }
+            }
+
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
@@ -94,19 +103,24 @@ public class PlantingUnitBlock extends ModBlockEntityWithFacing {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        if (!world.isClient()) {
-            BlockPos[] sidePositions = getAdjacentPositions(state, pos);
+        BlockPos[] sidePositions = getAdjacentPositions(state, pos);
 
-            for (BlockPos p : sidePositions) {
-                if (!world.getBlockState(p).getBlock().getDefaultState().isAir()) {
-                    return false;
-                }
+        for (BlockPos p : sidePositions) {
+            if (!MultiBlockPlacementUtil.isReplaceable(world, p)) {
+                return false;
             }
-            return true;
         }
-        return false;
+        return true;
     }
     
+    /** 流体模式下原料罐 Side 方块的位置（5×5 外壳上方左右两侧最外列之上） */
+    public static BlockPos[] getFluidTankPositions(Direction facing, BlockPos pos) {
+        return new BlockPos[]{
+                pos.offset(facing.rotateYCounterclockwise(), 2).up(2),
+                pos.offset(facing.rotateYClockwise(), 2).up(2)
+        };
+    }
+
     private BlockPos[] getAdjacentPositions(BlockState state, BlockPos pos) {
         Direction facing = state.get(FACING);
         Direction left = facing.rotateYCounterclockwise();
@@ -135,5 +149,6 @@ public class PlantingUnitBlock extends ModBlockEntityWithFacing {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         tooltip.add(Text.translatable("endfield.powerCost", 20).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("endfield.require_area", "5×5").formatted(Formatting.GRAY));
     }
 }

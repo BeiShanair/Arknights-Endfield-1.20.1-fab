@@ -1,0 +1,17 @@
+{
+  "name": "FE Converter",
+  "icon": "arknights_endfield:thermal_bank",
+  "category": "arknights_endfield:powering",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Power Conversion",
+      "text": "The FE Converter converts Endfield Industry Energy into Forge Energy (FE) for compatibility with other mods.$(br2)Conversion Rate: 1 $(efu) = 325 FE$(br)Power Draw: 50 $(efu)/tick$(br)Output: 16,250 FE/tick$(br2)$(o)Note: FE Converter is Forge/NeoForge only, not available on Fabric.$()"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Usage",
+      "text": "Place the FE Converter within grid supply range. It automatically converts 50 $(efu) into FE and outputs to adjacent FE-accepting blocks.$(br2)This allows Endfield Industry's power to drive machines from other mods, enhancing cross-mod compatibility."
+    }
+  ]
+}

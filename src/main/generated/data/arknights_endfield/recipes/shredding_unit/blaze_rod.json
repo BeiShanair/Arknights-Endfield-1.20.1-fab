@@ -1,0 +1,10 @@
+{
+  "type": "arknights_endfield:shredding_unit",
+  "input": {
+    "item": "minecraft:blaze_rod"
+  },
+  "output": {
+    "count": 2,
+    "item": "minecraft:blaze_powder"
+  }
+}

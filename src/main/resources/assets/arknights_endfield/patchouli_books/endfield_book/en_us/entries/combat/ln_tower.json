@@ -1,0 +1,18 @@
+{
+  "name": "LN Tower",
+  "icon": "arknights_endfield:ln_tower",
+  "category": "arknights_endfield:combat",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:ln_tower",
+      "title": "LN Tower",
+      "text": "The LN Tower does not deal direct damage, but it applies a 5-second slow effect to enemies, making it a crowd control-type turret.$(br2)Attack Range: 15 m$(br)Attack Interval：5 s$(br)Consumption: 10 $(efu)"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "View the specific crafting recipes in the Crafter. You can look up the required materials in the REI/JEI.",
+      "title": "Recipe"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "便携源石矿机",
+  "icon": "arknights_endfield:portable_originium_rig",
+  "category": "arknights_endfield:resourcing",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:portable_originium_rig",
+      "title": "便携源石矿机",
+      "text": "便携源石矿机是最基础的资源采集设备，无需电力即可工作。适合游戏初期的资源获取。$(br2)耗电：无$(br)采集速度：每 3 秒 1 个$(br)可开采：源石、煤炭、红石矿脉"
+    },
+    {
+      "type": "patchouli:text",
+      "title": "使用方法",
+      "text": "将便携源石矿机放置在矿脉方块上方。矿机会自动开始采集，产出物会存入矿机自带的输出槽中。$(br2)你可以手动从矿机中取出产物。"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "在制造台 (Crafter) 中查看具体合成配方。所需材料可在 REI/JEI 中查询。",
+      "title": "合成配方"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Protocol Stash",
+  "icon": "arknights_endfield:protocol_stash",
+  "category": "arknights_endfield:logistics",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "arknights_endfield:protocol_stash",
+      "title": "Auto-Submit Storage",
+      "text": "The Protocol Stash is a special storage block. When powered, it auto-submits contents to $(l:arknights_endfield:logistics/global_storage)Global Storage$() every 10s.$(br2)When unpowered, it's a regular 27-slot chest."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Use Cases",
+      "text": "Protocol Stashes excel as production line buffers:$(br)1. Input machine output via belts into the stash$(br)2. When powered, items auto-submit to Global Storage$(br)3. Use Unloaders elsewhere to retrieve and continue processing$(br2)Enables seamless cross-region item flow."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Check the exact recipe in the Crafter. Required materials can be looked up in REI/JEI.",
+      "title": "Crafting Recipe"
+    }
+  ]
+}

@@ -1,7 +1,10 @@
 package com.besson.endfield.model.block.powering;
 
 import com.besson.endfield.ArknightsEndfield;
+import com.besson.endfield.block.custom.powering.RelayTowerBlock;
 import com.besson.endfield.blockentity.custom.powering.RelayTowerBlockEntity;
+import net.minecraft.block.Block;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 
@@ -13,11 +16,22 @@ public class RelayTowerModel extends GeoModel<RelayTowerBlockEntity> {
 
     @Override
     public Identifier getTextureResource(RelayTowerBlockEntity animatable) {
+        Block block = animatable.getCachedState().getBlock();
+        if (block instanceof RelayTowerBlock b) {
+            if (b.getDefaultState().get(RelayTowerBlock.PREVIEW)) {
+                return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/relay_tower_pre.png");
+            }
+        }
         return new Identifier(ArknightsEndfield.MOD_ID, "textures/block/relay_tower.png");
     }
 
     @Override
     public Identifier getAnimationResource(RelayTowerBlockEntity animatable) {
         return null;
+    }
+
+    @Override
+    public RenderLayer getRenderType(RelayTowerBlockEntity animatable, Identifier texture) {
+        return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
     }
 }

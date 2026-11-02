@@ -17,11 +17,11 @@ public class GrindingUnitDisplay implements Display {
 
     public GrindingUnitDisplay(GrindingUnitRecipe recipe) {
         this.inputs = recipe.getInput().stream().map(entry -> {
-            List<ItemStack> stacks = Arrays.asList(entry.getIngredient().getMatchingStacks());
+            List<ItemStack> stacks = Arrays.asList(entry.ingredient().getMatchingStacks());
             return EntryIngredients.ofItemStacks(
                     stacks.stream().map(stack -> {
                         ItemStack copy = stack.copy();
-                        copy.setCount(entry.getCount());
+                        copy.setCount(entry.count());
                         return copy;
                     }).toList());
         }).toList();
